@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--Final, top-level theme-->
+    <style name="Theme.Reply" parent="Theme.Reply.Light"/>
+
+    <!--Platform overrides-->
+    <style name="Theme.Reply.Light" parent="Base.Theme.Reply.Light"/>
+
+    <!--Light overrides-->
+    <style name="Base.Theme.Reply.Light" parent="Base.Theme.Reply">
+        <item name="colorPrimary">@color/reply_default_color_primary</item>
+        <item name="colorPrimaryVariant">@color/reply_default_color_primary_variant</item>
+        <item name="colorSecondary">@color/reply_default_color_secondary</item>
+        <item name="colorSecondaryVariant">@color/reply_default_color_secondary_variant</item>
+        <item name="android:colorBackground">@color/reply_default_color_background</item>
+        <item name="colorSurface">@color/reply_default_color_surface</item>
+        <item name="colorError">@color/reply_default_color_error</item>
+        <item name="colorOnPrimary">@color/reply_default_color_on_primary</item>
+        <item name="colorOnSecondary">@color/reply_default_color_on_secondary</item>
+        <item name="colorOnBackground">@color/reply_default_color_on_background</item>
+        <item name="colorOnSurface">@color/reply_default_color_on_surface</item>
+        <item name="colorOnError">@color/reply_default_color_on_error</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Reply" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">?colorPrimary</item>
+        <item name="colorPrimaryDark">?colorPrimaryVariant</item>
+        <item name="colorAccent">?colorSecondary</item>
+        <item name="android:windowBackground">?android:colorBackground</item>
+        <item name="android:statusBarColor">?android:colorBackground</item>
+        <item name="android:navigationBarColor">?colorPrimaryVariant</item>
+
+        <item name="textAppearanceHeadline5">@style/TextAppearance.Reply.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.Reply.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.Reply.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.Reply.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.Reply.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.Reply.Body2</item>
+        <item name="textAppearanceButton">@style/TextAppearance.Reply.Button</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.Reply.Caption</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.Reply.Overline</item>
+
+        <item name="bottomSheetDialogTheme">@style/Base.ThemeOverlay.Reply.BottomSheetDialog</item>
+    </style>
+
+    <style name="Base.ThemeOverlay.Reply.BottomSheetDialog" parent="ThemeOverlay.MaterialComponents.Dialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="bottomSheetStyle">@style/Widget.Reply.BottomSheet.Modal</item>
+        <item name="android:windowAnimationStyle">@style/Animation.Reply.BottomSheet.Modal</item>
+        <item name="android:navigationBarColor">?colorSurface</item>
+        <item name="android:windowLightNavigationBar" tools:ignore="newApi">true</item>
+    </style>
+
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--v23 theme values-->
+    <style name="Theme.Reply.Light" parent="Base.Theme.Reply.Light">
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+</resources>

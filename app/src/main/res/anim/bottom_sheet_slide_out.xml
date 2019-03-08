@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="@integer/modal_bottoomm_sheet_hide_duration"
+    android:interpolator="@android:anim/accelerate_interpolator">
+
+     <translate
+         android:fromYDelta="0"
+         android:toYDelta="20%p"/>
+
+     <alpha
+         android:fromAlpha="1.0"
+         android:toAlpha="0.0"/>
+
+</set>

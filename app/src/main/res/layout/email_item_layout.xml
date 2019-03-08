@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/keyline1"
+    android:layout_marginBottom="@dimen/keyline1"
+    android:layout_marginLeft="@dimen/keyline2"
+    android:layout_marginRight="@dimen/keyline2"
+    app:cardCornerRadius="0dp"
+    android:elevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
+        android:padding="@dimen/keyline4">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:textAppearance="?textAppearanceBody2"
+            android:id="@+id/sender_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/keyline3"
+            android:layout_marginEnd="@dimen/keyline4"
+            android:maxLines="1"
+            tools:text="Google Express - 12m"
+            app:layout_constraintEnd_toStartOf="@+id/sender_profile_image_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:textAppearance="?textAppearanceHeadline6"
+            android:id="@+id/subject_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/keyline3"
+            android:layout_marginEnd="@dimen/keyline4"
+            android:maxLines="1"
+            tools:text="Package Shipped!"
+            app:layout_constraintEnd_toStartOf="@+id/sender_profile_image_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sender_text_view"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:textAppearance="?textAppearanceBody1"
+            android:id="@+id/body_preview_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/keyline3"
+            android:maxLines="2"
+            tools:text="Cucumber mask facial has shipped. It'll be on your front door by the end of the week!"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subject_text_view"/>
+
+
+        <com.materialstudies.reply.ui.CircularImageView
+            android:id="@+id/sender_profile_image_view"
+            android:layout_width="@dimen/email_sender_profile_image_size"
+            android:layout_height="@dimen/email_sender_profile_image_size"
+            android:layout_marginTop="@dimen/keyline3"
+            android:scaleType="centerCrop"
+            android:background="?android:colorBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

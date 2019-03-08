@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.materialstudies.reply.ui.CircularImageView
+        android:id="@+id/profile_image_view"
+        android:layout_width="@dimen/navigation_drawer_profile_image_size"
+        android:layout_height="@dimen/navigation_drawer_profile_image_size"
+        android:layout_marginTop="@dimen/keyline3"
+        android:layout_gravity="center|top"
+        android:background="?android:colorBackground"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/avatar10"/>
+
+    <!--Container to act as the drawer's foreground container and hold all navigation-->
+    <!--destinations-->
+    <LinearLayout
+        android:id="@+id/navigation_menu_container"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/keyline5"
+        android:paddingTop="@dimen/keyline6"
+        android:background="?colorPrimary"/>
+
+</merge>

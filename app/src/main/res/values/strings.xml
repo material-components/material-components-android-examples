@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Reply</string>
+
+    <!--MenuBottomSheet-->
+    <string name="menu_item_forward">Forward</string>
+    <string name="menu_item_reply">Reply</string>
+    <string name="menu_item_reply_all">Reply all</string>
+    <string name="menu_item_archive">Archive</string>
+    <string name="menu_item_delete">Delete</string>
+
+    <!--BottomNavigationDrawer-->
+    <string name="navigation_inbox">Inbox</string>
+    <string name="navigation_starred">Starred</string>
+    <string name="navigation_sent">Send</string>
+    <string name="navigation_trash">Trash</string>
+    <string name="navigation_spam">Spam</string>
+    <string name="navigation_drafts">Drafts</string>
+</resources>

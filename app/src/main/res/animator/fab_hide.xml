@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <objectAnimator
+        android:propertyName="scale"
+        android:valueFrom="1"
+        android:valueTo="0"
+        android:duration="@integer/fab_hide_duration"
+        android:startOffset="0"
+        android:repeatCount="0"
+        android:repeatMode="restart"
+        android:interpolator="@interpolator/mtrl_fast_out_slow_in"/>
+    <objectAnimator
+        android:propertyName="iconScale"
+        android:valueFrom="1"
+        android:valueTo="0"
+        android:duration="@integer/fab_hide_duration"
+        android:startOffset="0"
+        android:repeatCount="0"
+        android:repeatMode="restart"
+        android:interpolator="@interpolator/mtrl_fast_out_slow_in"/>
+    <objectAnimator
+        android:propertyName="opacity"
+        android:valueFrom="1"
+        android:valueTo="0"
+        android:duration="@integer/fab_hide_duration"
+        android:startOffset="0"
+        android:repeatCount="0"
+        android:repeatMode="restart"
+        android:interpolator="@interpolator/mtrl_fast_out_slow_in"/>
+</set>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<resources>
+    <!--Layout keylines-->
+    <dimen name="keyline1">2dp</dimen>
+    <dimen name="keyline2">4dp</dimen>
+    <dimen name="keyline3">8dp</dimen>
+    <dimen name="keyline4">16dp</dimen>
+    <dimen name="keyline5">24dp</dimen>
+    <dimen name="keyline6">32dp</dimen>
+
+    <!--Large component values-->
+    <dimen name="large_component_corner_radius">12dp</dimen>
+
+    <!--BottomAppBar-->
+    <dimen name="bottom_app_bar_fab_cradle_corner_radius">32dp</dimen>
+    <dimen name="bottom_app_bar_fab_cradle_margin">8dp</dimen>
+    <dimen name="bottom_app_bar_logo_size">32dp</dimen>
+
+    <!--BottomNavigationDrawer-->
+    <dimen name="navigation_drawer_profile_image_size">32dp</dimen>
+    <dimen name="navigation_drawer_menu_item_vertical_padding">20dp</dimen>
+
+    <!--Email-->
+    <dimen name="email_sender_profile_image_size">42dp</dimen>
+</resources>

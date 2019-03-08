@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.materialstudies.reply.ui.MainActivity">
+
+    <!--RecyclerView to hold all emails-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:paddingBottom="?actionBarSize"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <!--Standard FrameLayout which sets its own layout_behavior to BottomSheetBehavior-->
+    <!--to act as a bottom navigation drawer-->
+    <com.materialstudies.reply.ui.BottomNavigationDrawer
+        android:id="@+id/bottom_navigation_drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:backgroundTint="?colorPrimary"
+        app:fabAlignmentMode="center"
+        app:fabCradleRoundedCornerRadius="@dimen/bottom_app_bar_fab_cradle_corner_radius"
+        app:fabCradleMargin="@dimen/bottom_app_bar_fab_cradle_margin">
+
+        <LinearLayout
+            android:id="@+id/bottom_app_bar_content_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/bottom_app_bar_chevron"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_arrow_drop_up_24dp"
+                android:layout_gravity="center_vertical" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/bottom_app_bar_logo"
+                android:layout_width="@dimen/bottom_app_bar_logo_size"
+                android:layout_height="@dimen/bottom_app_bar_logo_size"
+                app:srcCompat="@drawable/ic_reply_logo"
+                android:layout_marginLeft="@dimen/keyline3"
+                android:layout_gravity="center_vertical"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:textAppearance="?textAppearanceBody1"
+                android:id="@+id/bottom_app_bar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/keyline3"
+                android:text="@string/navigation_inbox"
+                android:textColor="?colorOnPrimary"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/bottom_app_bar"
+        android:src="@drawable/ic_edit_24dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

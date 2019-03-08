@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Fab animation values-->
+    <integer name="fab_show_duration">100</integer>
+    <integer name="fab_hide_duration">100</integer>
+
+    <!--BottomSheet animation values-->
+    <integer name="modal_bottom_sheet_show_duration">250</integer>
+    <integer name="modal_bottoomm_sheet_hide_duration">200</integer>
+</resources>
