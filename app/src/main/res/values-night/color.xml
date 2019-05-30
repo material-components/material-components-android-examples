@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Color theme (dark)-->
+    <color name="reply_color_primary">@color/colorBlue200</color>
+    <color name="reply_color_primary_variant">@color/colorBlue300</color>
+    <color name="reply_color_secondary">@color/colorOrange300</color>
+    <color name="reply_color_secondary_variant">@color/colorOrange300</color>
+    <color name="reply_color_background">@color/colorBlack900</color>
+    <color name="reply_color_surface">@color/colorBlack800</color>
+    <color name="reply_color_error">@color/colorRed200</color>
+    <color name="reply_color_on_primary">@color/colorBlack900</color>
+    <color name="reply_color_on_secondary">@color/colorBlack900</color>
+    <color name="reply_color_on_background">@color/colorWhite50</color>
+    <color name="reply_color_on_surface">@color/colorWhite50</color>
+    <color name="reply_color_on_error">@color/colorBlack900</color>
+    <color name="reply_color_scrim">@color/colorBlack900Alpha087</color>
+    <color name="reply_color_status_bar">@color/colorBlack800Alpha060</color>
+</resources>

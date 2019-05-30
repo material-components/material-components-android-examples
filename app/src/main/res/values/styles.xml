@@ -1,61 +1,46 @@
 <resources>
-    <!--Type Scale-->
-    <style name="TextAppearance.Reply.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
-        <item name="fontFamily">@font/work_sans_bold</item>
-    </style>
-    
-    <style name="TextAppearance.Reply.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
-        <item name="fontFamily">@font/work_sans_bold</item>
-    </style>
-    
-    <style name="TextAppearance.Reply.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
-        <item name="fontFamily">@font/work_sans</item>
-    </style>
-    
-    <style name="TextAppearance.Reply.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
-        <item name="fontFamily">@font/work_sans_medium</item>
-    </style>
-    
-    <style name="TextAppearance.Reply.Body1" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="fontFamily">@font/work_sans</item>
-        <item name="android:textSize">16sp</item>
-    </style>
 
-    <style name="TextAppearance.Reply.Body2" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="fontFamily">@font/work_sans</item>
-    </style>
-    
-    <style name="TextAppearance.Reply.Button" parent="TextAppearance.MaterialComponents.Button">
-        <item name="fontFamily">@font/work_sans_medium</item>
-        <item name="android:textAllCaps">false</item>
-    </style>
-    
-    <style name="TextAppearance.Reply.Caption" parent="TextAppearance.MaterialComponents.Caption">
-        <item name="fontFamily">@font/work_sans</item>
-    </style>
+    <!--Components-->
 
-    <style name="TextAppearance.Reply.Overline" parent="TextAppearance.MaterialComponents.Overline">
-        <item name="fontFamily">@font/work_sans_semibold</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:textAllCaps">true</item>
-    </style>
-    
-    <!--Widgets-->
+    <!--Bottom Sheets-->
     <style name="Widget.Reply.BottomSheet.Modal" parent="Widget.MaterialComponents.BottomSheet.Modal">
         <item name="enforceMaterialTheme">true</item>
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Reply.BottomSheet.Modal</item>
+        <item name="shapeAppearanceOverlay">?shapeAppearanceLargeComponent</item>
         <item name="backgroundTint">?colorSurface</item>
     </style>
 
-    <style name="ShapeAppearanceOverlay.Reply.BottomSheet.Modal" parent="ShapeAppearanceOverlay.MaterialComponents.BottomSheet.Modal">
-        <item name="cornerFamilyTopLeft">rounded</item>
-        <item name="cornerSizeTopLeft">8dp</item>
-        <item name="cornerFamilyTopRight">rounded</item>
-        <item name="cornerSizeTopRight">8dp</item>
+    <!--Bottom Navigation Drawer-->
+    <style name="Widget.Reply.BottomNavigationDrawer" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearance">?shapeAppearanceLargeComponent</item>
+        <item name="android:backgroundTint">?colorPrimaryVariant</item>
+        <item name="foregroundShapeAppearance">?shapeAppearanceMediumComponent</item>
+        <item name="android:foregroundTint">?colorPrimary</item>
+        <item name="scrimColor">?colorScrim</item>
     </style>
 
-    <style name="Animation.Reply.BottomSheet.Modal" parent="Animation.AppCompat.Dialog">
-        <item name="android:windowEnterAnimation">@anim/bottom_sheet_slide_in</item>
-        <item name="android:windowExitAnimation">@anim/bottom_sheet_slide_out</item>
+    <style name="ThemeOverlay.Reply.NavigationView" parent="Theme.Reply.DayNight">
+        <!--Set the height of each menu item-->
+        <item name="android:listPreferredItemHeightSmall">56dp</item>
+        <!--Set the default color of a menu item's text-->
+        <item name="android:colorControlNormal">@color/mtrl_on_primary_emphasis_medium</item>
+        <item name="navigationViewStyle">@style/Widget.Reply.NavigationView</item>
     </style>
+
+    <style name="Widget.Reply.NavigationView" parent="Widget.MaterialComponents.NavigationView">
+        <!--Remove any scrim insets applied by NavigationView for system bars-->
+        <item name="insetForeground">@android:color/transparent</item>
+        <!--Set the background color of NavigationView-->
+        <item name="android:background">@android:color/transparent</item>
+        <item name="elevation">0dp</item>
+        <!--Set the horizontal start padding of each menu item-->
+        <item name="itemHorizontalPadding">@dimen/keyline_6</item>
+
+        <!--Set the padding between the icon and text label of each menu item-->
+        <item name="itemIconPadding">@dimen/keyline_6</item>
+
+        <item name="itemTextAppearance">?textAppearanceSubtitle1</item>
+        <item name="itemTextColor">@drawable/navigation_drawer_menu_item_color</item>
+        <item name="itemIconTint">@drawable/navigation_drawer_menu_item_color</item>
+    </style>
+
 </resources>

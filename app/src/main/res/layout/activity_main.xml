@@ -4,31 +4,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/coordinator_layout"
     android:layout_height="match_parent"
     tools:context="com.materialstudies.reply.ui.MainActivity">
 
-    <!--RecyclerView to hold all emails-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        android:paddingBottom="?actionBarSize"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/navigation_graph"/>
 
     <!--Standard FrameLayout which sets its own layout_behavior to BottomSheetBehavior-->
     <!--to act as a bottom navigation drawer-->
-    <com.materialstudies.reply.ui.BottomNavigationDrawer
+    <com.materialstudies.reply.ui.nav.BottomNavigationDrawer
         android:id="@+id/bottom_navigation_drawer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/plane_00"/>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/bottom_app_bar_height"
         android:layout_gravity="bottom"
-        app:backgroundTint="?colorPrimary"
+        android:gravity="top"
         app:fabAlignmentMode="center"
         app:fabCradleRoundedCornerRadius="@dimen/bottom_app_bar_fab_cradle_corner_radius"
         app:fabCradleMargin="@dimen/bottom_app_bar_fab_cradle_margin">
@@ -43,26 +44,26 @@
                 android:id="@+id/bottom_app_bar_chevron"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_arrow_drop_up_24dp"
+                app:srcCompat="@drawable/ic_arrow_drop_up_control_normal_24dp"
                 android:layout_gravity="center_vertical" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/bottom_app_bar_logo"
                 android:layout_width="@dimen/bottom_app_bar_logo_size"
                 android:layout_height="@dimen/bottom_app_bar_logo_size"
-                app:srcCompat="@drawable/ic_reply_logo"
-                android:layout_marginLeft="@dimen/keyline3"
+                app:srcCompat="@drawable/ic_reply_logo_control_normal"
+                android:layout_marginLeft="@dimen/keyline_3"
                 android:layout_gravity="center_vertical"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:textAppearance="?textAppearanceBody1"
                 android:id="@+id/bottom_app_bar_title"
+                android:textAppearance="?textAppearanceBody1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/keyline3"
+                android:layout_marginLeft="@dimen/keyline_3"
                 android:text="@string/navigation_inbox"
-                android:textColor="?colorOnPrimary"/>
+                android:textColor="?colorControlNormal"/>
 
         </LinearLayout>
 
@@ -73,6 +74,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_anchor="@id/bottom_app_bar"
-        android:src="@drawable/ic_edit_24dp" />
+        android:src="@drawable/ic_edit_on_surface_24dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

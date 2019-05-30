@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="colorScrim" format="color" />
+    <attr name="colorStatusBar" format="color" />
+
+    <attr name="bottomNavigationDrawerStyle" format="reference" />
+    <attr name="navigationViewTheme" format="reference" />
+
+    <attr name="foregroundShapeAppearance" format="reference" />
+
+    <declare-styleable name="BottomNavigationDrawer">
+        <!--Set the shape of the foreground sheet displayed by BottomNavigationDrawer-->
+        <attr name="foregroundShapeAppearance" />
+        <!--Set the color of the foreground sheet displayed by BottomNavigationDrawer-->
+        <attr name="android:foregroundTint" />
+        <attr name="scrimColor" format="color"/>
+    </declare-styleable>
+</resources>

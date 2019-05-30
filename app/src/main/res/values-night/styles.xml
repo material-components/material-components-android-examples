@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Bottom Navigation Drawer-->
+    <style name="Widget.Reply.BottomNavigationDrawer.Surface" parent="Widget.Reply.BottomNavigationDrawer">
+        <item name="android:backgroundTint">?colorSurface</item>
+        <item name="foregroundShapeAppearance">?shapeAppearanceMediumComponent</item>
+        <item name="android:foregroundTint">?colorSurface</item>
+    </style>
+
+    <style name="ThemeOverlay.Reply.NavigationView.Surface" parent="Theme.Reply.DayNight">
+        <!--Set the height of each menu item-->
+        <item name="android:listPreferredItemHeightSmall">56dp</item>
+        <!--Set the default color of a menu item's text-->
+        <item name="navigationViewStyle">@style/Widget.Reply.NavigationView</item>
+    </style>
+
+</resources>

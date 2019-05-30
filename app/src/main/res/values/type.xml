@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Typography-->
+    <style name="TextAppearance.Reply.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/work_sans_bold</item>
+    </style>
+
+    <style name="TextAppearance.Reply.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/work_sans_bold</item>
+    </style>
+
+    <style name="TextAppearance.Reply.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/work_sans</item>
+    </style>
+
+    <style name="TextAppearance.Reply.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">@font/work_sans_medium</item>
+    </style>
+
+    <style name="TextAppearance.Reply.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/work_sans</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.Reply.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/work_sans</item>
+    </style>
+
+    <style name="TextAppearance.Reply.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/work_sans_medium</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="TextAppearance.Reply.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/work_sans</item>
+    </style>
+
+    <style name="TextAppearance.Reply.Overline" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="fontFamily">@font/work_sans_semibold</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+</resources>

@@ -6,8 +6,8 @@
     android:orientation="horizontal"
     android:paddingTop="@dimen/navigation_drawer_menu_item_vertical_padding"
     android:paddingBottom="@dimen/navigation_drawer_menu_item_vertical_padding"
-    android:paddingStart="@dimen/keyline6"
-    android:paddingEnd="@dimen/keyline6"
+    android:paddingStart="@dimen/keyline_6"
+    android:paddingEnd="@dimen/keyline_6"
     android:background="?selectableItemBackground">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -15,10 +15,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginRight="@dimen/keyline4"
+        android:layout_marginRight="@dimen/keyline_4"
         android:alpha=".5"
-        android:tint="?colorOnPrimary"
-        tools:srcCompat="@drawable/ic_twotone_inbox_24px"/>
+        tools:srcCompat="@drawable/ic_twotone_inbox_control_normal_24px"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:textAppearance="?textAppearanceSubtitle1"
@@ -26,8 +25,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="@dimen/keyline4"
-        android:textColor="?colorOnPrimary"
+        android:layout_marginLeft="@dimen/keyline_4"
+        android:textColor="?colorControlNormal"
         tools:text="@string/navigation_inbox" />
 
 </LinearLayout>

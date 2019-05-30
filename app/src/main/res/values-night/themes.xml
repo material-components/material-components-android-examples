@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--Final, top-level theme-->
+    <style name="Theme.Reply.DayNight" parent="Theme.Reply.Dark"/>
+
+    <style name="Theme.Reply.Dark" parent="Theme.Reply">
+
+        <item name="elevationOverlaysEnabled">true</item>
+        <item name="bottomAppBarStyle">@style/Widget.MaterialComponents.BottomAppBar</item>
+        <item name="bottomNavigationDrawerStyle">@style/Widget.Reply.BottomNavigationDrawer.Surface</item>
+        <item name="navigationViewTheme">@style/ThemeOverlay.Reply.NavigationView.Surface</item>
+
+        <!--System/Platform attributes-->
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">false</item>
+    </style>
+
+</resources>

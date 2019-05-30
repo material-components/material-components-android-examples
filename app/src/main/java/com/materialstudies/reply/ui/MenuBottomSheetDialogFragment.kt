@@ -16,11 +16,11 @@ class MenuBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
     companion object {
         val menuItems = listOf(
-                MenuEntry(R.string.menu_item_forward, R.drawable.ic_forward_24dp),
-                MenuEntry(R.string.menu_item_reply, R.drawable.ic_reply_24dp),
-                MenuEntry(R.string.menu_item_reply_all, R.drawable.ic_reply_all_24dp),
+                MenuEntry(R.string.menu_item_forward, R.drawable.ic_forward_on_surface_24dp),
+                MenuEntry(R.string.menu_item_reply, R.drawable.ic_reply_on_surface_24dp),
+                MenuEntry(R.string.menu_item_reply_all, R.drawable.ic_reply_all_on_surface_24dp),
                 MenuEntry(R.string.menu_item_archive, R.drawable.ic_archive_24dp),
-                MenuEntry(R.string.menu_item_delete, R.drawable.ic_delete_24dp)
+                MenuEntry(R.string.menu_item_delete, R.drawable.ic_delete_on_surface_24dp)
         )
     }
 

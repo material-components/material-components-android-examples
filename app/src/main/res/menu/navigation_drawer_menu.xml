@@ -4,31 +4,37 @@
     <item
         android:id="@+id/navigation_menu_inbox"
         android:title="@string/navigation_inbox"
-        android:icon="@drawable/ic_twotone_inbox_24px"/>
+        android:icon="@drawable/ic_twotone_inbox_control_normal_24px"
+        android:checkable="true"/>
 
     <item
         android:id="@+id/navigation_menu_starred"
         android:title="@string/navigation_starred"
-        android:icon="@drawable/ic_twotone_stars_24px"/>
+        android:icon="@drawable/ic_twotone_stars_control_normal_24px"
+        android:checkable="true"/>
 
     <item
         android:id="@+id/navigation_menu_sent"
         android:title="@string/navigation_sent"
-        android:icon="@drawable/ic_twotone_send_24px"/>
+        android:icon="@drawable/ic_twotone_send_control_normal_24px"
+        android:checkable="true"/>
 
     <item
         android:id="@+id/navigation_menu_trash"
         android:title="@string/navigation_trash"
-        android:icon="@drawable/ic_twotone_delete_24px"/>
+        android:icon="@drawable/ic_twotone_delete_control_normal_24px"
+        android:checkable="true"/>
 
     <item
         android:id="@+id/navigation_menu_spam"
         android:title="@string/navigation_spam"
-        android:icon="@drawable/ic_twotone_error_24px"/>
+        android:icon="@drawable/ic_twotone_error_control_normal_24px"
+        android:checkable="true"/>
 
     <item
         android:id="@+id/navigation_menu_drafts"
         android:title="@string/navigation_drafts"
-        android:icon="@drawable/ic_twotone_drafts_24px"/>
+        android:icon="@drawable/ic_twotone_drafts_control_normal_24px"
+        android:checkable="true"/>
 
 </menu>

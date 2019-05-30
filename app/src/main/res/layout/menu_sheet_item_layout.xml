@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="@dimen/keyline4"
+    android:padding="@dimen/keyline_4"
     android:background="?selectableItemBackground">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -12,9 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginRight="@dimen/keyline4"
+        android:layout_marginRight="@dimen/keyline_4"
         android:alpha=".5"
-        tools:src="@drawable/ic_reply_all_24dp"/>
+        tools:src="@drawable/ic_reply_all_on_surface_24dp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:textAppearance="?textAppearanceBody1"
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="@dimen/keyline4"
+        android:layout_marginLeft="@dimen/keyline_4"
         tools:text="Reply All"/>
 
 </LinearLayout>

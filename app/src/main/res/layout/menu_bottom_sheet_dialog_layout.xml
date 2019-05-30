@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/menu_container"
     android:orientation="vertical"
-    android:paddingTop="@dimen/keyline4"
-    android:paddingBottom="@dimen/keyline4"
+    android:paddingTop="@dimen/keyline_4"
+    android:paddingBottom="@dimen/keyline_4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"/>
 
