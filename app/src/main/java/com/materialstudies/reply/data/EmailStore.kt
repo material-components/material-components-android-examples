@@ -1,12 +1,15 @@
 package com.materialstudies.reply.data
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.materialstudies.reply.R
 
 /**
  * A static data store of [Email]'s.
  */
-object EmailStore {
-    val emails = listOf(
+class EmailStore {
+
+    private val allEmails = mutableListOf(
             Email(
                     0,
                     "Google Express - 15m ago",
@@ -64,5 +67,26 @@ object EmailStore {
                     R.drawable.avatar7
             )
     )
+
+    private val _emails: MutableLiveData<List<Email>> = MutableLiveData()
+    val emails: LiveData<List<Email>>
+        get() = _emails
+
+    init {
+        _emails.value = allEmails
+    }
+
+    fun delete(id: Int) {
+        allEmails.removeAll { it.id == id }
+        _emails.value = allEmails
+    }
+
+    fun update(id: Int, with: Email.() -> Unit) {
+        allEmails.find { it.id == id }?.let {
+            it.with()
+            _emails.value = allEmails
+        }
+    }
+
 }
 

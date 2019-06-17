@@ -8,6 +8,7 @@ data class Email(
         val sender: String,
         val subject: String,
         val body: String,
-        val senderImg: Int
+        val senderImg: Int,
+        var isStarred: Boolean = false
 )
 

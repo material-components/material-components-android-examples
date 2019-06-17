@@ -8,8 +8,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.materialstudies.reply.App
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.data.EmailStore
@@ -18,8 +20,10 @@ import com.materialstudies.reply.ui.MenuBottomSheetDialogFragment
 
 class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
 
-
     private lateinit var recyclerView: RecyclerView
+
+    private val adapter = EmailAdapter(this)
+    private lateinit var emailStore: EmailStore
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,21 +36,27 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.recycler_view)
+
+        emailStore = (requireActivity().application as App).emailStore
+
         ViewCompat.setOnApplyWindowInsetsListener(view) { _, insets ->
             handleApplyWindowInsets(insets)
         }
 
-        val adapter = EmailAdapter(this)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
-        adapter.submitList(EmailStore.emails)
+
+        emailStore.emails.observe(this, Observer {
+            adapter.submitList(it)
+        })
     }
 
     private fun handleApplyWindowInsets(insets: WindowInsetsCompat): WindowInsetsCompat {
+        val keyline2 = resources.getDimensionPixelSize(R.dimen.keyline_2)
         recyclerView.updatePadding(
-            insets.systemWindowInsetLeft,
-            insets.systemWindowInsetTop + resources.getDimensionPixelSize(R.dimen.keyline_2),
-            insets.systemWindowInsetRight,
+            insets.systemWindowInsetLeft + keyline2,
+            insets.systemWindowInsetTop + keyline2,
+            insets.systemWindowInsetRight + keyline2,
             MainActivity.getBottomAppBarHeight(requireContext(), insets)
         )
         return insets
@@ -60,4 +70,13 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
         MenuBottomSheetDialogFragment().show(requireFragmentManager(), null)
         return true
     }
+
+    override fun onEmailStarChanged(email: Email, newValue: Boolean) {
+        emailStore.update(email.id) { isStarred = newValue }
+    }
+
+    override fun onEmailArchived(email: Email) {
+        emailStore.delete(email.id)
+    }
+
 }

@@ -17,15 +17,21 @@ class EmailAdapter(
     interface EmailAdapterListener {
         fun onEmailClicked(email: Email)
         fun onEmailLongPressed(email: Email): Boolean
+        fun onEmailStarChanged(email: Email, newValue: Boolean)
+        fun onEmailArchived(email: Email)
     }
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Email>() {
             override fun areItemsTheSame(oldItem: Email, newItem: Email): Boolean {
-                return false
+                return oldItem.id == newItem.id
             }
             override fun areContentsTheSame(oldItem: Email, newItem: Email): Boolean {
-                return false
+                return oldItem.sender == newItem.sender &&
+                    oldItem.subject == newItem.subject &&
+                    oldItem.body == newItem.body &&
+                    oldItem.senderImg == newItem.senderImg &&
+                    oldItem.isStarred == newItem.isStarred
             }
         }
     }
@@ -42,5 +48,4 @@ class EmailAdapter(
     override fun onBindViewHolder(holder: EmailViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
-
 }

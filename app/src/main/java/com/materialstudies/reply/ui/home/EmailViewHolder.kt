@@ -5,7 +5,6 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
-import com.materialstudies.reply.ui.home.EmailAdapter
 import com.materialstudies.reply.ui.widget.CircularImageView
 
 
