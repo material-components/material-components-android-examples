@@ -5,16 +5,20 @@
     <color name="reply_color_primary_variant">@color/colorBlue800</color>
     <color name="reply_color_secondary">@color/colorOrange500</color>
     <color name="reply_color_secondary_variant">@color/colorOrange400</color>
+
     <color name="reply_color_background">@color/colorBlue50</color>
     <color name="reply_color_surface">@color/colorWhite50</color>
     <color name="reply_color_error">@color/colorRed400</color>
+
     <color name="reply_color_on_primary">@color/colorWhite50</color>
     <color name="reply_color_on_secondary">@color/colorBlack900</color>
     <color name="reply_color_on_background">@color/colorBlack900</color>
     <color name="reply_color_on_surface">@color/colorBlack900</color>
     <color name="reply_color_on_error">@color/colorBlack900</color>
-    <color name="reply_color_status_bar">@color/colorBlue100Alpha060</color>
+
+    <color name="reply_color_status_bar">@color/colorBlue100</color>
     <color name="reply_color_scrim">@color/colorWhite50Alpha060</color>
+
 
     <!--Color palette-->
     <color name="colorWhite50">#ffffff</color>
@@ -36,12 +40,8 @@
 
     <color name="colorRed200">#cf7779</color>
     <color name="colorRed400">#ff4c5d</color>
-    
+
     <color name="colorWhite50Alpha060">#99ffffff</color>
 
     <color name="colorBlack900Alpha087">#de000000</color>
-
-    <color name="colorBlack800Alpha060">#99121212</color>
-
-    <color name="colorBlue100Alpha060">#99d2dbe0</color>
 </resources>

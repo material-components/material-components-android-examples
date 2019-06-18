@@ -1,6 +1,7 @@
 package com.materialstudies.reply.util
 
 object MathUtils {
+
     /**
      * Ensure [value] is no less than [min] and no greater than [max]
      */

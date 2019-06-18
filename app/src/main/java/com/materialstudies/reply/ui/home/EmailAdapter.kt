@@ -6,13 +6,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
+import com.materialstudies.reply.data.EmailDiffCallback
+import com.materialstudies.reply.databinding.EmailItemLayoutBinding
 
 /**
  * Simple adapter to display Email's in MainActivity.
  */
 class EmailAdapter(
         private val listener: EmailAdapterListener
-) : ListAdapter<Email, EmailViewHolder>(DIFF_CALLBACK) {
+) : ListAdapter<Email, EmailViewHolder>(EmailDiffCallback) {
 
     interface EmailAdapterListener {
         fun onEmailClicked(email: Email)
@@ -21,26 +23,13 @@ class EmailAdapter(
         fun onEmailArchived(email: Email)
     }
 
-    companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Email>() {
-            override fun areItemsTheSame(oldItem: Email, newItem: Email): Boolean {
-                return oldItem.id == newItem.id
-            }
-            override fun areContentsTheSame(oldItem: Email, newItem: Email): Boolean {
-                return oldItem.sender == newItem.sender &&
-                    oldItem.subject == newItem.subject &&
-                    oldItem.body == newItem.body &&
-                    oldItem.senderImg == newItem.senderImg &&
-                    oldItem.isStarred == newItem.isStarred
-            }
-        }
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmailViewHolder {
         return EmailViewHolder(
-            LayoutInflater
-                .from(parent.context)
-                .inflate(R.layout.email_item_layout, parent, false),
+            EmailItemLayoutBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            ),
             listener
         )
     }

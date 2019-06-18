@@ -1,26 +1,38 @@
 package com.materialstudies.reply.util
 
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.content.Context
+import android.graphics.drawable.InsetDrawable
+import android.graphics.drawable.LayerDrawable
+import android.graphics.drawable.RippleDrawable
+import android.os.Build
+import android.widget.TextView
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.shape.MaterialShapeDrawable
+
+fun TextView.setTextAppearanceCompat(context: Context, resId: Int) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+        setTextAppearance(resId)
+    } else {
+        setTextAppearance(context, resId)
+    }
+}
 
 /**
- * An extension value to get an iterator to allow iterating through all of a ViewGroup's children.
+ * Helper method to get the MaterialShapeDrawable background of MaterialCardView. This should be
+ * fixed in a future update to Material Components.
+ *
+ * TODO: Remove once fix lands.
  */
-val ViewGroup.children: Iterator<View>
-    get() = ViewGroupChildIterator(this)
+val MaterialCardView.backgroundShapeDrawable: MaterialShapeDrawable
+    get() = (this.background as InsetDrawable).drawable as MaterialShapeDrawable
 
-class ViewGroupChildIterator(private val viewGroup: ViewGroup): Iterator<View> {
-
-    private var current: Int = 0
-
-    override fun hasNext(): Boolean = viewGroup.childCount > current
-
-    override fun next(): View {
-        val i = current
-        current++
-        return viewGroup.getChildAt(i)
-    }
-
-}
+/**
+ * Helper method to get the MaterialShapeDrawable foreground of MaterialCardView. This should be
+ * fixed in a future update to Material Components.
+ *
+ * TODO: Remove once fix lands.
+ */
+val MaterialCardView.foregroundShapeDrawable: MaterialShapeDrawable
+    get() = (((this.foreground as InsetDrawable).drawable as LayerDrawable)
+        .getDrawable(0) as RippleDrawable)
+        .getDrawable(0) as MaterialShapeDrawable

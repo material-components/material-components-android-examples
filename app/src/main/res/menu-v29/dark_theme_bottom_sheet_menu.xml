@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <item
+            android:id="@+id/menu_light"
+            app:showAsAction="ifRoom"
+            android:title="@string/menu_dark_theme_light"/>
+
+        <item
+            android:id="@+id/menu_dark"
+            app:showAsAction="ifRoom"
+            android:title="@string/menu_dark_theme_dark"/>
+
+        <item
+            android:id="@+id/menu_system_default"
+            app:showAsAction="ifRoom"
+            android:title="@string/menu_dark_theme_system_default"/>
+</menu>

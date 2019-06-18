@@ -15,8 +15,9 @@ import androidx.core.view.updatePadding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.shape.MaterialShapeDrawable
+import com.google.android.material.shape.ShapeAppearanceModel
 import com.materialstudies.reply.R
-import com.materialstudies.reply.util.ColorUtils
+import com.materialstudies.reply.util.ThemeUtils
 import java.lang.IllegalStateException
 
 /**
@@ -55,6 +56,8 @@ class BottomNavigationDrawer @JvmOverloads constructor(
 
     private lateinit var foregroundShape: MaterialShapeDrawable
 
+    // A view to be added directly above the BottomNavigationDrawer which acts as a scrim when
+    // the drawer is open.
     private val scrimView = View(context).apply {
         // Generate an id for the scrim view. If we don't generate an id, the id will be the same
         // as this BottomNavigationSheetView's, making either view impossible to espresso test.
@@ -66,7 +69,7 @@ class BottomNavigationDrawer @JvmOverloads constructor(
         elevation = this@BottomNavigationDrawer.elevation
         visibility = View.GONE
         alpha = 0F
-        setOnClickListener { hide() }
+        setOnClickListener { close() }
     }
 
     init {
@@ -95,7 +98,7 @@ class BottomNavigationDrawer @JvmOverloads constructor(
 
             val scrimColor = it.getColor(
                 R.styleable.BottomNavigationDrawer_scrimColor,
-                ColorUtils.getColorFromAttr(context, R.attr.colorScrim)
+                ThemeUtils.getResourceIdFromAttr(context, R.attr.scrimBackground)
             )
             scrimView.setBackgroundColor(scrimColor)
 
@@ -103,16 +106,19 @@ class BottomNavigationDrawer @JvmOverloads constructor(
                 R.styleable.BottomNavigationDrawer_foregroundShapeAppearance,
                 R.style.ShapeAppearance_MaterialComponents_LargeComponent
             )
-            val foregroundFillCollor = it.getColor(
+            val foregroundShapeAppearanceOverlay = it.getResourceId(
+                R.styleable.BottomNavigationDrawer_foregroundShapeAppearanceOverlay,
+                0
+            )
+            val foregroundFillColor = it.getColor(
                 R.styleable.BottomNavigationDrawer_android_foregroundTint,
                 0
             )
-            foregroundShape = MaterialShapeDrawable(
+            foregroundShape = MaterialShapeDrawable(ShapeAppearanceModel(
                 context,
-                null,
                 foregroundShapeAppearance,
-                0
-            ).apply {
+                foregroundShapeAppearanceOverlay
+            )).apply {
                 val topEdgeTreatment = SemiCircleEdgeCutoutTreatment(
                     resources.getDimension(R.dimen.keyline_3),
                     resources.getDimension(R.dimen.keyline_5),
@@ -120,7 +126,7 @@ class BottomNavigationDrawer @JvmOverloads constructor(
                     resources.getDimension(R.dimen.navigation_drawer_profile_image_size)
                 )
                 shapeAppearanceModel.topEdge = topEdgeTreatment
-                fillColor = ColorStateList.valueOf(foregroundFillCollor)
+                fillColor = ColorStateList.valueOf(foregroundFillColor)
                 elevation = resources.getDimension(R.dimen.plane_16)
                 initializeElevationOverlay(context)
             }
@@ -179,18 +185,18 @@ class BottomNavigationDrawer @JvmOverloads constructor(
      */
     fun toggle() {
         if (behavior.state == BottomSheetBehavior.STATE_HIDDEN) {
-            show()
+            open()
         } else if (behavior.state == BottomSheetBehavior.STATE_COLLAPSED ||
             behavior.state == BottomSheetBehavior.STATE_EXPANDED) {
-            hide()
+            close()
         }
     }
 
-    private fun show() {
+    fun open() {
         behavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
-    private fun hide() {
+    fun close() {
         behavior.state = BottomSheetBehavior.STATE_HIDDEN
     }
 

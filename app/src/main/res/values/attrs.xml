@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <attr name="colorScrim" format="color" />
+    <!--Branded is a color and it's "on" color which uses colorPrimary for light and -->
+    <!--colorSurface for dark. This makes it easy to set the color of surfaces and content for -->
+    <!--components such as BottomNavigationDrawer.-->
+    <attr name="colorBrandedSurface" format="color" />
+    <attr name="colorOnBrandedSurface" format="color" />
+
     <attr name="colorStatusBar" format="color" />
 
+    <!--Emphasis values are used in combination with each "on" color to create three available -->
+    <!--levels of emphasis for text and content.-->
+    <attr name="emphasisHighAlpha" format="float"/>
+    <attr name="emphasisMediumAlpha" format="float"/>
+    <attr name="emphasisDisabledAlpha" format="float"/>
+
+    <!--Custom view themes/styles-->
     <attr name="bottomNavigationDrawerStyle" format="reference" />
-    <attr name="navigationViewTheme" format="reference" />
+    <attr name="bottomNavigationDrawerNavigationViewTheme" format="reference" />
 
     <attr name="foregroundShapeAppearance" format="reference" />
+    <attr name="foregroundShapeAppearanceOverlay" format="reference" />
 
     <declare-styleable name="BottomNavigationDrawer">
         <!--Set the shape of the foreground sheet displayed by BottomNavigationDrawer-->
         <attr name="foregroundShapeAppearance" />
+        <attr name="foregroundShapeAppearanceOverlay" />
         <!--Set the color of the foreground sheet displayed by BottomNavigationDrawer-->
         <attr name="android:foregroundTint" />
-        <attr name="scrimColor" format="color"/>
+        <attr name="scrimColor" format="color" />
     </declare-styleable>
 </resources>

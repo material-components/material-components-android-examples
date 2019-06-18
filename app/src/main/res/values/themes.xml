@@ -10,15 +10,21 @@
         <item name="colorPrimaryVariant">@color/reply_color_primary_variant</item>
         <item name="colorSecondary">@color/reply_color_secondary</item>
         <item name="colorSecondaryVariant">@color/reply_color_secondary_variant</item>
+
         <item name="android:colorBackground">@color/reply_color_background</item>
         <item name="colorSurface">@color/reply_color_surface</item>
+        <item name="colorBrandedSurface">?colorPrimary</item>
         <item name="colorError">@color/reply_color_error</item>
+
         <item name="colorOnPrimary">@color/reply_color_on_primary</item>
         <item name="colorOnSecondary">@color/reply_color_on_secondary</item>
         <item name="colorOnBackground">@color/reply_color_on_background</item>
         <item name="colorOnSurface">@color/reply_color_on_surface</item>
+        <item name="colorOnBrandedSurface">?colorOnPrimary</item>
         <item name="colorOnError">@color/reply_color_on_error</item>
-        <item name="colorScrim">@color/reply_color_scrim</item>
+
+        <item name="scrimBackground">@color/reply_color_scrim</item>
+
         <item name="colorStatusBar">@color/reply_color_status_bar</item>
 
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Reply.SmallComponents</item>
@@ -26,6 +32,9 @@
         <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Reply.LargeComponent</item>
 
         <!--Typography-->
+        <item name="textAppearanceHeadline2">@style/TextAppearance.Reply.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.Reply.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.Reply.Headline4</item>
         <item name="textAppearanceHeadline5">@style/TextAppearance.Reply.Headline5</item>
         <item name="textAppearanceHeadline6">@style/TextAppearance.Reply.Headline6</item>
         <item name="textAppearanceSubtitle1">@style/TextAppearance.Reply.Subtitle1</item>
@@ -36,11 +45,16 @@
         <item name="textAppearanceCaption">@style/TextAppearance.Reply.Caption</item>
         <item name="textAppearanceOverline">@style/TextAppearance.Reply.Overline</item>
 
+        <item name="emphasisHighAlpha">0.87</item>
+        <item name="emphasisMediumAlpha">0.60</item>
+        <item name="emphasisDisabledAlpha">0.38</item>
+
         <!--Styles-->
         <item name="bottomAppBarStyle">@style/Widget.MaterialComponents.BottomAppBar.Colored</item>
         <item name="bottomSheetDialogTheme">@style/Base.ThemeOverlay.Reply.BottomSheetDialog</item>
+        <item name="navigationViewStyle">@style/Widget.Reply.NavigationView</item>
         <item name="bottomNavigationDrawerStyle">@style/Widget.Reply.BottomNavigationDrawer</item>
-        <item name="navigationViewTheme">@style/ThemeOverlay.Reply.NavigationView</item>
+        <item name="bottomNavigationDrawerNavigationViewTheme">@style/ThemeOverlay.Reply.BottomNavigationDrawer.NavigationView</item>
 
         <!--System/Platform attributes-->
         <item name="android:windowBackground">?android:colorBackground</item>

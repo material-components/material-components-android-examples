@@ -6,10 +6,13 @@
 
     <style name="Theme.Reply.Dark" parent="Theme.Reply">
 
+        <item name="colorBrandedSurface">?colorSurface</item>
+        <item name="colorOnBrandedSurface">?colorOnSurface</item>
+
         <item name="elevationOverlaysEnabled">true</item>
         <item name="bottomAppBarStyle">@style/Widget.MaterialComponents.BottomAppBar</item>
         <item name="bottomNavigationDrawerStyle">@style/Widget.Reply.BottomNavigationDrawer.Surface</item>
-        <item name="navigationViewTheme">@style/ThemeOverlay.Reply.NavigationView.Surface</item>
+        <item name="bottomNavigationDrawerNavigationViewTheme">@style/ThemeOverlay.Reply.BottomNavigationDrawer.NavigationView.Surface</item>
 
         <!--System/Platform attributes-->
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">false</item>

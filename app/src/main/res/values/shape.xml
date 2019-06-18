@@ -5,20 +5,36 @@
 
     <style name="ShapeAppearance.Reply.SmallComponents" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">24dp</item>
+        <item name="cornerSize">@dimen/small_component_corner_radius</item>
     </style>
 
     <style name="ShapeAppearance.Reply.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">0dp</item>
+        <item name="cornerSize">@dimen/medium_component_corner_radius</item>
     </style>
 
     <style name="ShapeAppearance.Reply.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopLeft">12dp</item>
-        <item name="cornerSizeTopRight">12dp</item>
+        <item name="cornerSize">@dimen/large_component_corner_radius</item>
+    </style>
+
+    <!--ShapeAppearance overlay to square bottom corners on views which align to the -->
+    <!--bottom of the screen-->
+    <style name="ShapeAppearanceOverlay.Reply.BottomSheet" parent="">
         <item name="cornerSizeBottomLeft">0dp</item>
         <item name="cornerSizeBottomRight">0dp</item>
     </style>
+
+    <!--ShapeAppearance overlay for components which can be 'marked' by rounding their top left -->
+    <!--corner - ie. email cards which have been starred-->
+    <style name="ShapeAppearanceOverlay.Reply.MediumComponent.Marked" parent="">
+        <item name="cornerSizeTopLeft">@dimen/medium_component_marked_corner_radius</item>
+    </style>
+
+    <dimen name="small_component_corner_radius">24dp</dimen>
+    <dimen name="medium_component_corner_radius">0dp</dimen>
+    <dimen name="large_component_corner_radius">12dp</dimen>
+
+    <dimen name="medium_component_marked_corner_radius">24dp</dimen>
 
 </resources>

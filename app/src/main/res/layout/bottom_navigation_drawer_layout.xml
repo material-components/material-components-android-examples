@@ -9,8 +9,9 @@
         android:layout_marginTop="@dimen/keyline_3"
         android:layout_gravity="center|top"
         android:background="?android:colorBackground"
+        android:contentDescription="@string/bottom_nav_drawer_profile_image_content_desc"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/avatar10"/>
+        app:srcCompat="@drawable/avatar_10"/>
 
     <!--Container to act as the drawer's foreground container and hold all navigation-->
     <LinearLayout
@@ -23,11 +24,11 @@
         android:paddingBottom="@dimen/keyline_6">
 
         <com.google.android.material.navigation.NavigationView
-            android:theme="?navigationViewTheme"
+            android:theme="?bottomNavigationDrawerNavigationViewTheme"
             android:id="@+id/navigation_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:menu="@menu/navigation_drawer_menu"/>
+            app:menu="@menu/navigation_drawer_menu" />
 
         <View
             android:id="@+id/divider"
@@ -38,7 +39,7 @@
             android:layout_marginLeft="@dimen/keyline_6"
             android:layout_marginRight="@dimen/keyline_6"
             android:alpha="0.1"
-            android:background="?colorOnPrimary"/>
+            android:background="?attr/colorOnBrandedSurface" />
 
     </LinearLayout>
 

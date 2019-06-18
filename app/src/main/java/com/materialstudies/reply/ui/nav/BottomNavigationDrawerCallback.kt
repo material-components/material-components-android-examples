@@ -2,7 +2,6 @@ package com.materialstudies.reply.ui.nav
 
 import android.view.View
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.materialstudies.reply.util.MathUtils
 
 /**
  * A BottomSheetCallback to encapsulate coordination between [BottomNavigationDrawer]'s open
@@ -16,6 +15,7 @@ class BottomNavigationDrawerCallback : BottomSheetBehavior.BottomSheetCallback()
     var lastSlideOffset = -1.0F
 
     override fun onSlide(sheet: View, slideOffset: Float) {
+        println("BottomNavigationDrawerCallback - slideOffset = $slideOffset")
         lastSlideOffset = if (slideOffset < -1.0F || slideOffset.isNaN()) {
             0F
         } else {

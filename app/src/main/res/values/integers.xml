@@ -6,5 +6,5 @@
 
     <!--BottomSheet animation values-->
     <integer name="modal_bottom_sheet_show_duration">250</integer>
-    <integer name="modal_bottoomm_sheet_hide_duration">200</integer>
+    <integer name="modal_bottom_sheet_hide_duration">200</integer>
 </resources>

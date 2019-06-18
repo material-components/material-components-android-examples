@@ -1,32 +1,72 @@
 package com.materialstudies.reply.ui.home
 
-import android.view.View
-import androidx.appcompat.widget.AppCompatTextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.google.android.material.shape.MaterialShapeDrawable
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
-import com.materialstudies.reply.ui.widget.CircularImageView
-
+import com.materialstudies.reply.databinding.EmailItemLayoutBinding
+import com.materialstudies.reply.util.ThemeUtils
+import com.materialstudies.reply.util.backgroundShapeDrawable
+import com.materialstudies.reply.util.foregroundShapeDrawable
+import com.materialstudies.reply.util.setTextAppearanceCompat
 
 class EmailViewHolder(
-        private val view: View,
-        private val listener: EmailAdapter.EmailAdapterListener
-): RecyclerView.ViewHolder(view) {
+    private val binding: EmailItemLayoutBinding,
+    listener: EmailAdapter.EmailAdapterListener
+): RecyclerView.ViewHolder(binding.root) {
 
-    private val sender: AppCompatTextView = view.findViewById(R.id.sender_text_view)
-    private val subject: AppCompatTextView = view.findViewById(R.id.subject_text_view)
-    private val bodyPreview: AppCompatTextView = view.findViewById(R.id.body_preview_text_view)
-    private val senderImage: CircularImageView = view.findViewById(R.id.sender_profile_image_view)
+    private val attachmentAdapter = EmailAttachmentAdapter()
 
-    fun bind(email: Email) {
-        sender.text = email.sender
-        subject.text = email.subject
-        bodyPreview.text = email.body
-        senderImage.setImageResource(email.senderImg)
+    private val cardBackground: MaterialShapeDrawable = binding.cardView.backgroundShapeDrawable
+    private val cardForeground: MaterialShapeDrawable = binding.cardView.foregroundShapeDrawable
 
-        view.setOnClickListener { listener.onEmailClicked(email) }
-        view.setOnLongClickListener {
-            listener.onEmailLongPressed(email)
+    init {
+        binding.listener = listener
+        binding.attachmentRecyclerView.apply {
+            layoutManager = LinearLayoutManager(
+                binding.root.context,
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
+            adapter = attachmentAdapter
+
         }
     }
+
+    fun bind(email: Email) {
+        binding.email = email
+
+        Glide.with(binding.senderProfileImageView)
+            .load(email.senderImg)
+            .circleCrop()
+            .into(binding.senderProfileImageView)
+
+        // Set the subject's TextAppearance
+        val textAppearance = ThemeUtils.getResourceIdFromAttr(
+            binding.subjectTextView.context,
+            if (email.isImportant) {
+                R.attr.textAppearanceHeadline4
+            } else {
+                R.attr.textAppearanceHeadline5
+            }
+        )
+        binding.subjectTextView.setTextAppearanceCompat(
+            binding.subjectTextView.context,
+            textAppearance
+        )
+
+        attachmentAdapter.submitList(email.attachments)
+
+        // Setting interpolation here controls whether or not we draw the top left corner as
+        // rounded or squared. Since all other corners are set to 0dp rounded, they are
+        // not affected.
+        val interpolation = if (email.isStarred) 1F else 0F
+        cardBackground.interpolation = interpolation
+        cardForeground.interpolation = interpolation
+
+        binding.executePendingBindings()
+    }
+
 }

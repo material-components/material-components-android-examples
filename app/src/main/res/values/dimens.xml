@@ -8,9 +8,6 @@
     <dimen name="keyline_5">24dp</dimen>
     <dimen name="keyline_6">32dp</dimen>
 
-    <!--Large component values-->
-    <dimen name="large_component_corner_radius">12dp</dimen>
-
     <!--BottomAppBar-->
     <dimen name="bottom_app_bar_height">56dp</dimen>
     <dimen name="bottom_app_bar_fab_cradle_corner_radius">32dp</dimen>
@@ -21,6 +18,6 @@
     <dimen name="navigation_drawer_profile_image_size">32dp</dimen>
     <dimen name="navigation_drawer_menu_item_vertical_padding">20dp</dimen>
 
-    <!--Email-->
+    <!--Email previews-->
     <dimen name="email_sender_profile_image_size">42dp</dimen>
 </resources>

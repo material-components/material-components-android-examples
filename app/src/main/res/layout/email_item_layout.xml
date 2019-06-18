@@ -1,70 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/keyline_1"
-    android:layout_marginBottom="@dimen/keyline_1"
-    app:cardCornerRadius="0dp"
-    android:elevation="@dimen/plane_00">
+    tools:ignore="UnusedAttribute">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <data>
+        <variable
+            name="email"
+            type="com.materialstudies.reply.data.Email" />
+        <variable
+            name="listener"
+            type="com.materialstudies.reply.ui.home.EmailAdapter.EmailAdapterListener" />
+    </data>
+
+    <FrameLayout
+        android:id="@+id/email_frame"
         android:layout_height="wrap_content"
-        android:background="?selectableItemBackground"
-        android:padding="@dimen/keyline_4">
+        android:layout_width="match_parent"
+        android:layout_marginVertical="@dimen/keyline_1"
+        android:background="?attr/colorSecondary">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:textAppearance="?textAppearanceBody2"
-            android:id="@+id/sender_text_view"
-            android:layout_width="0dp"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/keyline_3"
-            android:layout_marginEnd="@dimen/keyline_4"
-            android:maxLines="1"
-            tools:text="Google Express - 12m"
-            app:layout_constraintEnd_toStartOf="@+id/sender_profile_image_view"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:elevation="@dimen/plane_00"
+            android:clickable="true"
+            android:onClick="@{(view) -> listener.onEmailClicked(email)}"
+            android:onLongClick="@{(view) -> listener.onEmailLongPressed(email)}"
+            app:cardPreventCornerOverlap="false"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Reply.MediumComponent.Marked">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:textAppearance="?textAppearanceHeadline6"
-            android:id="@+id/subject_text_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/keyline_3"
-            android:layout_marginEnd="@dimen/keyline_4"
-            android:maxLines="1"
-            tools:text="Package Shipped!"
-            app:layout_constraintEnd_toStartOf="@+id/sender_profile_image_view"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sender_text_view"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/keyline_4"
+                android:paddingBottom="@dimen/keyline_4">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:textAppearance="?textAppearanceBody1"
-            android:id="@+id/body_preview_text_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/keyline_3"
-            android:maxLines="2"
-            tools:text="Cucumber mask facial has shipped. It'll be on your front door by the end of the week!"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subject_text_view"/>
+                <TextView
+                    android:textAppearance="?textAppearanceBody2"
+                    android:id="@+id/sender_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/keyline_3"
+                    android:layout_marginStart="@dimen/keyline_4"
+                    android:layout_marginEnd="@dimen/keyline_4"
+                    android:maxLines="1"
+                    android:text="@{email.sender}"
+                    tools:text="Google Express - 12m"
+                    app:layout_constraintEnd_toStartOf="@+id/sender_profile_image_view"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
+                <TextView
+                    android:id="@+id/subject_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/keyline_3"
+                    android:layout_marginEnd="@dimen/keyline_4"
+                    android:layout_marginStart="@dimen/keyline_4"
+                    android:textAppearance="?textAppearanceHeadline5"
+                    app:layout_goneMarginEnd="@dimen/keyline_4"
+                    android:maxLines="1"
+                    android:text="@{email.subject}"
+                    tools:text="Package Shipped!"
+                    app:layout_constraintEnd_toStartOf="@+id/sender_profile_image_view"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sender_text_view"/>
 
-        <com.materialstudies.reply.ui.widget.CircularImageView
-            android:id="@+id/sender_profile_image_view"
-            android:layout_width="@dimen/email_sender_profile_image_size"
-            android:layout_height="@dimen/email_sender_profile_image_size"
-            android:layout_marginTop="@dimen/keyline_3"
-            android:scaleType="centerCrop"
-            android:background="?android:colorBackground"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+                <TextView
+                    android:textAppearance="?textAppearanceBody1"
+                    android:id="@+id/body_preview_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/keyline_3"
+                    android:layout_marginStart="@dimen/keyline_4"
+                    android:layout_marginEnd="@dimen/keyline_4"
+                    android:maxLines="2"
+                    android:text="@{email.body}"
+                    tools:text="Cucumber mask facial has shipped. It'll be on your front door by the end of the week!"
+                    app:goneIf="@{!email.hasBody}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/subject_text_view"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/attachment_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="96dp"
+                    android:layout_marginTop="@dimen/keyline_4"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:clipToPadding="false"
+                    android:overScrollMode="never"
+                    app:goneIf="@{!email.hasAttachments}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/body_preview_text_view" />
 
-</com.google.android.material.card.MaterialCardView>
+                <ImageView
+                    android:id="@+id/sender_profile_image_view"
+                    android:layout_width="@dimen/email_sender_profile_image_size"
+                    android:layout_height="@dimen/email_sender_profile_image_size"
+                    android:layout_marginTop="@dimen/keyline_3"
+                    android:layout_marginStart="@dimen/keyline_4"
+                    android:layout_marginEnd="@dimen/keyline_4"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/email_sender_profile_content_desc"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </FrameLayout>
+
+</layout>

@@ -1,12 +1,22 @@
 <resources>
     <string name="app_name">Reply</string>
 
-    <!--MenuBottomSheet-->
+    <!--BottomAppBar-->
+    <string name="bottom_app_bar_chevron_content_desc">Open or close bottom navigation drawer</string>
+    <string name="bottom_app_bar_logo_content_desc">Reply logo</string>
+    <string name="bottom_nav_drawer_profile_image_content_desc">profile avatar image</string>
+
+    <!--BottomSheet menus-->
     <string name="menu_item_forward">Forward</string>
     <string name="menu_item_reply">Reply</string>
     <string name="menu_item_reply_all">Reply all</string>
     <string name="menu_item_archive">Archive</string>
     <string name="menu_item_delete">Delete</string>
+
+    <string name="menu_dark_theme_light">Light</string>
+    <string name="menu_dark_theme_dark">Dark</string>
+    <string name="menu_dark_theme_battery_saver">Set by Battery Saver</string>
+    <string name="menu_dark_theme_system_default">System default</string>
 
     <!--BottomNavigationDrawer-->
     <string name="navigation_inbox">Inbox</string>
@@ -15,4 +25,9 @@
     <string name="navigation_trash">Trash</string>
     <string name="navigation_spam">Spam</string>
     <string name="navigation_drafts">Drafts</string>
+
+    <!--HomeFragment-->
+    <string name="email_attachment_default_content_desc">Attached email image</string>
+    <string name="email_sender_profile_content_desc">Profile image of sender</string>
+
 </resources>
