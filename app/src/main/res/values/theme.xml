@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2019 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
+<resources>
+
+  <!--Base theme, varied in night config-->
+  <style name="Base.Owl" parent="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+    <item name="colorBrandedSurface">?attr/colorPrimary</item>
+    <item name="colorOnBrandedSurface">?attr/colorOnPrimary</item>
+    <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+  </style>
+
+  <style name="Owl" parent="@style/Base.Owl">
+
+    <!--Material color attributes-->
+    <item name="colorPrimary">@color/theme_1_primary</item>
+    <item name="colorPrimaryVariant">@color/theme_1_primary_variant</item>
+    <item name="colorSecondary">@color/theme_1_secondary</item>
+    <item name="colorSecondaryVariant">@color/theme_1_secondary</item>
+
+    <!--Material shape attributes-->
+    <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Owl.SmallComponent</item>
+    <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Owl.MediumComponent</item>
+    <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Owl.LargeComponent</item>
+
+    <!--Material type attributes-->
+    <item name="textAppearanceHeadline1">@style/TextAppearance.Owl.Headline1</item>
+    <item name="textAppearanceHeadline2">@style/TextAppearance.Owl.Headline2</item>
+    <item name="textAppearanceHeadline3">@style/TextAppearance.Owl.Headline3</item>
+    <item name="textAppearanceHeadline4">@style/TextAppearance.Owl.Headline4</item>
+    <item name="textAppearanceHeadline5">@style/TextAppearance.Owl.Headline5</item>
+    <item name="textAppearanceHeadline6">@style/TextAppearance.Owl.Headline6</item>
+    <item name="textAppearanceSubtitle1">@style/TextAppearance.Owl.Subtitle1</item>
+    <item name="textAppearanceSubtitle2">@style/TextAppearance.Owl.Subtitle2</item>
+    <item name="textAppearanceBody1">@style/TextAppearance.Owl.Body1</item>
+    <item name="textAppearanceBody2">@style/TextAppearance.Owl.Body2</item>
+    <item name="textAppearanceButton">@style/TextAppearance.Owl.Button</item>
+    <item name="textAppearanceCaption">@style/TextAppearance.Owl.Caption</item>
+    <item name="textAppearanceOverline">@style/TextAppearance.Owl.Overline</item>
+
+    <!--Platform attributes-->
+    <item name="android:navigationBarColor">@color/nav_bar</item>
+
+    <!--Default styles-->
+    <item name="bottomNavigationStyle">@style/Widget.Owl.BottomNavigationView</item>
+
+  </style>
+
+  <style name="Owl.Theme2">
+    <item name="colorPrimary">@color/theme_2_primary</item>
+    <item name="colorPrimaryVariant">@color/theme_2_primary_variant</item>
+    <item name="colorSecondary">@color/theme_2_secondary</item>
+    <item name="colorSecondaryVariant">@color/theme_2_secondary</item>
+  </style>
+
+  <style name="Owl.Theme3">
+    <item name="colorPrimary">@color/theme_3_primary</item>
+    <item name="colorPrimaryVariant">@color/theme_3_primary_variant</item>
+    <item name="colorSecondary">@color/theme_3_primary</item>
+    <item name="colorSecondaryVariant">@color/theme_3_primary</item>
+  </style>
+
+</resources>
