@@ -12,16 +12,56 @@
   or implied. See the License for the specific language governing permissions and limitations under
   the License.
   -->
-<FrameLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.search.SearchFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-  <TextView
+  <androidx.coordinatorlayout.widget.CoordinatorLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:text="Search"/>
+      android:background="?attr/colorBrandedSurface"
+      android:theme="@style/ThemeOverlay.MaterialComponents.Dark"
+      tools:context=".ui.search.SearchFragment">
 
-</FrameLayout>
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:liftOnScroll="true"
+        app:liftOnScrollTargetViewId="@id/search_results">
+
+      <androidx.appcompat.widget.Toolbar
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:minHeight="?attr/actionBarSize"
+          app:layout_scrollFlags="scroll|enterAlways|snap"
+          app:menu="@menu/account"
+          app:navigationIcon="@drawable/ic_search">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:lines="1"
+            android:selectAllOnFocus="true"
+            android:inputType="textCapWords"
+            android:imeOptions="actionSearch"
+            android:hint="@string/search_owl"
+            android:textAppearance="?attr/textAppearanceSubtitle1" />
+
+      </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_results"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:hasFixedSize="@{true}"
+        android:scrollbars="vertical"/>
+
+  </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>
