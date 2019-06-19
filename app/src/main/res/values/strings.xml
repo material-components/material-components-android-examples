@@ -18,5 +18,6 @@
   <string name="course_steps">%1$s / %2$s</string>
   <string name="add_course">Add Course</string>
   <string name="account">Account</string>
+  <string name="search_owl">Search Owl</string>
 
 </resources>
