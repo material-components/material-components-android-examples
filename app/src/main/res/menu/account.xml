@@ -12,11 +12,14 @@
   or implied. See the License for the specific language governing permissions and limitations under
   the License.
   -->
-<resources>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-  <string name="app_name">Owl</string>
-  <string name="course_steps">%1$s / %2$s</string>
-  <string name="add_course">Add Course</string>
-  <string name="account">Account</string>
+  <item
+      android:id="@+id/account"
+      android:title="@string/account"
+      android:icon="@drawable/ic_account"
+      app:showAsAction="always"/>
 
-</resources>
+</menu>

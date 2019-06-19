@@ -19,6 +19,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.materialstudies.owl.databinding.FragmentMyCoursesBinding
+import com.materialstudies.owl.model.courses
 
 class MyCoursesFragment : Fragment() {
 
