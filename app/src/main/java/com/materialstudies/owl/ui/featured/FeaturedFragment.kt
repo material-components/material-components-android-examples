@@ -16,24 +16,46 @@
 
 package com.materialstudies.owl.ui.featured
 
+import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.Px
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.materialstudies.owl.R
+import com.materialstudies.owl.databinding.FragmentFeaturedBinding
+import com.materialstudies.owl.model.courses
 
 class FeaturedFragment : Fragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_featured, container, false)
+        val binding = FragmentFeaturedBinding.inflate(inflater, container, false).apply {
+            featuredGrid.apply {
+                adapter = FeaturedAdapter().apply {
+                    submitList(courses)
+                }
+                addItemDecoration(
+                    OffsetDecoration(resources.getDimensionPixelSize(R.dimen.grid_0_5))
+                )
+            }
+        }
+        return binding.root
+    }
+}
+
+class OffsetDecoration(@Px private val offset: Int) : RecyclerView.ItemDecoration() {
+    override fun getItemOffsets(
+        outRect: Rect,
+        view: View,
+        parent: RecyclerView,
+        state: RecyclerView.State
+    ) {
+        outRect.set(offset, offset, offset, offset)
     }
 }

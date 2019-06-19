@@ -20,7 +20,7 @@
     tools:ignore="RtlSymmetry">
 
   <data>
-    <variable name="course" type="com.materialstudies.owl.ui.mycourses.Course"/>
+    <variable name="course" type="com.materialstudies.owl.model.Course"/>
   </data>
 
   <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,7 +57,7 @@
         app:layout_constraintTop_toTopOf="@id/course_name"
         app:layout_constraintBottom_toBottomOf="@id/course_steps"
         app:layout_constraintDimensionRatio="1:1"
-        android:background="@drawable/course_image_placeholder"
+        app:srcCompat="@drawable/stroked_course_image_placeholder"
         android:contentDescription="@{course.thumbContentDesc}"/>
 
     <TextView

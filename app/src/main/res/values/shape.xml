@@ -18,7 +18,7 @@
   <style name="ShapeAppearance.Owl.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
     <item name="cornerFamily">rounded</item>
     <item name="cornerSize">0px</item>
-    <item name="cornerSizeTopLeft">28dp</item>
+    <item name="cornerSizeTopLeft">@dimen/small_component_top_left_radius</item>
   </style>
 
   <!--Shape Appearance for medium components like cards, alert dialogs-->
@@ -34,5 +34,7 @@
     <item name="cornerSizeTopLeft">16dp</item>
     <item name="cornerSizeBottomLeft">16dp</item>
   </style>
+
+  <dimen name="small_component_top_left_radius">28dp</dimen>
 
 </resources>

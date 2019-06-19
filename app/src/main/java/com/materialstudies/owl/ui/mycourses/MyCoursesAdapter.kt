@@ -17,12 +17,13 @@ package com.materialstudies.owl.ui.mycourses
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.materialstudies.owl.R
 import com.materialstudies.owl.databinding.CourseItemBinding
+import com.materialstudies.owl.model.Course
+import com.materialstudies.owl.model.CourseDiff
 import com.materialstudies.owl.util.ShapeAppearanceTransformation
 
 class MyCourseViewHolder(
@@ -61,8 +62,4 @@ class MyCoursesAdapter(private val lifecycle: LifecycleOwner) :
         holder.bind(getItem(position), shapeTransform)
     }
 
-    object CourseDiff : DiffUtil.ItemCallback<Course>() {
-        override fun areItemsTheSame(oldItem: Course, newItem: Course) = oldItem.id == newItem.id
-        override fun areContentsTheSame(oldItem: Course, newItem: Course) = oldItem == newItem
-    }
 }

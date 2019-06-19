@@ -17,10 +17,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-  <FrameLayout
+  <LinearLayout
       android:id="@+id/root"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      android:orientation="vertical"
       app:layoutFullscreen="@{true}"
       app:paddingTopSystemWindowInsets="@{true}"
       tools:context=".ui.MainActivity">
@@ -29,7 +30,8 @@
         android:id="@+id/nav_host"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         app:defaultNavHost="true"
         app:navGraph="@navigation/navigation"/>
 
@@ -37,12 +39,11 @@
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
         app:paddingLeftSystemWindowInsets="@{true}"
         app:paddingRightSystemWindowInsets="@{true}"
         app:paddingBottomSystemWindowInsets="@{true}"
         app:menu="@menu/main"/>
 
-  </FrameLayout>
+  </LinearLayout>
 
 </layout>

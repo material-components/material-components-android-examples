@@ -22,7 +22,7 @@
       android:pathData="M20,20m-18,0a18,18 0,1 1,36 0a18,18 0,1 1,-36 0"
       android:strokeWidth="3"
       android:fillColor="#e9e9e9"
-      android:strokeColor="#fff"
+      android:strokeColor="?attr/colorSurface"
       android:fillType="evenOdd"/>
   <path
       android:pathData="M20.7,16.8l1.8,-2.8 4.5,7h-4a5,5 0,1 1,-2.3 -4.2zM20.7,16.8L18,21h5a5,5 0,0 0,-2.3 -4.2z"

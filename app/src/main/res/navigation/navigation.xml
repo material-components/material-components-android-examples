@@ -17,24 +17,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation.xml"
-    app:startDestination="@id/myCourses">
+    app:startDestination="@id/featured">
 
   <fragment
       android:id="@+id/myCourses"
       android:name="com.materialstudies.owl.ui.mycourses.MyCoursesFragment"
       android:label="fragment_my_courses"
-      tools:layout="@layout/fragment_my_courses">
-    <action android:id="@+id/action_myCourses_to_featured" app:destination="@id/featured"/>
-    <action android:id="@+id/action_myCourses_to_search" app:destination="@id/search"/>
-  </fragment>
+      tools:layout="@layout/fragment_my_courses"/>
+
   <fragment
       android:id="@+id/featured"
       android:name="com.materialstudies.owl.ui.featured.FeaturedFragment"
       android:label="fragment_featured"
       tools:layout="@layout/fragment_featured"/>
+
   <fragment
       android:id="@+id/search"
       android:name="com.materialstudies.owl.ui.search.SearchFragment"
       android:label="fragment_search"
       tools:layout="@layout/fragment_search"/>
+
 </navigation>

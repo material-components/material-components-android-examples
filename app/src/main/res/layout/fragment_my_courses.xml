@@ -26,13 +26,15 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
 
       <androidx.appcompat.widget.Toolbar
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:minHeight="?attr/actionBarSize"
-          app:menu="@menu/my_courses"
+          app:layout_scrollFlags="scroll|enterAlways|snap"
+          app:menu="@menu/account"
           app:navigationIcon="@drawable/ic_logo"/>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -42,7 +44,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:hasFixedSize="@{true}"
+        android:scrollbars="vertical"/>
 
   </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

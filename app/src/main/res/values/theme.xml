@@ -28,6 +28,7 @@
     <item name="colorPrimaryVariant">@color/theme_1_primary_variant</item>
     <item name="colorSecondary">@color/theme_1_secondary</item>
     <item name="colorSecondaryVariant">@color/theme_1_secondary</item>
+    <item name="colorSurface">@color/theme_1_surface</item>
 
     <!--Material shape attributes-->
     <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Owl.SmallComponent</item>
@@ -62,6 +63,7 @@
     <item name="colorPrimaryVariant">@color/theme_2_primary_variant</item>
     <item name="colorSecondary">@color/theme_2_secondary</item>
     <item name="colorSecondaryVariant">@color/theme_2_secondary</item>
+    <item name="colorSurface">@color/theme_2_surface</item>
   </style>
 
   <style name="Owl.Theme3">
@@ -69,6 +71,7 @@
     <item name="colorPrimaryVariant">@color/theme_3_primary_variant</item>
     <item name="colorSecondary">@color/theme_3_primary</item>
     <item name="colorSecondaryVariant">@color/theme_3_primary</item>
+    <item name="colorSurface">@color/theme_3_surface</item>
   </style>
 
 </resources>

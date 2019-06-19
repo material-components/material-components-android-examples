@@ -13,19 +13,23 @@
   the License.
   -->
 <resources>
+
   <!--theme 1-->
   <color name="theme_1_primary">#ffde03</color>
   <color name="theme_1_primary_variant">#ffc000</color>
   <color name="theme_1_secondary">#0336ff</color>
+  <color name="theme_1_surface">#ffffff</color>
 
   <!--theme 2-->
   <color name="theme_2_primary">#0336ff</color>
   <color name="theme_2_primary_variant">#0035c9</color>
   <color name="theme_2_secondary">#ffde03</color>
+  <color name="theme_2_surface">#ffffff</color>
 
   <!--theme 3-->
   <color name="theme_3_primary">#ff0266</color>
   <color name="theme_3_primary_variant">#d8004d</color>
+  <color name="theme_3_surface">#ffffff</color>
 
   <!--background protection for nav-bar, varied on Q+-->
   <color name="immersive_sys_ui">#33000000</color>
