@@ -23,20 +23,15 @@ import com.materialstudies.owl.model.courses
 
 class MyCoursesFragment : Fragment() {
 
-    private val adapter = MyCoursesAdapter(this)
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        adapter.submitList(courses)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentMyCoursesBinding.inflate(inflater, container, false).apply {
-            list.adapter = adapter
+            list.adapter = MyCoursesAdapter().apply {
+                submitList(courses)
+            }
         }
         return binding.root
     }
