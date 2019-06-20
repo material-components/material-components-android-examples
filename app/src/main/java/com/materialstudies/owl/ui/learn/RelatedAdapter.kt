@@ -14,43 +14,35 @@
  * limitations under the License.
  */
 
-package com.materialstudies.owl.ui.featured
+package com.materialstudies.owl.ui.learn
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.materialstudies.owl.R
-import com.materialstudies.owl.databinding.FeaturedItemBinding
+import com.materialstudies.owl.databinding.RelatedCourseItemBinding
 import com.materialstudies.owl.model.Course
 import com.materialstudies.owl.model.CourseDiff
 
-class FeaturedAdapter : ListAdapter<Course, FeaturedViewHolder>(CourseDiff) {
+class RelatedAdapter : ListAdapter<Course, RelatedViewHolder>(CourseDiff) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeaturedViewHolder {
-        val binding = FeaturedItemBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RelatedViewHolder {
+        val binding = RelatedCourseItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
-        ).apply {
-            root.setOnClickListener {
-                findNavController(it).navigate(R.id.learn)
-            }
-        }
-        return FeaturedViewHolder(binding)
+        )
+        return RelatedViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: FeaturedViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RelatedViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
 }
 
-class FeaturedViewHolder(
-    private val binding: FeaturedItemBinding
+class RelatedViewHolder(
+    private val binding: RelatedCourseItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(course: Course) {

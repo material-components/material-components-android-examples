@@ -12,26 +12,13 @@
   or implied. See the License for the specific language governing permissions and limitations under
   the License.
   -->
-<layout
+<vector
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:targetApi="o">
-
-  <data>
-    <variable
-        name="topic"
-        type="com.materialstudies.owl.model.Topic"/>
-  </data>
-
-  <TextView
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:paddingHorizontal="@dimen/grid_2"
-      android:paddingVertical="@dimen/grid_1"
-      android:background="?attr/selectableItemBackground"
-      android:focusable="true"
-      android:clickable="true"
-      android:textAppearance="?attr/textAppearanceHeadline5"
-      android:text="@{topic.name}"/>
-
-</layout>
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+  <path
+      android:pathData="M12,20c4.4,0 8,-3.6 8,-8s-3.6,-8 -8,-8 -8,3.6 -8,8 3.6,8 8,8zM12,2c5.5,0 10,4.5 10,10s-4.5,10 -10,10S2,17.5 2,12 6.5,2 12,2zM13,7.5v3c0,0.3 0.2,0.5 0.5,0.5h3c0.3,0 0.5,0.2 0.5,0.5v1c0,0.3 -0.2,0.5 -0.5,0.5h-3c-0.3,0 -0.5,0.2 -0.5,0.5v3c0,0.3 -0.2,0.5 -0.5,0.5h-1c-0.3,0 -0.5,-0.2 -0.5,-0.5v-3c0,-0.3 -0.2,-0.5 -0.5,-0.5h-3c-0.3,0 -0.5,-0.2 -0.5,-0.5v-1c0,-0.3 0.2,-0.5 0.5,-0.5h3c0.3,0 0.5,-0.2 0.5,-0.5v-3c0,-0.3 0.2,-0.5 0.5,-0.5h1c0.3,0 0.5,0.2 0.5,0.5z"
+      android:fillColor="#fff"/>
+</vector>

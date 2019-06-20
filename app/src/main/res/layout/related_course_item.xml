@@ -26,42 +26,24 @@
   </data>
 
   <androidx.constraintlayout.widget.ConstraintLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginVertical="@dimen/grid_0_5"
-      android:paddingVertical="@dimen/grid_0_5">
-
-    <View
-        android:id="@+id/background"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/course_name"
-        app:layout_constraintBottom_toBottomOf="@id/course_steps"
-        app:layout_constraintStart_toStartOf="@id/course_name"
-        app:elevationOverlay="@{@dimen/card_elevation}"/>
-
-    <Space
-        android:id="@+id/space"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintWidth_min="@dimen/grid_4"
-        app:layout_constraintWidth_max="64dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/course_image"/>
+      android:layout_width="288dp"
+      android:layout_height="80dp"
+      android:layout_marginEnd="@dimen/grid_1"
+      android:clickable="true"
+      android:focusable="true"
+      android:foreground="?attr/selectableItemBackground"
+      app:elevationOverlay="@{@dimen/card_elevation}">
 
     <ImageView
         android:id="@+id/course_image"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toEndOf="@id/space"
-        app:layout_constraintEnd_toStartOf="@id/course_name"
-        app:layout_constraintTop_toTopOf="@id/course_name"
-        app:layout_constraintBottom_toBottomOf="@id/course_steps"
-        app:layout_constraintDimensionRatio="1:1"
-        app:srcCompat="@drawable/stroked_course_image_placeholder"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:scaleType="centerCrop"
+        app:srcCompat="@drawable/course_image_placeholder"
+        app:srcUrl="@{course.thumbUrl}"
         android:contentDescription="@{course.thumbContentDesc}"/>
 
     <TextView
@@ -70,25 +52,26 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/course_image"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_weight="1"
-        android:paddingHorizontal="@dimen/grid_2"
+        app:layout_constraintEnd_toStartOf="@+id/course_instructor"
+        app:layout_constrainedWidth="true"
+        android:layout_marginStart="@dimen/grid_3"
+        android:layout_marginEnd="@dimen/grid_2"
         android:paddingTop="@dimen/grid_2"
-        android:lines="2"
+        android:paddingBottom="@dimen/grid_1"
+        android:maxLines="2"
         android:ellipsize="end"
         android:text="@{course.name}"
         android:textColor="?attr/colorOnSurface"
-        android:textAppearance="?attr/textAppearanceSubtitle1"
-        app:lineHeight="22sp"/>
+        android:textAppearance="?attr/textAppearanceBody2"
+        app:lineHeight="16sp"/>
 
     <ImageView
         android:id="@+id/course_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
         app:layout_constraintStart_toStartOf="@id/course_name"
         app:layout_constraintTop_toTopOf="@id/course_steps"
         app:layout_constraintBottom_toBottomOf="@id/course_steps"
-        android:paddingStart="@dimen/grid_2"
         app:srcCompat="@drawable/ic_course"
         app:tint="?attr/colorPrimary"
         android:importantForAccessibility="no"/>
@@ -98,11 +81,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/course_icon"
-        app:layout_constraintEnd_toStartOf="@id/course_instructor"
         app:layout_constraintTop_toBottomOf="@id/course_name"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/grid_2"
         android:paddingStart="@dimen/grid_1"
-        android:paddingVertical="@dimen/grid_2"
         android:textColor="?attr/colorPrimary"
         android:textAppearance="?attr/textAppearanceCaption"
         android:text="@{@string/course_steps(course.step, course.steps)}"/>
@@ -112,24 +94,12 @@
         android:layout_width="28dp"
         android:layout_height="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/course_steps"
-        app:layout_constraintTop_toTopOf="@id/course_steps"
-        app:layout_constraintBottom_toBottomOf="@id/course_steps"
-        android:layout_marginEnd="@dimen/grid_2"
-        app:srcUrl="@{course.instructor}"
-        app:placeholder="@{@drawable/ic_avatar_placeholder}"
-        app:circleCrop="@{true}"
-        android:importantForAccessibility="no"/>
-
-    <View
-        android:id="@+id/click"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/course_image"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:foreground="@drawable/small_component_foreground"/>
+        android:layout_margin="@dimen/grid_2"
+        app:srcUrl="@{course.instructor}"
+        app:circleCrop="@{true}"
+        app:placeholder="@{@drawable/ic_avatar_placeholder}"
+        android:importantForAccessibility="no"/>
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -21,5 +21,7 @@
   <dimen name="grid_4">32dp</dimen>
 
   <dimen name="card_elevation">1dp</dimen>
+  <dimen name="divider_inset">128dp</dimen>
+  <dimen name="divider_height">1dp</dimen>
 
 </resources>

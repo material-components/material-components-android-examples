@@ -24,5 +24,12 @@
   <string name="my_courses">My Courses</string>
   <string name="featured">Featured</string>
   <string name="search">Search</string>
+  <string name="add">Add</string>
+  <string name="you_ll_also_like">You\'ll Also Like</string>
+  <string name="play_lesson">Play Lesson</string>
+
+  <!--sample data-->
+  <string name="what_you_ll_need">What You\'ll Need:</string>
+  <string name="needs">• DSLR or manual camera\n• 24mm wide angle lens\n• Tripod</string>
 
 </resources>

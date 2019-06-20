@@ -12,18 +12,12 @@
   or implied. See the License for the specific language governing permissions and limitations under
   the License.
   -->
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-
-  <item
-      android:state_activated="true"
-      android:drawable="@drawable/small_component_foreground"/>
-
-  <item>
-    <ripple android:color="?attr/colorControlHighlight">
-      <item android:id="@android:id/mask">
-        <color android:color="#fff"/>
-      </item>
-    </ripple>
-  </item>
-
-</selector>
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+  <gradient
+      android:type="linear"
+      android:angle="270"
+      android:startColor="#80000000"
+      android:endColor="#33000000"/>
+</shape>

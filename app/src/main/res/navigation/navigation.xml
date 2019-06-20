@@ -43,4 +43,10 @@
       android:label="fragment_search"
       tools:layout="@layout/fragment_search"/>
 
+  <fragment
+      android:id="@+id/learn"
+      android:name="com.materialstudies.owl.ui.learn.LearnFragment"
+      android:label="fragment_learn"
+      tools:layout="@layout/fragment_learn"/>
+
 </navigation>

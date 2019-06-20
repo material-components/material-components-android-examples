@@ -69,8 +69,7 @@
   <style name="Owl.Theme3">
     <item name="colorPrimary">@color/theme_3_primary</item>
     <item name="colorPrimaryVariant">@color/theme_3_primary_variant</item>
-    <item name="colorSecondary">@color/theme_3_primary</item>
-    <item name="colorSecondaryVariant">@color/theme_3_primary</item>
+    <item name="colorOnPrimary">@color/theme_3_on_primary</item>
     <item name="colorSurface">@color/theme_3_surface</item>
   </style>
 

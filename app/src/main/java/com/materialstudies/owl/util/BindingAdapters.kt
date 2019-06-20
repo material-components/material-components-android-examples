@@ -16,12 +16,24 @@
 
 package com.materialstudies.owl.util
 
+import android.graphics.drawable.Drawable
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowInsets
+import android.widget.ImageView
+import androidx.constraintlayout.widget.Placeholder
 import androidx.core.view.updateLayoutParams
 import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
 import com.google.android.material.elevation.ElevationOverlayProvider
+
+@BindingAdapter("srcUrl", "circleCrop", "placeholder", requireAll = false)
+fun ImageView.bindSrcUrl(url: String, circleCrop: Boolean, placeholder: Drawable?) {
+    val request = Glide.with(this).load(url)
+    if (circleCrop) request.circleCrop()
+    if (placeholder != null) request.placeholder(placeholder)
+    request.into(this)
+}
 
 /**
  * Alter the background color as if this view had the given elevation. We don't want to actually

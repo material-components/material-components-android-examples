@@ -35,6 +35,11 @@
     <item name="cornerSizeBottomLeft">16dp</item>
   </style>
 
+  <style name="ShapeAppearance.Owl.MinimizedSheet" parent="ShapeAppearance.Owl.MediumComponent">
+    <item name="cornerSizeTopLeft">@dimen/minimized_sheet_top_left_radius</item>
+  </style>
+
   <dimen name="small_component_top_left_radius">28dp</dimen>
+  <dimen name="minimized_sheet_top_left_radius">48dp</dimen>
 
 </resources>

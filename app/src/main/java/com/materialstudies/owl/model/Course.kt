@@ -22,11 +22,12 @@ data class Course(
     val id: Long,
     val name: String,
     val subject: String,
-    val thumb: String,
+    val thumbUrl: String,
     val thumbContentDesc: String,
+    val description: String = "",
     val steps: Int,
     val step: Int,
-    val instructor: String
+    val instructor: String = "https://i.pravatar.cc/112?$id"
 )
 
 object CourseDiff : DiffUtil.ItemCallback<Course>() {
@@ -39,120 +40,119 @@ val courses = listOf(
         id = 0,
         name = "Basic Blocks and Woodturning",
         subject = "Arts & Crafts",
-        thumb = "",
+        thumbUrl = "https://source.unsplash.com/oJ7SV6vQfBA",
         thumbContentDesc = "",
         steps = 7,
-        step = 1,
-        instructor = ""
+        step = 1
     ),
     Course(
         id = 1,
         name = "An Introduction To Oil Painting On Canvas",
         subject = "Painting",
-        thumb = "",
+        thumbUrl = "https://source.unsplash.com/W9_sznrBmoA",
         thumbContentDesc = "",
         steps = 12,
-        step = 1,
-        instructor = ""
+        step = 1
     ),
     Course(
         id = 2,
         name = "Understanding the Composition of Modern Cities",
         subject = "Architecture",
-        thumb = "",
+        thumbUrl = "https://source.unsplash.com/s4I1xpX_ny8",
         thumbContentDesc = "",
         steps = 18,
-        step = 1,
-        instructor = ""
+        step = 1
     ),
     Course(
-        id = 2,
+        id = 3,
         name = "Learning The Basics of Brand Identity",
         subject = "Design",
-        thumb = "",
+        thumbUrl = "https://source.unsplash.com/G9_Euqxpu4k",
         thumbContentDesc = "",
         steps = 22,
-        step = 1,
-        instructor = ""
+        step = 1
     ),
     Course(
-        id = 2,
+        id = 4,
         name = "Wooden Materials and Sculpting Machinery",
         subject = "Arts & Crafts",
-        thumb = "",
+        thumbUrl = "https://source.unsplash.com/o54RjF-C7xo",
         thumbContentDesc = "",
         steps = 19,
-        step = 1,
-        instructor = ""
+        step = 1
     ),
     Course(
-        id = 2,
+        id = 5,
         name = "Advanced Potter's Wheel",
         subject = "Arts & Crafts",
-        thumb = "",
+        thumbUrl = "https://source.unsplash.com/-LHvba-FgAo",
         thumbContentDesc = "",
         steps = 14,
-        step = 1,
-        instructor = ""
+        step = 1
     ),
     Course(
-        id = 2,
-        name = "Advanced Abstract Shapes & 3D",
+        id = 6,
+        name = "Advanced Abstract Shapes & 3D Printing",
         subject = "Arts & Crafts",
-        thumb = "",
+        thumbUrl = "https://source.unsplash.com/HQkz_lWT_lY",
         thumbContentDesc = "",
         steps = 17,
-        step = 1,
-        instructor = ""
+        step = 1
     ),
     Course(
-        id = 2,
+        id = 7,
         name = "Beginning Portraiture",
         subject = "Photography",
-        thumb = "",
+        thumbUrl = "https://source.unsplash.com/LE0Hp8l9gvs",
         thumbContentDesc = "",
         steps = 22,
-        step = 1,
-        instructor = ""
+        step = 1
     ),
     Course(
-        id = 2,
+        id = 8,
         name = "Intermediate Knife Skills",
         subject = "Culinary",
-        thumb = "",
+        thumbUrl = "https://source.unsplash.com/f1xj_KeZ5RM",
         thumbContentDesc = "",
         steps = 14,
-        step = 1,
-        instructor = ""
+        step = 1
     ),
     Course(
-        id = 2,
-        name = "Pattern Making for Begginers",
+        id = 9,
+        name = "Pattern Making for Beginners",
         subject = "Fashion",
-        thumb = "",
+        thumbUrl = "https://source.unsplash.com/hew8-OoUriU",
         thumbContentDesc = "",
         steps = 7,
-        step = 1,
-        instructor = ""
+        step = 1
     ),
     Course(
-        id = 2,
+        id = 10,
         name = "Location Lighting for Beginners",
         subject = "Photography",
-        thumb = "",
+        thumbUrl = "https://source.unsplash.com/pPxJTtxfV1A",
         thumbContentDesc = "",
         steps = 6,
-        step = 1,
-        instructor = ""
+        step = 1
     ),
     Course(
-        id = 2,
+        id = 11,
         name = "Cinematography & Lighting",
         subject = "Film",
-        thumb = "",
+        thumbUrl = "https://source.unsplash.com/oIf4VCDztZY",
         thumbContentDesc = "",
         steps = 4,
-        step = 1,
-        instructor = ""
+        step = 1
+    ),
+    Course(
+        id = 12,
+        name = "Monuments, Buildings & Other Structures",
+        subject = "Photography",
+        thumbUrl = "https://source.unsplash.com/KxCJXXGsv9I",
+        thumbContentDesc = "",
+        description = "This video course introduces the photography of structures, including " +
+                "urban and rural buildings, monuments, and less traditional structures. Instruction includes the handling of equipment and methods used to capture building interiors and exteriors. The discussion will be about the handling of distortion, varied light sources, and perspective.",
+        steps = 4,
+        step = 1
     )
 )

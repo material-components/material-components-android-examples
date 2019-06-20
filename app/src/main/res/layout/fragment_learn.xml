@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2019 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:targetApi="o"
+    tools:ignore="RtlSymmetry">
+
+  <data>
+    <variable
+        name="course"
+        type="com.materialstudies.owl.model.Course"/>
+  </data>
+
+  <androidx.coordinatorlayout.widget.CoordinatorLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:theme="@style/Owl.Theme3"
+      tools:context=".ui.learn.LearnFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintDimensionRatio="4:3"
+            app:srcCompat="@drawable/course_image_placeholder"
+            android:foreground="@drawable/learn_image_scrim"
+            android:scaleType="centerCrop"
+            app:srcUrl="@{course.thumbUrl}"/>
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:minHeight="?attr/actionBarSize"
+            app:contentInsetStartWithNavigation="0dp"
+            app:menu="@menu/learn"
+            app:navigationIcon="@drawable/ic_back"
+            app:marginTopSystemWindowInsets="@{true}">
+
+          <ImageView
+              android:layout_width="24dp"
+              android:layout_height="24dp"
+              app:srcCompat="@drawable/ic_logo"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <ImageView
+            android:id="@+id/course_instructor"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/image"
+            android:background="@drawable/ic_avatar_placeholder"
+            android:foreground="@drawable/avatar_outline"
+            android:importantForAccessibility="no"
+            app:circleCrop="@{true}"
+            app:srcUrl="@{course.instructor}"/>
+
+        <TextView
+            android:id="@+id/course_subject"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/course_instructor"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="@dimen/grid_2"
+            android:gravity="center"
+            android:text="@{course.subject}"
+            android:textColor="?attr/colorPrimary"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textAllCaps="true"/>
+
+        <TextView
+            android:id="@+id/course_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/course_subject"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingHorizontal="@dimen/grid_2"
+            android:gravity="center"
+            android:text="@{course.name}"
+            android:textColor="?attr/colorOnSurface"
+            android:textAppearance="?attr/textAppearanceHeadline4"
+            app:lineHeight="40sp"/>
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/course_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/grid_2"
+            android:padding="@dimen/grid_2"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceBody1"
+            app:lineHeight="28sp"
+            android:text="@{course.description}"/>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/description"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/divider"/>
+
+        <TextView
+            android:id="@+id/need"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="@dimen/grid_2"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:lineHeight="28sp"
+            android:text="@string/what_you_ll_need"/>
+
+        <TextView
+            android:id="@+id/needs"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/need"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="@dimen/grid_2"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceBody1"
+            app:lineHeight="28sp"
+            android:text="@string/needs"/>
+
+        <View
+            android:id="@+id/also_like_background"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/needs"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="?attr/colorBrandedSurface"
+            android:theme="@style/Owl.Theme2"/>
+
+        <TextView
+            android:id="@+id/also_like"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/needs"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingHorizontal="@dimen/grid_2"
+            android:paddingVertical="@dimen/grid_3"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textColor="?attr/colorOnBrandedSurface"
+            app:lineHeight="28sp"
+            android:text="@string/you_ll_also_like"
+            android:theme="@style/Owl.Theme2"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/also_like_list"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="@dimen/grid_4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/also_like"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:paddingHorizontal="@dimen/grid_2"
+            android:clipToPadding="false"
+            marginBottomSystemWindowInsets="@{true}"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:hasFixedSize="@{true}"
+            android:theme="@style/Owl.Theme2"/>
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lessons_sheet"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        app:behavior_peekHeight="56dp">
+
+      <ImageView
+          android:id="@+id/playlist_icon"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          android:layout_margin="@dimen/grid_3"
+          app:srcCompat="@drawable/ic_playlist"
+          app:tint="?attr/colorOnPrimary"/>
+
+      <TextView
+          android:id="@+id/playlist_title"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintEnd_toStartOf="@id/collapse_playlist"
+          app:layout_constraintHorizontal_weight="1"
+          android:paddingHorizontal="@dimen/grid_2"
+          android:gravity="center_vertical"
+          android:ellipsize="end"
+          app:marginTopSystemWindowInsets="@{true}"
+          android:minHeight="?attr/actionBarSize"
+          android:lines="1"
+          android:alpha="0"
+          android:textAppearance="?attr/textAppearanceBody1"
+          android:text="@{course.name}"/>
+
+      <ImageView
+          android:id="@+id/collapse_playlist"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="@id/playlist_title"
+          app:layout_constraintStart_toEndOf="@id/playlist_title"
+          android:padding="@dimen/grid_2"
+          android:background="?attr/selectableItemBackgroundBorderless"
+          android:alpha="0"
+          app:srcCompat="@drawable/ic_arrow_down"
+          app:tint="?attr/colorOnBrandedSurface"/>
+
+      <View
+          android:id="@+id/sheet_expand"
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintBottom_toBottomOf="parent"
+          android:foreground="@drawable/sheet_expand"/>
+
+      <View
+          android:id="@+id/playlist_title_divider"
+          android:layout_width="0dp"
+          android:layout_height="1dp"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/playlist_title"
+          app:layout_constraintEnd_toEndOf="parent"
+          android:background="@color/divider"
+          android:alpha="0"/>
+
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/playlist"
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/playlist_title_divider"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:paddingBottomSystemWindowInsets="@{true}"
+          android:clipToPadding="false"
+          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+          app:hasFixedSize="@{true}"
+          android:alpha="0"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+  </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

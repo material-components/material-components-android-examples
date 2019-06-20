@@ -16,6 +16,7 @@ package com.materialstudies.owl.ui.mycourses
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -31,12 +32,20 @@ class MyCoursesAdapter : ListAdapter<Course, MyCourseViewHolder>(CourseDiff) {
         ShapeAppearanceTransformation(R.style.ShapeAppearance_Owl_SmallComponent)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyCourseViewHolder {
-        val binding = CourseItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = CourseItemBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        ).apply {
+            click.setOnClickListener {
+                Navigation.findNavController(it).navigate(R.id.learn)
+            }
+        }
         return MyCourseViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MyCourseViewHolder, position: Int) {
-        holder.bind(getItem(position), position, shapeTransform)
+        holder.bind(getItem(position), shapeTransform)
     }
 
 }
@@ -45,17 +54,14 @@ class MyCourseViewHolder(
     private val binding: CourseItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(course: Course, position: Int, imageTransform: ShapeAppearanceTransformation) {
+    fun bind(course: Course, imageTransform: ShapeAppearanceTransformation) {
         binding.run {
             this.course = course
             Glide.with(courseImage)
-                .load("https://source.unsplash.com/collection/369966/?$position")
+                .load(course.thumbUrl)
+                .placeholder(R.drawable.stroked_course_image_placeholder)
                 .transform(imageTransform)
                 .into(courseImage)
-            Glide.with(courseInstructor)
-                .load("https://i.pravatar.cc/56?$position")
-                .circleCrop()
-                .into(courseInstructor)
             executePendingBindings()
         }
     }

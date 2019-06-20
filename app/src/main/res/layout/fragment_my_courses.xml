@@ -21,15 +21,16 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:background="?attr/colorBrandedSurface"
-      android:theme="@style/ThemeOverlay.MaterialComponents.Dark"
       app:paddingTopSystemWindowInsets="@{true}"
+      android:theme="@style/Owl.Theme2"
       tools:context=".ui.mycourses.MyCoursesFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:liftOnScroll="true"
-        app:liftOnScrollTargetViewId="@id/list">
+        app:liftOnScrollTargetViewId="@id/list"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark">
 
       <androidx.appcompat.widget.Toolbar
           android:layout_width="match_parent"

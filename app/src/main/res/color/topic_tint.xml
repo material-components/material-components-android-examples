@@ -16,7 +16,7 @@
 
   <item
       android:state_activated="true"
-      android:alpha="0.8"
+      android:alpha="0.80"
       android:color="@color/theme_3_primary"/>
 
 </selector>

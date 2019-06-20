@@ -12,18 +12,13 @@
   or implied. See the License for the specific language governing permissions and limitations under
   the License.
   -->
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-
-  <item
-      android:state_activated="true"
-      android:drawable="@drawable/small_component_foreground"/>
-
-  <item>
-    <ripple android:color="?attr/colorControlHighlight">
-      <item android:id="@android:id/mask">
-        <color android:color="#fff"/>
-      </item>
-    </ripple>
-  </item>
-
-</selector>
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+  <path
+      android:pathData="M19.3,10.8H8.5l4.6,-4.7c0.4,-0.4 0.4,-1 0,-1.4l-0.3,-0.3c-0.4,-0.4 -1,-0.4 -1.4,0l-7,7c-0.4,0.4 -0.4,1 0,1.4l7,7c0.4,0.4 1,0.4 1.4,0l0.3,-0.3c0.4,-0.4 0.4,-1 0,-1.4l-4.6,-4.7h10.8c0.6,0 1,-0.4 1,-1v-0.5c0,-0.7 -0.5,-1.1 -1,-1.1z"
+      android:fillColor="#fff"/>
+</vector>

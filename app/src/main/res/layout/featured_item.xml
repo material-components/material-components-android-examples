@@ -20,13 +20,16 @@
     tools:ignore="RtlSymmetry">
 
   <data>
-    <variable name="course" type="com.materialstudies.owl.model.Course"/>
+    <variable
+        name="course"
+        type="com.materialstudies.owl.model.Course"/>
   </data>
 
   <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_margin="@dimen/grid_0_5"
+      android:foreground="?attr/selectableItemBackground"
       app:elevationOverlay="@{@dimen/card_elevation}">
 
     <ImageView
@@ -36,8 +39,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/course_image_placeholder"
         android:scaleType="centerCrop"
+        app:srcUrl="@{course.thumbUrl}"
+        app:placeholder="@{@drawable/course_image_placeholder}"
         android:contentDescription="@{course.thumbContentDesc}"/>
 
     <ImageView
@@ -47,8 +51,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_add"
-        android:contentDescription="@string/add_course"
-        android:foreground="?attr/selectableItemBackgroundBorderless"/>
+        android:contentDescription="@string/add_course"/>
 
     <ImageView
         android:id="@+id/course_instructor"
@@ -58,8 +61,10 @@
         app:layout_constraintTop_toBottomOf="@id/course_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/course_image"
-        android:background="@drawable/ic_avatar_placeholder"
         android:foreground="@drawable/avatar_outline"
+        app:srcUrl="@{course.instructor}"
+        app:placeholder="@{@drawable/ic_avatar_placeholder}"
+        app:circleCrop="@{true}"
         android:importantForAccessibility="no"/>
 
     <TextView

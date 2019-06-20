@@ -27,7 +27,9 @@
   <color name="theme_2_surface">#ffffff</color>
 
   <!--theme 3-->
-  <color name="theme_3_primary">#ff0266</color>
+  <color name="owl_pink">#ff0266</color> <!--not varied in dark theme-->
+  <color name="theme_3_primary">@color/owl_pink</color>
+  <color name="theme_3_on_primary">#000</color>
   <color name="theme_3_primary_variant">#d8004d</color>
   <color name="theme_3_surface">#ffffff</color>
 

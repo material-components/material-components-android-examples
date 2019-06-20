@@ -16,14 +16,7 @@
 
   <item
       android:state_activated="true"
-      android:drawable="@drawable/small_component_foreground"/>
-
-  <item>
-    <ripple android:color="?attr/colorControlHighlight">
-      <item android:id="@android:id/mask">
-        <color android:color="#fff"/>
-      </item>
-    </ripple>
-  </item>
+      android:alpha="0.20"
+      android:color="?attr/colorOnSurface"/>
 
 </selector>
