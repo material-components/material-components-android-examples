@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2019 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+  <aapt:attr name="android:drawable">
+    <vector android:height="24dp"
+            android:width="25dp"
+            android:viewportHeight="24"
+            android:viewportWidth="25">
+      <group android:name="_R_G">
+        <group android:name="_R_G_L_0_G"
+               android:translateX="-26.178"
+               android:translateY="-28.307"
+               android:pivotX="47"
+               android:pivotY="49"
+               android:scaleX="0.3515"
+               android:scaleY="0.3515">
+          <path android:name="_R_G_L_0_G_D_0_P_0"
+                android:fillColor="#ffffff"
+                android:fillAlpha="1"
+                android:fillType="nonZero"
+                android:pathData=" M35.24 21.05 C35.24,28.85 29.11,34.97 21.32,34.97 C13.8,34.97 7.39,28.85 7.39,21.05 C7.39,13.25 13.52,7.12 21.32,7.12 C29.11,7.4 35.24,13.25 35.24,21.05c  M45.05 42.38 C45.05,42.38 37.05,34.38 37.05,34.38 C40.25,30.92 41.85,26.12 41.85,21.05 C41.85,9.58 32.52,0.25 21.05,0.25 C9.58,0.25 0.25,9.58 0.25,21.05 C0.25,32.52 9.32,41.85 21.05,41.85 C24.78,41.85 28.25,40.78 31.45,39.18 C31.45,39.18 39.98,47.72 39.98,47.72 C40.25,47.98 40.78,48.25 41.32,48.25 C41.85,48.25 42.38,47.98 42.65,47.72 C42.65,47.72 44.78,45.58 44.78,45.58 C45.85,44.52 45.85,43.18 45.05,42.38c "/>
+        </group>
+      </group>
+      <group android:name="time_group"/>
+    </vector>
+  </aapt:attr>
+  <target android:name="time_group">
+    <aapt:attr name="android:animation">
+      <set android:ordering="together">
+        <objectAnimator android:propertyName="translateX"
+                        android:duration="183"
+                        android:startOffset="0"
+                        android:valueFrom="0"
+                        android:valueTo="1"
+                        android:valueType="floatType"/>
+      </set>
+    </aapt:attr>
+  </target>
+</animated-vector>

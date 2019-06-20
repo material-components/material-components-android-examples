@@ -21,5 +21,8 @@
   <string name="search_owl">Search Owl</string>
   <string name="choose_topics_that_interest_you">Choose topics that interest you</string>
   <string name="settings">settings</string>
+  <string name="my_courses">My Courses</string>
+  <string name="featured">Featured</string>
+  <string name="search">Search</string>
 
 </resources>

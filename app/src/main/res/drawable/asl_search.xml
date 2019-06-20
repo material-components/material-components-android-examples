@@ -12,21 +12,25 @@
   or implied. See the License for the specific language governing permissions and limitations under
   the License.
   -->
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<animated-selector xmlns:android="http://schemas.android.com/apk/res/android">
 
   <item
-      android:id="@+id/myCourses"
-      android:title="@string/my_courses"
-      android:icon="@drawable/asl_my_courses"/>
+      android:id="@+id/selected"
+      android:state_checked="true"
+      android:drawable="@drawable/ic_search"/>
 
   <item
-      android:id="@+id/featured"
-      android:title="@string/featured"
-      android:icon="@drawable/asl_featured"/>
+      android:id="@+id/unselected"
+      android:drawable="@drawable/ic_search"/>
 
-  <item
-      android:id="@+id/search"
-      android:title="@string/search"
-      android:icon="@drawable/asl_search"/>
+  <transition
+      android:fromId="@+id/unselected"
+      android:toId="@+id/selected"
+      android:drawable="@drawable/avd_search_on"/>
 
-</menu>
+  <transition
+      android:fromId="@+id/selected"
+      android:toId="@+id/unselected"
+      android:drawable="@drawable/avd_search_off"/>
+
+</animated-selector>
