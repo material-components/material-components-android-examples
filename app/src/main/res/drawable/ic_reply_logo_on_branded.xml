@@ -3,7 +3,7 @@
     android:height="24dp"
     android:viewportWidth="24"
     android:viewportHeight="24"
-    android:tint="?attr/colorControlNormal">
+    android:tint="?attr/colorOnBrandedSurface">
   <path
       android:strokeWidth="1"
       android:pathData="M16.12,4H6.42A1.69,1.69 0,0 0,4.73 5.67V16.85"

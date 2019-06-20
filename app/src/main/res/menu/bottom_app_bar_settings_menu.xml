@@ -4,13 +4,13 @@
 
     <item
         android:id="@+id/menu_theme"
-        android:icon="@drawable/ic_wb_sunny_control_normal_24dp"
+        android:icon="@drawable/ic_wb_sunny_on_branded"
         app:showAsAction="ifRoom"
         android:title="Theme"/>
 
     <item
         android:id="@+id/menu_settings"
-        android:icon="@drawable/ic_settings_control_normal_24dp"
+        android:icon="@drawable/ic_settings_on_branded"
         app:showAsAction="ifRoom"
         android:title="Settings"/>
 

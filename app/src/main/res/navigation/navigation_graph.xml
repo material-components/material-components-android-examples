@@ -6,5 +6,17 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.materialstudies.reply.ui.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_emailFragment"
+            app:destination="@id/emailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/emailFragment"
+        android:name="com.materialstudies.reply.ui.email.EmailFragment"
+        android:label="EmailFragment">
+        <argument
+            android:name="emailId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

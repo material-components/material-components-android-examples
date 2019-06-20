@@ -6,6 +6,7 @@ import android.graphics.drawable.LayerDrawable
 import android.graphics.drawable.RippleDrawable
 import android.os.Build
 import android.widget.TextView
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.shape.MaterialShapeDrawable
 
@@ -36,3 +37,4 @@ val MaterialCardView.foregroundShapeDrawable: MaterialShapeDrawable
     get() = (((this.foreground as InsetDrawable).drawable as LayerDrawable)
         .getDrawable(0) as RippleDrawable)
         .getDrawable(0) as MaterialShapeDrawable
+

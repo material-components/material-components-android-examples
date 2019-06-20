@@ -3,7 +3,7 @@
     android:height="24dp"
     android:viewportWidth="24"
     android:viewportHeight="24"
-    android:tint="?attr/colorControlNormal">
+    android:tint="@color/color_on_branded_surface_emphasis_medium">
   <path
       android:fillColor="#FFFFFFFF"
       android:pathData="M19.47,9.16c-1.1,-2.87 -3.8,-4.95 -7.01,-5.14l2,4.71 5.01,0.43zM11.54,4.02c-3.22,0.18 -5.92,2.27 -7.02,5.15l5.02,-0.43 2,-4.72zM4.23,10.14C4.08,10.74 4,11.36 4,12c0,2.48 1.14,4.7 2.91,6.17l1.11,-4.75 -3.79,-3.28zM19.77,10.13l-3.79,3.28 1.1,4.76C18.86,16.7 20,14.48 20,12c0,-0.64 -0.09,-1.27 -0.23,-1.87zM7.84,18.82c1.21,0.74 2.63,1.18 4.15,1.18 1.53,0 2.95,-0.44 4.17,-1.18L12,16.31l-4.16,2.51z"

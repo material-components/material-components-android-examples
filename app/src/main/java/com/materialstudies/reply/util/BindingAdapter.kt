@@ -21,8 +21,31 @@ import androidx.core.view.updateLayoutParams
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.DrawableRes
 import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
+
+@BindingAdapter(
+    "glideSrc",
+    "glideCenterCrop",
+    "glideCircularCrop",
+    requireAll = false
+)
+fun ImageView.bindGlideSrc(
+    @DrawableRes drawableRes: Int?,
+    centerCrop: Boolean = false,
+    circularCrop: Boolean = false
+) {
+    if (drawableRes == null) return
+
+    val req = Glide.with(context).load(drawableRes)
+    if (centerCrop) req.centerCrop()
+    if (circularCrop) req.circleCrop()
+
+    req.into(this)
+}
 
 @BindingAdapter("goneIf")
 fun View.bindGoneIf(gone: Boolean) {

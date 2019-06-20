@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -14,7 +14,7 @@
         android:layout_width="150dp"
         android:layout_margin="@dimen/keyline_1"
         android:contentDescription="@{emailAttachment.contentDesc}"
-        android:src="@drawable/paris_1"
-        android:scaleType="centerCrop"/>
+        app:glideSrc="@{emailAttachment.resId}"
+        app:glideCenterCrop="@{true}" />
 
 </layout>

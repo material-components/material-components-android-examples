@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/bottom_app_bar_chevron_content_desc"
                     android:layout_gravity="center_vertical"
-                    app:srcCompat="@drawable/ic_arrow_drop_up_control_normal_24dp" />
+                    app:srcCompat="@drawable/ic_arrow_drop_up_on_branded" />
 
                 <ImageView
                     android:id="@+id/bottom_app_bar_logo"
@@ -59,11 +59,11 @@
                     android:layout_marginLeft="@dimen/keyline_3"
                     android:contentDescription="@string/bottom_app_bar_logo_content_desc"
                     android:layout_gravity="center_vertical"
-                    app:srcCompat="@drawable/ic_reply_logo_control_normal" />
+                    app:srcCompat="@drawable/ic_reply_logo_on_branded" />
 
                 <TextView
                     android:id="@+id/bottom_app_bar_title"
-                    android:textAppearance="?textAppearanceBody1"
+                    android:textAppearance="?attr/textAppearanceBody1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -80,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_anchor="@id/bottom_app_bar"
-            android:src="@drawable/ic_edit_24dp" />
+            android:src="@drawable/ic_edit" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

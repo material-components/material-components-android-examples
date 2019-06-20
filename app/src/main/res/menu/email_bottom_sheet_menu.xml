@@ -4,31 +4,31 @@
 
         <item
             android:id="@+id/menu_forward"
-            android:icon="@drawable/ic_forward_24dp"
+            android:icon="@drawable/ic_forward"
             app:showAsAction="ifRoom"
             android:title="@string/menu_item_forward"/>
 
         <item
             android:id="@+id/menu_reply"
-            android:icon="@drawable/ic_reply_24dp"
+            android:icon="@drawable/ic_reply"
             app:showAsAction="ifRoom"
             android:title="@string/menu_item_reply"/>
 
         <item
             android:id="@+id/menu_reply_all"
-            android:icon="@drawable/ic_reply_all_24dp"
+            android:icon="@drawable/ic_reply_all"
             app:showAsAction="ifRoom"
             android:title="@string/menu_item_reply_all"/>
 
         <item
             android:id="@+id/menu_archive"
-            android:icon="@drawable/ic_archive_24dp"
+            android:icon="@drawable/ic_archive"
             app:showAsAction="ifRoom"
             android:title="@string/menu_item_archive"/>
 
         <item
             android:id="@+id/menu_delete"
-            android:icon="@drawable/ic_delete_24dp"
+            android:icon="@drawable/ic_delete"
             app:showAsAction="ifRoom"
             android:title="@string/menu_item_delete"/>
 </menu>

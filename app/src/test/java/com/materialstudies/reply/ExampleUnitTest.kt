@@ -1,5 +1,6 @@
 package com.materialstudies.reply
 
+import com.materialstudies.reply.data.EmailAttachment
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -10,8 +11,20 @@ import org.junit.Assert.*
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest {
+
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun lists_equalsShouldCompareContent() {
+
+        val listOne = listOf(
+            EmailAttachment(R.drawable.paris_1, "photo one"),
+            EmailAttachment(R.drawable.paris_2, "photo two")
+        )
+
+        val listTwo = listOf(
+            EmailAttachment(R.drawable.paris_1, "photo one"),
+            EmailAttachment(R.drawable.paris_2, "photo two")
+        )
+
+        assert(listOne == listTwo)
     }
 }

@@ -1,5 +1,6 @@
 package com.materialstudies.reply.data
 
+import androidx.annotation.DrawableRes
 import androidx.recyclerview.widget.DiffUtil
 
 /**
@@ -8,9 +9,10 @@ import androidx.recyclerview.widget.DiffUtil
 data class Email(
     val id: Int,
     val sender: String,
+    val recipient: String,
     val subject: String,
     val body: String,
-    val senderImg: Int,
+    @DrawableRes val senderResId: Int,
     val attachments: List<EmailAttachment> = emptyList(),
     var isImportant: Boolean = false,
     var isStarred: Boolean = false
@@ -20,17 +22,7 @@ data class Email(
 }
 
 object EmailDiffCallback : DiffUtil.ItemCallback<Email>() {
-    override fun areItemsTheSame(oldItem: Email, newItem: Email): Boolean = oldItem.id == newItem.id
-
-    override fun areContentsTheSame(oldItem: Email, newItem: Email): Boolean {
-        return oldItem.sender == newItem.sender &&
-            oldItem.subject == newItem.subject &&
-            oldItem.body == newItem.body &&
-            oldItem.senderImg == newItem.senderImg &&
-            oldItem.isStarred == newItem.isStarred &&
-            oldItem.isImportant == newItem.isImportant &&
-            oldItem.attachments.containsAll(newItem.attachments)
-
-    }
+    override fun areItemsTheSame(oldItem: Email, newItem: Email) = oldItem.id == newItem.id
+    override fun areContentsTheSame(oldItem: Email, newItem: Email) = oldItem == newItem
 }
 

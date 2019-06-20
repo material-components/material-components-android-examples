@@ -34,7 +34,7 @@
         <item name="itemHorizontalPadding">@dimen/keyline_6</item>
         <!--Set the padding between the icon and text label of each menu item-->
         <item name="itemIconPadding">@dimen/keyline_6</item>
-        <item name="itemTextAppearance">?textAppearanceSubtitle1</item>
+        <item name="itemTextAppearance">?attr/textAppearanceSubtitle1</item>
         <!--Remove the background shape from the currently checked item-->
         <item name="itemBackground">@android:color/transparent</item>
         <item name="itemTextColor">@color/color_navigation_drawer_menu_item</item>
@@ -47,7 +47,7 @@
         <!--Set the background color of NavigationView-->
         <item name="android:background">@android:color/transparent</item>
         <item name="elevation">0dp</item>
-        <item name="itemTextAppearance">?textAppearanceBody2</item>
+        <item name="itemTextAppearance">?attr/textAppearanceBody2</item>
         <item name="itemTextColor">@color/color_on_surface_emphasis_medium</item>
         <item name="itemIconTint">@color/color_on_surface_emphasis_medium</item>
     </style>

@@ -39,7 +39,7 @@
                 android:paddingBottom="@dimen/keyline_4">
 
                 <TextView
-                    android:textAppearance="?textAppearanceBody2"
+                    android:textAppearance="?attr/textAppearanceBody2"
                     android:id="@+id/sender_text_view"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
                     android:layout_marginTop="@dimen/keyline_3"
                     android:layout_marginEnd="@dimen/keyline_4"
                     android:layout_marginStart="@dimen/keyline_4"
-                    android:textAppearance="?textAppearanceHeadline5"
+                    android:textAppearance="?attr/textAppearanceHeadline5"
                     app:layout_goneMarginEnd="@dimen/keyline_4"
                     android:maxLines="1"
                     android:text="@{email.subject}"
@@ -70,7 +70,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/sender_text_view"/>
 
                 <TextView
-                    android:textAppearance="?textAppearanceBody1"
+                    android:textAppearance="?attr/textAppearanceBody1"
                     android:id="@+id/body_preview_text_view"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -106,10 +106,11 @@
                     android:layout_marginTop="@dimen/keyline_3"
                     android:layout_marginStart="@dimen/keyline_4"
                     android:layout_marginEnd="@dimen/keyline_4"
-                    android:scaleType="centerCrop"
                     android:contentDescription="@string/email_sender_profile_content_desc"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:glideSrc="@{email.senderResId}"
+                    glideCircularCrop="@{true}" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

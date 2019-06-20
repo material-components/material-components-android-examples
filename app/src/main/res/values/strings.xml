@@ -29,5 +29,8 @@
     <!--HomeFragment-->
     <string name="email_attachment_default_content_desc">Attached email image</string>
     <string name="email_sender_profile_content_desc">Profile image of sender</string>
+    <string name="navigate_back_icon_content_desc">Navigate back</string>
 
+    <!--EmailFragment-->
+    <string name="email_recipient_to">To %1$s</string>
 </resources>

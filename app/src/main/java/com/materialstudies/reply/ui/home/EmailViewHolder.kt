@@ -2,11 +2,11 @@ package com.materialstudies.reply.ui.home
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.databinding.EmailItemLayoutBinding
+import com.materialstudies.reply.ui.common.EmailAttachmentAdapter
 import com.materialstudies.reply.util.ThemeUtils
 import com.materialstudies.reply.util.backgroundShapeDrawable
 import com.materialstudies.reply.util.foregroundShapeDrawable
@@ -17,7 +17,10 @@ class EmailViewHolder(
     listener: EmailAdapter.EmailAdapterListener
 ): RecyclerView.ViewHolder(binding.root) {
 
-    private val attachmentAdapter = EmailAttachmentAdapter()
+    private val attachmentAdapter = object : EmailAttachmentAdapter() {
+        override fun getLayoutIdForPosition(position: Int): Int
+            = R.layout.email_attachment_preview_item_layout
+    }
 
     private val cardBackground: MaterialShapeDrawable = binding.cardView.backgroundShapeDrawable
     private val cardForeground: MaterialShapeDrawable = binding.cardView.foregroundShapeDrawable
@@ -31,17 +34,11 @@ class EmailViewHolder(
                 false
             )
             adapter = attachmentAdapter
-
         }
     }
 
     fun bind(email: Email) {
         binding.email = email
-
-        Glide.with(binding.senderProfileImageView)
-            .load(email.senderImg)
-            .circleCrop()
-            .into(binding.senderProfileImageView)
 
         // Set the subject's TextAppearance
         val textAppearance = ThemeUtils.getResourceIdFromAttr(

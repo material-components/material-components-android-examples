@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="emailAttachment"
+            type="com.materialstudies.reply.data.EmailAttachment" />
+    </data>
+
+    <ImageView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/attachment_image_view"
+        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/keyline_1"
+        android:contentDescription="@{emailAttachment.contentDesc}"
+        app:glideSrc="@{emailAttachment.resId}"
+        app:glideCenterCrop="@{true}" />
+
+</layout>

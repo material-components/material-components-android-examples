@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.materialstudies.reply.App
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.FragmentHomeBinding
 import com.materialstudies.reply.ui.MenuBottomSheetDialogFragment
+import com.materialstudies.reply.ui.email.EmailFragmentArgs
 
 class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
 
@@ -42,7 +44,9 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
     }
 
     override fun onEmailClicked(email: Email) {
-        // TODO: Navigate to DetailsFragment
+        findNavController().navigate(
+            HomeFragmentDirections.actionHomeFragmentToEmailFragment(email.id)
+        )
     }
 
     override fun onEmailLongPressed(email: Email): Boolean {

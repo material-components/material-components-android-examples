@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     compileSdkVersion 29
@@ -35,8 +36,8 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha06'
     implementation 'androidx.core:core-ktx:1.0.2'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0-alpha05'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.1.0-alpha05'
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
 
     // Glide
     implementation "com.github.bumptech.glide:glide:4.9.0"

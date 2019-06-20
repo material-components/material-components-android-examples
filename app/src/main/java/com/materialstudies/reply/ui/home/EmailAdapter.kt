@@ -2,9 +2,7 @@ package com.materialstudies.reply.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.data.EmailDiffCallback
 import com.materialstudies.reply.databinding.EmailItemLayoutBinding
