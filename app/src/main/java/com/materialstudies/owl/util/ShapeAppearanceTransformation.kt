@@ -35,13 +35,14 @@ import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.shape.ShapeAppearancePathProvider
 import java.security.MessageDigest
 
-class ShapeAppearanceTransformation(@StyleRes private val shapeAppearanceId: Int) : Transformation<Bitmap> {
+/**
+ * A Glide [Transformation] which applies a [ShapeAppearanceModel] to images.
+ */
+class ShapeAppearanceTransformation(
+    @StyleRes private val shapeAppearanceId: Int
+) : Transformation<Bitmap> {
 
     private var shapeAppearanceModel: ShapeAppearanceModel? = null
-
-    override fun updateDiskCacheKey(messageDigest: MessageDigest) {
-        messageDigest.update(javaClass.canonicalName!!.toByteArray())
-    }
 
     @SuppressLint("RestrictedApi")
     override fun transform(
@@ -50,13 +51,12 @@ class ShapeAppearanceTransformation(@StyleRes private val shapeAppearanceId: Int
         outWidth: Int,
         outHeight: Int
     ): Resource<Bitmap> {
-        val model = shapeAppearanceModel ?: ShapeAppearanceModel(context, shapeAppearanceId, 0).also {
-            shapeAppearanceModel = it
-        }
+        val model = shapeAppearanceModel ?: ShapeAppearanceModel(context, shapeAppearanceId, 0)
+            .also { shapeAppearanceModel = it }
         val bitmap = createBitmap(outWidth, outHeight)
         bitmap.applyCanvas {
             val path = Path().apply {
-                val bounds = RectF().apply { set(0f, 0f, outWidth.toFloat(), outHeight.toFloat()) }
+                val bounds = RectF(0f, 0f, outWidth.toFloat(), outHeight.toFloat())
                 ShapeAppearancePathProvider().calculatePath(model, 1f, bounds, this)
             }
             val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -66,4 +66,27 @@ class ShapeAppearanceTransformation(@StyleRes private val shapeAppearanceId: Int
         }
         return BitmapResource(bitmap, Glide.get(context).bitmapPool)
     }
+
+    override fun updateDiskCacheKey(messageDigest: MessageDigest) {
+        messageDigest.update(javaClass.canonicalName!!.toByteArray())
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as ShapeAppearanceTransformation
+
+        if (shapeAppearanceId != other.shapeAppearanceId) return false
+        if (shapeAppearanceModel != other.shapeAppearanceModel) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = shapeAppearanceId
+        result = 31 * result + (shapeAppearanceModel?.hashCode() ?: 0)
+        return result
+    }
+
 }

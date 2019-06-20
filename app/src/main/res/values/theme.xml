@@ -18,7 +18,7 @@
   <style name="Base.Owl" parent="@style/Theme.MaterialComponents.DayNight.NoActionBar">
     <item name="colorBrandedSurface">?attr/colorPrimary</item>
     <item name="colorOnBrandedSurface">?attr/colorOnPrimary</item>
-    <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    <item name="android:statusBarColor">@color/immersive_sys_ui</item>
   </style>
 
   <style name="Owl" parent="@style/Base.Owl">

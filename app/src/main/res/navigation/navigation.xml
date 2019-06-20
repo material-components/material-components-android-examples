@@ -17,7 +17,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation.xml"
-    app:startDestination="@id/featured">
+    app:startDestination="@id/onboardingFragment">
+
+  <fragment
+      android:id="@+id/onboardingFragment"
+      android:name="com.materialstudies.owl.ui.onboarding.OnboardingFragment"
+      android:label="fragment_onboarding"
+      tools:layout="@layout/fragment_onboarding"/>
 
   <fragment
       android:id="@+id/myCourses"

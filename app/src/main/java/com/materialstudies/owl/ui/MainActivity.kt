@@ -17,6 +17,8 @@
 package com.materialstudies.owl.ui
 
 import android.os.Bundle
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
@@ -33,6 +35,14 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             val navController = Navigation.findNavController(this@MainActivity, R.id.nav_host)
             bottomNav.setupWithNavController(navController)
+
+            // Hide bottom nav on screens which don't require it
+            navController.addOnDestinationChangedListener { _, destination, _ ->
+                bottomNav.visibility = when (destination.id) {
+                    R.id.myCourses, R.id.featured, R.id.search -> VISIBLE
+                    else -> GONE
+                }
+            }
         }
     }
 }

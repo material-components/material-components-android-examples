@@ -23,7 +23,6 @@
       android:layout_height="match_parent"
       android:orientation="vertical"
       app:layoutFullscreen="@{true}"
-      app:paddingTopSystemWindowInsets="@{true}"
       tools:context=".ui.MainActivity">
 
     <fragment

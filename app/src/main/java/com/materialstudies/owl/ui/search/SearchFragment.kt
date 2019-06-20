@@ -21,9 +21,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.materialstudies.owl.R
 import com.materialstudies.owl.databinding.FragmentSearchBinding
-import com.materialstudies.owl.model.subjects
+import com.materialstudies.owl.model.topics
 
 class SearchFragment : Fragment() {
 
@@ -35,7 +34,7 @@ class SearchFragment : Fragment() {
         val binding = FragmentSearchBinding.inflate(inflater, container, false).apply {
             searchResults.apply {
                 adapter = SearchAdapter().apply {
-                    submitList(subjects)
+                    submitList(topics)
                 }
             }
         }

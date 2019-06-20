@@ -18,7 +18,7 @@
     tools:targetApi="o">
 
   <data>
-    <variable name="subject" type="String"/>
+    <variable name="topic" type="com.materialstudies.owl.model.Topic"/>
   </data>
 
   <TextView
@@ -30,6 +30,6 @@
       android:focusable="true"
       android:clickable="true"
       android:textAppearance="?attr/textAppearanceHeadline5"
-      android:text="@{subject}"/>
+      android:text="@{topic.name}"/>
 
 </layout>

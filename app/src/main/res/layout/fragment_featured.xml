@@ -24,6 +24,7 @@
       android:layout_height="match_parent"
       android:background="?attr/colorBrandedSurface"
       android:theme="@style/ThemeOverlay.MaterialComponents.Dark"
+      app:paddingTopSystemWindowInsets="@{true}"
       tools:context=".ui.featured.FeaturedFragment">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -39,7 +40,7 @@
           android:minHeight="80dp"
           android:paddingStart="@dimen/grid_2"
           app:menu="@menu/account"
-          app:navigationIcon="@drawable/ic_lockup"/>
+          app:navigationIcon="@drawable/ic_lockup_white"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 

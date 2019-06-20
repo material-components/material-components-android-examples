@@ -26,6 +26,7 @@
   <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_margin="@dimen/grid_0_5"
       app:elevationOverlay="@{@dimen/card_elevation}">
 
     <ImageView

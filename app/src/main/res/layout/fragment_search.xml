@@ -22,6 +22,7 @@
       android:layout_height="match_parent"
       android:background="?attr/colorBrandedSurface"
       android:theme="@style/ThemeOverlay.MaterialComponents.Dark"
+      app:paddingTopSystemWindowInsets="@{true}"
       tools:context=".ui.search.SearchFragment">
 
     <com.google.android.material.appbar.AppBarLayout

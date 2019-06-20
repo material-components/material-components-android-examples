@@ -14,18 +14,7 @@
   -->
 <resources>
 
-    <!--theme 1-->
-    <color name="theme_1_primary">#ffeb46</color>
-    <color name="theme_1_secondary">#91a4fc</color>
-    <color name="theme_1_surface">#242316</color> <!--dark primary-->
-
-    <!--theme 2-->
-    <color name="theme_2_primary">#91a4fc</color>
-    <color name="theme_2_secondary">#ffeb46</color>
-    <color name="theme_2_surface">#1c1d24</color> <!--dark primary-->
-
-    <!--theme 3-->
-    <color name="theme_3_primary">#ff7597</color>
-    <color name="theme_3_surface">#24191c</color> <!--dark primary-->
+  <!--Use an alias to switch which drawable is used in light/dark themes-->
+  <drawable name="ic_theme_1_lockup">@drawable/ic_lockup_blue</drawable>
 
 </resources>
