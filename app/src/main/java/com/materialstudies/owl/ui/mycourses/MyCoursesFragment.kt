@@ -17,9 +17,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.postDelayed
 import androidx.fragment.app.Fragment
 import com.materialstudies.owl.databinding.FragmentMyCoursesBinding
 import com.materialstudies.owl.model.courses
+import com.materialstudies.owl.util.SpringAddItemAnimator
 
 class MyCoursesFragment : Fragment() {
 
@@ -29,8 +31,15 @@ class MyCoursesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentMyCoursesBinding.inflate(inflater, container, false).apply {
-            list.adapter = MyCoursesAdapter().apply {
-                submitList(courses)
+            list.apply {
+                itemAnimator = SpringAddItemAnimator()
+                adapter = MyCoursesAdapter().apply {
+                    // Add animations not running without this delay
+                    // TODO(nickbutcher) work out why
+                    postDelayed(100L) {
+                        submitList(courses)
+                    }
+                }
             }
         }
         return binding.root

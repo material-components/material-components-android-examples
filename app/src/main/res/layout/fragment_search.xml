@@ -34,10 +34,11 @@
       <androidx.appcompat.widget.Toolbar
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:minHeight="?attr/actionBarSize"
           app:layout_scrollFlags="scroll|enterAlways|snap"
-          app:menu="@menu/account"
-          app:navigationIcon="@drawable/ic_search">
+          android:minHeight="?attr/actionBarSize"
+          app:navigationIcon="@drawable/ic_search"
+          app:contentInsetStartWithNavigation="0dp"
+          app:menu="@menu/account">
 
         <EditText
             android:layout_width="match_parent"
@@ -48,7 +49,7 @@
             android:inputType="textCapWords"
             android:imeOptions="actionSearch"
             android:hint="@string/search_owl"
-            android:textAppearance="?attr/textAppearanceSubtitle1" />
+            android:textAppearance="?attr/textAppearanceSubtitle1"/>
 
       </androidx.appcompat.widget.Toolbar>
 

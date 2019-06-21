@@ -20,9 +20,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.postDelayed
 import androidx.fragment.app.Fragment
 import com.materialstudies.owl.databinding.FragmentSearchBinding
 import com.materialstudies.owl.model.topics
+import com.materialstudies.owl.util.SpringAddItemAnimator
 
 class SearchFragment : Fragment() {
 
@@ -33,8 +35,13 @@ class SearchFragment : Fragment() {
     ): View? {
         val binding = FragmentSearchBinding.inflate(inflater, container, false).apply {
             searchResults.apply {
+                itemAnimator = SpringAddItemAnimator()
                 adapter = SearchAdapter().apply {
-                    submitList(topics)
+                    // Add animations not running without this delay
+                    // TODO(nickbutcher) work out why
+                    postDelayed(100L) {
+                        submitList(topics)
+                    }
                 }
             }
         }
