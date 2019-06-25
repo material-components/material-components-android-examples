@@ -91,14 +91,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="96dp"
                     android:layout_marginTop="@dimen/keyline_4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/body_preview_text_view"
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp"
                     android:clipToPadding="false"
                     android:overScrollMode="never"
                     app:goneIf="@{!email.hasAttachments}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/body_preview_text_view" />
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:orientation="horizontal" />
 
                 <ImageView
                     android:id="@+id/sender_profile_image_view"

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.materialstudies.reply.App
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
@@ -52,6 +53,11 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
 
         emailStore = (requireActivity().application as App).emailStore
 
+        binding.recyclerView.apply {
+            val itemTouchHelper = ItemTouchHelper(ReboundingSwipeActionCallback())
+            itemTouchHelper.attachToRecyclerView(this)
+            adapter = emailAdapter
+        }
         binding.recyclerView.adapter = emailAdapter
 
         emailStore.emails.observe(this, Observer {

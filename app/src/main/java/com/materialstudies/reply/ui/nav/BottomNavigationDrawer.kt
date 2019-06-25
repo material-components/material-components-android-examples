@@ -17,7 +17,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.materialstudies.reply.R
-import com.materialstudies.reply.util.ThemeUtils
+import com.materialstudies.reply.util.getColorFromAttr
 import java.lang.IllegalStateException
 
 /**
@@ -98,7 +98,7 @@ class BottomNavigationDrawer @JvmOverloads constructor(
 
             val scrimColor = it.getColor(
                 R.styleable.BottomNavigationDrawer_scrimColor,
-                ThemeUtils.getResourceIdFromAttr(context, R.attr.scrimBackground)
+                context.getColorFromAttr(R.attr.scrimBackground)
             )
             scrimView.setBackgroundColor(scrimColor)
 

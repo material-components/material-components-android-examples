@@ -10,6 +10,7 @@ import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.shape.MaterialShapeDrawable
 
+@Suppress("DEPRECATION")
 fun TextView.setTextAppearanceCompat(context: Context, resId: Int) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
         setTextAppearance(resId)
