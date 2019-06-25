@@ -4,27 +4,21 @@
         android:propertyName="scale"
         android:valueFrom="1"
         android:valueTo="0"
-        android:duration="@integer/fab_hide_duration"
-        android:startOffset="0"
-        android:repeatCount="0"
+        android:duration="@integer/reply_motion_micro_duration"
         android:repeatMode="restart"
-        android:interpolator="@interpolator/mtrl_fast_out_slow_in"/>
+        android:interpolator="@android:interpolator/fast_out_slow_in"/>
     <objectAnimator
         android:propertyName="iconScale"
         android:valueFrom="1"
         android:valueTo="0"
-        android:duration="@integer/fab_hide_duration"
-        android:startOffset="0"
-        android:repeatCount="0"
+        android:duration="@integer/reply_motion_micro_duration"
         android:repeatMode="restart"
-        android:interpolator="@interpolator/mtrl_fast_out_slow_in"/>
+        android:interpolator="@android:interpolator/fast_out_slow_in"/>
     <objectAnimator
         android:propertyName="opacity"
         android:valueFrom="1"
         android:valueTo="0"
-        android:duration="@integer/fab_hide_duration"
-        android:startOffset="0"
-        android:repeatCount="0"
+        android:duration="@integer/reply_motion_micro_duration"
         android:repeatMode="restart"
-        android:interpolator="@interpolator/mtrl_fast_out_slow_in"/>
+        android:interpolator="@android:interpolator/fast_out_slow_in"/>
 </set>

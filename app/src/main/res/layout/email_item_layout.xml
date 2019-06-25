@@ -27,10 +27,11 @@
             android:layout_height="wrap_content"
             android:elevation="@dimen/plane_00"
             android:clickable="true"
-            android:onClick="@{(view) -> listener.onEmailClicked(email)}"
+            android:onClick="@{(view) -> listener.onEmailClicked(view, email)}"
             android:onLongClick="@{(view) -> listener.onEmailLongPressed(email)}"
             app:cardPreventCornerOverlap="false"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Reply.MediumComponent.Marked">
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Reply.MediumComponent.Marked"
+            android:transitionName="@{@string/email_card_transition_name(email.id)}">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -110,7 +111,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:glideSrc="@{email.senderResId}"
-                    glideCircularCrop="@{true}" />
+                    app:glideCircularCrop="@{true}" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

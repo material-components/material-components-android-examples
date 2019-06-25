@@ -1,6 +1,8 @@
 package com.materialstudies.reply.ui.email
 
+import android.animation.AnimatorInflater
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,12 +11,17 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.materialstudies.reply.App
+import com.materialstudies.reply.R
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.FragmentEmailBinding
+import com.materialstudies.reply.util.FastOutUltraSlowIn
 import kotlin.LazyThreadSafetyMode.NONE
 
 private const val MAX_GRID_SPANS = 3
 
+/**
+ * A [Fragment] which displays a single, full email.
+ */
 class EmailFragment : Fragment() {
 
     private lateinit var binding: FragmentEmailBinding
@@ -23,6 +30,11 @@ class EmailFragment : Fragment() {
     private lateinit var emailStore: EmailStore
 
     private val attachmentAdapter = EmailAttachmentGridAdapter(MAX_GRID_SPANS)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        prepareTransitions()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,7 +50,7 @@ class EmailFragment : Fragment() {
         emailStore = (requireActivity().application as App).emailStore
 
         binding.navigationIcon.setOnClickListener {
-            findNavController().popBackStack()
+            findNavController().navigateUp()
         }
 
         val email = emailStore.get(emailId)
@@ -60,10 +72,28 @@ class EmailFragment : Fragment() {
             attachmentRecyclerView.adapter = attachmentAdapter
             attachmentAdapter.submitList(email.attachments)
         }
+
+        startTransitions()
     }
 
+    private fun prepareTransitions() {
+        postponeEnterTransition()
+        sharedElementEnterTransition = TransitionInflater.from(context)
+            .inflateTransition(R.transition.email_card_shared_element_transition).apply {
+                interpolator = FastOutUltraSlowIn()
+            }
+    }
+
+    private fun startTransitions() {
+        binding.executePendingBindings()
+        startPostponedEnterTransition()
+        AnimatorInflater.loadAnimator(requireContext(), R.animator.alpha_in).apply {
+            setTarget(binding.emailCardView)
+            start()
+        }
+    }
 
     private fun showError() {
-        // TODO: Show error finding email
+        // Do nothing
     }
 }

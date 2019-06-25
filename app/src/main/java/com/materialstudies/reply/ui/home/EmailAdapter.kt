@@ -1,6 +1,7 @@
 package com.materialstudies.reply.ui.home
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.materialstudies.reply.data.Email
@@ -15,7 +16,7 @@ class EmailAdapter(
 ) : ListAdapter<Email, EmailViewHolder>(EmailDiffCallback) {
 
     interface EmailAdapterListener {
-        fun onEmailClicked(email: Email)
+        fun onEmailClicked(cardView: View, email: Email)
         fun onEmailLongPressed(email: Email): Boolean
         fun onEmailStarChanged(email: Email, newValue: Boolean)
         fun onEmailArchived(email: Email)

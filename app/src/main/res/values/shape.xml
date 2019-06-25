@@ -5,17 +5,17 @@
 
     <style name="ShapeAppearance.Reply.SmallComponents" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">@dimen/small_component_corner_radius</item>
+        <item name="cornerSize">@dimen/reply_small_component_corner_radius</item>
     </style>
 
     <style name="ShapeAppearance.Reply.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">@dimen/medium_component_corner_radius</item>
+        <item name="cornerSize">@dimen/reply_medium_component_corner_radius</item>
     </style>
 
     <style name="ShapeAppearance.Reply.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">@dimen/large_component_corner_radius</item>
+        <item name="cornerSize">@dimen/reply_large_component_corner_radius</item>
     </style>
 
     <!--ShapeAppearance overlay to square bottom corners on views which align to the -->
@@ -31,9 +31,9 @@
         <item name="cornerSizeTopLeft">@dimen/medium_component_marked_corner_radius</item>
     </style>
 
-    <dimen name="small_component_corner_radius">24dp</dimen>
-    <dimen name="medium_component_corner_radius">0dp</dimen>
-    <dimen name="large_component_corner_radius">12dp</dimen>
+    <dimen name="reply_small_component_corner_radius">24dp</dimen>
+    <dimen name="reply_medium_component_corner_radius">0dp</dimen>
+    <dimen name="reply_large_component_corner_radius">12dp</dimen>
 
     <dimen name="medium_component_marked_corner_radius">24dp</dimen>
 

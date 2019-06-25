@@ -7,4 +7,9 @@
         <item name="android:windowEnterAnimation">@anim/bottom_sheet_slide_in</item>
         <item name="android:windowExitAnimation">@anim/bottom_sheet_slide_out</item>
     </style>
+
+    <integer name="reply_motion_default_duration">350</integer>
+    <integer name="reply_motion_short_duration">250</integer>
+    <integer name="reply_motion_micro_duration">175</integer>
+
 </resources>

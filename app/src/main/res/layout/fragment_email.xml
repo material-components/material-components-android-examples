@@ -23,7 +23,8 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/email_card_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:transitionName="@{@string/email_card_transition_name(email.id)}">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraint_layout"
@@ -40,11 +41,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/keyline_3"
                     android:layout_marginEnd="@dimen/keyline_3"
-                    android:text="@{email.subject}"
-                    android:textAppearance="?attr/textAppearanceHeadline3"
                     app:layout_constraintEnd_toStartOf="@+id/navigation_icon"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    android:text="@{email.subject}"
+                    android:textAppearance="?attr/textAppearanceHeadline3"
                     tools:text="High school reunion" />
 
                 <ImageView
@@ -52,13 +53,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/keyline_3"
+                    app:layout_constraintEnd_toEndOf="@+id/sender_profile_image_view"
+                    app:layout_constraintStart_toStartOf="@+id/sender_profile_image_view"
+                    app:layout_constraintTop_toTopOf="@+id/subject_text_view"
                     android:alpha="?attr/emphasisMediumAlpha"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="@string/navigate_back_icon_content_desc"
-                    android:src="@drawable/ic_arrow_down"
-                    app:layout_constraintEnd_toEndOf="@+id/sender_profile_image_view"
-                    app:layout_constraintStart_toStartOf="@+id/sender_profile_image_view"
-                    app:layout_constraintTop_toTopOf="@+id/subject_text_view" />
+                    app:srcCompat="@drawable/ic_arrow_down" />
 
                 <TextView
                     android:id="@+id/sender_text_view"
@@ -66,11 +67,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/keyline_3"
                     android:layout_marginEnd="@dimen/keyline_3"
-                    android:text="@{email.sender}"
-                    android:textAppearance="?attr/textAppearanceBody2"
                     app:layout_constraintEnd_toStartOf="@+id/sender_profile_image_view"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/subject_text_view"
+                    android:text="@{email.sender}"
+                    android:textAppearance="?attr/textAppearanceBody2"
                     tools:text="Ali Connors -- 12m" />
 
                 <TextView
@@ -79,23 +80,23 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/keyline_1"
                     android:layout_marginEnd="@dimen/keyline_3"
-                    android:text="@{@string/email_recipient_to(email.recipient)}"
-                    android:textAppearance="?attr/textAppearanceCaption"
-                    android:textColor="@color/color_on_surface_emphasis_medium"
                     app:layout_constraintEnd_toStartOf="@+id/sender_profile_image_view"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/sender_text_view" />
+                    app:layout_constraintTop_toBottomOf="@id/sender_text_view"
+                    android:text="@{@string/email_recipient_to(email.recipient)}"
+                    android:textAppearance="?attr/textAppearanceCaption"
+                    android:textColor="@color/color_on_surface_emphasis_medium" />
 
                 <ImageView
                     android:id="@+id/sender_profile_image_view"
                     android:layout_width="@dimen/email_sender_profile_image_size"
                     android:layout_height="@dimen/email_sender_profile_image_size"
                     android:layout_marginTop="@dimen/keyline_3"
-                    android:contentDescription="@string/email_sender_profile_content_desc"
-                    android:scaleType="centerCrop"
+                    app:layout_constraintTop_toTopOf="@+id/sender_text_view"
                     app:layout_constraintBottom_toBottomOf="@+id/recipient_text_view"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/sender_text_view"
+                    android:contentDescription="@string/email_sender_profile_content_desc"
+                    android:scaleType="centerCrop"
                     app:glideSrc="@{email.senderResId}"
                     app:glideCircularCrop="@{true}"
                     tools:src="@drawable/avatar_3" />
@@ -105,13 +106,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/keyline_5"
-                    android:text="@{email.body}"
-                    android:textAppearance="?attr/textAppearanceBody1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/sender_profile_image_view"
-                    app:lineHeight="24sp"
-                    tools:text="Hi friends, I was at the grocery store on Sunday night.. when I ran into Genie Williams! I almost didn't recognize her afer 20 years! Anyway, it turns out she is on the organizing committee for the high school reunion this fall. I don't know if you were planning on going or not, but she could definitely use our help in trying to track down lots of missing alums. If you can make it, we're doing a little phone-tree party at her place next Saturday, hoping that if we can find one person, thee more will..." />
+                    android:text="@{email.body}"
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    app:lineHeight="24sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/attachment_recycler_view"
@@ -119,8 +119,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/keyline_5"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/body_text_view"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/body_text_view"/>
+                    android:overScrollMode="never" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

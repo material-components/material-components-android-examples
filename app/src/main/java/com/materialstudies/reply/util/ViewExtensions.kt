@@ -22,7 +22,7 @@ fun TextView.setTextAppearanceCompat(context: Context, resId: Int) {
  * Helper method to get the MaterialShapeDrawable background of MaterialCardView. This should be
  * fixed in a future update to Material Components.
  *
- * TODO: Remove once fix lands.
+ * TODO(https://issuetracker.google.com/issues/135604742) Remove once fix lands.
  */
 val MaterialCardView.backgroundShapeDrawable: MaterialShapeDrawable
     get() = (this.background as InsetDrawable).drawable as MaterialShapeDrawable
@@ -31,7 +31,7 @@ val MaterialCardView.backgroundShapeDrawable: MaterialShapeDrawable
  * Helper method to get the MaterialShapeDrawable foreground of MaterialCardView. This should be
  * fixed in a future update to Material Components.
  *
- * TODO: Remove once fix lands.
+ * TODO(https://issuetracker.google.com/issues/135604742) Remove once fix lands.
  */
 val MaterialCardView.foregroundShapeDrawable: MaterialShapeDrawable
     get() = (((this.foreground as InsetDrawable).drawable as LayerDrawable)

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <objectAnimator
+        android:propertyName="alpha"
+        android:duration="@integer/reply_motion_short_duration"
+        android:interpolator="@android:interpolator/fast_out_slow_in"
+        android:valueFrom="0F"
+        android:valueTo="1F"/>
+</set>
