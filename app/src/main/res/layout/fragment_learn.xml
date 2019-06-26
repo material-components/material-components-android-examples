@@ -28,7 +28,7 @@
   <androidx.coordinatorlayout.widget.CoordinatorLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:theme="@style/Owl.Theme3"
+      android:theme="@style/Owl.Pink"
       tools:context=".ui.learn.LearnFragment">
 
     <androidx.core.widget.NestedScrollView
@@ -110,7 +110,6 @@
             android:paddingHorizontal="@dimen/grid_2"
             android:gravity="center"
             android:text="@{course.name}"
-            android:textColor="?attr/colorOnSurface"
             android:textAppearance="?attr/textAppearanceHeadline4"
             app:lineHeight="40sp"/>
 
@@ -171,8 +170,8 @@
             app:layout_constraintTop_toBottomOf="@id/needs"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="?attr/colorBrandedSurface"
-            android:theme="@style/Owl.Theme2"/>
+            android:background="?attr/colorPrimarySurface"
+            android:theme="@style/ThemeOverlay.Owl.Blue"/>
 
         <TextView
             android:id="@+id/also_like"
@@ -185,10 +184,10 @@
             android:paddingVertical="@dimen/grid_3"
             android:gravity="center"
             android:textAppearance="?attr/textAppearanceHeadline6"
-            android:textColor="?attr/colorOnBrandedSurface"
+            android:textColor="?attr/colorOnPrimarySurface"
             app:lineHeight="28sp"
             android:text="@string/you_ll_also_like"
-            android:theme="@style/Owl.Theme2"/>
+            android:theme="@style/ThemeOverlay.Owl.Blue"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/also_like_list"
@@ -205,7 +204,7 @@
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:hasFixedSize="@{true}"
-            android:theme="@style/Owl.Theme2"/>
+            android:theme="@style/ThemeOverlay.Owl.Blue"/>
 
       </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -257,7 +256,7 @@
           android:background="?attr/selectableItemBackgroundBorderless"
           android:alpha="0"
           app:srcCompat="@drawable/ic_arrow_down"
-          app:tint="?attr/colorOnBrandedSurface"/>
+          app:tint="?attr/colorOnPrimarySurface"/>
 
       <View
           android:id="@+id/sheet_expand"

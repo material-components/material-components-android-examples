@@ -26,12 +26,12 @@
       android:label="@string/app_name"
       android:name="OwlApplication"
       android:supportsRtl="true"
-      android:theme="@style/Owl"
+      android:theme="@style/Owl.Blue"
       tools:ignore="GoogleAppIndexingWarning">
 
     <activity
         android:name=".ui.MainActivity"
-        android:theme="@style/Owl.Theme2">
+        android:theme="@style/Owl.Blue">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
         <category android:name="android.intent.category.LAUNCHER"/>

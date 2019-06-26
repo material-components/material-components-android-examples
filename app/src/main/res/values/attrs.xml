@@ -14,7 +14,7 @@
   -->
 <resources>
 
-  <attr name="colorBrandedSurface" format="color|reference"/>
-  <attr name="colorOnBrandedSurface" format="color|reference"/>
+  <attr name="colorPrimarySurface" format="color"/>
+  <attr name="colorOnPrimarySurface" format="color"/>
 
 </resources>

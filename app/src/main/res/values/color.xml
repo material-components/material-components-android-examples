@@ -14,24 +14,21 @@
   -->
 <resources>
 
-  <!--theme 1-->
-  <color name="theme_1_primary">#ffde03</color>
-  <color name="theme_1_primary_variant">#ffc000</color>
-  <color name="theme_1_secondary">#0336ff</color>
-  <color name="theme_1_surface">#ffffff</color>
+  <!--theme colors-->
+  <color name="owl_yellow_200">#ffeb46</color>
+  <color name="owl_yellow_400">#ffc000</color>
+  <color name="owl_yellow_500">#ffde03</color>
+  <color name="owl_yellow_dark_primary">#242316</color>
 
-  <!--theme 2-->
-  <color name="theme_2_primary">#0336ff</color>
-  <color name="theme_2_primary_variant">#0035c9</color>
-  <color name="theme_2_secondary">#ffde03</color>
-  <color name="theme_2_surface">#ffffff</color>
+  <color name="owl_blue_200">#91a4fc</color>
+  <color name="owl_blue_700">#0336ff</color>
+  <color name="owl_blue_800">#0035c9</color>
+  <color name="owl_blue_dark_primary">#1c1d24</color>
 
-  <!--theme 3-->
-  <color name="owl_pink">#ff0266</color> <!--not varied in dark theme-->
-  <color name="theme_3_primary">@color/owl_pink</color>
-  <color name="theme_3_on_primary">#000</color>
-  <color name="theme_3_primary_variant">#d8004d</color>
-  <color name="theme_3_surface">#ffffff</color>
+  <color name="owl_pink_200">#ff7597</color>
+  <color name="owl_pink_500">#ff0266</color>
+  <color name="owl_pink_600">#d8004d</color>
+  <color name="owl_pink_dark_primary">#24191c</color>
 
   <!--background protection for nav-bar, varied on Q+-->
   <color name="immersive_sys_ui">#33000000</color>

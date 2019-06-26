@@ -17,6 +17,6 @@
   <item
       android:state_activated="true"
       android:alpha="0.80"
-      android:color="@color/theme_3_primary"/>
+      android:color="@color/owl_pink_500"/>
 
 </selector>

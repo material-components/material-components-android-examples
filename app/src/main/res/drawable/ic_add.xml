@@ -20,7 +20,7 @@
     android:viewportHeight="48">
   <path
       android:pathData="M24,15c4.95,0 9,4.05 9,9s-4.05,9 -9,9 -9,-4.05 -9,-9 4.05,-9 9,-9z"
-      android:fillColor="?attr/colorBrandedSurface"
+      android:fillColor="?attr/colorPrimarySurface"
       android:strokeWidth="2"
       android:strokeColor="#fff"/>
   <path

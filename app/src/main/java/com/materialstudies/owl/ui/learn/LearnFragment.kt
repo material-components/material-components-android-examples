@@ -59,7 +59,7 @@ class LearnFragment : Fragment() {
             course = courses.last()
 
             val behavior = BottomSheetBehavior.from(lessonsSheet)
-            val sheetStartColor = lessonsSheet.context.getColor(R.color.owl_pink)
+            val sheetStartColor = lessonsSheet.context.getColor(R.color.owl_pink_500)
             val sheetEndColor =
                 lessonsSheet.context.getColorStateList(R.color.primary_sheet).defaultColor
             val sheetBackground = MaterialShapeDrawable(

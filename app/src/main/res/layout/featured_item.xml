@@ -91,7 +91,6 @@
         android:paddingHorizontal="@dimen/grid_2"
         android:gravity="center"
         android:text="@{course.name}"
-        android:textColor="?attr/colorOnSurface"
         android:textAppearance="?attr/textAppearanceSubtitle1"
         app:lineHeight="22sp"/>
 

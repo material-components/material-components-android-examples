@@ -61,7 +61,6 @@
         android:maxLines="2"
         android:ellipsize="end"
         android:text="@{course.name}"
-        android:textColor="?attr/colorOnSurface"
         android:textAppearance="?attr/textAppearanceBody2"
         app:lineHeight="16sp"/>
 

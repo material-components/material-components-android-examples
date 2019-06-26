@@ -20,7 +20,7 @@
   <androidx.coordinatorlayout.widget.CoordinatorLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:background="?attr/colorBrandedSurface"
+      android:background="?attr/colorPrimarySurface"
       android:theme="@style/ThemeOverlay.MaterialComponents.Dark"
       app:paddingTopSystemWindowInsets="@{true}"
       tools:context=".ui.search.SearchFragment">

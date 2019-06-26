@@ -22,9 +22,9 @@
   <androidx.coordinatorlayout.widget.CoordinatorLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:background="?attr/colorBrandedSurface"
+      android:background="?attr/colorPrimarySurface"
       app:paddingTopSystemWindowInsets="@{true}"
-      android:theme="@style/Owl.Theme2"
+      android:theme="@style/Owl.Blue"
       tools:context=".ui.featured.FeaturedFragment">
 
     <com.google.android.material.appbar.AppBarLayout

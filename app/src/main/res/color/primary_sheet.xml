@@ -16,6 +16,6 @@
 
   <item
       android:alpha="0.96"
-      android:color="?attr/colorBrandedSurface"/>
+      android:color="?attr/colorPrimarySurface"/>
 
 </selector>

@@ -14,21 +14,8 @@
   -->
 <resources>
 
-  <!--Base theme, varied in night config-->
+  <!--Base theme, all common styling here-->
   <style name="Base.Owl" parent="@style/Theme.MaterialComponents.DayNight.NoActionBar">
-    <item name="colorBrandedSurface">?attr/colorPrimary</item>
-    <item name="colorOnBrandedSurface">?attr/colorOnPrimary</item>
-    <item name="android:statusBarColor">@color/immersive_sys_ui</item>
-  </style>
-
-  <style name="Owl" parent="@style/Base.Owl">
-
-    <!--Material color attributes-->
-    <item name="colorPrimary">@color/theme_1_primary</item>
-    <item name="colorPrimaryVariant">@color/theme_1_primary_variant</item>
-    <item name="colorSecondary">@color/theme_1_secondary</item>
-    <item name="colorSecondaryVariant">@color/theme_1_secondary</item>
-    <item name="colorSurface">@color/theme_1_surface</item>
 
     <!--Material shape attributes-->
     <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Owl.SmallComponent</item>
@@ -52,25 +39,45 @@
 
     <!--Platform attributes-->
     <item name="android:navigationBarColor">@color/nav_bar</item>
+    <item name="android:statusBarColor">@color/immersive_sys_ui</item>
 
     <!--Default styles-->
     <item name="bottomNavigationStyle">@style/Widget.Owl.BottomNavigationView</item>
 
   </style>
 
-  <style name="Owl.Theme2">
-    <item name="colorPrimary">@color/theme_2_primary</item>
-    <item name="colorPrimaryVariant">@color/theme_2_primary_variant</item>
-    <item name="colorSecondary">@color/theme_2_secondary</item>
-    <item name="colorSecondaryVariant">@color/theme_2_secondary</item>
-    <item name="colorSurface">@color/theme_2_surface</item>
+  <style name="Owl" parent="@style/Base.Owl">
+    <item name="colorPrimarySurface">?attr/colorPrimary</item>
+    <item name="colorOnPrimarySurface">?attr/colorOnPrimary</item>
   </style>
 
-  <style name="Owl.Theme3">
-    <item name="colorPrimary">@color/theme_3_primary</item>
-    <item name="colorPrimaryVariant">@color/theme_3_primary_variant</item>
-    <item name="colorOnPrimary">@color/theme_3_on_primary</item>
-    <item name="colorSurface">@color/theme_3_surface</item>
+  <style name="Owl.Yellow" parent="@style/Base.Owl">
+    <item name="colorPrimary">@color/owl_yellow_500</item>
+    <item name="colorPrimaryVariant">@color/owl_yellow_400</item>
+    <item name="colorSecondary">@color/owl_blue_700</item>
+    <item name="colorSecondaryVariant">@color/owl_blue_800</item>
+  </style>
+
+  <style name="Owl.Blue">
+    <item name="colorPrimary">@color/owl_blue_700</item>
+    <item name="colorPrimaryVariant">@color/owl_blue_800</item>
+    <item name="colorSecondary">@color/owl_yellow_500</item>
+    <item name="colorSecondaryVariant">@color/owl_yellow_400</item>
+  </style>
+
+  <style name="ThemeOverlay.Owl.Blue" parent="@style/ThemeOverlay.MaterialComponents.Light">
+    <item name="colorPrimary">@color/owl_blue_700</item>
+    <item name="colorPrimaryVariant">@color/owl_blue_800</item>
+    <item name="colorSecondary">@color/owl_yellow_500</item>
+    <item name="colorSecondaryVariant">@color/owl_yellow_400</item>
+    <item name="colorOnPrimary">#fff</item>
+  </style>
+
+  <style name="Owl.Pink">
+    <item name="colorPrimary">@color/owl_pink_500</item>
+    <item name="colorSecondary">@color/owl_pink_500</item>
+    <item name="colorPrimaryVariant">@color/owl_pink_600</item>
+    <item name="colorOnPrimary">#000</item>
   </style>
 
 </resources>

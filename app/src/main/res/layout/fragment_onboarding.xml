@@ -20,8 +20,8 @@
   <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:theme="@style/Owl"
-      android:background="?attr/colorBrandedSurface"
+      android:theme="@style/Owl.Yellow"
+      android:background="?attr/colorPrimarySurface"
       app:paddingTopSystemWindowInsets="@{true}"
       android:clipChildren="false"
       tools:context=".ui.onboarding.OnboardingFragment"

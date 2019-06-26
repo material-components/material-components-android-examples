@@ -80,7 +80,7 @@
         android:layout_marginStart="@dimen/grid_2"
         android:layout_marginTop="@dimen/grid_0_5"
         app:srcCompat="@drawable/ic_play"
-        app:tint="?attr/colorOnBrandedSurface"
+        app:tint="?attr/colorOnPrimarySurface"
         android:contentDescription="@string/play_lesson"/>
 
     <TextView

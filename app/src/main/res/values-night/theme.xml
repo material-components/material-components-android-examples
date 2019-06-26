@@ -14,10 +14,33 @@
   -->
 <resources>
 
-  <style name="Base.Owl" parent="@style/Theme.MaterialComponents.DayNight.NoActionBar">
-    <item name="colorBrandedSurface">?attr/colorSurface</item>
-    <item name="colorOnBrandedSurface">?attr/colorOnSurface</item>
-    <item name="android:statusBarColor">@color/immersive_sys_ui</item>
+  <style name="Owl" parent="@style/Base.Owl">
+    <item name="colorPrimarySurface">?attr/colorSurface</item>
+    <item name="colorOnPrimarySurface">?attr/colorOnSurface</item>
+  </style>
+
+  <style name="Owl.Yellow" parent="@style/Base.Owl">
+    <item name="colorPrimary">@color/owl_yellow_200</item>
+    <item name="colorSecondary">@color/owl_blue_200</item>
+    <item name="colorSurface">@color/owl_yellow_dark_primary</item>
+  </style>
+
+  <style name="Owl.Blue">
+    <item name="colorPrimary">@color/owl_blue_200</item>
+    <item name="colorSecondary">@color/owl_yellow_200</item>
+    <item name="colorSurface">@color/owl_blue_dark_primary</item>
+  </style>
+
+  <style name="ThemeOverlay.Owl.Blue" parent="@style/ThemeOverlay.MaterialComponents.Dark">
+    <item name="colorPrimary">@color/owl_blue_200</item>
+    <item name="colorSecondary">@color/owl_yellow_200</item>
+    <item name="colorSurface">@color/owl_blue_dark_primary</item>
+  </style>
+
+  <style name="Owl.Pink">
+    <item name="colorPrimary">@color/owl_pink_200</item>
+    <item name="colorSecondary">@color/owl_pink_200</item>
+    <item name="colorSurface">@color/owl_pink_dark_primary</item>
   </style>
 
 </resources>
