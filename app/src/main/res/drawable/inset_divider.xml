@@ -12,8 +12,11 @@
   or implied. See the License for the specific language governing permissions and limitations under
   the License.
   -->
-<shape
+<inset
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
-  <solid android:color="@color/divider"/>
-</shape>
+    android:inset="@dimen/grid_2">
+  <shape android:shape="rectangle">
+    <solid android:color="@color/divider"/>
+    <size android:height="@dimen/divider_height"/>
+  </shape>
+</inset>
