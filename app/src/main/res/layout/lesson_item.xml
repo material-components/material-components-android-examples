@@ -53,7 +53,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@id/step"
         app:layout_constraintBottom_toTopOf="@id/play_icon"
-        app:layout_constrainedHeight="true"
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintVertical_bias="0"
         android:ellipsize="end"

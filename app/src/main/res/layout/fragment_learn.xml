@@ -25,7 +25,7 @@
         type="com.materialstudies.owl.model.Course"/>
   </data>
 
-  <androidx.coordinatorlayout.widget.CoordinatorLayout
+  <FrameLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:theme="@style/Owl.Pink"
@@ -210,90 +210,12 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <fragment
         android:id="@+id/lessons_sheet"
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-        app:behavior_peekHeight="56dp">
+        android:layout_height="match_parent"
+        android:name="com.materialstudies.owl.ui.lessons.LessonsSheetFragment"/>
 
-      <ImageView
-          android:id="@+id/playlist_icon"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          android:layout_margin="@dimen/grid_3"
-          app:srcCompat="@drawable/ic_playlist"
-          app:tint="?attr/colorOnPrimary"/>
-
-      <TextView
-          android:id="@+id/playlist_title"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintEnd_toStartOf="@id/collapse_playlist"
-          app:layout_constraintHorizontal_weight="1"
-          android:paddingHorizontal="@dimen/grid_2"
-          android:gravity="center_vertical"
-          android:ellipsize="end"
-          app:marginTopSystemWindowInsets="@{true}"
-          android:minHeight="?attr/actionBarSize"
-          android:lines="1"
-          android:alpha="0"
-          android:textAppearance="?attr/textAppearanceBody1"
-          android:text="@{course.name}"/>
-
-      <ImageView
-          android:id="@+id/collapse_playlist"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintTop_toTopOf="@id/playlist_title"
-          app:layout_constraintStart_toEndOf="@id/playlist_title"
-          android:padding="@dimen/grid_2"
-          android:background="?attr/selectableItemBackgroundBorderless"
-          android:alpha="0"
-          app:srcCompat="@drawable/ic_arrow_down"
-          app:tint="?attr/colorOnPrimarySurface"/>
-
-      <View
-          android:id="@+id/sheet_expand"
-          android:layout_width="0dp"
-          android:layout_height="0dp"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintBottom_toBottomOf="parent"
-          android:foreground="@drawable/sheet_expand"/>
-
-      <View
-          android:id="@+id/playlist_title_divider"
-          android:layout_width="0dp"
-          android:layout_height="1dp"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@id/playlist_title"
-          app:layout_constraintEnd_toEndOf="parent"
-          android:background="@drawable/divider"
-          android:alpha="0"/>
-
-      <androidx.recyclerview.widget.RecyclerView
-          android:id="@+id/playlist"
-          android:layout_width="0dp"
-          android:layout_height="0dp"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@id/playlist_title_divider"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:paddingBottomSystemWindowInsets="@{true}"
-          android:clipToPadding="false"
-          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-          app:hasFixedSize="@{true}"
-          android:alpha="0"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-  </androidx.coordinatorlayout.widget.CoordinatorLayout>
+  </FrameLayout>
 
 </layout>
