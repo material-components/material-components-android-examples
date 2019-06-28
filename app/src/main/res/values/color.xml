@@ -29,7 +29,7 @@
     <color name="reply_color_on_surface">@color/colorBlack900</color>
     <color name="reply_color_on_error">@color/colorBlack900</color>
 
-    <color name="reply_color_status_bar">@color/colorBlue100</color>
+    <color name="reply_color_status_bar">@color/colorBlue50Alpha060</color>
     <color name="reply_color_scrim">@color/colorWhite50Alpha060</color>
 
 
@@ -38,7 +38,7 @@
 
     <color name="colorBlack800">#121212</color>
     <color name="colorBlack900">#000000</color>
-    
+
     <color name="colorBlue50">#eef0f2</color>
     <color name="colorBlue100">#d2dbe0</color>
     <color name="colorBlue200">#adbbc4</color>
@@ -56,5 +56,8 @@
 
     <color name="colorWhite50Alpha060">#99ffffff</color>
 
+    <color name="colorBlue50Alpha060">#99eef0f2</color>
+
     <color name="colorBlack900Alpha087">#de000000</color>
+    <color name="colorBlack900Alpha060">#99000000</color>
 </resources>

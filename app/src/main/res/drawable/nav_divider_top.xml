@@ -12,7 +12,9 @@
   or implied. See the License for the specific language governing permissions and limitations under
   the License.
   -->
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:color="?attr/colorSecondary" android:state_checked="true"/>
-    <item android:color="@color/color_on_branded_surface_emphasis_medium" />
-</selector>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/color_on_branded_surface_divider"
+        android:alpha="0.1"/>
+    <size android:height="1dp"
+        android:width="200dp"/>
+</shape>

@@ -24,37 +24,6 @@
         <item name="backgroundTint">?colorSurface</item>
     </style>
 
-    <!--Bottom Navigation Drawer-->
-    <style name="Widget.Reply.BottomNavigationDrawer" parent="Widget.MaterialComponents.BottomSheet">
-        <item name="shapeAppearance">?shapeAppearanceLargeComponent</item>
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Reply.BottomSheet</item>
-        <item name="android:backgroundTint">?colorPrimaryVariant</item>
-        <item name="foregroundShapeAppearance">?shapeAppearanceLargeComponent</item>
-        <item name="foregroundShapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Reply.BottomSheet</item>
-        <item name="android:foregroundTint">?colorPrimary</item>
-        <item name="scrimColor">?scrimBackground</item>
-    </style>
-
-    <style name="ThemeOverlay.Reply.BottomNavigationDrawer.NavigationView" parent="Theme.Reply.DayNight">
-        <!--Set the height of each menu item-->
-        <item name="android:listPreferredItemHeightSmall">56dp</item>
-        <!--Set the default color of a menu item's text-->
-        <item name="android:colorControlNormal">@color/mtrl_on_primary_emphasis_medium</item>
-        <item name="navigationViewStyle">@style/Widget.Reply.BottomNavigationDrawer.NavigationView</item>
-    </style>
-
-    <style name="Widget.Reply.BottomNavigationDrawer.NavigationView" parent="Widget.Reply.NavigationView">
-        <!--Set the horizontal start padding of each menu item-->
-        <item name="itemHorizontalPadding">@dimen/keyline_6</item>
-        <!--Set the padding between the icon and text label of each menu item-->
-        <item name="itemIconPadding">@dimen/keyline_6</item>
-        <item name="itemTextAppearance">?attr/textAppearanceSubtitle1</item>
-        <!--Remove the background shape from the currently checked item-->
-        <item name="itemBackground">@android:color/transparent</item>
-        <item name="itemTextColor">@color/color_navigation_drawer_menu_item</item>
-        <item name="itemIconTint">@color/color_navigation_drawer_menu_item</item>
-    </style>
-
     <style name="Widget.Reply.NavigationView" parent="Widget.MaterialComponents.NavigationView">
         <!--Remove any scrim insets applied by NavigationView for system bars-->
         <item name="insetForeground">@android:color/transparent</item>

@@ -30,6 +30,6 @@
     <color name="reply_color_on_surface">@color/colorWhite50</color>
     <color name="reply_color_on_error">@color/colorBlack900</color>
 
-    <color name="reply_color_status_bar">@color/colorBlack900</color>
+    <color name="reply_color_status_bar">@color/colorBlack900Alpha060</color>
     <color name="reply_color_scrim">@color/colorBlack900Alpha087</color>
 </resources>

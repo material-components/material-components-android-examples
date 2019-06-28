@@ -55,8 +55,8 @@ class EmailSwipeActionDrawable(context: Context) : Drawable() {
 
     private val icon = ContextCompat.getDrawable(context, R.drawable.ic_twotone_star)!!
     private val iconMargin = context.resources.getDimension(R.dimen.keyline_6)
-    private val iconIntrinsicWidth = icon?.intrinsicWidth ?: 0
-    private val iconIntrinsicHeight = icon?.intrinsicHeight ?: 0
+    private val iconIntrinsicWidth = icon.intrinsicWidth
+    private val iconIntrinsicHeight = icon.intrinsicHeight
 
     @ColorInt private val iconTint = context.getColorFromAttr(R.attr.colorOnBackground)
     @ColorInt private val iconTintActive = context.getColorFromAttr(R.attr.colorOnSecondary)

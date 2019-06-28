@@ -32,13 +32,11 @@
             app:defaultNavHost="true"
             app:navGraph="@navigation/navigation_graph"/>
 
-        <!--Standard FrameLayout which sets its own layout_behavior to BottomSheetBehavior-->
-        <!--to act as a bottom navigation drawer-->
-        <com.materialstudies.reply.ui.nav.BottomNavigationDrawer
-            android:id="@+id/bottom_navigation_drawer"
+        <fragment
+            android:id="@+id/bottom_nav_drawer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="@dimen/plane_00"/>
+            android:layout_height="match_parent"
+            android:name="com.materialstudies.reply.ui.nav.BottomNavDrawerFragment"/>
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottom_app_bar"

@@ -20,6 +20,11 @@ import com.google.android.material.shape.EdgeTreatment
 import com.google.android.material.shape.ShapePath
 import java.lang.IllegalArgumentException
 
+private const val ARC_QUARTER = 90
+private const val ARC_HALF = 180
+private const val ANGLE_UP = 270
+private const val ANGLE_LEFT = 180
+
 /**
  * An edge treatment which draws a semicircle cutout at any point along the edge.
  *
@@ -41,17 +46,25 @@ class SemiCircleEdgeCutoutTreatment(
         private var cutoutHorizontalOffset: Float = 0F
 ) : EdgeTreatment() {
 
-    companion object {
-        private const val ARC_QUARTER = 90
-        private const val ARC_HALF = 180
-        private const val ANGLE_UP = 270
-        private const val ANGLE_LEFT = 180
-    }
+    private var cradleDiameter = 0F
+    private var cradleRadius = 0F
+    private var roundedCornerOffset = 0F
+    private var middle = 0F
+    private var verticalOffset = 0F
+    private var verticalOffsetRatio = 0F
+    private var distanceBetweenCenters = 0F
+    private var distanceBetweenCentersSquared = 0F
+    private var distanceY = 0F
+    private var distanceX = 0F
+    private var leftRoundedCornerCircleX = 0F
+    private var rightRoundedCornerCircleX = 0F
+    private var cornerRadiusArcLength = 0F
+    private var cutoutArcOffset = 0F
 
     init {
-        if (cutoutVerticalOffset < 0) {
-            throw IllegalArgumentException("cradleVertialOffset must be positive")
-        }
+        if (cutoutVerticalOffset < 0) throw IllegalArgumentException(
+            "cutoutVerticalOffset must be positive but was $cutoutVerticalOffset"
+        )
     }
 
     override fun getEdgePath(
@@ -66,14 +79,14 @@ class SemiCircleEdgeCutoutTreatment(
             return
         }
 
-        val cradleDiameter = cutoutMargin * 2 + cutoutDiameter
-        val cradleRadius = cradleDiameter / 2f
-        val roundedCornerOffset = interpolation * cutoutRoundedCornerRadius
-        val middle = length / 2f + cutoutHorizontalOffset
+        cradleDiameter = cutoutMargin * 2 + cutoutDiameter
+        cradleRadius = cradleDiameter / 2f
+        roundedCornerOffset = interpolation * cutoutRoundedCornerRadius
+        middle = length / 2f + cutoutHorizontalOffset
 
-        val verticalOffset = interpolation * cutoutVerticalOffset +
+        verticalOffset = interpolation * cutoutVerticalOffset +
                 (1 - interpolation) * cradleRadius
-        val verticalOffsetRatio = verticalOffset / cradleRadius
+        verticalOffsetRatio = verticalOffset / cradleRadius
 
         if (verticalOffsetRatio >= 1.0f) {
             // Vertical offset is so high that there's no curve to draw in the edge. The circle is
@@ -88,22 +101,22 @@ class SemiCircleEdgeCutoutTreatment(
 
         // Calculate the X distance between the center of the two adjacent circles using pythagorean
         // theorem.
-        val distanceBetweenCenters = cradleRadius + roundedCornerOffset
-        val distanceBetweenCentersSquared = distanceBetweenCenters * distanceBetweenCenters
-        val distanceY = verticalOffset + roundedCornerOffset
-        val distanceX = Math.sqrt(
+        distanceBetweenCenters = cradleRadius + roundedCornerOffset
+        distanceBetweenCentersSquared = distanceBetweenCenters * distanceBetweenCenters
+        distanceY = verticalOffset + roundedCornerOffset
+        distanceX = Math.sqrt(
                 (distanceBetweenCentersSquared - distanceY * distanceY).toDouble()
         ).toFloat()
 
         // Calculate the x position of the rounded corner circles.
-        val leftRoundedCornerCircleX = middle - distanceX
-        val rightRoundedCornerCircleX = middle + distanceX
+        leftRoundedCornerCircleX = middle - distanceX
+        rightRoundedCornerCircleX = middle + distanceX
 
         // Calculate the arc between the center of the two circles.
-        val cornerRadiusArcLength = Math.toDegrees(
+        cornerRadiusArcLength = Math.toDegrees(
                 Math.atan((distanceX / distanceY).toDouble())
         ).toFloat()
-        val cutoutArcOffset = ARC_QUARTER - cornerRadiusArcLength
+        cutoutArcOffset = ARC_QUARTER - cornerRadiusArcLength
 
         // Draw the starting line up to the left rounded corner.
         shapePath.lineTo(leftRoundedCornerCircleX - roundedCornerOffset, 0f)

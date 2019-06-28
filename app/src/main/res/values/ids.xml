@@ -12,7 +12,6 @@
   or implied. See the License for the specific language governing permissions and limitations under
   the License.
   -->
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:color="?attr/colorSecondary" android:state_checked="true"/>
-    <item android:color="@color/color_on_branded_surface_emphasis_medium" />
-</selector>
+<resources>
+    <item name="tag_system_window_inset_top" type="id"/>
+</resources>

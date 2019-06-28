@@ -18,6 +18,7 @@
     <!--colorSurface for dark. This makes it easy to set the color of surfaces and content for -->
     <!--components such as BottomNavigationDrawer.-->
     <attr name="colorBrandedSurface" format="color" />
+    <attr name="colorBrandedVariantSurface" format="color" />
     <attr name="colorOnBrandedSurface" format="color" />
 
     <attr name="colorStatusBar" format="color" />
@@ -32,15 +33,4 @@
     <attr name="bottomNavigationDrawerStyle" format="reference" />
     <attr name="bottomNavigationDrawerNavigationViewTheme" format="reference" />
 
-    <attr name="foregroundShapeAppearance" format="reference" />
-    <attr name="foregroundShapeAppearanceOverlay" format="reference" />
-
-    <declare-styleable name="BottomNavigationDrawer">
-        <!--Set the shape of the foreground sheet displayed by BottomNavigationDrawer-->
-        <attr name="foregroundShapeAppearance" />
-        <attr name="foregroundShapeAppearanceOverlay" />
-        <!--Set the color of the foreground sheet displayed by BottomNavigationDrawer-->
-        <attr name="android:foregroundTint" />
-        <attr name="scrimColor" format="color" />
-    </declare-styleable>
 </resources>

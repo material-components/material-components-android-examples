@@ -14,21 +14,16 @@
  * limitations under the License.
  */
 
-package com.materialstudies.reply.ui.nav
+package com.materialstudies.reply.data
 
-import android.view.View
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import androidx.recyclerview.widget.DiffUtil
 
-class ShowHideFabStateAction(
-    private val fab: FloatingActionButton
-) : OnStateChangedAction {
+/**
+ * Alias to represent a folder (a String title) into which emails can be placed.
+ */
+typealias EmailFolder = String
 
-    override fun onStateChanged(sheet: View, newState: Int) {
-        if (newState == BottomSheetBehavior.STATE_HIDDEN) {
-            fab.show()
-        } else {
-            fab.hide()
-        }
-    }
+object EmailFolderDiff : DiffUtil.ItemCallback<EmailFolder>() {
+    override fun areItemsTheSame(oldItem: EmailFolder, newItem: EmailFolder) = oldItem == newItem
+    override fun areContentsTheSame(oldItem: EmailFolder, newItem: EmailFolder) = oldItem == newItem
 }

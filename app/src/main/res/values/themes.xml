@@ -27,6 +27,7 @@
         <item name="android:colorBackground">@color/reply_color_background</item>
         <item name="colorSurface">@color/reply_color_surface</item>
         <item name="colorBrandedSurface">?colorPrimary</item>
+        <item name="colorBrandedVariantSurface">?colorPrimaryVariant</item>
         <item name="colorError">@color/reply_color_error</item>
 
         <item name="colorOnPrimary">@color/reply_color_on_primary</item>
@@ -64,10 +65,9 @@
 
         <!--Styles-->
         <item name="bottomAppBarStyle">@style/Widget.MaterialComponents.BottomAppBar.Colored</item>
+        <item name="bottomSheetStyle">@style/Widget.Reply.BottomSheet.Modal</item>
         <item name="bottomSheetDialogTheme">@style/Base.ThemeOverlay.Reply.BottomSheetDialog</item>
         <item name="navigationViewStyle">@style/Widget.Reply.NavigationView</item>
-        <item name="bottomNavigationDrawerStyle">@style/Widget.Reply.BottomNavigationDrawer</item>
-        <item name="bottomNavigationDrawerNavigationViewTheme">@style/ThemeOverlay.Reply.BottomNavigationDrawer.NavigationView</item>
 
         <!--System/Platform attributes-->
         <item name="android:windowBackground">?android:colorBackground</item>

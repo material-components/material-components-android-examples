@@ -40,7 +40,7 @@
             android:transitionName="@{@string/email_card_transition_name(email.id)}">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraint_layout"
+                android:id="@+id/menu_item_constraint_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/keyline_4"

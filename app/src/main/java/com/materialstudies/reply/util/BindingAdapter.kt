@@ -24,8 +24,30 @@ import android.view.View.VISIBLE
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+
+@BindingAdapter(
+    "drawableLeft",
+    "drawableTop",
+    "drawableRight",
+    "drawableBottom",
+    requireAll = false
+)
+fun TextView.bindDrawables(
+    @DrawableRes drawableLeft: Int? = null,
+    @DrawableRes drawableTop: Int? = null,
+    @DrawableRes drawableRight: Int? = null,
+    @DrawableRes drawableBottom: Int? = null
+) {
+    setCompoundDrawablesWithIntrinsicBounds(
+        drawableLeft?.let { ContextCompat.getDrawable(context, it) },
+        drawableTop?.let { ContextCompat.getDrawable(context, it) },
+        drawableRight?.let { ContextCompat.getDrawable(context, it) },
+        drawableBottom?.let { ContextCompat.getDrawable(context, it) }
+    )
+}
 
 @BindingAdapter(
     "glideSrc",
@@ -54,11 +76,6 @@ fun View.bindGoneIf(gone: Boolean) {
     } else {
         VISIBLE
     }
-}
-
-@BindingAdapter("textAppearanceRes")
-fun TextView.bindTextAppearanceRes(textAppearanceRes: Int) {
-    setTextAppearanceCompat(context, textAppearanceRes)
 }
 
 @BindingAdapter("layoutFullscreen")

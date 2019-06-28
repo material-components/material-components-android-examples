@@ -154,5 +154,13 @@ class EmailStore {
         }
     }
 
+    fun getAllFolders() = listOf(
+        "Receipts",
+        "Pine Elementary",
+        "Taxes",
+        "Vacation",
+        "Mortgage",
+        "Grocery coupons"
+    )
 }
 

@@ -31,16 +31,21 @@ import androidx.navigation.findNavController
 import com.materialstudies.reply.R
 import com.materialstudies.reply.databinding.ActivityMainBinding
 import com.materialstudies.reply.ui.nav.AlphaSlideAction
+import com.materialstudies.reply.ui.nav.BottomNavDrawerFragment
 import com.materialstudies.reply.ui.nav.ChangeSettingsMenuStateAction
 import com.materialstudies.reply.ui.nav.QuarterRotateSlideAction
 import com.materialstudies.reply.ui.nav.ShowHideFabStateAction
 import com.materialstudies.reply.util.contentView
+import kotlin.LazyThreadSafetyMode.NONE
 
 class MainActivity : AppCompatActivity(),
     Toolbar.OnMenuItemClickListener,
     NavController.OnDestinationChangedListener {
 
     private val binding: ActivityMainBinding by contentView(R.layout.activity_main)
+    private val bottomNavDrawer: BottomNavDrawerFragment by lazy(NONE) {
+        supportFragmentManager.findFragmentById(R.id.bottom_nav_drawer) as BottomNavDrawerFragment
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +67,7 @@ class MainActivity : AppCompatActivity(),
             setHideMotionSpecResource(R.animator.fab_hide)
         }
 
-        binding.bottomNavigationDrawer.apply {
+        bottomNavDrawer.apply {
             addOnSlideAction(QuarterRotateSlideAction(binding.bottomAppBarChevron))
             addOnSlideAction(AlphaSlideAction(binding.bottomAppBarTitle, true))
             addOnStateChangedAction(ShowHideFabStateAction(binding.fab))
@@ -84,14 +89,14 @@ class MainActivity : AppCompatActivity(),
                 R.drawable.ic_more_vert_on_branded
             )
             setNavigationOnClickListener {
-                binding.bottomNavigationDrawer.toggle()
+                bottomNavDrawer.toggle()
             }
             setOnMenuItemClickListener(this@MainActivity)
         }
 
         // Set up the BottomNavigationDrawer's open/close affordance
         binding.bottomAppBarContentContainer.setOnClickListener {
-            binding.bottomNavigationDrawer.toggle()
+            bottomNavDrawer.toggle()
         }
     }
 
@@ -145,11 +150,10 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.menu_theme -> {
-                binding.bottomNavigationDrawer.close()
+                bottomNavDrawer.close()
                 showDarkThemeMenu()
             }
         }

@@ -18,30 +18,45 @@ package com.materialstudies.reply.ui.nav
 
 import android.view.View
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.materialstudies.reply.util.normalize
 
 /**
- * A BottomSheetCallback to encapsulate coordination between [BottomNavigationDrawer]'s open
- * and closed states and the showing/hiding of the FAB and rotation of the BottomAppBar's chevron.
+ * A [BottomSheetBehavior.BottomSheetCallback] which helps break apart clients who would like to
+ * react to changed in either the bottom sheet's slide offset or state. Clients can dynamically
+ * add or remove [OnSlideAction]s or [OnStateChangedAction]s which will be run when the
+ * sheet's slideOffset or state are changed.
+ *
+ * This callback's behavior differs slightly in that the slideOffset passed to [OnSlideAction]s
+ * in [onSlide] is corrected to guarantee that the offset 0.0 <i>always</i> be exactly at the
+ * [BottomSheetBehavior.STATE_HALF_EXPANDED] state.
  */
 class BottomNavigationDrawerCallback : BottomSheetBehavior.BottomSheetCallback() {
 
     private val onSlideActions: MutableList<OnSlideAction> = mutableListOf()
     private val onStateChangedActions: MutableList<OnStateChangedAction> = mutableListOf()
 
-    var lastSlideOffset = -1.0F
+    private var lastSlideOffset = -1.0F
+    private var halfExpandedSlideOffset = 0.0F
 
     override fun onSlide(sheet: View, slideOffset: Float) {
-        println("BottomNavigationDrawerCallback - slideOffset = $slideOffset")
-        lastSlideOffset = if (slideOffset < -1.0F || slideOffset.isNaN()) {
-            0F
+        lastSlideOffset = slideOffset
+
+        // Correct for the fact that the slideOffset is not zero when half expanded
+        val trueOffset = if (slideOffset <= halfExpandedSlideOffset) {
+            slideOffset.normalize(-1F, halfExpandedSlideOffset, -1F, 0F)
         } else {
-            slideOffset
+            slideOffset.normalize(halfExpandedSlideOffset, 1F, 0F, 1F)
         }
 
-        onSlideActions.forEach { it.onSlide(sheet, 1F - Math.abs(lastSlideOffset)) }
+        onSlideActions.forEach { it.onSlide(sheet, trueOffset) }
     }
 
     override fun onStateChanged(sheet: View, newState: Int) {
+        if (newState == BottomSheetBehavior.STATE_HALF_EXPANDED) {
+            halfExpandedSlideOffset = lastSlideOffset
+            onSlide(sheet, lastSlideOffset)
+        }
+
         onStateChangedActions.forEach { it.onStateChanged(sheet, newState) }
     }
 
