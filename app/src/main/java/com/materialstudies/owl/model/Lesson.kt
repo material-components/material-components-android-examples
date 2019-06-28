@@ -20,10 +20,10 @@ import androidx.recyclerview.widget.DiffUtil
 
 data class Lesson(
     val title: String,
-    val formattedSteps: String,
+    val formattedStepNumber: String,
     val length: String,
-    val thumbUrl: String,
-    val thumbContentDescription: String = ""
+    val imageUrl: String,
+    val imageContentDescription: String = ""
 )
 
 object LessonDiff : DiffUtil.ItemCallback<Lesson>() {
@@ -34,56 +34,56 @@ object LessonDiff : DiffUtil.ItemCallback<Lesson>() {
 val lessons = listOf(
     Lesson(
         title = "An introduction to the Landscape",
-        formattedSteps = "01",
+        formattedStepNumber = "01",
         length = "4:14",
-        thumbUrl = "https://source.unsplash.com/NRQV-hBF10M"
+        imageUrl = "https://source.unsplash.com/NRQV-hBF10M"
     ),
     Lesson(
         title = "Movement and Expression",
-        formattedSteps = "02",
+        formattedStepNumber = "02",
         length = "7:28",
-        thumbUrl = "https://source.unsplash.com/JhqhGfX_Wd8"
+        imageUrl = "https://source.unsplash.com/JhqhGfX_Wd8"
     ),
     Lesson(
         title = "Composition and the Urban Canvas",
-        formattedSteps = "03",
+        formattedStepNumber = "03",
         length = "3:43",
-        thumbUrl = "https://source.unsplash.com/0OjzOqlJyoU"
+        imageUrl = "https://source.unsplash.com/0OjzOqlJyoU"
     ),
     Lesson(
         title = "Lighting Techniques and Aesthetics",
-        formattedSteps = "04",
+        formattedStepNumber = "04",
         length = "4:45",
-        thumbUrl = "https://source.unsplash.com/J5-Kqu_fxyo"
+        imageUrl = "https://source.unsplash.com/J5-Kqu_fxyo"
     ),
     Lesson(
         title = "Special Effects",
-        formattedSteps = "05",
+        formattedStepNumber = "05",
         length = "6:19",
-        thumbUrl = "https://source.unsplash.com/9ZCZoH69dZQ"
+        imageUrl = "https://source.unsplash.com/9ZCZoH69dZQ"
     ),
     Lesson(
         title = "Techniques with Structures",
-        formattedSteps = "06",
+        formattedStepNumber = "06",
         length = "9:41",
-        thumbUrl = "https://source.unsplash.com/RFDP7_80v5A"
+        imageUrl = "https://source.unsplash.com/RFDP7_80v5A"
     ),
     Lesson(
         title = "Deep Focus Using a Camera Dolly",
-        formattedSteps = "07",
+        formattedStepNumber = "07",
         length = "4:43",
-        thumbUrl = "https://source.unsplash.com/0rZ2-QWtkwY"
+        imageUrl = "https://source.unsplash.com/0rZ2-QWtkwY"
     ),
     Lesson(
         title = "Point of View Shots with Structures",
-        formattedSteps = "08",
+        formattedStepNumber = "08",
         length = "9:41",
-        thumbUrl = "https://source.unsplash.com/iQnR_xEsBj0"
+        imageUrl = "https://source.unsplash.com/iQnR_xEsBj0"
     ),
     Lesson(
         title = "Photojournalism: Street Art",
-        formattedSteps = "09",
+        formattedStepNumber = "09",
         length = "9:41",
-        thumbUrl = "https://source.unsplash.com/qX9Ie7ieb1E"
+        imageUrl = "https://source.unsplash.com/qX9Ie7ieb1E"
     )
 )

@@ -14,12 +14,16 @@
  * limitations under the License.
  */
 
-package com.materialstudies.owl.ui.learn
+package com.materialstudies.owl.ui.lessons
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.materialstudies.owl.R
 import com.materialstudies.owl.databinding.LessonItemBinding
 import com.materialstudies.owl.model.Lesson
 import com.materialstudies.owl.model.LessonDiff
@@ -27,7 +31,14 @@ import com.materialstudies.owl.model.LessonDiff
 class LessonAdapter : ListAdapter<Lesson, LessonViewHolder>(LessonDiff) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LessonViewHolder {
-        val binding = LessonItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = LessonItemBinding.inflate(
+            LayoutInflater.from(parent.context), parent,
+            false
+        ).apply {
+            root.setOnClickListener {
+                it.findNavController().navigate(R.id.lesson)
+            }
+        }
         return LessonViewHolder(binding)
     }
 
@@ -47,5 +58,4 @@ class LessonViewHolder(
             executePendingBindings()
         }
     }
-
 }

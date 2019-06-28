@@ -16,7 +16,7 @@ package com.materialstudies.owl.ui.mycourses
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -38,7 +38,7 @@ class MyCoursesAdapter : ListAdapter<Course, MyCourseViewHolder>(CourseDiff) {
             false
         ).apply {
             click.setOnClickListener {
-                Navigation.findNavController(it).navigate(R.id.learn)
+                it.findNavController().navigate(R.id.learn)
             }
         }
         return MyCourseViewHolder(binding)

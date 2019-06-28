@@ -17,10 +17,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation.xml"
-    app:startDestination="@id/onboardingFragment">
+    app:startDestination="@id/onboarding">
 
   <fragment
-      android:id="@+id/onboardingFragment"
+      android:id="@+id/onboarding"
       android:name="com.materialstudies.owl.ui.onboarding.OnboardingFragment"
       android:label="fragment_onboarding"
       tools:layout="@layout/fragment_onboarding"/>
@@ -48,5 +48,11 @@
       android:name="com.materialstudies.owl.ui.learn.LearnFragment"
       android:label="fragment_learn"
       tools:layout="@layout/fragment_learn"/>
+
+  <fragment
+      android:id="@+id/lesson"
+      android:name="com.materialstudies.owl.ui.lessons.LessonFragment"
+      android:label="LessonFragment"
+      tools:layout="@layout/fragment_lesson"/>
 
 </navigation>

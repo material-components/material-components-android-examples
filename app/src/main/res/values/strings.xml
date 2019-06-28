@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   Copyright (c) 2019 Google Inc.
 
   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -27,9 +26,15 @@
   <string name="add">Add</string>
   <string name="you_ll_also_like">You\'ll Also Like</string>
   <string name="play_lesson">Play Lesson</string>
+  <string name="pause_video">Pause Video</string>
+  <string name="play_video">Play video</string>
+  <string name="step_num">Step %1$d</string>
 
   <!--sample data-->
   <string name="what_you_ll_need">What You\'ll Need:</string>
   <string name="needs">• DSLR or manual camera\n• 24mm wide angle lens\n• Tripod</string>
+  <string name="step_0">Identify the right aperture for your scene\'s depth of field to achieve the best clarity. Use a narrower aperture so that the entire scene remains in focus.</string>
+  <string name="step_1">Frame the subject of your landscape by making use of the lines and angles present in your scene. Look out for curves, textures, triangles, thirds, and other shapes that improve your composition.</string>
+  <string name="step_2">Find the time of the day with the best light conditions for your scene. Balance the light sources in your composition so that both light and shadows are present, adding depth, texture, and scale to your landscape.</string>
 
 </resources>

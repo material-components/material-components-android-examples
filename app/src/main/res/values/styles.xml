@@ -29,4 +29,13 @@
     <item name="itemTextAppearanceActive">@style/TextAppearance.Owl.BottomNavigation</item>
   </style>
 
+  <style name="Widget.Owl.SeekBar" parent="@style/Widget.AppCompat.SeekBar">
+    <item name="android:progressTint">@color/owl_yellow_500</item>
+    <item name="android:secondaryProgressTint">#99ffffff</item>
+    <item name="android:thumbTint">@color/owl_yellow_500</item>
+    <item name="android:progressDrawable">@drawable/seekbar_track</item>
+    <item name="android:paddingStart">0dp</item>
+    <item name="android:paddingEnd">0dp</item>
+  </style>
+
 </resources>

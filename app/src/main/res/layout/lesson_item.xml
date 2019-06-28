@@ -29,8 +29,6 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:foreground="?attr/selectableItemBackground"
-      android:clickable="true"
-      android:focusable="true"
       android:paddingVertical="@dimen/grid_2">
 
     <ImageView
@@ -41,8 +39,8 @@
         app:layout_constraintTop_toTopOf="parent"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/course_image_placeholder"
-        app:srcUrl="@{lesson.thumbUrl}"
-        android:contentDescription="@{lesson.thumbContentDescription}"/>
+        app:srcUrl="@{lesson.imageUrl}"
+        android:contentDescription="@{lesson.imageContentDescription}"/>
 
     <TextView
         android:id="@+id/title"
@@ -67,7 +65,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBaseline_toBaselineOf="@id/title"
         android:textAppearance="?attr/textAppearanceSubtitle2"
-        android:text="@{lesson.formattedSteps}"/>
+        android:text="@{lesson.formattedStepNumber}"/>
 
     <ImageView
         android:id="@+id/play_icon"

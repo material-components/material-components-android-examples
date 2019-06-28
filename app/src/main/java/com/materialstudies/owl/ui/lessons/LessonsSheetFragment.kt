@@ -30,9 +30,9 @@ import androidx.annotation.Px
 import androidx.core.view.doOnLayout
 import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
@@ -40,7 +40,6 @@ import com.materialstudies.owl.R
 import com.materialstudies.owl.databinding.FragmentLessonsSheetBinding
 import com.materialstudies.owl.model.courses
 import com.materialstudies.owl.model.lessons
-import com.materialstudies.owl.ui.learn.LessonAdapter
 import com.materialstudies.owl.util.doOnApplyWindowInsets
 import com.materialstudies.owl.util.lerp
 import com.materialstudies.owl.util.lerpArgb
@@ -59,8 +58,8 @@ class LessonsSheetFragment : Fragment() {
             course = courses.last()
             val behavior = BottomSheetBehavior.from(lessonsSheet)
             val backCallback =
-                requireActivity().onBackPressedDispatcher.addCallback(lifecycleOwner, false) {
-                    behavior.state = BottomSheetBehavior.STATE_COLLAPSED
+                requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, false) {
+                    behavior.state = STATE_COLLAPSED
                 }
             val sheetStartColor = lessonsSheet.context.getColor(R.color.owl_pink_500)
             val sheetEndColor =
@@ -112,10 +111,10 @@ class LessonsSheetFragment : Fragment() {
                 }
             }
             collapsePlaylist.setOnClickListener {
-                behavior.state = BottomSheetBehavior.STATE_COLLAPSED
+                behavior.state = STATE_COLLAPSED
             }
             sheetExpand.setOnClickListener {
-                behavior.state = BottomSheetBehavior.STATE_EXPANDED
+                behavior.state = STATE_EXPANDED
             }
             playlist.adapter = LessonAdapter().apply {
                 submitList(lessons)
