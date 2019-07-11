@@ -17,7 +17,6 @@
 package com.materialstudies.owl.util
 
 import android.view.View
-import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -57,23 +56,18 @@ class SpringAddItemAnimator : DefaultItemAnimator() {
                     stiffness = 100f,
                     damping = SpringForce.DAMPING_RATIO_NO_BOUNCY
                 )
-                val endListener = object : DynamicAnimation.OnAnimationEndListener {
-                    override fun onAnimationEnd(
-                        animation: DynamicAnimation<out DynamicAnimation<*>>?,
-                        canceled: Boolean,
-                        value: Float,
-                        velocity: Float
-                    ) {
-                        if (!canceled) {
-                            animation?.removeEndListener(this)
+
+                listenForAllSpringsEnd(
+                    { cancelled ->
+                        if (!cancelled) {
                             dispatchAddFinished(holder)
                             dispatchFinishedWhenDone()
                         } else {
                             clearAnimatedValues(holder.itemView)
                         }
-                    }
-                }
-                tySpring.addEndListener(endListener)
+                    },
+                    tySpring, aSpring
+                )
                 dispatchAddStarting(holder)
                 aSpring.animateToFinalPosition(1f)
                 tySpring.animateToFinalPosition(0f)

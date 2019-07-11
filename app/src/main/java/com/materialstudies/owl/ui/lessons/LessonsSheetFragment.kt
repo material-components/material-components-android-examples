@@ -29,7 +29,10 @@ import androidx.annotation.ColorInt
 import androidx.annotation.Px
 import androidx.core.view.doOnLayout
 import androidx.core.view.forEach
+import androidx.core.view.postDelayed
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED
@@ -38,7 +41,7 @@ import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.materialstudies.owl.R
 import com.materialstudies.owl.databinding.FragmentLessonsSheetBinding
-import com.materialstudies.owl.model.courses
+import com.materialstudies.owl.model.Course
 import com.materialstudies.owl.model.lessons
 import com.materialstudies.owl.util.doOnApplyWindowInsets
 import com.materialstudies.owl.util.lerp
@@ -49,13 +52,49 @@ import com.materialstudies.owl.util.lerpArgb
  */
 class LessonsSheetFragment : Fragment() {
 
+    private lateinit var binding: FragmentLessonsSheetBinding
+
+    private val onClick: (Int) -> Unit = { step ->
+        val course = this.course
+        if (course != null) {
+            binding.lessonsSheet.postDelayed(300L) {
+                val action =
+                    LessonsSheetFragmentDirections.actionLessonsSheetToLesson(course.id, step)
+                // FIXME should be able to `navigate(action)` but not working
+                val navController = findNavController()
+                val onLesson = navController.currentDestination?.id != R.id.lesson
+                navController.navigate(
+                    R.id.lesson,
+                    action.arguments,
+                    navOptions {
+                        launchSingleTop = true
+                        anim {
+                            enter = if (onLesson) R.anim.slide_in_up else -1
+                            popExit = R.anim.slide_out_down
+                        }
+                    }
+                )
+            }
+            BottomSheetBehavior.from(binding.lessonsSheet).state = STATE_COLLAPSED
+        }
+    }
+
+    private val lessonAdapter = LessonAdapter(onClick).apply {
+        submitList(lessons)
+    }
+
+    var course: Course? = null
+        set(value) {
+            field = value
+            binding.course = value
+        }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentLessonsSheetBinding.inflate(inflater, container, false).apply {
-            course = courses.last()
+        binding = FragmentLessonsSheetBinding.inflate(inflater, container, false).apply {
             val behavior = BottomSheetBehavior.from(lessonsSheet)
             val backCallback =
                 requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, false) {
@@ -116,9 +155,7 @@ class LessonsSheetFragment : Fragment() {
             sheetExpand.setOnClickListener {
                 behavior.state = STATE_EXPANDED
             }
-            playlist.adapter = LessonAdapter().apply {
-                submitList(lessons)
-            }
+            playlist.adapter = lessonAdapter
             playlist.addItemDecoration(
                 InsetDivider(
                     resources.getDimensionPixelSize(R.dimen.divider_inset),
@@ -132,7 +169,7 @@ class LessonsSheetFragment : Fragment() {
 }
 
 /**
- * An [ItemDecoration] which is inset from the left by the given amount.
+ * A [RecyclerView.ItemDecoration] which is inset from the left by the given amount.
  */
 class InsetDivider(
     @Px private val inset: Int,

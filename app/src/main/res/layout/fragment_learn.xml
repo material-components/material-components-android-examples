@@ -23,19 +23,26 @@
     <variable
         name="course"
         type="com.materialstudies.owl.model.Course"/>
+    <variable
+        name="imageLoadListener"
+        type="com.bumptech.glide.request.RequestListener"/>
   </data>
 
   <FrameLayout
+      android:id="@+id/root"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:theme="@style/Owl.Pink"
       tools:context=".ui.learn.LearnFragment">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:transitionName="shared_element">
 
       <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/learn_content"
           android:layout_width="match_parent"
           android:layout_height="wrap_content">
 
@@ -50,7 +57,8 @@
             app:srcCompat="@drawable/course_image_placeholder"
             android:foreground="@drawable/learn_image_scrim"
             android:scaleType="centerCrop"
-            app:srcUrl="@{course.thumbUrl}"/>
+            app:srcUrl="@{course.thumbUrl}"
+            app:loadListener="@{imageLoadListener}"/>
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -125,7 +133,7 @@
             android:gravity="center"
             android:textAppearance="?attr/textAppearanceBody1"
             app:lineHeight="28sp"
-            android:text="@{course.description}"/>
+            android:text="@string/course_desc"/>
 
         <View
             android:id="@+id/divider"

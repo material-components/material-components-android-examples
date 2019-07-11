@@ -23,13 +23,18 @@
     <variable
         name="course"
         type="com.materialstudies.owl.model.Course"/>
+    <variable
+        name="clickHandler"
+        type="com.materialstudies.owl.ui.mycourses.CourseViewClick"/>
   </data>
 
   <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/course_item"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginVertical="@dimen/grid_0_5"
-      android:paddingVertical="@dimen/grid_0_5">
+      android:layout_marginStart="32dp"
+      android:onClick="@{(v) -> clickHandler.onClick(v, course.id)}"
+      android:transitionName="@{course.name}">
 
     <View
         android:id="@+id/background"
@@ -45,8 +50,6 @@
         android:id="@+id/space"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintWidth_min="@dimen/grid_4"
-        app:layout_constraintWidth_max="64dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@id/course_image"/>
@@ -121,7 +124,7 @@
         android:importantForAccessibility="no"/>
 
     <View
-        android:id="@+id/click"
+        android:id="@+id/highlight"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="@id/course_image"

@@ -23,22 +23,29 @@
     <variable
         name="course"
         type="com.materialstudies.owl.model.Course"/>
+    <variable
+        name="clickHandler"
+        type="com.materialstudies.owl.ui.featured.CourseViewClick"/>
   </data>
 
   <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/featured_item"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_margin="@dimen/grid_0_5"
       android:foreground="?attr/selectableItemBackground"
-      app:elevationOverlay="@{@dimen/card_elevation}">
+      app:elevationOverlay="@{@dimen/card_elevation}"
+      android:transitionName="@{course.name}"
+      android:onClick="@{(v) -> clickHandler.onClick(v, course.id)}">
 
     <ImageView
         android:id="@+id/course_image"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintDimensionRatio="4:3"
         android:scaleType="centerCrop"
         app:srcUrl="@{course.thumbUrl}"
         app:placeholder="@{@drawable/course_image_placeholder}"

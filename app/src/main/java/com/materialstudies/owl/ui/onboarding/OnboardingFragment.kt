@@ -46,7 +46,7 @@ class OnboardingFragment : Fragment() {
     ): View? {
         val binding = FragmentOnboardingBinding.inflate(inflater, container, false).apply {
             fab.setOnClickListener {
-                findNavController().navigate(R.id.featured)
+                findNavController().navigate(R.id.action_onboarding_to_featured)
             }
             topicGrid.apply {
                 adapter = TopicsAdapter(context).apply {

@@ -18,8 +18,10 @@ package com.materialstudies.owl.model
 
 import androidx.recyclerview.widget.DiffUtil
 
+typealias CourseId = Long
+
 data class Course(
-    val id: Long,
+    val id: CourseId,
     val name: String,
     val subject: String,
     val thumbUrl: String,
@@ -33,6 +35,10 @@ data class Course(
 object CourseDiff : DiffUtil.ItemCallback<Course>() {
     override fun areItemsTheSame(oldItem: Course, newItem: Course) = oldItem.id == newItem.id
     override fun areContentsTheSame(oldItem: Course, newItem: Course) = oldItem == newItem
+}
+
+object CourseRepo {
+    fun getCourse(id: CourseId) = courses.find { it.id == id } ?: courses.last()
 }
 
 val courses = listOf(
@@ -150,8 +156,6 @@ val courses = listOf(
         subject = "Photography",
         thumbUrl = "https://source.unsplash.com/KxCJXXGsv9I",
         thumbContentDesc = "",
-        description = "This video course introduces the photography of structures, including " +
-                "urban and rural buildings, monuments, and less traditional structures. Instruction includes the handling of equipment and methods used to capture building interiors and exteriors. The discussion will be about the handling of distortion, varied light sources, and perspective.",
         steps = 4,
         step = 1
     )

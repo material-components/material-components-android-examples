@@ -25,6 +25,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.materialstudies.owl.R
 import com.materialstudies.owl.databinding.ActivityMainBinding
 import com.materialstudies.owl.util.contentView
+import com.materialstudies.owl.util.hide
+import com.materialstudies.owl.util.show
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,9 +40,9 @@ class MainActivity : AppCompatActivity() {
 
             // Hide bottom nav on screens which don't require it
             navController.addOnDestinationChangedListener { _, destination, _ ->
-                bottomNav.visibility = when (destination.id) {
-                    R.id.myCourses, R.id.featured, R.id.search -> VISIBLE
-                    else -> GONE
+                when (destination.id) {
+                    R.id.myCourses, R.id.featured, R.id.search -> bottomNav.show()
+                    else -> bottomNav.hide()
                 }
             }
         }

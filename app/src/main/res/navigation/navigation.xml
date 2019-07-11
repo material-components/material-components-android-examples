@@ -23,19 +23,35 @@
       android:id="@+id/onboarding"
       android:name="com.materialstudies.owl.ui.onboarding.OnboardingFragment"
       android:label="fragment_onboarding"
-      tools:layout="@layout/fragment_onboarding"/>
+      tools:layout="@layout/fragment_onboarding">
+    <action
+        android:id="@+id/action_onboarding_to_featured"
+        app:destination="@id/featured"
+        app:popUpTo="@+id/featured"/>
+  </fragment>
 
   <fragment
       android:id="@+id/myCourses"
       android:name="com.materialstudies.owl.ui.mycourses.MyCoursesFragment"
       android:label="fragment_my_courses"
-      tools:layout="@layout/fragment_my_courses"/>
+      tools:layout="@layout/fragment_my_courses">
+    <action
+        android:id="@+id/action_mycourses_to_learn"
+        app:destination="@id/learn"
+        app:exitAnim="@null"/>
+  </fragment>
 
   <fragment
       android:id="@+id/featured"
       android:name="com.materialstudies.owl.ui.featured.FeaturedFragment"
       android:label="fragment_featured"
-      tools:layout="@layout/fragment_featured"/>
+      tools:layout="@layout/fragment_featured">
+    <action
+        android:id="@+id/action_featured_to_learn"
+        app:destination="@id/learn"
+        app:exitAnim="@null"/>
+    <!--app:exitAnim="@anim/shrink_fade_out_center"-->
+  </fragment>
 
   <fragment
       android:id="@+id/search"
@@ -47,12 +63,34 @@
       android:id="@+id/learn"
       android:name="com.materialstudies.owl.ui.learn.LearnFragment"
       android:label="fragment_learn"
-      tools:layout="@layout/fragment_learn"/>
+      tools:layout="@layout/fragment_learn">
+    <argument
+        android:name="course_id"
+        app:argType="long"/>
+  </fragment>
+
+  <fragment
+      android:id="@+id/lessonsSheetFragment"
+      android:name="com.materialstudies.owl.ui.lessons.LessonsSheetFragment"
+      android:label="fragment_lessons_sheet"
+      tools:layout="@layout/fragment_lessons_sheet">
+    <action
+        android:id="@+id/action_lessons_sheet_to_lesson"
+        app:launchSingleTop="true"
+        app:destination="@+id/lesson"/>
+  </fragment>
 
   <fragment
       android:id="@+id/lesson"
       android:name="com.materialstudies.owl.ui.lessons.LessonFragment"
-      android:label="LessonFragment"
-      tools:layout="@layout/fragment_lesson"/>
+      android:label="fragment_lesson"
+      tools:layout="@layout/fragment_lesson">
+    <argument
+        android:name="course_id"
+        app:argType="long"/>
+    <argument
+        android:name="step_number"
+        app:argType="integer"/>
+  </fragment>
 
 </navigation>

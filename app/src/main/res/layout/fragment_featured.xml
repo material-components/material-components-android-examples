@@ -20,14 +20,19 @@
     tools:ignore="RtlSymmetry">
 
   <androidx.coordinatorlayout.widget.CoordinatorLayout
+      android:id="@+id/root"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:background="?attr/colorPrimarySurface"
       app:paddingTopSystemWindowInsets="@{true}"
+      app:paddingLeftSystemWindowInsets="@{true}"
+      app:paddingRightSystemWindowInsets="@{true}"
       android:theme="@style/Owl.Blue"
+      android:transitionGroup="false"
       tools:context=".ui.featured.FeaturedFragment">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:liftOnScroll="true"
@@ -35,6 +40,7 @@
         android:theme="@style/ThemeOverlay.Owl.Blue.Dark">
 
       <androidx.appcompat.widget.Toolbar
+          android:id="@+id/toolbar"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           app:layout_scrollFlags="scroll|enterAlways|snap"
@@ -49,14 +55,14 @@
         android:id="@+id/featured_grid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="@dimen/grid_0_5"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        android:paddingHorizontal="@dimen/grid_0_5"
+        android:paddingHorizontal="@dimen/grid_1_5"
         android:paddingBottom="@dimen/grid_1"
         android:clipToPadding="false"
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-        app:spanCount="2"
+        app:spanCount="@integer/featured_grid_columns"
         app:hasFixedSize="@{true}"
+        android:scrollbarStyle="outsideOverlay"
         android:scrollbars="vertical"/>
 
   </androidx.coordinatorlayout.widget.CoordinatorLayout>

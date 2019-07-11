@@ -31,6 +31,7 @@
   <string name="step_num">Step %1$d</string>
 
   <!--sample data-->
+  <string name="course_desc">This video course introduces the photography of structures, including urban and rural buildings, monuments, and less traditional structures. Instruction includes the handling of equipment and methods used to capture building interiors and exteriors. The discussion will be about the handling of distortion, varied light sources, and perspective.</string>
   <string name="what_you_ll_need">What You\'ll Need:</string>
   <string name="needs">• DSLR or manual camera\n• 24mm wide angle lens\n• Tripod</string>
   <string name="step_0">Identify the right aperture for your scene\'s depth of field to achieve the best clarity. Use a narrower aperture so that the entire scene remains in focus.</string>

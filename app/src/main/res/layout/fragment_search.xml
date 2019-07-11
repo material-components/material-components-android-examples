@@ -23,6 +23,8 @@
       android:background="?attr/colorPrimarySurface"
       android:theme="@style/Owl.Blue"
       app:paddingTopSystemWindowInsets="@{true}"
+      app:paddingLeftSystemWindowInsets="@{true}"
+      app:paddingRightSystemWindowInsets="@{true}"
       tools:context=".ui.search.SearchFragment">
 
     <com.google.android.material.appbar.AppBarLayout

@@ -36,6 +36,7 @@
         app:layout_constraintBottom_toTopOf="@id/choose"
         app:layout_constraintVertical_chainStyle="spread_inside"
         android:layout_margin="@dimen/grid_2"
+        app:marginLeftSystemWindowInsets="@{true}"
         app:srcCompat="@drawable/ic_theme_1_lockup"
         android:importantForAccessibility="no"/>
 
@@ -46,6 +47,7 @@
         app:layout_constraintBottom_toBottomOf="@id/lockup"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/grid_2"
+        app:marginRightSystemWindowInsets="@{true}"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
@@ -61,6 +63,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/topic_grid"
         android:layout_marginStart="@dimen/grid_4"
+        app:marginLeftSystemWindowInsets="@{true}"
+        app:marginRightSystemWindowInsets="@{true}"
         android:padding="@dimen/grid_2"
         android:gravity="end"
         android:textAppearance="?attr/textAppearanceHeadline4"
@@ -69,17 +73,19 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/topic_grid"
         android:layout_width="match_parent"
-        android:layout_height="248dp"
+        android:layout_height="@dimen/onboarding_topics_height"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/choose"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/fab"
         android:paddingHorizontal="@dimen/grid_1"
+        app:paddingLeftSystemWindowInsets="@{true}"
+        app:paddingRightSystemWindowInsets="@{true}"
         android:clipToPadding="false"
         android:clipChildren="false"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-        app:spanCount="3"
+        app:spanCount="@integer/onboarding_topics_rows"
         app:reverseLayout="true"
         app:hasFixedSize="@{true}"/>
 
@@ -92,6 +98,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="@dimen/grid_2"
         app:marginBottomSystemWindowInsets="@{true}"
+        app:marginRightSystemWindowInsets="@{true}"
         app:srcCompat="@drawable/ic_compass"
         app:tint="?attr/colorOnPrimary"/>
 

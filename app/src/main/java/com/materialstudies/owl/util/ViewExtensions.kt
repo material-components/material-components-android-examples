@@ -16,11 +16,28 @@
 
 package com.materialstudies.owl.util
 
+import android.animation.ValueAnimator
+import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.ColorDrawable
 import android.view.View
+import android.view.View.GONE
+import android.view.View.MeasureSpec
+import android.view.View.VISIBLE
+import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import androidx.annotation.AttrRes
+import androidx.annotation.ColorInt
 import androidx.annotation.IdRes
+import androidx.core.animation.doOnEnd
+import androidx.core.content.res.use
+import androidx.core.view.drawToBitmap
+import androidx.core.view.forEach
 import androidx.dynamicanimation.animation.DynamicAnimation.ViewProperty
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.materialstudies.owl.R
 
 /**
@@ -69,5 +86,159 @@ private fun getKey(property: ViewProperty): Int {
         SpringAnimation.SCROLL_X -> R.id.scroll_x
         SpringAnimation.SCROLL_Y -> R.id.scroll_y
         else -> throw IllegalAccessException("Unknown ViewProperty: $property")
+    }
+}
+
+/**
+ * Retrieve a color from the current [android.content.res.Resources.Theme].
+ */
+@ColorInt
+fun Context.themeColor(
+    @AttrRes themeAttrId: Int
+): Int {
+    return obtainStyledAttributes(
+        intArrayOf(themeAttrId)
+    ).use {
+        it.getColor(0, Color.MAGENTA)
+    }
+}
+
+/**
+ * Search this view and any children for a [ColorDrawable] `background` and return it's `color`,
+ * else return `colorSurface`.
+ */
+@ColorInt
+fun View.descendantBackgroundColor(): Int {
+    val bg = backgroundColor()
+    if (bg != null) {
+        return bg
+    } else if (this is ViewGroup) {
+        forEach {
+            val childBg = descendantBackgroundColorOrNull()
+            if (childBg != null) {
+                return childBg
+            }
+        }
+    }
+    return context.themeColor(R.attr.colorSurface)
+}
+
+@ColorInt
+private fun View.descendantBackgroundColorOrNull(): Int? {
+    val bg = backgroundColor()
+    if (bg != null) {
+        return bg
+    } else if (this is ViewGroup) {
+        forEach {
+            val childBg = backgroundColor()
+            if (childBg != null) {
+                return childBg
+            }
+        }
+    }
+    return null
+}
+
+/**
+ * Check if this [View]'s `background` is a [ColorDrawable] and if so, return it's `color`,
+ * otherwise `null`.
+ */
+@ColorInt
+fun View.backgroundColor(): Int? {
+    val bg = background
+    if (bg is ColorDrawable) {
+        return bg.color
+    }
+    return null
+}
+
+/**
+ * Walk up from a [View] looking for an ancestor with a given `id`.
+ */
+fun View.findAncestorById(@IdRes ancestorId: Int): View {
+    return when {
+        id == ancestorId -> this
+        parent is View -> (parent as View).findAncestorById(ancestorId)
+        else -> throw IllegalArgumentException("$ancestorId not a valid ancestor")
+    }
+}
+
+/**
+ * Potentially animate showing a [BottomNavigationView].
+ *
+ * Abruptly changing the visibility leads to a re-layout of main content, animating
+ * `translationY` leaves a gap where the view was that content does not fill.
+ *
+ * Instead, take a snapshot of the view, and animate this in, only changing the visibility (and
+ * thus layout) when the animation completes.
+ */
+fun BottomNavigationView.show() {
+    if (visibility == VISIBLE) return
+
+    val parent = parent as ViewGroup
+    // View needs to be laid out to create a snapshot & know position to animate. If view isn't
+    // laid out yet, need to do this manually.
+    if (!isLaidOut) {
+        measure(
+            MeasureSpec.makeMeasureSpec(parent.width, MeasureSpec.EXACTLY),
+            MeasureSpec.makeMeasureSpec(parent.height, MeasureSpec.AT_MOST)
+        )
+        layout(parent.left, parent.height - measuredHeight, parent.right, parent.height)
+    }
+
+    val drawable = BitmapDrawable(context.resources, drawToBitmap())
+    drawable.setBounds(left, parent.height, right, parent.height + height)
+    parent.overlay.add(drawable)
+    ValueAnimator.ofInt(parent.height, top).apply {
+        startDelay = 100L
+        duration = 300L
+        interpolator = AnimationUtils.loadInterpolator(
+            context,
+            android.R.interpolator.linear_out_slow_in
+        )
+        addUpdateListener {
+            val newTop = it.animatedValue as Int
+            drawable.setBounds(left, newTop, right, newTop + height)
+        }
+        doOnEnd {
+            parent.overlay.remove(drawable)
+            visibility = VISIBLE
+        }
+        start()
+    }
+}
+
+/**
+ * Potentially animate hiding a [BottomNavigationView].
+ *
+ * Abruptly changing the visibility leads to a re-layout of main content, animating
+ * `translationY` leaves a gap where the view was that content does not fill.
+ *
+ * Instead, take a snapshot, instantly hide the view (so content lays out to fill), then animate
+ * out the snapshot.
+ */
+fun BottomNavigationView.hide() {
+    if (visibility == GONE) return
+
+    val drawable = BitmapDrawable(context.resources, drawToBitmap())
+    val parent = parent as ViewGroup
+    drawable.setBounds(left, top, right, bottom)
+    parent.overlay.add(drawable)
+    visibility = GONE
+    ValueAnimator.ofInt(top, parent.height).apply {
+        startDelay = 100L
+        duration = 200L
+        interpolator = AnimationUtils.loadInterpolator(
+            context,
+            android.R.interpolator.fast_out_linear_in
+        )
+        addUpdateListener {
+            val newTop = it.animatedValue as Int
+            drawable.setBounds(left, newTop, right, newTop + height)
+        }
+        doOnEnd {
+            parent.overlay.remove(drawable)
+        }
+        start()
     }
 }

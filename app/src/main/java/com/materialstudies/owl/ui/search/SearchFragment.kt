@@ -20,7 +20,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.postDelayed
+import androidx.core.view.doOnNextLayout
 import androidx.fragment.app.Fragment
 import com.materialstudies.owl.databinding.FragmentSearchBinding
 import com.materialstudies.owl.model.topics
@@ -37,9 +37,8 @@ class SearchFragment : Fragment() {
             searchResults.apply {
                 itemAnimator = SpringAddItemAnimator()
                 adapter = SearchAdapter().apply {
-                    // Add animations not running without this delay
-                    // TODO(nickbutcher) work out why
-                    postDelayed(100L) {
+                    // add data after layout so that animations run
+                    doOnNextLayout {
                         submitList(topics)
                     }
                 }

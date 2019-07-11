@@ -38,7 +38,7 @@
         android:gravity="center"
         android:text="@{step.title}"
         android:textAppearance="?attr/textAppearanceHeadline6"
-        app:lineHeight="40sp"/>
+        app:lineHeight="36sp"/>
 
     <TextView
         android:id="@+id/body"

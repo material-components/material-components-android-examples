@@ -21,17 +21,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowInsets
 import android.widget.ImageView
-import androidx.constraintlayout.widget.Placeholder
 import androidx.core.view.updateLayoutParams
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestListener
 import com.google.android.material.elevation.ElevationOverlayProvider
 
-@BindingAdapter("srcUrl", "circleCrop", "placeholder", requireAll = false)
-fun ImageView.bindSrcUrl(url: String, circleCrop: Boolean, placeholder: Drawable?) {
+@BindingAdapter("srcUrl", "circleCrop", "placeholder", "loadListener", requireAll = false)
+fun ImageView.bindSrcUrl(
+    url: String,
+    circleCrop: Boolean,
+    placeholder: Drawable?,
+    loadListener: RequestListener<Drawable>?
+) {
     val request = Glide.with(this).load(url)
     if (circleCrop) request.circleCrop()
     if (placeholder != null) request.placeholder(placeholder)
+    if (loadListener != null) request.listener(loadListener)
     request.into(this)
 }
 
