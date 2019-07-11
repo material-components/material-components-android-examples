@@ -40,9 +40,10 @@ fun ImageView.bindSrcUrl(url: String, circleCrop: Boolean, placeholder: Drawable
  * use elevation as the design calls for no shadow.
  */
 @BindingAdapter("elevationOverlay")
-fun View.bindElevationOverlap(previousElevation: Float, elevation: Float) {
+fun View.bindElevationOverlay(previousElevation: Float, elevation: Float) {
     if (previousElevation == elevation) return
-    val color = ElevationOverlayProvider(context).getSurfaceColorWithOverlayIfNeeded(elevation)
+    val color = ElevationOverlayProvider(context)
+        .compositeOverlayWithThemeSurfaceColorIfNeeded(elevation)
     setBackgroundColor(color)
 }
 

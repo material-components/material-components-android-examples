@@ -32,6 +32,7 @@
       android:focusable="true"
       android:clickable="true"
       android:textAppearance="?attr/textAppearanceHeadline5"
+      android:textColor="?attr/colorOnPrimarySurface"
       android:text="@{topic.name}"/>
 
 </layout>

@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         app:liftOnScroll="true"
         app:liftOnScrollTargetViewId="@id/featured_grid"
-        android:theme="@style/ThemeOverlay.MaterialComponents.Dark">
+        android:theme="@style/ThemeOverlay.Owl.Blue.Dark">
 
       <androidx.appcompat.widget.Toolbar
           android:layout_width="match_parent"

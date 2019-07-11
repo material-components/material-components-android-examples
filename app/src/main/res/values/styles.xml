@@ -14,15 +14,9 @@
   -->
 <resources>
 
-  <style name="Widget.Owl.BottomNavigationView" parent="@style/Widget.MaterialComponents.BottomNavigationView.Colored">
-    <item name="android:background">?attr/colorPrimarySurface</item>
-    <item name="labelVisibilityMode">selected</item>
-    <item name="itemIconTint">@color/bottom_nav_item</item>
-    <item name="itemTextColor">@color/bottom_nav_item</item>
-    <item name="itemTextAppearanceActive">@style/TextAppearance.Owl.BottomNavigation</item>
-  </style>
-
-  <style name="Widget.Owl.Toolbar" parent="@style/Widget.MaterialComponents.Toolbar">
+  <style
+      name="Widget.Owl.BottomNavigationView"
+      parent="@style/Widget.MaterialComponents.BottomNavigationView.PrimarySurface">
     <item name="labelVisibilityMode">selected</item>
     <item name="itemIconTint">@color/bottom_nav_item</item>
     <item name="itemTextColor">@color/bottom_nav_item</item>

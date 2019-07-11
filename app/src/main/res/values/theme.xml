@@ -46,12 +46,9 @@
 
   </style>
 
-  <style name="Owl" parent="@style/Base.Owl">
-    <item name="colorPrimarySurface">?attr/colorPrimary</item>
-    <item name="colorOnPrimarySurface">?attr/colorOnPrimary</item>
-  </style>
+  <style name="Owl" parent="@style/Base.Owl"/>
 
-  <style name="Owl.Yellow" parent="@style/Base.Owl">
+  <style name="Owl.Yellow">
     <item name="colorPrimary">@color/owl_yellow_500</item>
     <item name="colorPrimaryVariant">@color/owl_yellow_400</item>
     <item name="colorSecondary">@color/owl_blue_700</item>
@@ -66,6 +63,14 @@
   </style>
 
   <style name="ThemeOverlay.Owl.Blue" parent="@style/ThemeOverlay.MaterialComponents.Light">
+    <item name="colorPrimary">@color/owl_blue_700</item>
+    <item name="colorPrimaryVariant">@color/owl_blue_800</item>
+    <item name="colorSecondary">@color/owl_yellow_500</item>
+    <item name="colorSecondaryVariant">@color/owl_yellow_400</item>
+    <item name="colorOnPrimary">#fff</item>
+  </style>
+
+  <style name="ThemeOverlay.Owl.Blue.Dark" parent="@style/ThemeOverlay.MaterialComponents.Dark">
     <item name="colorPrimary">@color/owl_blue_700</item>
     <item name="colorPrimaryVariant">@color/owl_blue_800</item>
     <item name="colorSecondary">@color/owl_yellow_500</item>

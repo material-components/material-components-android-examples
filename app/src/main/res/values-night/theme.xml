@@ -14,12 +14,7 @@
   -->
 <resources>
 
-  <style name="Owl" parent="@style/Base.Owl">
-    <item name="colorPrimarySurface">?attr/colorSurface</item>
-    <item name="colorOnPrimarySurface">?attr/colorOnSurface</item>
-  </style>
-
-  <style name="Owl.Yellow" parent="@style/Base.Owl">
+  <style name="Owl.Yellow">
     <item name="colorPrimary">@color/owl_yellow_200</item>
     <item name="colorSecondary">@color/owl_blue_200</item>
     <item name="colorSurface">@color/owl_yellow_dark_primary</item>
@@ -36,6 +31,8 @@
     <item name="colorSecondary">@color/owl_yellow_200</item>
     <item name="colorSurface">@color/owl_blue_dark_primary</item>
   </style>
+
+  <style name="ThemeOverlay.Owl.Blue.Dark"/>
 
   <style name="Owl.Pink">
     <item name="colorPrimary">@color/owl_pink_200</item>
