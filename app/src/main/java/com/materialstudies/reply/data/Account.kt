@@ -14,12 +14,19 @@
  * limitations under the License.
  */
 
-package com.materialstudies.reply
+package com.materialstudies.reply.data
 
-import android.app.Application
-import com.materialstudies.reply.data.EmailStore
+import androidx.annotation.DrawableRes
 
-class App : Application() {
-
-    val emailStore = EmailStore()
+/**
+ * An object which represents a person/account.
+ */
+data class Account(
+    val id: Long,
+    val firstName: String,
+    val lastName: String,
+    val email: String,
+    @DrawableRes val avatar: Int
+) {
+    val fullName: String = "$firstName $lastName"
 }

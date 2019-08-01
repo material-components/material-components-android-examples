@@ -15,18 +15,47 @@
 
 package com.materialstudies.reply.util
 
-import android.view.ViewGroup
-import android.view.WindowInsets
-import androidx.core.view.updateLayoutParams
+import android.content.Context
+import android.graphics.Color
+import android.graphics.Rect
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.view.ViewGroup
+import android.view.WindowInsets
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.blue
+import androidx.core.graphics.green
+import androidx.core.graphics.red
+import androidx.core.view.doOnNextLayout
+import androidx.core.view.updateLayoutParams
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestBuilder
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
+import com.google.android.material.chip.Chip
+import com.google.android.material.elevation.ElevationOverlayProvider
+import com.materialstudies.reply.R
+
+@BindingAdapter(
+    "popupElevationOverlay"
+)
+fun Spinner.bindPopupElevationOverlay(popupElevationOverlay: Float) {
+    setPopupBackgroundDrawable(ColorDrawable(
+        ElevationOverlayProvider(context)
+            .getSurfaceColorWithOverlayIfNeeded(popupElevationOverlay)
+    ))
+}
 
 @BindingAdapter(
     "drawableLeft",
@@ -49,6 +78,53 @@ fun TextView.bindDrawables(
     )
 }
 
+/**
+ * Set a Chip's leading icon using Glide.
+ *
+ * Optionally set the image to be center cropped and/or cropped to a circle.
+ */
+@BindingAdapter(
+    "glideChipIcon",
+    "glideChipIconCenterCrop",
+    "glideChipIconCircularCrop",
+    requireAll = false
+)
+fun Chip.bindGlideChipSrc(
+    @DrawableRes drawableRes: Int?,
+    centerCrop: Boolean = false,
+    circularCrop: Boolean = false
+) {
+    if (drawableRes == null) return
+
+    createGlideRequest(
+        context,
+        drawableRes,
+        centerCrop,
+        circularCrop
+    ).listener(object : RequestListener<Drawable> {
+        override fun onLoadFailed(
+            e: GlideException?,
+            model: Any?,
+            target: Target<Drawable>?,
+            isFirstResource: Boolean
+        ): Boolean = true
+
+        override fun onResourceReady(
+            resource: Drawable?,
+            model: Any?,
+            target: Target<Drawable>?,
+            dataSource: DataSource?,
+            isFirstResource: Boolean
+        ): Boolean {
+            chipIcon = resource
+            return true
+        }
+    }).submit(
+        resources.getDimensionPixelSize(R.dimen.chip_icon_diameter),
+        resources.getDimensionPixelSize(R.dimen.chip_icon_diameter)
+    )
+}
+
 @BindingAdapter(
     "glideSrc",
     "glideCenterCrop",
@@ -62,11 +138,24 @@ fun ImageView.bindGlideSrc(
 ) {
     if (drawableRes == null) return
 
-    val req = Glide.with(context).load(drawableRes)
+    createGlideRequest(
+        context,
+        drawableRes,
+        centerCrop,
+        circularCrop
+    ).into(this)
+}
+
+private fun createGlideRequest(
+    context: Context,
+    @DrawableRes src: Int,
+    centerCrop: Boolean,
+    circularCrop: Boolean
+): RequestBuilder<Drawable> {
+    val req = Glide.with(context).load(src)
     if (centerCrop) req.centerCrop()
     if (circularCrop) req.circleCrop()
-
-    req.into(this)
+    return req
 }
 
 @BindingAdapter("goneIf")
@@ -99,7 +188,6 @@ fun View.bindSystemWindowInsetHeight(
     applyBottom: Boolean
 ) {
     if (previousApplyTop == applyTop && previousApplyBottom == applyBottom) return
-
     doOnApplyWindowInsets { view, insets, _, _, initialHeight ->
         val top = if (applyTop) insets.systemWindowInsetTop else 0
         val bottom = if (applyBottom) insets.systemWindowInsetBottom else 0

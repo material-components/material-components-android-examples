@@ -68,6 +68,7 @@
         <item name="bottomSheetStyle">@style/Widget.Reply.BottomSheet.Modal</item>
         <item name="bottomSheetDialogTheme">@style/Base.ThemeOverlay.Reply.BottomSheetDialog</item>
         <item name="navigationViewStyle">@style/Widget.Reply.NavigationView</item>
+        <item name="chipStyle">@style/Widget.Reply.Chip.Entry</item>
 
         <!--System/Platform attributes-->
         <item name="android:windowBackground">?android:colorBackground</item>

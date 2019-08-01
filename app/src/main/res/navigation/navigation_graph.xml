@@ -30,6 +30,18 @@
         android:label="EmailFragment">
         <argument
             android:name="emailId"
-            app:argType="integer" />
+            app:argType="long" />
     </fragment>
+    <fragment
+        android:id="@+id/composeFragment"
+        android:name="com.materialstudies.reply.ui.compose.ComposeFragment"
+        android:label="ComposeFragment">
+        <argument
+            android:name="replyToEmailId"
+            app:argType="long"
+            android:defaultValue="-1L"/>
+    </fragment>
+    <action
+        android:id="@+id/action_global_composeFragment"
+        app:destination="@+id/composeFragment" />
 </navigation>

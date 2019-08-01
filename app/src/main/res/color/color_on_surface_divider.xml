@@ -12,9 +12,6 @@
   or implied. See the License for the specific language governing permissions and limitations under
   the License.
   -->
-<transitionSet
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:duration="@integer/reply_motion_default_duration">
-    <fade />
-</transitionSet>
-
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="?attr/colorOnSurface" android:alpha="0.1" />
+</selector>

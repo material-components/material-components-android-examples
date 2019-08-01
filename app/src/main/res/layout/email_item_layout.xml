@@ -62,7 +62,7 @@
                     android:layout_marginStart="@dimen/keyline_4"
                     android:layout_marginEnd="@dimen/keyline_4"
                     android:maxLines="1"
-                    android:text="@{email.sender}"
+                    android:text="@{email.senderPreview}"
                     tools:text="Google Express - 12m"
                     app:layout_constraintEnd_toStartOf="@+id/sender_profile_image_view"
                     app:layout_constraintStart_toStartOf="parent"
@@ -126,7 +126,7 @@
                     android:contentDescription="@string/email_sender_profile_content_desc"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:glideSrc="@{email.senderResId}"
+                    app:glideSrc="@{email.sender.avatar}"
                     app:glideCircularCrop="@{true}" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,7 +28,7 @@
         android:layout_height="match_parent"
         android:fillViewport="true"
         android:paddingHorizontal="@dimen/keyline_2"
-        android:paddingVertical="@dimen/keyline_3"
+        android:paddingTop="@dimen/keyline_3"
         android:clipToPadding="false"
         android:background="?android:colorBackground"
         app:paddingTopSystemWindowInsets="@{true}">
@@ -83,7 +83,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/sender_profile_image_view"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/subject_text_view"
-                    android:text="@{email.sender}"
+                    android:text="@{email.senderPreview}"
                     android:textAppearance="?attr/textAppearanceBody2"
                     tools:text="Ali Connors -- 12m" />
 
@@ -96,7 +96,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/sender_profile_image_view"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/sender_text_view"
-                    android:text="@{@string/email_recipient_to(email.recipient)}"
+                    android:text="@{@string/email_recipient_to(email.recipientsPreview)}"
                     android:textAppearance="?attr/textAppearanceCaption"
                     android:textColor="@color/color_on_surface_emphasis_medium" />
 
@@ -110,7 +110,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     android:contentDescription="@string/email_sender_profile_content_desc"
                     android:scaleType="centerCrop"
-                    app:glideSrc="@{email.senderResId}"
+                    app:glideSrc="@{email.sender.avatar}"
                     app:glideCircularCrop="@{true}"
                     tools:src="@drawable/avatar_3" />
 

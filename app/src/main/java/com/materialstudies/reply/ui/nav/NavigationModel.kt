@@ -24,7 +24,7 @@ import com.materialstudies.reply.data.EmailStore
 /**
  * A class which maintains and generates a navigation list to be displayed by [NavigationAdapter].
  */
-class NavigationModel(private val emailsStore: EmailStore) {
+object NavigationModel {
 
     private var navigationMenuItems = mutableListOf(
         NavigationModelItem.NavMenuItem(
@@ -94,7 +94,7 @@ class NavigationModel(private val emailsStore: EmailStore) {
     private fun postListUpdate() {
         val newList = navigationMenuItems +
             (NavigationModelItem.NavDivider("Folders")) +
-            emailsStore.getAllFolders().map { NavigationModelItem.NavEmailFolder(it) }
+            EmailStore.getAllFolders().map { NavigationModelItem.NavEmailFolder(it) }
 
         _navigationList.value = newList
     }

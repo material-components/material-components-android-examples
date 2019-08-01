@@ -49,4 +49,11 @@
     <!--EmailFragment-->
     <string name="email_recipient_to">To %1$s</string>
     <string name="email_card_transition_name">email_card_%1$s</string>
+
+    <!--ComposeFragment-->
+    <string name="compose_close_content_desc">Close editing email</string>
+    <string name="compose_send_content_desc">Send email</string>
+    <string name="compose_add_recipient_icon_content_desc">Add recipient</string>
+    <string name="compose_subject_hint">Subject</string>
+    <string name="compose_body_hint">New message…</string>
 </resources>

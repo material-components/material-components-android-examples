@@ -30,6 +30,8 @@ import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import com.materialstudies.reply.R
 import com.materialstudies.reply.databinding.ActivityMainBinding
+import com.materialstudies.reply.ui.compose.ComposeFragmentDirections
+import com.materialstudies.reply.ui.email.EmailFragmentArgs
 import com.materialstudies.reply.ui.nav.AlphaSlideAction
 import com.materialstudies.reply.ui.nav.BottomNavDrawerFragment
 import com.materialstudies.reply.ui.nav.ChangeSettingsMenuStateAction
@@ -46,6 +48,10 @@ class MainActivity : AppCompatActivity(),
     private val bottomNavDrawer: BottomNavDrawerFragment by lazy(NONE) {
         supportFragmentManager.findFragmentById(R.id.bottom_nav_drawer) as BottomNavDrawerFragment
     }
+
+    // Keep track of the current Email being viewed, if any, in order to pass the correct email id
+    // to ComposeFragment when this Activity's FAB is clicked.
+    private var currentEmailId = -1L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +71,10 @@ class MainActivity : AppCompatActivity(),
         binding.fab.apply {
             setShowMotionSpecResource(R.animator.fab_show)
             setHideMotionSpecResource(R.animator.fab_hide)
+            setOnClickListener {
+                findNavController(R.id.nav_host_fragment)
+                    .navigate(ComposeFragmentDirections.actionGlobalComposeFragment(currentEmailId))
+            }
         }
 
         bottomNavDrawer.apply {
@@ -105,12 +115,24 @@ class MainActivity : AppCompatActivity(),
         destination: NavDestination,
         arguments: Bundle?
     ) {
-        // Set the configuration of the BottomAppBar and FAB based on the current destination.
+        // Set the currentEmail being viewed so when the FAB is pressed, the correct email
+        // reply is created. In a real app, this should be done in a ViewModel but is done
+        // here to keep things simple. Here we're also setting the configuration of the
+        // BottomAppBar and FAB based on the current destination.
         when (destination.id) {
-            R.id.homeFragment ->
+            R.id.homeFragment -> {
+                currentEmailId = -1
                 setBottomAppBarForHome(getBottomAppBarMenuForDestination(destination))
-            R.id.emailFragment ->
+            }
+            R.id.emailFragment -> {
+                currentEmailId =
+                    if (arguments == null) -1 else EmailFragmentArgs.fromBundle(arguments).emailId
                 setBottomAppBarForEmail(getBottomAppBarMenuForDestination(destination))
+            }
+            R.id.composeFragment -> {
+                currentEmailId = -1
+                setBottomAppBarForCompose()
+            }
         }
     }
 
@@ -135,10 +157,14 @@ class MainActivity : AppCompatActivity(),
     private fun setBottomAppBarForHome(@MenuRes menuRes: Int) {
         binding.run {
             // TODO(hunterstich) Create ASL which animates back instead of resetting.
-            (fab.drawable as AnimatedVectorDrawable).reset()
-            fab.setImageState(intArrayOf(android.R.attr.state_activated), false)
+            (fab.drawable as AnimatedVectorDrawable).apply {
+                reset()
+                state = intArrayOf(android.R.attr.state_activated)
+            }
             bottomAppBar.replaceMenu(menuRes)
             bottomAppBarTitle.visibility = View.VISIBLE
+            bottomAppBar.performShow()
+            fab.show()
         }
     }
 
@@ -147,6 +173,15 @@ class MainActivity : AppCompatActivity(),
             (fab.drawable as AnimatedVectorDrawable).start()
             bottomAppBar.replaceMenu(menuRes)
             bottomAppBarTitle.visibility = View.INVISIBLE
+            bottomAppBar.performShow()
+            fab.show()
+        }
+    }
+
+    private fun setBottomAppBarForCompose() {
+        binding.run {
+            bottomAppBar.performHide()
+            fab.hide()
         }
     }
 

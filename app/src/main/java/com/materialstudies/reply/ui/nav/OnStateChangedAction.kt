@@ -69,7 +69,7 @@ class ShowHideFabStateAction(
 }
 
 /**
- * A state change action that sets a views visibility depending on whether the sheet is hidden
+ * A state change action that sets a view's visibility depending on whether the sheet is hidden
  * or not.
  *
  * By default, the view will be hidden when the sheet is hidden and shown when the sheet is shown

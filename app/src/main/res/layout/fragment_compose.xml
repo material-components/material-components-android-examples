@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2019 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="email"
+            type="com.materialstudies.reply.data.Email" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:paddingHorizontal="@dimen/keyline_2"
+        android:paddingTop="@dimen/keyline_3"
+        android:clipToPadding="false"
+        android:background="?android:colorBackground"
+        app:paddingTopSystemWindowInsets="@{true}">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/email_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/keyline_4">
+
+                <ImageView
+                    android:id="@+id/close_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/subject_edit_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/subject_edit_text"
+                    android:layout_marginStart="@dimen/keyline_4"
+                    android:padding="@dimen/keyline_2"
+                    android:contentDescription="@string/compose_close_content_desc"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:srcCompat="@drawable/ic_close"
+                    app:tint="@color/color_on_surface_emphasis_disabled" />
+
+                <EditText
+                    android:id="@+id/subject_edit_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toStartOf="@+id/send_icon"
+                    app:layout_constraintStart_toEndOf="@id/close_icon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="@dimen/keyline_4"
+                    android:layout_marginVertical="@dimen/keyline_3"
+                    android:padding="0dp"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/compose_subject_hint"
+                    android:text="@{email.subject}"
+                    android:textAppearance="?attr/textAppearanceHeadline5" />
+
+                <ImageView
+                    android:id="@+id/send_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/subject_edit_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/subject_edit_text"
+                    android:layout_marginEnd="@dimen/keyline_4"
+                    android:padding="@dimen/keyline_2"
+                    android:contentDescription="@string/compose_send_content_desc"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    app:srcCompat="@drawable/ic_twotone_send_primary" />
+
+                <View
+                    android:id="@+id/subject_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/subject_edit_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="@dimen/keyline_4"
+                    android:layout_marginHorizontal="@dimen/keyline_4"
+                    android:background="@drawable/divider"
+                    android:backgroundTint="@color/color_on_surface_divider"/>
+
+                <Spinner
+                    android:id="@+id/sender_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/subject_divider"
+                    android:layout_marginTop="@dimen/keyline_2"
+                    android:layout_marginEnd="@dimen/keyline_3"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:popupElevationOverlay="@{@dimen/plane_16}"/>
+
+                <View
+                    android:id="@+id/sender_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sender_spinner"
+                    android:layout_marginHorizontal="@dimen/keyline_4"
+                    android:layout_marginTop="@dimen/keyline_2"
+                    android:background="@drawable/divider"
+                    android:backgroundTint="@color/color_on_surface_divider" />
+
+                <FrameLayout
+                    android:id="@+id/recipient_frame"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toStartOf="@id/recipient_add_icon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sender_divider"
+                    android:layout_marginTop="@dimen/keyline_3"
+                    android:layout_marginEnd="@dimen/keyline_4">
+
+                    <HorizontalScrollView
+                        android:id="@+id/recipient_scroll_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:paddingVertical="@dimen/keyline_1"
+                        android:clipToPadding="false"
+                        android:scrollbars="none"
+                        android:requiresFadingEdge="horizontal"
+                        android:fadingEdgeLength="@dimen/keyline_5"
+                        android:overScrollMode="never">
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/recipient_chip_group"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="@dimen/keyline_4"
+                            android:scrollbars="none"
+                            app:singleLine="true" />
+
+                    </HorizontalScrollView>
+
+                </FrameLayout>
+
+                <ImageView
+                    android:id="@+id/recipient_add_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/recipient_frame"
+                    app:layout_constraintBottom_toBottomOf="@id/recipient_frame"
+                    android:layout_marginEnd="@dimen/keyline_4"
+                    android:padding="@dimen/keyline_2"
+                    android:contentDescription="@string/compose_add_recipient_icon_content_desc"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    app:tint="@color/color_on_surface_emphasis_disabled"
+                    app:srcCompat="@drawable/ic_twotone_add_circle_outline"/>
+
+                <View
+                    android:id="@+id/recipient_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recipient_frame"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="@dimen/keyline_3"
+                    android:layout_marginHorizontal="@dimen/keyline_4"
+                    android:background="@drawable/divider"
+                    android:backgroundTint="@color/color_on_surface_divider"/>
+
+                <EditText
+                    android:id="@+id/body_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/recipient_divider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="@dimen/keyline_4"
+                    android:layout_marginHorizontal="@dimen/keyline_4"
+                    android:padding="0dp"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/compose_body_hint"
+                    android:text="@{email.body}"
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    app:lineHeight="24sp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

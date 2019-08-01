@@ -24,6 +24,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
@@ -31,7 +32,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HALF_EX
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HIDDEN
 import com.google.android.material.bottomsheet.BottomSheetBehavior.from
 import com.google.android.material.shape.MaterialShapeDrawable
-import com.materialstudies.reply.App
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.FragmentBottomNavDrawerBinding
@@ -42,9 +42,6 @@ import kotlin.LazyThreadSafetyMode.NONE
  * A [Fragment] which acts as a bottom navigation drawer.
  */
 class BottomNavDrawerFragment : Fragment(), NavigationAdapter.NavigationAdapterListener {
-
-    private lateinit var emailStore: EmailStore
-    private lateinit var navigationModel: NavigationModel
 
     private lateinit var binding: FragmentBottomNavDrawerBinding
 
@@ -111,8 +108,6 @@ class BottomNavDrawerFragment : Fragment(), NavigationAdapter.NavigationAdapterL
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        emailStore = (requireActivity().application as App).emailStore
-        navigationModel = NavigationModel(emailStore)
         binding.run {
             backgroundContainer.background = backgroundShapeDrawable
             foregroundContainer.background = foregroundShapeDrawable
@@ -138,10 +133,10 @@ class BottomNavDrawerFragment : Fragment(), NavigationAdapter.NavigationAdapterL
 
             val adapter = NavigationAdapter(this@BottomNavDrawerFragment)
             binding.navRecyclerView.adapter = adapter
-            navigationModel.navigationList.observe(this@BottomNavDrawerFragment, Observer {
+            NavigationModel.navigationList.observe(this@BottomNavDrawerFragment) {
                 adapter.submitList(it)
-            })
-            navigationModel.setNavigationMenuItemChecked(0)
+            }
+            NavigationModel.setNavigationMenuItemChecked(0)
         }
     }
 
@@ -169,7 +164,7 @@ class BottomNavDrawerFragment : Fragment(), NavigationAdapter.NavigationAdapterL
     }
 
     override fun onNavMenuItemClicked(item: NavigationModelItem.NavMenuItem) {
-        if (navigationModel.setNavigationMenuItemChecked(item.id)) close()
+        if (NavigationModel.setNavigationMenuItemChecked(item.id)) close()
     }
 
     override fun onNavEmailFolderClicked(folder: NavigationModelItem.NavEmailFolder) {

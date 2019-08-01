@@ -47,6 +47,7 @@
             app:fabAlignmentMode="center"
             app:fabCradleRoundedCornerRadius="@dimen/bottom_app_bar_fab_cradle_corner_radius"
             app:fabCradleMargin="@dimen/bottom_app_bar_fab_cradle_margin"
+            app:hideOnScroll="true"
             app:heightAdditiveBottomSystemWindowInsets="@{true}">
 
             <LinearLayout

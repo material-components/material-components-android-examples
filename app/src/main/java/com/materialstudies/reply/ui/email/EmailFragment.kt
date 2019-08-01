@@ -26,7 +26,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
-import com.materialstudies.reply.App
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.FragmentEmailBinding
@@ -40,11 +39,11 @@ private const val MAX_GRID_SPANS = 3
  */
 class EmailFragment : Fragment() {
 
+
+    private val args: EmailFragmentArgs by navArgs()
+    private val emailId: Long by lazy(NONE) { args.emailId }
+
     private lateinit var binding: FragmentEmailBinding
-
-    private val emailId: Int by lazy(NONE) { navArgs<EmailFragmentArgs>().value.emailId }
-    private lateinit var emailStore: EmailStore
-
     private val attachmentAdapter = EmailAttachmentGridAdapter(MAX_GRID_SPANS)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,13 +62,12 @@ class EmailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        emailStore = (requireActivity().application as App).emailStore
 
         binding.navigationIcon.setOnClickListener {
             findNavController().navigateUp()
         }
 
-        val email = emailStore.get(emailId)
+        val email = EmailStore.get(emailId)
         if (email == null) {
             showError()
             return

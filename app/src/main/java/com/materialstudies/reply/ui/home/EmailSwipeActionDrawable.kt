@@ -26,7 +26,7 @@ import android.graphics.Rect
 import android.graphics.RectF
 import android.graphics.drawable.Drawable
 import androidx.annotation.ColorInt
-import androidx.core.content.ContextCompat
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.materialstudies.reply.R
 import com.materialstudies.reply.util.getColorFromAttr
@@ -53,7 +53,10 @@ class EmailSwipeActionDrawable(context: Context) : Drawable() {
     private var cx = 0F
     private var cr = 0F
 
-    private val icon = ContextCompat.getDrawable(context, R.drawable.ic_twotone_star)!!
+    private val icon = AppCompatResources.getDrawable(
+        context,
+        R.drawable.ic_twotone_star_on_background
+    )!!
     private val iconMargin = context.resources.getDimension(R.dimen.keyline_6)
     private val iconIntrinsicWidth = icon.intrinsicWidth
     private val iconIntrinsicHeight = icon.intrinsicHeight
