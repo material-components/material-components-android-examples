@@ -27,8 +27,8 @@
         android:id="@+id/nav_item_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/navigation_drawer_menu_item_height"
-        android:paddingLeft="@dimen/keyline_6"
-        android:paddingRight="@dimen/keyline_6"
+        android:paddingLeft="@dimen/grid_4"
+        android:paddingRight="@dimen/grid_4"
         android:background="?attr/selectableItemBackground"
         android:gravity="center_vertical|left"
         android:onClick="@{() -> navListener.onNavEmailFolderClicked(navEmailFolder)}"
@@ -39,7 +39,7 @@
         android:textAppearance="?attr/textAppearanceSubtitle1"
         android:drawableLeft="@drawable/ic_twotone_folder_on_branded"
         android:drawableTint="@color/color_on_branded_surface_emphasis_medium"
-        android:drawablePadding="@dimen/keyline_6"
+        android:drawablePadding="@dimen/grid_4"
         tools:text="Pine Elementary" />
 
 </layout>

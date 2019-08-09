@@ -32,6 +32,7 @@ import com.materialstudies.reply.R
 import com.materialstudies.reply.util.getColorFromAttr
 import com.materialstudies.reply.util.lerp
 import com.materialstudies.reply.util.lerpArgb
+import kotlin.math.abs
 import kotlin.math.hypot
 
 /**
@@ -57,7 +58,7 @@ class EmailSwipeActionDrawable(context: Context) : Drawable() {
         context,
         R.drawable.ic_twotone_star_on_background
     )!!
-    private val iconMargin = context.resources.getDimension(R.dimen.keyline_6)
+    private val iconMargin = context.resources.getDimension(R.dimen.grid_4)
     private val iconIntrinsicWidth = icon.intrinsicWidth
     private val iconIntrinsicHeight = icon.intrinsicHeight
 
@@ -76,6 +77,7 @@ class EmailSwipeActionDrawable(context: Context) : Drawable() {
             }
         }
     private var progressAnim: ValueAnimator? = null
+    private val dur = context.resources.getInteger(R.integer.reply_motion_short_duration)
     private val interp = FastOutSlowInInterpolator()
 
     override fun onBoundsChange(bounds: Rect?) {
@@ -116,7 +118,7 @@ class EmailSwipeActionDrawable(context: Context) : Drawable() {
                 progress = animatedValue as Float
             }
             interpolator = interp
-            duration = (Math.abs(newProgress - initialProgress) * 250F).toLong()
+            duration = (abs(newProgress - initialProgress) * dur).toLong()
         }
         progressAnim?.start()
         return newProgress == initialProgress

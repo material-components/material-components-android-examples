@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="?attr/listPreferredItemHeight"
-        android:paddingHorizontal="@dimen/keyline_4"
+        android:paddingHorizontal="@dimen/grid_2"
         android:onClick="@{() -> accountListener.onAccountClicked(account)}"
         android:background="?attr/selectableItemBackground">
 
@@ -39,7 +39,7 @@
             android:id="@+id/account_profile_image_view"
             android:layout_width="@dimen/navigation_drawer_profile_image_size"
             android:layout_height="@dimen/navigation_drawer_profile_image_size"
-            android:padding="@dimen/keyline_3"
+            android:padding="@dimen/grid_1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -51,7 +51,7 @@
             android:id="@+id/account_address_text_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/keyline_4"
+            android:layout_marginHorizontal="@dimen/grid_2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/account_profile_image_view"
@@ -62,7 +62,7 @@
             android:textColor="@color/color_navigation_drawer_menu_item"
             app:drawableTint="@color/color_navigation_drawer_menu_item"
             app:drawableRight="@{account.checkedIcon}"
-            android:drawablePadding="@dimen/keyline_5"
+            android:drawablePadding="@dimen/grid_3"
             android:lines="1"
             android:ellipsize="end"
             tools:text="hikingfan@gmail.com" />

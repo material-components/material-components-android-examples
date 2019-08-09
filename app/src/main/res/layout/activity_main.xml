@@ -54,8 +54,8 @@
                 android:id="@+id/bottom_app_bar_content_container"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/min_touch_target_size"
-                android:layout_marginVertical="@dimen/keyline_2"
-                android:paddingHorizontal="@dimen/keyline_2"
+                android:layout_marginVertical="@dimen/grid_0_5"
+                android:paddingHorizontal="@dimen/grid_0_5"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:foreground="@drawable/bottom_app_bar_title_foreground">
@@ -72,7 +72,7 @@
                     android:id="@+id/bottom_app_bar_logo"
                     android:layout_width="@dimen/bottom_app_bar_logo_size"
                     android:layout_height="@dimen/bottom_app_bar_logo_size"
-                    android:layout_marginLeft="@dimen/keyline_3"
+                    android:layout_marginLeft="@dimen/grid_1"
                     android:contentDescription="@string/bottom_app_bar_logo_content_desc"
                     android:layout_gravity="center_vertical"
                     app:srcCompat="@drawable/ic_reply_logo_on_branded" />
@@ -83,8 +83,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/keyline_3"
-                    android:layout_marginRight="@dimen/keyline_3"
+                    android:layout_marginLeft="@dimen/grid_1"
+                    android:layout_marginRight="@dimen/grid_1"
                     android:text="@string/navigation_inbox"
                     android:textColor="?attr/colorControlNormal"/>
 

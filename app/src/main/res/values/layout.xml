@@ -12,13 +12,18 @@
   or implied. See the License for the specific language governing permissions and limitations under
   the License.
   -->
-<TextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/spinner_title_item_layout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingVertical="@dimen/grid_2"
-    android:paddingHorizontal="@dimen/grid_2"
-    android:maxLines="1"
-    android:ellipsize="end"
-    android:textAppearance="?attr/textAppearanceBody1" />
+<resources>
+
+    <!--Layout-->
+    <!--Reply uses an 8dp grid system. Smaller components can align to a 2dp 'sub' grid.-->
+
+    <!--2dp sub grid-->
+    <dimen name="grid_0_25">2dp</dimen>
+    <dimen name="grid_0_5">4dp</dimen>
+
+    <!--8dp grid-->
+    <dimen name="grid_1">8dp</dimen>
+    <dimen name="grid_2">16dp</dimen>
+    <dimen name="grid_3">24dp</dimen>
+    <dimen name="grid_4">32dp</dimen>
+</resources>

@@ -13,13 +13,6 @@
   the License.
   -->
 <resources>
-    <!--Layout keylines-->
-    <dimen name="keyline_1">2dp</dimen>
-    <dimen name="keyline_2">4dp</dimen>
-    <dimen name="keyline_3">8dp</dimen>
-    <dimen name="keyline_4">16dp</dimen>
-    <dimen name="keyline_5">24dp</dimen>
-    <dimen name="keyline_6">32dp</dimen>
 
     <dimen name="min_touch_target_size">48dp</dimen>
     <dimen name="min_icon_target_padding">12dp</dimen>

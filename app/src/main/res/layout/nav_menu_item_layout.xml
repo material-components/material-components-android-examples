@@ -30,8 +30,8 @@
         android:id="@+id/nav_item_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/navigation_drawer_menu_item_height"
-        android:paddingLeft="@dimen/keyline_6"
-        android:paddingRight="@dimen/keyline_6"
+        android:paddingLeft="@dimen/grid_4"
+        android:paddingRight="@dimen/grid_4"
         android:background="?attr/selectableItemBackground"
         android:gravity="center_vertical|left"
         android:onClick="@{() -> navListener.onNavMenuItemClicked(navMenuItem)}"
@@ -43,7 +43,7 @@
         android:textColor="@color/color_navigation_drawer_menu_item"
         android:drawableTint="@color/color_navigation_drawer_menu_item"
         app:drawableLeft="@{navMenuItem.icon}"
-        android:drawablePadding="@dimen/keyline_6"
+        android:drawablePadding="@dimen/grid_4"
         tools:text="Inbox" />
 
 </layout>

@@ -13,25 +13,6 @@
   the License.
   -->
 <resources>
-    <!--Color theme (light)-->
-    <color name="reply_color_primary">@color/colorBlue700</color>
-    <color name="reply_color_primary_variant">@color/colorBlue800</color>
-    <color name="reply_color_secondary">@color/colorOrange500</color>
-    <color name="reply_color_secondary_variant">@color/colorOrange400</color>
-
-    <color name="reply_color_background">@color/colorBlue50</color>
-    <color name="reply_color_surface">@color/colorWhite50</color>
-    <color name="reply_color_error">@color/colorRed400</color>
-
-    <color name="reply_color_on_primary">@color/colorWhite50</color>
-    <color name="reply_color_on_secondary">@color/colorBlack900</color>
-    <color name="reply_color_on_background">@color/colorBlack900</color>
-    <color name="reply_color_on_surface">@color/colorBlack900</color>
-    <color name="reply_color_on_error">@color/colorBlack900</color>
-
-    <color name="reply_color_status_bar">@color/colorBlue50Alpha060</color>
-    <color name="reply_color_scrim">@color/colorWhite50Alpha060</color>
-
 
     <!--Color palette-->
     <color name="colorWhite50">#ffffff</color>
@@ -58,6 +39,14 @@
 
     <color name="colorBlue50Alpha060">#99eef0f2</color>
 
+    <color name="colorBlack900Alpha020">#33000000</color>
     <color name="colorBlack900Alpha087">#de000000</color>
     <color name="colorBlack900Alpha060">#99000000</color>
+
+    <!--Nav bar color protection for behavior differences between Android P and Q. All sdk-->
+    <!--levels should draw fullscreen. P should color the nav bar with a translucent background -->
+    <!--to guard for contrast. Q should have a transparent nav bar as Q will automatically -->
+    <!--handles contrast by either dynamically coloring the nav bar handle (gesture nav) -->
+    <!--or automatically applying a translucent background (3-button mode).-->
+    <color name="nav_bar">@color/colorBlack900Alpha020</color>
 </resources>

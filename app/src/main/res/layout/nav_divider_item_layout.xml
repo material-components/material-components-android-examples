@@ -25,12 +25,12 @@
         android:id="@+id/divider_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/keyline_4"
-        android:layout_marginHorizontal="@dimen/keyline_6"
+        android:layout_marginVertical="@dimen/grid_2"
+        android:layout_marginHorizontal="@dimen/grid_4"
         android:text="@{navDivider.title}"
         android:textAppearance="?attr/textAppearanceOverline"
         android:textColor="@color/color_on_branded_surface_emphasis_medium"
-        android:drawablePadding="@dimen/keyline_6"
+        android:drawablePadding="@dimen/grid_4"
         app:drawableTopCompat="@drawable/nav_divider_top" />
 
 </layout>

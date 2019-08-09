@@ -19,9 +19,27 @@
 
     <style name="Theme.Reply.Dark" parent="Theme.Reply">
 
-        <item name="colorBrandedSurface">?colorSurface</item>
-        <item name="colorBrandedVariantSurface">?colorSurface</item>
-        <item name="colorOnBrandedSurface">?colorOnSurface</item>
+        <!--Color-->
+        <item name="colorPrimary">@color/colorBlue200</item>
+        <item name="colorPrimaryVariant">@color/colorBlue300</item>
+        <item name="colorSecondary">@color/colorOrange300</item>
+        <item name="colorSecondaryVariant">@color/colorOrange300</item>
+
+        <item name="android:colorBackground">@color/colorBlack900</item>
+        <item name="colorSurface">@color/colorBlack800</item>
+        <item name="colorBrandedSurface">?attr/colorSurface</item>
+        <item name="colorBrandedVariantSurface">?attr/colorSurface</item>
+        <item name="colorError">@color/colorRed200</item>
+
+        <item name="colorOnPrimary">@color/colorBlack900</item>
+        <item name="colorOnSecondary">@color/colorBlack900</item>
+        <item name="colorOnBackground">@color/colorWhite50</item>
+        <item name="colorOnSurface">@color/colorWhite50</item>
+        <item name="colorOnBrandedSurface">?attr/colorOnSurface</item>
+        <item name="colorOnError">@color/colorBlack900</item>
+
+        <item name="scrimBackground">@color/colorBlack900Alpha087</item>
+        <item name="android:statusBarColor">@color/colorBlack900Alpha060</item>
 
         <item name="elevationOverlayEnabled">true</item>
         <item name="bottomAppBarStyle">@style/Widget.MaterialComponents.BottomAppBar</item>

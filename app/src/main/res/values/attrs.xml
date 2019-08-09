@@ -21,8 +21,6 @@
     <attr name="colorBrandedVariantSurface" format="color" />
     <attr name="colorOnBrandedSurface" format="color" />
 
-    <attr name="colorStatusBar" format="color" />
-
     <!--Emphasis values are used in combination with each "on" color to create three available -->
     <!--levels of emphasis for text and content.-->
     <attr name="emphasisHighAlpha" format="float"/>

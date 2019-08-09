@@ -115,8 +115,8 @@ class BottomNavDrawerFragment :
             shapeAppearanceModel = shapeAppearanceModel.toBuilder()
                 .setTopEdge(
                     SemiCircleEdgeCutoutTreatment(
-                        resources.getDimension(R.dimen.keyline_3),
-                        resources.getDimension(R.dimen.keyline_5),
+                        resources.getDimension(R.dimen.grid_1),
+                        resources.getDimension(R.dimen.grid_3),
                         0F,
                         resources.getDimension(R.dimen.navigation_drawer_profile_image_size_padded)
                     )

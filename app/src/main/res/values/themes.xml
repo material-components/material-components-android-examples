@@ -18,28 +18,29 @@
     <style name="Theme.Reply.DayNight" parent="Theme.Reply"/>
 
     <style name="Theme.Reply" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
         <!--Color-->
-        <item name="colorPrimary">@color/reply_color_primary</item>
-        <item name="colorPrimaryVariant">@color/reply_color_primary_variant</item>
-        <item name="colorSecondary">@color/reply_color_secondary</item>
-        <item name="colorSecondaryVariant">@color/reply_color_secondary_variant</item>
+        <item name="colorPrimary">@color/colorBlue700</item>
+        <item name="colorPrimaryVariant">@color/colorBlue800</item>
+        <item name="colorSecondary">@color/colorOrange500</item>
+        <item name="colorSecondaryVariant">@color/colorOrange400</item>
 
-        <item name="android:colorBackground">@color/reply_color_background</item>
-        <item name="colorSurface">@color/reply_color_surface</item>
-        <item name="colorBrandedSurface">?colorPrimary</item>
-        <item name="colorBrandedVariantSurface">?colorPrimaryVariant</item>
-        <item name="colorError">@color/reply_color_error</item>
+        <item name="android:colorBackground">@color/colorBlue50</item>
+        <item name="colorSurface">@color/colorWhite50</item>
+        <item name="colorBrandedSurface">?attr/colorPrimary</item>
+        <item name="colorBrandedVariantSurface">?attr/colorPrimaryVariant</item>
+        <item name="colorError">@color/colorRed400</item>
 
-        <item name="colorOnPrimary">@color/reply_color_on_primary</item>
-        <item name="colorOnSecondary">@color/reply_color_on_secondary</item>
-        <item name="colorOnBackground">@color/reply_color_on_background</item>
-        <item name="colorOnSurface">@color/reply_color_on_surface</item>
-        <item name="colorOnBrandedSurface">?colorOnPrimary</item>
-        <item name="colorOnError">@color/reply_color_on_error</item>
+        <item name="colorOnPrimary">@color/colorWhite50</item>
+        <item name="colorOnSecondary">@color/colorBlack900</item>
+        <item name="colorOnBackground">@color/colorBlack900</item>
+        <item name="colorOnSurface">@color/colorBlack900</item>
+        <item name="colorOnBrandedSurface">?attr/colorOnPrimary</item>
+        <item name="colorOnError">@color/colorBlack900</item>
 
-        <item name="scrimBackground">@color/reply_color_scrim</item>
-
-        <item name="colorStatusBar">@color/reply_color_status_bar</item>
+        <item name="scrimBackground">@color/colorWhite50Alpha060</item>
+        <item name="android:statusBarColor">@color/colorBlue50Alpha060</item>
+        <item name="android:navigationBarColor">@color/nav_bar</item>
 
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Reply.SmallComponents</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Reply.MediumComponent</item>
@@ -72,8 +73,6 @@
 
         <!--System/Platform attributes-->
         <item name="android:windowBackground">?android:colorBackground</item>
-        <item name="android:statusBarColor">?colorStatusBar</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
     </style>
 
