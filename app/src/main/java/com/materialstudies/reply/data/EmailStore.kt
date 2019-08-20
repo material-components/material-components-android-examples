@@ -28,7 +28,7 @@ object EmailStore {
     private val allEmails = mutableListOf(
         Email(
             0L,
-            AccountStore.getContactAccountById(6L),
+            AccountStore.getContactAccountById(9L),
             listOf(AccountStore.getDefaultUserAccount()),
             "Package shipped!",
             """
@@ -42,7 +42,7 @@ object EmailStore {
         ),
         Email(
             1L,
-            AccountStore.getContactAccountById(3L),
+            AccountStore.getContactAccountById(6L),
             listOf(AccountStore.getDefaultUserAccount()),
             "Brunch this weekend?",
             """
@@ -57,7 +57,7 @@ object EmailStore {
         ),
         Email(
             2L,
-            AccountStore.getContactAccountById(7L),
+            AccountStore.getContactAccountById(5L),
             listOf(AccountStore.getDefaultUserAccount()),
             "Bonjour from Paris",
             "Here are some great shots from my trip...",
@@ -84,11 +84,11 @@ object EmailStore {
         ),
         Email(
             4L,
-            AccountStore.getContactAccountById(9L),
+            AccountStore.getContactAccountById(11L),
             listOf(
                 AccountStore.getDefaultUserAccount(),
                 AccountStore.getContactAccountById(8L),
-                AccountStore.getContactAccountById(3L)
+                AccountStore.getContactAccountById(5L)
             ),
             "Brazil trip",
             """
@@ -104,14 +104,14 @@ object EmailStore {
         ),
         Email(
             5L,
-            AccountStore.getContactAccountById(10L),
+            AccountStore.getContactAccountById(13L),
             listOf(AccountStore.getDefaultUserAccount()),
             "Update to Your Itinerary",
             ""
         ),
         Email(
             6L,
-            AccountStore.getContactAccountById(9L),
+            AccountStore.getContactAccountById(10L),
             listOf(AccountStore.getDefaultUserAccount()),
             "Recipe to try",
             "Raspberry Pie: We should make this pie recipe tonight! The filling is " +
@@ -119,7 +119,7 @@ object EmailStore {
         ),
         Email(
             7L,
-            AccountStore.getContactAccountById(6L),
+            AccountStore.getContactAccountById(9L),
             listOf(AccountStore.getDefaultUserAccount()),
             "Delivered",
             "Your shoes should be waiting for you at home!"

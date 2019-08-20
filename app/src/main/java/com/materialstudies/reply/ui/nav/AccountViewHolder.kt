@@ -14,24 +14,24 @@
  * limitations under the License.
  */
 
-package com.materialstudies.reply.ui.common
+package com.materialstudies.reply.ui.nav
 
-import androidx.databinding.ViewDataBinding
-import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
-import com.materialstudies.reply.data.EmailAttachment
+import com.materialstudies.reply.data.Account
+import com.materialstudies.reply.databinding.AccountItemLayoutBinding
 
 /**
- * Generic RecyclerView.ViewHolder which is able to bind layouts which expose a variable
- * for an [EmailAttachment].
+ * ViewHolder for [AccountAdapter]. Holds a single account which can be selected.
  */
-class EmailAttachmentViewHolder(
-    private val binding: ViewDataBinding
+class AccountViewHolder(
+    val binding: AccountItemLayoutBinding,
+    val listener: AccountAdapter.AccountAdapterListener
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(attachment: EmailAttachment) {
+    fun bind(accnt: Account) {
         binding.run {
-            setVariable(BR.emailAttachment, attachment)
+            account = accnt
+            accountListener = listener
             executePendingBindings()
         }
     }

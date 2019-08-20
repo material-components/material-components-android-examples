@@ -17,11 +17,11 @@
 package com.materialstudies.reply.ui
 
 import android.graphics.drawable.AnimatedVectorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.annotation.MenuRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
@@ -35,7 +35,8 @@ import com.materialstudies.reply.ui.email.EmailFragmentArgs
 import com.materialstudies.reply.ui.nav.AlphaSlideAction
 import com.materialstudies.reply.ui.nav.BottomNavDrawerFragment
 import com.materialstudies.reply.ui.nav.ChangeSettingsMenuStateAction
-import com.materialstudies.reply.ui.nav.QuarterRotateSlideAction
+import com.materialstudies.reply.ui.nav.HalfClockwiseRotateSlideAction
+import com.materialstudies.reply.ui.nav.HalfCounterClockwiseRotateSlideAction
 import com.materialstudies.reply.ui.nav.ShowHideFabStateAction
 import com.materialstudies.reply.util.contentView
 import kotlin.LazyThreadSafetyMode.NONE
@@ -78,7 +79,7 @@ class MainActivity : AppCompatActivity(),
         }
 
         bottomNavDrawer.apply {
-            addOnSlideAction(QuarterRotateSlideAction(binding.bottomAppBarChevron))
+            addOnSlideAction(HalfClockwiseRotateSlideAction(binding.bottomAppBarChevron))
             addOnSlideAction(AlphaSlideAction(binding.bottomAppBarTitle, true))
             addOnStateChangedAction(ShowHideFabStateAction(binding.fab))
             addOnStateChangedAction(ChangeSettingsMenuStateAction { showSettings ->
@@ -90,6 +91,8 @@ class MainActivity : AppCompatActivity(),
                     getBottomAppBarMenuForDestination()
                 })
             })
+
+            addOnSandwichSlideAction(HalfCounterClockwiseRotateSlideAction(binding.bottomAppBarChevron))
         }
 
         // Set up the BottomAppBar menu

@@ -58,23 +58,27 @@ fun Spinner.bindPopupElevationOverlay(popupElevationOverlay: Float) {
 }
 
 @BindingAdapter(
+    "drawableStart",
     "drawableLeft",
     "drawableTop",
+    "drawableEnd",
     "drawableRight",
     "drawableBottom",
     requireAll = false
 )
 fun TextView.bindDrawables(
+    @DrawableRes drawableStart: Int? = null,
     @DrawableRes drawableLeft: Int? = null,
     @DrawableRes drawableTop: Int? = null,
+    @DrawableRes drawableEnd: Int? = null,
     @DrawableRes drawableRight: Int? = null,
     @DrawableRes drawableBottom: Int? = null
 ) {
     setCompoundDrawablesWithIntrinsicBounds(
-        drawableLeft?.let { ContextCompat.getDrawable(context, it) },
-        drawableTop?.let { ContextCompat.getDrawable(context, it) },
-        drawableRight?.let { ContextCompat.getDrawable(context, it) },
-        drawableBottom?.let { ContextCompat.getDrawable(context, it) }
+        context.getDrawableOrNull(drawableStart ?: drawableLeft),
+        context.getDrawableOrNull(drawableTop),
+        context.getDrawableOrNull(drawableEnd ?: drawableRight),
+        context.getDrawableOrNull(drawableBottom)
     )
 }
 

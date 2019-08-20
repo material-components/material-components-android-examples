@@ -21,10 +21,10 @@ import android.widget.ImageView
 import androidx.annotation.FloatRange
 import androidx.core.view.marginTop
 import androidx.core.view.updatePadding
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.materialstudies.reply.R
 import com.materialstudies.reply.util.normalize
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 /**
  * An action to be performed when a bottom sheet's slide offset is changed.
@@ -52,7 +52,7 @@ interface OnSlideAction {
  * A slide action which rotates a view counterclockwise by 180 degrees between the hidden state
  * and the half expanded state.
  */
-class QuarterRotateSlideAction(
+class HalfClockwiseRotateSlideAction(
     private val view: View
 ) : OnSlideAction {
 
@@ -81,6 +81,8 @@ class ForegroundSheetTransformSlideAction(
 
     private val foregroundMarginTop = foregroundView.marginTop
     private var systemTopInset: Int = 0
+    private val foregroundZ = foregroundView.z
+    private val profileImageOriginalZ = profileImageView.z
 
     private fun getPaddingTop(): Int {
         // This view's tag might not be set immediately as it needs to wait for insets to be
@@ -101,6 +103,15 @@ class ForegroundSheetTransformSlideAction(
         foregroundView.translationY = -(1 - progress) * foregroundMarginTop
         val topPaddingProgress = slideOffset.normalize(0F, 0.9F, 0F, 1F)
         foregroundView.updatePadding(top = (getPaddingTop() * topPaddingProgress).toInt())
+
+        // Modify the z ordering of the profileImage to make it easier to click when half-expanded.
+        // Reset the z order if the sheet is expanding so the profile image slides under the
+        // foreground sheet.
+        if (slideOffset > 0 && foregroundZ <= profileImageView.z) {
+            profileImageView.z = profileImageOriginalZ
+        } else if (slideOffset <= 0 && foregroundZ >= profileImageView.z) {
+            profileImageView.z = foregroundZ + 1
+        }
     }
 }
 

@@ -16,6 +16,8 @@
 
 package com.materialstudies.reply.data
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.materialstudies.reply.R
 
 /**
@@ -24,39 +26,53 @@ import com.materialstudies.reply.R
  */
 object AccountStore {
 
-    private val userAccounts = listOf(
+    private val allUserAccounts = mutableListOf(
         Account(
+            1L,
             0L,
             "Jeff",
             "Hansen",
             "hikingfan@gmail.com",
-            R.drawable.avatar_10
+            R.drawable.avatar_10,
+            true
         ),
         Account(
+            2L,
             0L,
             "Jeff",
             "H",
-            "jeffhansen@gmail.com",
-            R.drawable.avatar_10
+            "jeffersonloveshiking@gmail.com",
+            R.drawable.avatar_2
+        ),
+        Account(
+            3L,
+            0L,
+            "Jeff",
+            "Hansen",
+            "jeffersonc@google.com",
+            R.drawable.avatar_9
         )
     )
 
-    private val userContactAccounts = listOf(
+    private val allUserContactAccounts = listOf(
         Account(
+            4L,
             1L,
             "Tracy",
             "Alvarez",
             "tracealvie@gmail.com",
-            R.drawable.avatar_4
+            R.drawable.avatar_1
         ),
         Account(
+            5L,
             2L,
             "Allison",
             "Trabucco",
             "atrabucco222@gmail.com",
-            R.drawable.avatar_7
+            R.drawable.avatar_3
         ),
         Account(
+            6L,
             3L,
             "Ali",
             "Connors",
@@ -64,20 +80,23 @@ object AccountStore {
             R.drawable.avatar_5
         ),
         Account(
+            7L,
             4L,
             "Alberto",
             "Williams",
             "albertowilliams124@gmail.com",
-            R.drawable.avatar_8
+            R.drawable.avatar_0
         ),
         Account(
+            8L,
             5L,
             "Kim",
             "Alen",
             "alen13@gmail.com",
-            R.drawable.avatar_9
+            R.drawable.avatar_7
         ),
         Account(
+            9L,
             6L,
             "Google",
             "Express",
@@ -85,6 +104,7 @@ object AccountStore {
             R.drawable.avatar_express
         ),
         Account(
+            10L,
             7L,
             "Sandra",
             "Adams",
@@ -92,47 +112,76 @@ object AccountStore {
             R.drawable.avatar_2
         ),
         Account(
+            11L,
             8L,
             "Trevor",
             "Hansen",
             "trevorhandsen@gmail.com",
-            R.drawable.avatar_3
+            R.drawable.avatar_8
         ),
         Account(
+            12L,
             9L,
-            "Britta",
+            "Sean",
             "Holt",
-            "bholt@gmail.com",
-            R.drawable.avatar_4
+            "sholt@gmail.com",
+            R.drawable.avatar_6
         ),
         Account(
+            13L,
             10L,
             "Frank",
             "Hawkins",
             "fhawkank@gmail.com",
-            R.drawable.avatar_6
+            R.drawable.avatar_4
         )
     )
+
+    private val _userAccounts: MutableLiveData<List<Account>> = MutableLiveData()
+    val userAccounts: LiveData<List<Account>>
+        get() = _userAccounts
+
+    init {
+        postUpdateUserAccountsList()
+    }
 
     /**
      * Get the current user's default account.
      */
-    fun getDefaultUserAccount() = userAccounts.first()
+    fun getDefaultUserAccount() = allUserAccounts.first()
 
     /**
      * Get all [Account]s owned by the current user.
      */
-    fun getUserAccounts() = userAccounts
+    fun getAllUserAccounts() = allUserAccounts
 
     /**
      * Whether or not the given [accountId] is an account owned by the current user.
      */
-    fun isUserAccount(accountId: Long): Boolean = userAccounts.any { it.id == accountId }
+    fun isUserAccount(uid: Long): Boolean = allUserAccounts.any { it.uid == uid }
+
+    fun setCurrentUserAccount(accountId: Long): Boolean {
+        var updated = false
+        allUserAccounts.forEachIndexed { index, account ->
+            val shouldCheck = account.id == accountId
+            if (account.isCurrentAccount != shouldCheck) {
+                allUserAccounts[index] = account.copy(isCurrentAccount = shouldCheck)
+                updated = true
+            }
+        }
+        if (updated) postUpdateUserAccountsList()
+        return updated
+    }
+
+    private fun postUpdateUserAccountsList() {
+        val newList = allUserAccounts.toList()
+        _userAccounts.value = newList
+    }
 
     /**
      * Get the contact of the current user with the given [accountId].
      */
     fun getContactAccountById(accountId: Long): Account {
-        return userContactAccounts.firstOrNull { it.id == accountId } ?: userContactAccounts.first()
+        return allUserContactAccounts.firstOrNull { it.id == accountId } ?: allUserContactAccounts.first()
     }
 }

@@ -39,7 +39,7 @@ data class Email(
         .map { it.firstName }
         .fold("") { name, acc -> "$acc, $name" }
     val nonUserAccountRecipients = recipients
-        .filterNot { AccountStore.isUserAccount(it.id) }
+        .filterNot { AccountStore.isUserAccount(it.uid) }
 }
 
 object EmailDiffCallback : DiffUtil.ItemCallback<Email>() {

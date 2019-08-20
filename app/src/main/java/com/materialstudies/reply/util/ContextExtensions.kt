@@ -18,9 +18,13 @@ package com.materialstudies.reply.util
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.util.TypedValue
 import androidx.annotation.ColorInt
+import androidx.annotation.DrawableRes
 import androidx.annotation.StyleRes
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.use
 
 @ColorInt
@@ -35,4 +39,8 @@ fun Context.getStyleIdFromAttr(attr: Int): Int {
     val tv = TypedValue()
     theme.resolveAttribute(attr, tv, true)
     return tv.data
+}
+
+fun Context.getDrawableOrNull(@DrawableRes id: Int?): Drawable? {
+    return if (id == null || id == 0) null else AppCompatResources.getDrawable(this, id)
 }

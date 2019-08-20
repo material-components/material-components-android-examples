@@ -79,7 +79,7 @@ class ComposeFragment : Fragment() {
             senderSpinner.adapter = ArrayAdapter(
                 senderSpinner.context,
                 R.layout.spinner_item_layout,
-                AccountStore.getUserAccounts().map { it.email }
+                AccountStore.getAllUserAccounts().map { it.email }
             )
         }
     }
