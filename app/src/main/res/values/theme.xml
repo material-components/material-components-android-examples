@@ -85,4 +85,8 @@
     <item name="colorOnPrimary">#000</item>
   </style>
 
+  <style name="ThemeOverlay.Owl.TransitionShapeAppearance.Small" parent="">
+    <item name="transitionShapeAppearance">@style/ShapeAppearance.Owl.SmallComponent</item>
+  </style>
+
 </resources>

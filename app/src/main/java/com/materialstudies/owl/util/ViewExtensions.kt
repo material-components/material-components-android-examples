@@ -18,6 +18,8 @@ package com.materialstudies.owl.util
 
 import android.animation.ValueAnimator
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Bitmap.Config.ARGB_8888
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
@@ -30,8 +32,11 @@ import android.view.animation.AnimationUtils
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
 import androidx.annotation.IdRes
+import androidx.annotation.Px
 import androidx.core.animation.doOnEnd
 import androidx.core.content.res.use
+import androidx.core.graphics.applyCanvas
+import androidx.core.view.ViewCompat
 import androidx.core.view.drawToBitmap
 import androidx.core.view.forEach
 import androidx.dynamicanimation.animation.DynamicAnimation.ViewProperty
@@ -240,5 +245,20 @@ fun BottomNavigationView.hide() {
             parent.overlay.remove(drawable)
         }
         start()
+    }
+}
+
+/**
+ * A copy of the KTX method, adding the ability to add extra padding the bottom of the [Bitmap];
+ * useful when it will be used in a [android.graphics.BitmapShader][BitmapShader] with
+ * a [android.graphics.Shader.TileMode.CLAMP][CLAMP tile mode].
+ */
+fun View.drawToBitmap(@Px extraPaddingBottom: Int = 0): Bitmap {
+    if (!ViewCompat.isLaidOut(this)) {
+        throw IllegalStateException("View needs to be laid out before calling drawToBitmap()")
+    }
+    return Bitmap.createBitmap(width, height + extraPaddingBottom, ARGB_8888).applyCanvas {
+        translate(-scrollX.toFloat(), -scrollY.toFloat())
+        draw(this)
     }
 }

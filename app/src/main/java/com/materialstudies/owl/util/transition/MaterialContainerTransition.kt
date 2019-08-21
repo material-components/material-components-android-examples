@@ -18,34 +18,47 @@ package com.materialstudies.owl.util.transition
 
 import android.animation.Animator
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
+import android.graphics.BitmapShader
 import android.graphics.Canvas
 import android.graphics.ColorFilter
 import android.graphics.Paint
 import android.graphics.PixelFormat
-import android.graphics.Rect
+import android.graphics.RectF
+import android.graphics.Shader.TileMode.CLAMP
 import android.graphics.drawable.Drawable
 import android.util.Property
 import android.view.ViewGroup
 import androidx.annotation.ColorInt
 import androidx.annotation.IdRes
+import androidx.annotation.Px
 import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
-import androidx.core.view.drawToBitmap
+import androidx.core.content.res.use
+import androidx.core.graphics.transform
 import androidx.core.view.forEach
 import androidx.transition.Transition
 import androidx.transition.TransitionValues
+import com.google.android.material.shape.ShapeAppearanceModel
+import com.google.android.material.shape.Shapeable
+import com.materialstudies.owl.R
+import com.materialstudies.owl.util.CornerRounding
 import com.materialstudies.owl.util.descendantBackgroundColor
+import com.materialstudies.owl.util.drawRoundedRect
+import com.materialstudies.owl.util.drawToBitmap
 import com.materialstudies.owl.util.findAncestorById
 import com.materialstudies.owl.util.lerp
 import com.materialstudies.owl.util.lerpArgb
+import com.materialstudies.owl.util.toCornerRounding
 import com.materialstudies.owl.util.transition.MaterialContainerTransitionDrawable.PROGRESS
-import kotlin.math.min
-import kotlin.math.roundToInt
 
+@Px
+private const val BITMAP_PADDING_BOTTOM = 1
 private const val PROP_BOUNDS = "materialContainerTransition:bounds"
 private const val PROP_BITMAP = "materialContainerTransition:bitmap"
-private val TRANSITION_PROPS = arrayOf(PROP_BOUNDS, PROP_BITMAP)
+private const val PROP_SHAPE_APPEARANCE = "materialContainerTransition:shapeAppearance"
+private val TRANSITION_PROPS = arrayOf(PROP_BOUNDS, PROP_BITMAP, PROP_SHAPE_APPEARANCE)
 
 /**
  * A [Transition] which implements the Material Container pattern from
@@ -83,9 +96,11 @@ class MaterialContainerTransition(
 
         val dr = MaterialContainerTransitionDrawable(
             startValues.values[PROP_BITMAP] as Bitmap,
-            startValues.values[PROP_BOUNDS] as Rect,
+            startValues.values[PROP_BOUNDS] as RectF,
+            (startValues.values[PROP_SHAPE_APPEARANCE] as ShapeAppearanceModel?).toCornerRounding(),
             endValues.values[PROP_BITMAP] as Bitmap,
-            endValues.values[PROP_BOUNDS] as Rect,
+            endValues.values[PROP_BOUNDS] as RectF,
+            (endValues.values[PROP_SHAPE_APPEARANCE] as ShapeAppearanceModel?).toCornerRounding(),
             view.descendantBackgroundColor()
         )
 
@@ -107,6 +122,7 @@ class MaterialContainerTransition(
         }
     }
 
+    @SuppressLint("Recycle")
     private fun captureValues(transitionValues: TransitionValues) {
         val view = transitionValues.view
 
@@ -114,16 +130,37 @@ class MaterialContainerTransition(
             // Capture location in screen co-ordinates
             val loc = IntArray(2)
             view.getLocationOnScreen(loc)
-            val left = loc[0] - view.translationX.roundToInt()
-            val top = loc[1] - view.translationY.roundToInt()
-            transitionValues.values[PROP_BOUNDS] = Rect(
+            val left = loc[0].toFloat() - view.translationX
+            val top = loc[1].toFloat() - view.translationY
+            transitionValues.values[PROP_BOUNDS] = RectF(
                 left,
                 top,
                 left + view.width,
                 top + view.height
             )
+            // Clear any foreground e.g. a ripple in progress
             view.foreground = null
-            transitionValues.values[PROP_BITMAP] = view.drawToBitmap()
+            // Add padding to the bitmap capture so that when we draw it later with a
+            // [BitmapShader] with CLAMP [TileMode], the transparency is repeated.
+            transitionValues.values[PROP_BITMAP] = view.drawToBitmap(BITMAP_PADDING_BOTTOM)
+
+            // Store the view's shape appearance; either from a [Shapeable] view; else checking
+            // the `transitionShapeAppearance` theme attr.
+            if (view is Shapeable) {
+                transitionValues.values[PROP_SHAPE_APPEARANCE] = view.shapeAppearanceModel
+            } else {
+                view.context.obtainStyledAttributes(intArrayOf(R.attr.transitionShapeAppearance))
+                    .use {
+                        val shapeAppId = it.getResourceId(0, -1)
+                        if (shapeAppId != -1) {
+                            transitionValues.values[PROP_SHAPE_APPEARANCE] = ShapeAppearanceModel(
+                                view.context,
+                                shapeAppId,
+                                0
+                            )
+                        }
+                    }
+            }
         }
     }
 }
@@ -136,14 +173,18 @@ class MaterialContainerTransition(
  */
 private class MaterialContainerTransitionDrawable(
     private val startImage: Bitmap,
-    private val startBounds: Rect,
+    private val startBounds: RectF,
+    private val startRadii: CornerRounding,
     private val endImage: Bitmap,
-    private val endBounds: Rect,
+    private val endBounds: RectF,
+    private val endRadii: CornerRounding,
     @ColorInt containerColor: Int = 0xffffffff.toInt(),
     @ColorInt scrimColor: Int = 0xff000000.toInt()
 ) : Drawable() {
 
-    private val paint = Paint(Paint.FILTER_BITMAP_FLAG)
+    private val imagePaint = Paint(Paint.FILTER_BITMAP_FLAG)
+    private val startImageShader = BitmapShader(startImage, CLAMP, CLAMP)
+    private val endImageShader = BitmapShader(endImage, CLAMP, CLAMP)
     private val scrimPaint = Paint().apply {
         style = Paint.Style.FILL
         color = scrimColor
@@ -152,11 +193,7 @@ private class MaterialContainerTransitionDrawable(
         style = Paint.Style.FILL
         color = containerColor
     }
-    private val currentBounds = Rect()
-    private val startSrcBounds = Rect(0, 0, startImage.width, startImage.height)
-    private val endSrcBounds = Rect(0, 0, endImage.width, endImage.height)
-    private val startDstBounds = Rect(startBounds)
-    private val endDstBounds = Rect(endBounds)
+    private val currentBounds = RectF(startBounds)
     private val entering = endBounds.height() > startBounds.height()
 
     // Transition is driven by setting this property [0–1]
@@ -172,35 +209,18 @@ private class MaterialContainerTransitionDrawable(
                 )
 
                 // “Elements are pinned to the top and masked inside the container”
-                val aspect = currentBounds.height().toFloat() / currentBounds.width().toFloat()
-                startSrcBounds.bottom = min(
-                    startImage.height,
-                    (startImage.width * aspect).roundToInt()
-                )
-                endSrcBounds.bottom = min(
-                    endImage.height,
-                    (endImage.width * aspect).roundToInt()
-                )
-                val startAspect = startImage.height.toFloat() / startImage.width.toFloat()
-                startDstBounds.set(
-                    currentBounds.left,
-                    currentBounds.top,
-                    currentBounds.right,
-                    currentBounds.top + min(
-                        currentBounds.height(),
-                        (startAspect * currentBounds.width()).roundToInt()
-                    )
-                )
-                val endAspect = endImage.height.toFloat() / endImage.width.toFloat()
-                endDstBounds.set(
-                    currentBounds.left,
-                    currentBounds.top,
-                    currentBounds.right,
-                    currentBounds.top + min(
-                        currentBounds.height(),
-                        (endAspect * currentBounds.width()).roundToInt()
-                    )
-                )
+                // i.e. scale images to the current width, later draw call will mask them
+                // to `currentBounds`
+                startImageShader.transform {
+                    val scale = currentBounds.width() / startImage.width.toFloat()
+                    setScale(scale, scale)
+                    postTranslate(currentBounds.left, currentBounds.top)
+                }
+                endImageShader.transform {
+                    val scale = currentBounds.width() / endImage.width
+                    setScale(scale, scale)
+                    postTranslate(currentBounds.left, currentBounds.top)
+                }
                 invalidateSelf()
             }
         }
@@ -215,6 +235,10 @@ private class MaterialContainerTransitionDrawable(
         }
         if (scrimPaint.alpha > 0) canvas.drawRect(bounds, scrimPaint)
 
+        // Animate corner radii changes over 0.3–0.8 of `progress` & use this when drawing the
+        // container background & images
+        val cornerRadii = lerp(startRadii, endRadii, 0.3f, 0.8f, progress)
+
         // Draw a background for the container, useful when the container size exceeds the image
         // size which it can in large start/end size changes. Also fade in/out a shadow.
         // TODO make this configurable / density dependent
@@ -226,23 +250,41 @@ private class MaterialContainerTransitionDrawable(
                 lerpArgb(0x1a000000, 0, progress)
             }
         )
-        canvas.drawRect(currentBounds, containerPaint)
+        canvas.drawRoundedRect(
+            currentBounds,
+            cornerRadii,
+            containerPaint
+        )
 
         // Cross-fade images of the start/end states over 0.3–0.8 of `progress`
-        paint.alpha = lerp(255, 0, 0.3f, 0.8f, progress)
-        if (paint.alpha > 0) canvas.drawBitmap(startImage, startSrcBounds, startDstBounds, paint)
-        paint.alpha = lerp(0, 255, 0.3f, 0.8f, progress)
-        if (paint.alpha > 0) canvas.drawBitmap(endImage, endSrcBounds, endDstBounds, paint)
+        imagePaint.alpha = lerp(255, 0, 0.3f, 0.8f, progress)
+        if (imagePaint.alpha > 0) {
+            imagePaint.shader = startImageShader
+            canvas.drawRoundedRect(
+                currentBounds,
+                cornerRadii,
+                imagePaint
+            )
+        }
+        imagePaint.alpha = lerp(0, 255, 0.3f, 0.8f, progress)
+        if (imagePaint.alpha > 0) {
+            imagePaint.shader = endImageShader
+            canvas.drawRoundedRect(
+                currentBounds,
+                cornerRadii,
+                imagePaint
+            )
+        }
     }
 
     override fun setAlpha(alpha: Int) {
-        paint.alpha = alpha
+        imagePaint.alpha = alpha
     }
 
     override fun getOpacity() = PixelFormat.TRANSLUCENT
 
     override fun setColorFilter(colorFilter: ColorFilter?) {
-        paint.colorFilter = colorFilter
+        imagePaint.colorFilter = colorFilter
     }
 
     object PROGRESS : Property<MaterialContainerTransitionDrawable, Float>(
