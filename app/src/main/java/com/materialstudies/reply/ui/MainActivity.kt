@@ -16,7 +16,6 @@
 
 package com.materialstudies.reply.ui
 
-import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -159,11 +158,7 @@ class MainActivity : AppCompatActivity(),
 
     private fun setBottomAppBarForHome(@MenuRes menuRes: Int) {
         binding.run {
-            // TODO(hunterstich) Create ASL which animates back instead of resetting.
-            (fab.drawable as AnimatedVectorDrawable).apply {
-                reset()
-                state = intArrayOf(android.R.attr.state_activated)
-            }
+            fab.setImageState(intArrayOf(-android.R.attr.state_activated), true)
             bottomAppBar.replaceMenu(menuRes)
             fab.contentDescription = getString(R.string.fab_compose_email_content_description)
             bottomAppBarTitle.visibility = View.VISIBLE
@@ -174,7 +169,7 @@ class MainActivity : AppCompatActivity(),
 
     private fun setBottomAppBarForEmail(@MenuRes menuRes: Int) {
         binding.run {
-            (fab.drawable as AnimatedVectorDrawable).start()
+            fab.setImageState(intArrayOf(android.R.attr.state_activated), true)
             bottomAppBar.replaceMenu(menuRes)
             fab.contentDescription = getString(R.string.fab_reply_email_content_description)
             bottomAppBarTitle.visibility = View.INVISIBLE
