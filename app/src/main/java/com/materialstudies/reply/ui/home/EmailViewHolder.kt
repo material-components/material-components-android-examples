@@ -22,8 +22,9 @@ import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.databinding.EmailItemLayoutBinding
 import com.materialstudies.reply.ui.common.EmailAttachmentAdapter
-import com.materialstudies.reply.util.getStyleIdFromAttr
+import com.materialstudies.reply.util.themeStyle
 import com.materialstudies.reply.util.setTextAppearanceCompat
+import kotlin.math.abs
 
 class EmailViewHolder(
     private val binding: EmailItemLayoutBinding,
@@ -50,7 +51,7 @@ class EmailViewHolder(
         binding.root.isActivated = email.isStarred
 
         // Set the subject's TextAppearance
-        val textAppearance = binding.subjectTextView.context.getStyleIdFromAttr(
+        val textAppearance = binding.subjectTextView.context.themeStyle(
             if (email.isImportant) {
                 R.attr.textAppearanceHeadline4
             } else {
@@ -87,7 +88,7 @@ class EmailViewHolder(
 
         // Animate the top left corner radius of the email card as swipe happens.
         val interpolation = (currentSwipePercentage / swipeThreshold).coerceIn(0F, 1F)
-        val adjustedInterpolation = Math.abs((if (isStarred) 1F else 0F) - interpolation)
+        val adjustedInterpolation = abs((if (isStarred) 1F else 0F) - interpolation)
         binding.cardView.progress = adjustedInterpolation
 
         // Start the background animation once the threshold is met.
@@ -104,5 +105,4 @@ class EmailViewHolder(
         val email = binding.email ?: return
         binding.listener?.onEmailStarChanged(email, !email.isStarred)
     }
-
 }

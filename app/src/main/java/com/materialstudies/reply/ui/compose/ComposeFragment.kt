@@ -21,6 +21,7 @@ import android.transition.Slide
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateInterpolator
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -33,6 +34,7 @@ import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.ComposeRecipientChipBinding
 import com.materialstudies.reply.databinding.FragmentComposeBinding
 import com.materialstudies.reply.util.FastOutUltraSlowIn
+import com.materialstudies.reply.util.transition.MaterialContainerTransition
 import kotlin.LazyThreadSafetyMode.NONE
 
 /**
@@ -54,10 +56,7 @@ class ComposeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enterTransition = Slide().apply {
-            duration = resources.getInteger(R.integer.reply_motion_default_duration).toLong()
-            interpolator = FastOutUltraSlowIn()
-        }
+        prepareTransitions()
     }
 
     override fun onCreateView(
@@ -82,6 +81,8 @@ class ComposeFragment : Fragment() {
                 AccountStore.getAllUserAccounts().map { it.email }
             )
         }
+
+        startTransitions()
     }
 
     /**
@@ -98,5 +99,32 @@ class ComposeFragment : Fragment() {
             }
             addView(chipBinding.root)
         }
+    }
+
+    private fun prepareTransitions() {
+        postponeEnterTransition()
+    }
+
+    private fun startTransitions() {
+        binding.executePendingBindings()
+        // Delay creating the enterTransition until after we have inflated this Fragment's binding
+        // and are able to access the view to be transitioned to.
+        enterTransition = MaterialContainerTransition(
+            correctForZOrdering = true
+        ).apply {
+            // Manually add the Views to be shared since this is not a standard Fragment to Fragment
+            // shared element transition.
+            setSharedElementViews(
+                requireActivity().findViewById(R.id.fab),
+                binding.emailCardView
+            )
+            duration = resources.getInteger(R.integer.reply_motion_default_duration).toLong()
+            interpolator = FastOutUltraSlowIn()
+        }
+        returnTransition = Slide().apply {
+            duration = resources.getInteger(R.integer.reply_motion_micro_duration).toLong()
+            interpolator = AccelerateInterpolator()
+        }
+        startPostponedEnterTransition()
     }
 }

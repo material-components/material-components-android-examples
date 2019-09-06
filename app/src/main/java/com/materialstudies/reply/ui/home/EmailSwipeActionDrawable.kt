@@ -29,7 +29,7 @@ import androidx.annotation.ColorInt
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.materialstudies.reply.R
-import com.materialstudies.reply.util.getColorFromAttr
+import com.materialstudies.reply.util.themeColor
 import com.materialstudies.reply.util.lerp
 import com.materialstudies.reply.util.lerpArgb
 import kotlin.math.abs
@@ -45,7 +45,7 @@ import kotlin.math.hypot
 class EmailSwipeActionDrawable(context: Context) : Drawable() {
 
     private val circlePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = context.getColorFromAttr(R.attr.colorSecondary)
+        color = context.themeColor(R.attr.colorSecondary)
         style = Paint.Style.FILL
     }
 
@@ -62,8 +62,8 @@ class EmailSwipeActionDrawable(context: Context) : Drawable() {
     private val iconIntrinsicWidth = icon.intrinsicWidth
     private val iconIntrinsicHeight = icon.intrinsicHeight
 
-    @ColorInt private val iconTint = context.getColorFromAttr(R.attr.colorOnBackground)
-    @ColorInt private val iconTintActive = context.getColorFromAttr(R.attr.colorOnSecondary)
+    @ColorInt private val iconTint = context.themeColor(R.attr.colorOnBackground)
+    @ColorInt private val iconTintActive = context.themeColor(R.attr.colorOnSecondary)
 
     // Amount that we should 'overshoot' the icon's scale by when animating.
     private val iconMaxScaleAddition = 0.5F

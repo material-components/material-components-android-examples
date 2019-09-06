@@ -16,9 +16,7 @@
 
 package com.materialstudies.reply.ui.email
 
-import android.animation.AnimatorInflater
 import android.os.Bundle
-import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,6 +28,7 @@ import com.materialstudies.reply.R
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.FragmentEmailBinding
 import com.materialstudies.reply.util.FastOutUltraSlowIn
+import com.materialstudies.reply.util.transition.MaterialContainerTransition
 import kotlin.LazyThreadSafetyMode.NONE
 
 private const val MAX_GRID_SPANS = 3
@@ -38,7 +37,6 @@ private const val MAX_GRID_SPANS = 3
  * A [Fragment] which displays a single, full email.
  */
 class EmailFragment : Fragment() {
-
 
     private val args: EmailFragmentArgs by navArgs()
     private val emailId: Long by lazy(NONE) { args.emailId }
@@ -92,19 +90,26 @@ class EmailFragment : Fragment() {
 
     private fun prepareTransitions() {
         postponeEnterTransition()
-        sharedElementEnterTransition = TransitionInflater.from(context)
-            .inflateTransition(R.transition.email_card_shared_element_transition).apply {
-                interpolator = FastOutUltraSlowIn()
-            }
+
+        sharedElementEnterTransition = MaterialContainerTransition(
+            R.id.nested_scroll_view,
+            correctForZOrdering = true
+        ).apply {
+            duration = resources.getInteger(R.integer.reply_motion_default_duration).toLong()
+            interpolator = FastOutUltraSlowIn()
+        }
+        sharedElementReturnTransition = MaterialContainerTransition(
+            R.id.recycler_view,
+            correctForZOrdering = true
+        ).apply {
+            duration = resources.getInteger(R.integer.reply_motion_default_duration).toLong()
+            interpolator = FastOutUltraSlowIn()
+        }
     }
 
     private fun startTransitions() {
         binding.executePendingBindings()
         startPostponedEnterTransition()
-        AnimatorInflater.loadAnimator(requireContext(), R.animator.alpha_in).apply {
-            setTarget(binding.emailCardView)
-            start()
-        }
     }
 
     private fun showError() {

@@ -42,7 +42,7 @@
         <item name="android:statusBarColor">@color/reply_blue_50_alpha_060</item>
         <item name="android:navigationBarColor">@color/nav_bar</item>
 
-        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Reply.SmallComponents</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Reply.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Reply.MediumComponent</item>
         <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Reply.LargeComponent</item>
 

@@ -37,7 +37,7 @@ import com.materialstudies.reply.data.Account
 import com.materialstudies.reply.data.AccountStore
 import com.materialstudies.reply.databinding.FragmentBottomNavDrawerBinding
 import com.materialstudies.reply.util.FastOutUltraSlowIn
-import com.materialstudies.reply.util.getColorFromAttr
+import com.materialstudies.reply.util.themeColor
 import com.materialstudies.reply.util.lerp
 import kotlin.LazyThreadSafetyMode.NONE
 import kotlin.math.abs
@@ -91,7 +91,7 @@ class BottomNavDrawerFragment :
             0
         ).apply {
             fillColor = ColorStateList.valueOf(
-                requireContext().getColorFromAttr(R.attr.colorBrandedVariantSurface)
+                requireContext().themeColor(R.attr.colorBrandedVariantSurface)
             )
             elevation = resources.getDimension(R.dimen.plane_08)
             initializeElevationOverlay(requireContext())
@@ -106,7 +106,7 @@ class BottomNavDrawerFragment :
             0
         ).apply {
             fillColor = ColorStateList.valueOf(
-                requireContext().getColorFromAttr(R.attr.colorBrandedSurface)
+                requireContext().themeColor(R.attr.colorBrandedSurface)
             )
             elevation = resources.getDimension(R.dimen.plane_16)
             shadowCompatibilityMode = MaterialShapeDrawable.SHADOW_COMPAT_MODE_NEVER

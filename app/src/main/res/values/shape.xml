@@ -16,7 +16,7 @@
 
     <!--Shape-->
 
-    <style name="ShapeAppearance.Reply.SmallComponents" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+    <style name="ShapeAppearance.Reply.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/reply_small_component_corner_radius</item>
     </style>

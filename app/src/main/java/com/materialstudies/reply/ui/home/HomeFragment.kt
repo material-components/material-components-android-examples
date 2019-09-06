@@ -17,8 +17,6 @@
 package com.materialstudies.reply.ui.home
 
 import android.os.Bundle
-import android.transition.Fade
-import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,7 +31,6 @@ import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.FragmentHomeBinding
 import com.materialstudies.reply.ui.MenuBottomSheetDialogFragment
-import com.materialstudies.reply.util.FastOutUltraSlowIn
 
 /**
  * A [Fragment] that displays a list of emails.
@@ -43,15 +40,6 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
     private lateinit var binding: FragmentHomeBinding
 
     private val emailAdapter = EmailAdapter(this)
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        // Fade content out when we navigate to a different screen.
-        exitTransition = Fade().apply {
-            duration = resources.getInteger(R.integer.reply_motion_default_duration).toLong()
-            interpolator = FastOutUltraSlowIn()
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

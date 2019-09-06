@@ -19,6 +19,7 @@ package com.materialstudies.reply.util
 import androidx.annotation.ColorInt
 import androidx.annotation.FloatRange
 import com.google.android.material.animation.ArgbEvaluatorCompat
+import kotlin.math.roundToInt
 
 /**
  * Linearly interpolate between two values
@@ -29,6 +30,17 @@ fun lerp(
     @FloatRange(from = 0.0, fromInclusive = true, to = 1.0, toInclusive = true) fraction: Float
 ): Float {
     return startValue + fraction * (endValue - startValue)
+}
+
+/**
+ * Linearly interpolate between two values
+ */
+fun lerp(
+    startValue: Int,
+    endValue: Int,
+    @FloatRange(from = 0.0, fromInclusive = true, to = 1.0, toInclusive = true) fraction: Float
+): Int {
+    return (startValue + fraction * (endValue - startValue)).roundToInt()
 }
 
 /**
@@ -50,6 +62,93 @@ fun lerp(
     if (fraction > endFraction) return endValue
 
     return lerp(startValue, endValue, (fraction - startFraction) / (endFraction - startFraction))
+}
+
+/**
+ * Linearly interpolate between two values when the fraction is in a given range.
+ */
+fun lerp(
+    startValue: Int,
+    endValue: Int,
+    @FloatRange(
+        from = 0.0,
+        fromInclusive = true,
+        to = 1.0,
+        toInclusive = false
+    ) startFraction: Float,
+    @FloatRange(from = 0.0, fromInclusive = false, to = 1.0, toInclusive = true) endFraction: Float,
+    @FloatRange(from = 0.0, fromInclusive = true, to = 1.0, toInclusive = true) fraction: Float
+): Int {
+    if (fraction < startFraction) return startValue
+    if (fraction > endFraction) return endValue
+
+    return lerp(startValue, endValue, (fraction - startFraction) / (endFraction - startFraction))
+}
+
+/**
+ * Linearly interpolate between two [CornerRounding]s when the fraction is in a given range.
+ */
+fun lerp(
+    startValue: CornerRounding,
+    endValue: CornerRounding,
+    @FloatRange(
+        from = 0.0,
+        fromInclusive = true,
+        to = 1.0,
+        toInclusive = false
+    ) startFraction: Float,
+    @FloatRange(from = 0.0, fromInclusive = false, to = 1.0, toInclusive = true) endFraction: Float,
+    @FloatRange(from = 0.0, fromInclusive = true, to = 1.0, toInclusive = true) fraction: Float
+): CornerRounding {
+    if (fraction < startFraction) return startValue
+    if (fraction > endFraction) return endValue
+
+    return CornerRounding(
+        lerp(
+            startValue.topLeftRadius,
+            endValue.topLeftRadius,
+            startFraction,
+            endFraction,
+            fraction
+        ),
+        lerp(
+            startValue.topRightRadius,
+            endValue.topRightRadius,
+            startFraction,
+            endFraction,
+            fraction
+        ),
+        lerp(
+            startValue.bottomRightRadius,
+            endValue.bottomRightRadius,
+            startFraction,
+            endFraction,
+            fraction
+        ),
+        lerp(
+            startValue.bottomLeftRadius,
+            endValue.bottomLeftRadius,
+            startFraction,
+            endFraction,
+            fraction
+        )
+    )
+}
+
+/**
+ * Linearly interpolate between two colors when the fraction is in a given range.
+ */
+@ColorInt
+fun lerpArgb(
+    @ColorInt startColor: Int,
+    @ColorInt endColor: Int,
+    @FloatRange(from = 0.0, fromInclusive = true, to = 1.0, toInclusive = true) fraction: Float
+): Int {
+    return ArgbEvaluatorCompat.getInstance().evaluate(
+        fraction,
+        startColor,
+        endColor
+    )
 }
 
 /**
