@@ -16,11 +16,8 @@
 package com.materialstudies.reply.util
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
-import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -30,11 +27,6 @@ import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.annotation.DrawableRes
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.blue
-import androidx.core.graphics.green
-import androidx.core.graphics.red
-import androidx.core.view.doOnNextLayout
 import androidx.core.view.updateLayoutParams
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -177,26 +169,6 @@ fun View.bindLayoutFullscreen(previousFullscreen: Boolean, fullscreen: Boolean) 
         systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
             View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
             View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-    }
-}
-
-@BindingAdapter(
-    "heightAdditiveTopSystemWindowInsets",
-    "heightAdditiveBottomSystemWindowInsets",
-    requireAll = false
-)
-fun View.bindSystemWindowInsetHeight(
-    previousApplyTop: Boolean,
-    previousApplyBottom: Boolean,
-    applyTop: Boolean,
-    applyBottom: Boolean
-) {
-    if (previousApplyTop == applyTop && previousApplyBottom == applyBottom) return
-    doOnApplyWindowInsets { view, insets, _, _, initialHeight ->
-        val top = if (applyTop) insets.systemWindowInsetTop else 0
-        val bottom = if (applyBottom) insets.systemWindowInsetBottom else 0
-
-        view.layoutParams.height = initialHeight + top + bottom
     }
 }
 

@@ -159,6 +159,7 @@ class MainActivity : AppCompatActivity(),
     private fun setBottomAppBarForHome(@MenuRes menuRes: Int) {
         binding.run {
             fab.setImageState(intArrayOf(-android.R.attr.state_activated), true)
+            bottomAppBar.visibility = View.VISIBLE
             bottomAppBar.replaceMenu(menuRes)
             fab.contentDescription = getString(R.string.fab_compose_email_content_description)
             bottomAppBarTitle.visibility = View.VISIBLE
@@ -170,6 +171,7 @@ class MainActivity : AppCompatActivity(),
     private fun setBottomAppBarForEmail(@MenuRes menuRes: Int) {
         binding.run {
             fab.setImageState(intArrayOf(android.R.attr.state_activated), true)
+            bottomAppBar.visibility = View.VISIBLE
             bottomAppBar.replaceMenu(menuRes)
             fab.contentDescription = getString(R.string.fab_reply_email_content_description)
             bottomAppBarTitle.visibility = View.INVISIBLE
@@ -182,6 +184,9 @@ class MainActivity : AppCompatActivity(),
         binding.run {
             bottomAppBar.performHide()
             fab.hide()
+            // Hide the BottomAppBar to avoid it showing above the keyboard
+            // when composing a new email.
+            bottomAppBar.visibility = View.GONE
         }
     }
 

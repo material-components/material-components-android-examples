@@ -41,14 +41,12 @@
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottom_app_bar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/bottom_app_bar_height"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:gravity="top"
             app:fabAlignmentMode="center"
             app:fabCradleRoundedCornerRadius="@dimen/bottom_app_bar_fab_cradle_corner_radius"
             app:fabCradleMargin="@dimen/bottom_app_bar_fab_cradle_margin"
-            app:hideOnScroll="true"
-            app:heightAdditiveBottomSystemWindowInsets="@{true}">
+            app:hideOnScroll="true">
 
             <LinearLayout
                 android:id="@+id/bottom_app_bar_content_container"
