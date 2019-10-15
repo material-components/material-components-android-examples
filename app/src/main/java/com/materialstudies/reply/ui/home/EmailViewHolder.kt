@@ -18,13 +18,10 @@ package com.materialstudies.reply.ui.home
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.shape.MaterialShapeDrawable
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.databinding.EmailItemLayoutBinding
 import com.materialstudies.reply.ui.common.EmailAttachmentAdapter
-import com.materialstudies.reply.util.backgroundShapeDrawable
-import com.materialstudies.reply.util.foregroundShapeDrawable
 import com.materialstudies.reply.util.getStyleIdFromAttr
 import com.materialstudies.reply.util.setTextAppearanceCompat
 
@@ -37,9 +34,6 @@ class EmailViewHolder(
         override fun getLayoutIdForPosition(position: Int): Int
             = R.layout.email_attachment_preview_item_layout
     }
-
-    private val cardBackground: MaterialShapeDrawable = binding.cardView.backgroundShapeDrawable
-    private val cardForeground: MaterialShapeDrawable = binding.cardView.foregroundShapeDrawable
 
     override val reboundableView: View = binding.cardView
 
@@ -74,16 +68,10 @@ class EmailViewHolder(
         // rounded or squared. Since all other corners are set to 0dp rounded, they are
         // not affected.
         val interpolation = if (email.isStarred) 1F else 0F
-        setCardShapeInterpolation(interpolation)
+        binding.cardView.progress = interpolation
 
         binding.executePendingBindings()
     }
-
-    private fun setCardShapeInterpolation(interpolation: Float) {
-        cardBackground.interpolation = interpolation
-        cardForeground.interpolation = interpolation
-    }
-
 
     override fun onReboundOffsetChanged(
         currentSwipePercentage: Float,
@@ -100,7 +88,7 @@ class EmailViewHolder(
         // Animate the top left corner radius of the email card as swipe happens.
         val interpolation = (currentSwipePercentage / swipeThreshold).coerceIn(0F, 1F)
         val adjustedInterpolation = Math.abs((if (isStarred) 1F else 0F) - interpolation)
-        setCardShapeInterpolation(adjustedInterpolation)
+        binding.cardView.progress = adjustedInterpolation
 
         // Start the background animation once the threshold is met.
         val thresholdMet = currentSwipePercentage >= swipeThreshold

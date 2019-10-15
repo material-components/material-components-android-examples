@@ -18,7 +18,6 @@
     <style name="Theme.Reply.DayNight" parent="Theme.Reply.Dark"/>
 
     <style name="Theme.Reply.Dark" parent="Theme.Reply">
-
         <!--Color-->
         <item name="colorPrimary">@color/colorBlue200</item>
         <item name="colorPrimaryVariant">@color/colorBlue300</item>
