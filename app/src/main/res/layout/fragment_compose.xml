@@ -41,17 +41,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/keyline_4">
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/close_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/subject_edit_text"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/subject_edit_text"
-                    android:layout_marginStart="@dimen/keyline_4"
-                    android:padding="@dimen/keyline_2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:padding="@dimen/min_icon_target_padding"
+                    android:layout_marginStart="@dimen/keyline_3"
                     android:contentDescription="@string/compose_close_content_desc"
-                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:background="?attr/actionBarItemBackground"
                     app:srcCompat="@drawable/ic_close"
                     app:tint="@color/color_on_surface_emphasis_disabled" />
 
@@ -59,28 +58,28 @@
                     android:id="@+id/subject_edit_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:minHeight="@dimen/min_touch_target_size"
+                    android:layout_marginHorizontal="@dimen/keyline_4"
+                    android:paddingVertical="@dimen/keyline_3"
                     app:layout_constraintEnd_toStartOf="@+id/send_icon"
                     app:layout_constraintStart_toEndOf="@id/close_icon"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginStart="@dimen/keyline_4"
-                    android:layout_marginVertical="@dimen/keyline_3"
-                    android:padding="0dp"
                     android:background="@android:color/transparent"
                     android:hint="@string/compose_subject_hint"
                     android:text="@{email.subject}"
+                    android:inputType="textEmailSubject"
                     android:textAppearance="?attr/textAppearanceHeadline5" />
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/send_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/subject_edit_text"
+                    android:padding="@dimen/min_icon_target_padding"
+                    android:layout_marginEnd="@dimen/keyline_3"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/subject_edit_text"
-                    android:layout_marginEnd="@dimen/keyline_4"
-                    android:padding="@dimen/keyline_2"
+                    app:layout_constraintTop_toTopOf="parent"
                     android:contentDescription="@string/compose_send_content_desc"
-                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:background="?attr/actionBarItemBackground"
                     android:clickable="true"
                     app:srcCompat="@drawable/ic_twotone_send_primary" />
 
@@ -91,7 +90,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/subject_edit_text"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="@dimen/keyline_4"
+                    android:layout_marginTop="@dimen/keyline_3"
                     android:layout_marginHorizontal="@dimen/keyline_4"
                     android:background="@drawable/divider"
                     android:backgroundTint="@color/color_on_surface_divider"/>
@@ -120,51 +119,45 @@
                     android:background="@drawable/divider"
                     android:backgroundTint="@color/color_on_surface_divider" />
 
-                <FrameLayout
-                    android:id="@+id/recipient_frame"
+                <HorizontalScrollView
+                    android:id="@+id/recipient_scroll_view"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toStartOf="@id/recipient_add_icon"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/sender_divider"
                     android:layout_marginTop="@dimen/keyline_3"
-                    android:layout_marginEnd="@dimen/keyline_4">
+                    android:layout_marginEnd="@dimen/keyline_4"
+                    android:minHeight="48dp"
+                    android:paddingVertical="@dimen/keyline_1"
+                    android:clipToPadding="false"
+                    android:scrollbars="none"
+                    android:requiresFadingEdge="horizontal"
+                    android:fadingEdgeLength="@dimen/keyline_5"
+                    android:overScrollMode="never"
+                    android:contentDescription="@string/compose_recipient_group_content_desc">
 
-                    <HorizontalScrollView
-                        android:id="@+id/recipient_scroll_view"
-                        android:layout_width="match_parent"
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/recipient_chip_group"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:minHeight="48dp"
-                        android:paddingVertical="@dimen/keyline_1"
-                        android:clipToPadding="false"
+                        android:paddingStart="@dimen/keyline_4"
                         android:scrollbars="none"
-                        android:requiresFadingEdge="horizontal"
-                        android:fadingEdgeLength="@dimen/keyline_5"
-                        android:overScrollMode="never">
+                        app:singleLine="true" />
 
-                        <com.google.android.material.chip.ChipGroup
-                            android:id="@+id/recipient_chip_group"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingStart="@dimen/keyline_4"
-                            android:scrollbars="none"
-                            app:singleLine="true" />
+                </HorizontalScrollView>
 
-                    </HorizontalScrollView>
-
-                </FrameLayout>
-
-                <ImageView
+                <ImageButton
                     android:id="@+id/recipient_add_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/recipient_frame"
-                    app:layout_constraintBottom_toBottomOf="@id/recipient_frame"
-                    android:layout_marginEnd="@dimen/keyline_4"
-                    android:padding="@dimen/keyline_2"
+                    app:layout_constraintTop_toTopOf="@id/recipient_scroll_view"
+                    app:layout_constraintBottom_toBottomOf="@id/recipient_scroll_view"
+                    android:layout_marginEnd="@dimen/keyline_3"
+                    android:padding="@dimen/min_icon_target_padding"
                     android:contentDescription="@string/compose_add_recipient_icon_content_desc"
-                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:background="?attr/actionBarItemBackground"
                     android:clickable="true"
                     app:tint="@color/color_on_surface_emphasis_disabled"
                     app:srcCompat="@drawable/ic_twotone_add_circle_outline"/>
@@ -174,7 +167,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recipient_frame"
+                    app:layout_constraintTop_toBottomOf="@+id/recipient_scroll_view"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginTop="@dimen/keyline_3"
                     android:layout_marginHorizontal="@dimen/keyline_4"
@@ -185,15 +178,18 @@
                     android:id="@+id/body_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:minHeight="250dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/recipient_divider"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginTop="@dimen/keyline_4"
                     android:layout_marginHorizontal="@dimen/keyline_4"
-                    android:padding="0dp"
+                    android:paddingBottom="@dimen/keyline_6"
+                    paddingBottomSystemWindowInsets="@{true}"
                     android:background="@android:color/transparent"
                     android:hint="@string/compose_body_hint"
                     android:text="@{email.body}"
+                    android:gravity="top"
                     android:textAppearance="?attr/textAppearanceBody1"
                     app:lineHeight="24sp" />
 

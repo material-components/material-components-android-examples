@@ -61,16 +61,17 @@
                     android:textAppearance="?attr/textAppearanceHeadline3"
                     tools:text="High school reunion" />
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/navigation_icon"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:padding="@dimen/keyline_4"
                     android:layout_marginTop="@dimen/keyline_3"
                     app:layout_constraintEnd_toEndOf="@+id/sender_profile_image_view"
                     app:layout_constraintStart_toStartOf="@+id/sender_profile_image_view"
                     app:layout_constraintTop_toTopOf="@+id/subject_text_view"
                     android:alpha="?attr/emphasisMediumAlpha"
-                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:background="?attr/actionBarItemBackground"
                     android:contentDescription="@string/navigate_back_icon_content_desc"
                     app:srcCompat="@drawable/ic_arrow_down" />
 

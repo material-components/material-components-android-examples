@@ -112,12 +112,16 @@ class BottomNavDrawerFragment :
             elevation = resources.getDimension(R.dimen.plane_16)
             shadowCompatibilityMode = MaterialShapeDrawable.SHADOW_COMPAT_MODE_NEVER
             initializeElevationOverlay(requireContext())
-            shapeAppearanceModel.topEdge = SemiCircleEdgeCutoutTreatment(
-                resources.getDimension(R.dimen.keyline_3),
-                resources.getDimension(R.dimen.keyline_5),
-                0F,
-                resources.getDimension(R.dimen.navigation_drawer_profile_image_size)
-            )
+            shapeAppearanceModel = shapeAppearanceModel.toBuilder()
+                .setTopEdge(
+                    SemiCircleEdgeCutoutTreatment(
+                        resources.getDimension(R.dimen.keyline_3),
+                        resources.getDimension(R.dimen.keyline_5),
+                        0F,
+                        resources.getDimension(R.dimen.navigation_drawer_profile_image_size_padded)
+                    )
+                )
+                .build()
         }
     }
 

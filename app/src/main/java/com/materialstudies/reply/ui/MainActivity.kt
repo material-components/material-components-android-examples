@@ -165,6 +165,7 @@ class MainActivity : AppCompatActivity(),
                 state = intArrayOf(android.R.attr.state_activated)
             }
             bottomAppBar.replaceMenu(menuRes)
+            fab.contentDescription = getString(R.string.fab_compose_email_content_description)
             bottomAppBarTitle.visibility = View.VISIBLE
             bottomAppBar.performShow()
             fab.show()
@@ -175,6 +176,7 @@ class MainActivity : AppCompatActivity(),
         binding.run {
             (fab.drawable as AnimatedVectorDrawable).start()
             bottomAppBar.replaceMenu(menuRes)
+            fab.contentDescription = getString(R.string.fab_reply_email_content_description)
             bottomAppBarTitle.visibility = View.INVISIBLE
             bottomAppBar.performShow()
             fab.show()

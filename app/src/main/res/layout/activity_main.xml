@@ -53,12 +53,10 @@
             <LinearLayout
                 android:id="@+id/bottom_app_bar_content_container"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginTop="@dimen/keyline_3"
-                android:layout_marginBottom="@dimen/keyline_3"
-                android:minHeight="@dimen/reply_small_component_corner_radius"
-                android:orientation="horizontal"
+                android:layout_height="@dimen/min_touch_target_size"
+                android:layout_marginVertical="@dimen/keyline_2"
                 android:paddingHorizontal="@dimen/keyline_2"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:foreground="@drawable/bottom_app_bar_title_foreground">
 
@@ -99,7 +97,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_anchor="@id/bottom_app_bar"
-            app:srcCompat="@drawable/avd_edit_reply" />
+            app:srcCompat="@drawable/avd_edit_reply"
+            android:contentDescription="@string/fab_compose_email_content_description"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

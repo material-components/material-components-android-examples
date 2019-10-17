@@ -20,6 +20,8 @@
     <string name="bottom_app_bar_chevron_content_desc">Open or close bottom navigation drawer</string>
     <string name="bottom_app_bar_logo_content_desc">Reply logo</string>
     <string name="bottom_nav_drawer_profile_image_content_desc">profile avatar image</string>
+    <string name="fab_compose_email_content_description">Compose new email</string>
+    <string name="fab_reply_email_content_description">Reply to email</string>
 
     <!--BottomSheet menus-->
     <string name="menu_item_forward">Forward</string>
@@ -56,4 +58,5 @@
     <string name="compose_add_recipient_icon_content_desc">Add recipient</string>
     <string name="compose_subject_hint">Subject</string>
     <string name="compose_body_hint">New message…</string>
+    <string name="compose_recipient_group_content_desc">Recipients</string>
 </resources>

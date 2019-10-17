@@ -53,7 +53,7 @@ import com.materialstudies.reply.R
 fun Spinner.bindPopupElevationOverlay(popupElevationOverlay: Float) {
     setPopupBackgroundDrawable(ColorDrawable(
         ElevationOverlayProvider(context)
-            .getSurfaceColorWithOverlayIfNeeded(popupElevationOverlay)
+            .compositeOverlayWithThemeSurfaceColorIfNeeded(popupElevationOverlay)
     ))
 }
 

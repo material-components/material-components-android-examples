@@ -23,7 +23,7 @@
         <item name="colorBrandedVariantSurface">?colorSurface</item>
         <item name="colorOnBrandedSurface">?colorOnSurface</item>
 
-        <item name="elevationOverlaysEnabled">true</item>
+        <item name="elevationOverlayEnabled">true</item>
         <item name="bottomAppBarStyle">@style/Widget.MaterialComponents.BottomAppBar</item>
 
         <!--System/Platform attributes-->

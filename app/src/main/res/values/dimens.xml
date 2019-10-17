@@ -21,6 +21,9 @@
     <dimen name="keyline_5">24dp</dimen>
     <dimen name="keyline_6">32dp</dimen>
 
+    <dimen name="min_touch_target_size">48dp</dimen>
+    <dimen name="min_icon_target_padding">12dp</dimen>
+
     <!--BottomAppBar-->
     <dimen name="bottom_app_bar_height">56dp</dimen>
     <dimen name="bottom_app_bar_fab_cradle_corner_radius">32dp</dimen>
@@ -28,7 +31,8 @@
     <dimen name="bottom_app_bar_logo_size">32dp</dimen>
 
     <!--BottomNavigationDrawer-->
-    <dimen name="navigation_drawer_profile_image_size">32dp</dimen>
+    <dimen name="navigation_drawer_profile_image_size">48dp</dimen>
+    <dimen name="navigation_drawer_profile_image_size_padded">32dp</dimen>
     <dimen name="navigation_drawer_menu_item_vertical_padding">20dp</dimen>
     <dimen name="navigation_drawer_menu_item_height">56dp</dimen>
 
