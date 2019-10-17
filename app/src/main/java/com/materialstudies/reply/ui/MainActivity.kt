@@ -192,7 +192,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         when (item?.itemId) {
-            R.id.menu_theme -> {
+            R.id.menu_settings -> {
                 bottomNavDrawer.close()
                 showDarkThemeMenu()
             }
