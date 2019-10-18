@@ -16,11 +16,8 @@
 package com.materialstudies.reply.util
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
-import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -30,11 +27,6 @@ import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.annotation.DrawableRes
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.blue
-import androidx.core.graphics.green
-import androidx.core.graphics.red
-import androidx.core.view.doOnNextLayout
 import androidx.core.view.updateLayoutParams
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide

@@ -13,6 +13,6 @@
   the License.
   -->
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-    <background android:drawable="@color/colorBlue700"/>
+    <background android:drawable="@color/reply_blue_700"/>
     <foreground android:drawable="@drawable/ic_launcher_foreground"/>
 </adaptive-icon>

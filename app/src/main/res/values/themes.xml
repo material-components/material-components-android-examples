@@ -20,26 +20,26 @@
     <style name="Theme.Reply" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
         <!--Color-->
-        <item name="colorPrimary">@color/colorBlue700</item>
-        <item name="colorPrimaryVariant">@color/colorBlue800</item>
-        <item name="colorSecondary">@color/colorOrange500</item>
-        <item name="colorSecondaryVariant">@color/colorOrange400</item>
+        <item name="colorPrimary">@color/reply_blue_700</item>
+        <item name="colorPrimaryVariant">@color/reply_blue_800</item>
+        <item name="colorSecondary">@color/reply_orange_500</item>
+        <item name="colorSecondaryVariant">@color/reply_orange_400</item>
 
-        <item name="android:colorBackground">@color/colorBlue50</item>
-        <item name="colorSurface">@color/colorWhite50</item>
+        <item name="android:colorBackground">@color/reply_blue_50</item>
+        <item name="colorSurface">@color/reply_white_50</item>
         <item name="colorBrandedSurface">?attr/colorPrimary</item>
         <item name="colorBrandedVariantSurface">?attr/colorPrimaryVariant</item>
-        <item name="colorError">@color/colorRed400</item>
+        <item name="colorError">@color/reply_red_400</item>
 
-        <item name="colorOnPrimary">@color/colorWhite50</item>
-        <item name="colorOnSecondary">@color/colorBlack900</item>
-        <item name="colorOnBackground">@color/colorBlack900</item>
-        <item name="colorOnSurface">@color/colorBlack900</item>
+        <item name="colorOnPrimary">@color/reply_white_50</item>
+        <item name="colorOnSecondary">@color/reply_black_900</item>
+        <item name="colorOnBackground">@color/reply_black_900</item>
+        <item name="colorOnSurface">@color/reply_black_900</item>
         <item name="colorOnBrandedSurface">?attr/colorOnPrimary</item>
-        <item name="colorOnError">@color/colorBlack900</item>
+        <item name="colorOnError">@color/reply_black_900</item>
 
-        <item name="scrimBackground">@color/colorWhite50Alpha060</item>
-        <item name="android:statusBarColor">@color/colorBlue50Alpha060</item>
+        <item name="scrimBackground">@color/reply_white_50_alpha_060</item>
+        <item name="android:statusBarColor">@color/reply_blue_50_alpha_060</item>
         <item name="android:navigationBarColor">@color/nav_bar</item>
 
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Reply.SmallComponents</item>
