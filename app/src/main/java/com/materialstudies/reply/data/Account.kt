@@ -34,7 +34,7 @@ data class Account(
     var isCurrentAccount: Boolean = false
 ) {
     val fullName: String = "$firstName $lastName"
-    @DrawableRes val checkedIcon: Int = if (isCurrentAccount) R.drawable.ic_done_on_branded else 0
+    @DrawableRes val checkedIcon: Int = if (isCurrentAccount) R.drawable.ic_done else 0
 }
 
 object AccountDiffCallback : DiffUtil.ItemCallback<Account>() {

@@ -16,13 +16,13 @@
     android:height="24dp"
     android:viewportWidth="24"
     android:viewportHeight="24"
-    android:tint="@color/color_on_branded_surface_emphasis_medium">
+    android:tint="?attr/colorControlNormal">
   <path
       android:fillColor="#FFFFFFFF"
-      android:pathData="M8,9h8v10H8z"
+      android:pathData="M4,8.25l7.51,1 -7.5,-3.22zM4.01,17.97l7.5,-3.22 -7.51,1z"
       android:strokeAlpha="0.3"
       android:fillAlpha="0.3"/>
   <path
       android:fillColor="#FFFFFFFF"
-      android:pathData="M15.5,4l-1,-1h-5l-1,1H5v2h14V4zM6,19c0,1.1 0.9,2 2,2h8c1.1,0 2,-0.9 2,-2V7H6v12zM8,9h8v10H8V9z"/>
+      android:pathData="M2.01,3L2,10l15,2 -15,2 0.01,7L23,12 2.01,3zM4,8.25L4,6.03l7.51,3.22 -7.51,-1zM4.01,17.97v-2.22l7.51,-1 -7.51,3.22z"/>
 </vector>

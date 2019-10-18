@@ -16,12 +16,12 @@
 
     <item
         android:id="@+id/edit"
-        android:drawable="@drawable/ic_edit_on_secondary"
+        android:drawable="@drawable/ic_edit"
         android:state_activated="false"/>
 
     <item
         android:id="@+id/reply"
-        android:drawable="@drawable/ic_reply_all_on_secondary"
+        android:drawable="@drawable/ic_reply_all"
         android:state_activated="true"/>
 
     <transition

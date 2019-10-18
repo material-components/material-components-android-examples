@@ -17,37 +17,37 @@
     <item
         android:id="@+id/navigation_menu_inbox"
         android:title="@string/navigation_inbox"
-        android:icon="@drawable/ic_twotone_inbox_on_branded"
+        android:icon="@drawable/ic_twotone_inbox"
         android:checkable="true"/>
 
     <item
         android:id="@+id/navigation_menu_starred"
         android:title="@string/navigation_starred"
-        android:icon="@drawable/ic_twotone_stars_on_branded"
+        android:icon="@drawable/ic_twotone_stars"
         android:checkable="true"/>
 
     <item
         android:id="@+id/navigation_menu_sent"
         android:title="@string/navigation_sent"
-        android:icon="@drawable/ic_twotone_send_on_branded"
+        android:icon="@drawable/ic_twotone_send"
         android:checkable="true"/>
 
     <item
         android:id="@+id/navigation_menu_trash"
         android:title="@string/navigation_trash"
-        android:icon="@drawable/ic_twotone_delete_on_branded"
+        android:icon="@drawable/ic_twotone_delete"
         android:checkable="true"/>
 
     <item
         android:id="@+id/navigation_menu_spam"
         android:title="@string/navigation_spam"
-        android:icon="@drawable/ic_twotone_error_on_branded"
+        android:icon="@drawable/ic_twotone_error"
         android:checkable="true"/>
 
     <item
         android:id="@+id/navigation_menu_drafts"
         android:title="@string/navigation_drafts"
-        android:icon="@drawable/ic_twotone_drafts_on_branded"
+        android:icon="@drawable/ic_twotone_drafts"
         android:checkable="true"/>
 
 </menu>

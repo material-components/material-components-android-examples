@@ -84,14 +84,15 @@ class BottomNavDrawerFragment :
     private val sandwichSlideActions = mutableListOf<OnSandwichSlideAction>()
 
     private val backgroundShapeDrawable: MaterialShapeDrawable by lazy(NONE) {
+        val backgroundContext = binding.backgroundContainer.context
         MaterialShapeDrawable(
-            binding.backgroundContainer.context,
+            backgroundContext,
             null,
             R.attr.bottomSheetStyle,
             0
         ).apply {
             fillColor = ColorStateList.valueOf(
-                requireContext().themeColor(R.attr.colorBrandedVariantSurface)
+                backgroundContext.themeColor(R.attr.colorPrimarySurfaceVariant)
             )
             elevation = resources.getDimension(R.dimen.plane_08)
             initializeElevationOverlay(requireContext())
@@ -99,14 +100,15 @@ class BottomNavDrawerFragment :
     }
 
     private val foregroundShapeDrawable: MaterialShapeDrawable by lazy(NONE) {
+        val foregroundContext = binding.foregroundContainer.context
         MaterialShapeDrawable(
-            binding.foregroundContainer.context,
+            foregroundContext,
             null,
             R.attr.bottomSheetStyle,
             0
         ).apply {
             fillColor = ColorStateList.valueOf(
-                requireContext().themeColor(R.attr.colorBrandedSurface)
+                foregroundContext.themeColor(R.attr.colorPrimarySurface)
             )
             elevation = resources.getDimension(R.dimen.plane_16)
             shadowCompatibilityMode = MaterialShapeDrawable.SHADOW_COMPAT_MODE_NEVER

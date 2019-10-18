@@ -17,7 +17,7 @@
 
     <item
         android:id="@+id/menu_search"
-        android:icon="@drawable/ic_search_on_branded"
+        android:icon="@drawable/ic_search"
         app:showAsAction="ifRoom"
         android:title="Search"/>
 

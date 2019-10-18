@@ -17,7 +17,7 @@
 
     <item
         android:id="@+id/menu_settings"
-        android:icon="@drawable/ic_settings_on_branded"
+        android:icon="@drawable/ic_settings"
         app:showAsAction="ifRoom"
         android:title="Settings"/>
 

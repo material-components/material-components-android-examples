@@ -14,12 +14,9 @@
   -->
 <resources>
 
-    <!--Branded is a color and it's "on" color which uses colorPrimary for light and -->
-    <!--colorSurface for dark. This makes it easy to set the color of surfaces and content for -->
-    <!--components such as BottomNavigationDrawer.-->
-    <attr name="colorBrandedSurface" format="color" />
-    <attr name="colorBrandedVariantSurface" format="color" />
-    <attr name="colorOnBrandedSurface" format="color" />
+    <!--A variant of primarySurface which corresponds to colorPrimaryVariant in light theme-->
+    <!--and colorSurface in dark theme-->
+    <attr name="colorPrimarySurfaceVariant" format="color" />
 
     <!--Emphasis values are used in combination with each "on" color to create three available -->
     <!--levels of emphasis for text and content.-->

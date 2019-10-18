@@ -29,37 +29,37 @@ object NavigationModel {
     private var navigationMenuItems = mutableListOf(
         NavigationModelItem.NavMenuItem(
             id = 0,
-            icon = R.drawable.ic_twotone_inbox_on_branded,
+            icon = R.drawable.ic_twotone_inbox,
             titleRes = R.string.navigation_inbox,
             checked = false
         ),
         NavigationModelItem.NavMenuItem(
             id = 1,
-            icon = R.drawable.ic_twotone_stars_on_branded,
+            icon = R.drawable.ic_twotone_stars,
             titleRes = R.string.navigation_starred,
             checked = false
         ),
         NavigationModelItem.NavMenuItem(
             id = 2,
-            icon = R.drawable.ic_twotone_send_on_branded,
+            icon = R.drawable.ic_twotone_send,
             titleRes = R.string.navigation_sent,
             checked = false
         ),
         NavigationModelItem.NavMenuItem(
             id = 3,
-            icon = R.drawable.ic_twotone_delete_on_branded,
+            icon = R.drawable.ic_twotone_delete,
             titleRes = R.string.navigation_trash,
             checked = false
         ),
         NavigationModelItem.NavMenuItem(
             id = 4,
-            icon = R.drawable.ic_twotone_error_on_branded,
+            icon = R.drawable.ic_twotone_error,
             titleRes = R.string.navigation_spam,
             checked = false
         ),
         NavigationModelItem.NavMenuItem(
             id = 5,
-            icon = R.drawable.ic_twotone_drafts_on_branded,
+            icon = R.drawable.ic_twotone_drafts,
             titleRes = R.string.navigation_drafts,
             checked = false
         )

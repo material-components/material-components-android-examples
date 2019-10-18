@@ -64,7 +64,8 @@
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/bottom_app_bar_chevron_content_desc"
                     android:layout_gravity="center_vertical"
-                    app:srcCompat="@drawable/ic_arrow_drop_up_on_branded" />
+                    app:tint="?attr/colorOnPrimarySurface"
+                    app:srcCompat="@drawable/ic_arrow_drop_up" />
 
                 <ImageView
                     android:id="@+id/bottom_app_bar_logo"
@@ -73,7 +74,7 @@
                     android:layout_marginLeft="@dimen/grid_1"
                     android:contentDescription="@string/bottom_app_bar_logo_content_desc"
                     android:layout_gravity="center_vertical"
-                    app:srcCompat="@drawable/ic_reply_logo_on_branded" />
+                    app:srcCompat="@drawable/ic_reply_logo" />
 
                 <TextView
                     android:id="@+id/bottom_app_bar_title"

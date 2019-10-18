@@ -17,19 +17,19 @@
 
     <item
         android:id="@+id/menu_email_star"
-        android:icon="@drawable/ic_twotone_star_on_branded"
+        android:icon="@drawable/ic_twotone_star"
         app:showAsAction="ifRoom"
         android:title="Star"/>
 
     <item
         android:id="@+id/menu_email_delete"
-        android:icon="@drawable/ic_twotone_delete_on_branded"
+        android:icon="@drawable/ic_twotone_delete"
         app:showAsAction="ifRoom"
         android:title="Delete"/>
 
     <item
         android:id="@+id/menu_email_forward"
-        android:icon="@drawable/ic_twotone_forward_on_branded"
+        android:icon="@drawable/ic_twotone_forward"
         app:showAsAction="never"
         android:title="Forward"/>
 </menu>

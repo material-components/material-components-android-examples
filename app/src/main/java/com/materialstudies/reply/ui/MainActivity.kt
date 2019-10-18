@@ -96,10 +96,6 @@ class MainActivity : AppCompatActivity(),
 
         // Set up the BottomAppBar menu
         binding.bottomAppBar.apply {
-            overflowIcon = ContextCompat.getDrawable(
-                this@MainActivity,
-                R.drawable.ic_more_vert_on_branded
-            )
             setNavigationOnClickListener {
                 bottomNavDrawer.toggle()
             }

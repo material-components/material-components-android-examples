@@ -13,5 +13,5 @@
   the License.
   -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:color="?attr/colorOnBrandedSurface" android:alpha="0.1" />
+    <item android:color="?attr/colorOnPrimarySurface" android:alpha="0.1" />
 </selector>

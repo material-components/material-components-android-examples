@@ -14,5 +14,5 @@
   -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:color="?attr/colorSecondary" android:state_checked="true"/>
-    <item android:color="@color/color_on_branded_surface_emphasis_medium" />
+    <item android:color="@color/color_on_primary_surface_emphasis_medium" />
 </selector>

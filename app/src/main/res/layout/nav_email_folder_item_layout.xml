@@ -13,7 +13,8 @@
   the License.
   -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="navEmailFolder"
@@ -35,10 +36,10 @@
         android:ellipsize="end"
         android:lines="1"
         android:text="@{navEmailFolder.emailFolder}"
-        android:textColor="@color/color_on_branded_surface_emphasis_medium"
+        android:textColor="@color/color_on_primary_surface_emphasis_medium"
         android:textAppearance="?attr/textAppearanceSubtitle1"
-        android:drawableLeft="@drawable/ic_twotone_folder_on_branded"
-        android:drawableTint="@color/color_on_branded_surface_emphasis_medium"
+        app:drawableLeftCompat="@drawable/ic_twotone_folder"
+        app:drawableTint="@color/color_on_primary_surface_emphasis_medium"
         android:drawablePadding="@dimen/grid_4"
         tools:text="Pine Elementary" />
 

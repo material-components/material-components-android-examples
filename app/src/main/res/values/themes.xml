@@ -27,15 +27,13 @@
 
         <item name="android:colorBackground">@color/reply_blue_50</item>
         <item name="colorSurface">@color/reply_white_50</item>
-        <item name="colorBrandedSurface">?attr/colorPrimary</item>
-        <item name="colorBrandedVariantSurface">?attr/colorPrimaryVariant</item>
+        <item name="colorPrimarySurfaceVariant">?attr/colorPrimaryVariant</item>
         <item name="colorError">@color/reply_red_400</item>
 
         <item name="colorOnPrimary">@color/reply_white_50</item>
         <item name="colorOnSecondary">@color/reply_black_900</item>
         <item name="colorOnBackground">@color/reply_black_900</item>
         <item name="colorOnSurface">@color/reply_black_900</item>
-        <item name="colorOnBrandedSurface">?attr/colorOnPrimary</item>
         <item name="colorOnError">@color/reply_black_900</item>
 
         <item name="scrimBackground">@color/reply_white_50_alpha_060</item>
@@ -65,7 +63,7 @@
         <item name="emphasisDisabledAlpha">0.38</item>
 
         <!--Styles-->
-        <item name="bottomAppBarStyle">@style/Widget.MaterialComponents.BottomAppBar.Colored</item>
+        <item name="bottomAppBarStyle">@style/Widget.MaterialComponents.BottomAppBar.PrimarySurface</item>
         <item name="bottomSheetStyle">@style/Widget.MaterialComponents.BottomSheet.Modal</item>
         <item name="navigationViewStyle">@style/Widget.Reply.NavigationView</item>
         <item name="chipStyle">@style/Widget.Reply.Chip.Entry</item>

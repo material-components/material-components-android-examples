@@ -13,8 +13,7 @@
   the License.
   -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/color_on_branded_surface_divider"
-        android:alpha="0.1"/>
+    <solid android:color="@color/color_on_primary_surface_divider" />
     <size android:height="1dp"
         android:width="200dp"/>
 </shape>

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   Copyright (c) 2019 Google Inc.
 
@@ -11,14 +12,6 @@
   or implied. See the License for the specific language governing permissions and limitations under
   the License.
   -->
-<vector
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="24dp"
-    android:height="24dp"
-    android:viewportHeight="24.0"
-    android:viewportWidth="24.0"
-    android:tint="@color/color_on_branded_surface_emphasis_medium">
-    <path
-        android:fillColor="#FF000000"
-        android:pathData="M9,16.2L4.8,12l-1.4,1.4L9,19 21,7l-1.4,-1.4L9,16.2z"/>
-</vector>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="?attr/colorOnPrimarySurface" android:alpha="?attr/emphasisHighAlpha" />
+</selector>

@@ -41,7 +41,7 @@
         android:checked="@{navMenuItem.checked}"
         android:textAppearance="?attr/textAppearanceSubtitle1"
         android:textColor="@color/color_navigation_drawer_menu_item"
-        android:drawableTint="@color/color_navigation_drawer_menu_item"
+        app:drawableTint="@color/color_navigation_drawer_menu_item"
         app:drawableLeft="@{navMenuItem.icon}"
         android:drawablePadding="@dimen/grid_4"
         tools:text="Inbox" />
