@@ -16,14 +16,6 @@
 
     <!--Components-->
 
-    <!--Bottom Sheets-->
-    <style name="Widget.Reply.BottomSheet.Modal" parent="Widget.MaterialComponents.BottomSheet.Modal">
-        <item name="enforceMaterialTheme">true</item>
-        <item name="shapeAppearance">?shapeAppearanceLargeComponent</item>
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Reply.BottomSheet</item>
-        <item name="backgroundTint">?colorSurface</item>
-    </style>
-
     <style name="Widget.Reply.NavigationView" parent="Widget.MaterialComponents.NavigationView">
         <!--Remove any scrim insets applied by NavigationView for system bars-->
         <item name="insetForeground">@android:color/transparent</item>
