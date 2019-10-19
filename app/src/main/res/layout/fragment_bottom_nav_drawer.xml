@@ -43,7 +43,6 @@
             app:behavior_skipCollapsed="true"
             app:behavior_halfExpandedRatio="0.6">
 
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/account_recycler_view"
                 android:layout_width="match_parent"

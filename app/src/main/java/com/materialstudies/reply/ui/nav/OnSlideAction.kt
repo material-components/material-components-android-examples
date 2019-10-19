@@ -45,7 +45,6 @@ interface OnSlideAction {
             toInclusive = true
         ) slideOffset: Float
     )
-
 }
 
 /**
