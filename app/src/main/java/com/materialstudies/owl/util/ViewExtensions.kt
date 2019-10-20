@@ -125,7 +125,7 @@ fun View.descendantBackgroundColor(): Int {
             }
         }
     }
-    return context.themeColor(R.attr.colorSurface)
+    return context.themeColor(android.R.attr.colorBackground)
 }
 
 @ColorInt

@@ -55,9 +55,9 @@ fun lerp(
         from = 0.0,
         fromInclusive = true,
         to = 1.0,
-        toInclusive = false
+        toInclusive = true
     ) startFraction: Float,
-    @FloatRange(from = 0.0, fromInclusive = false, to = 1.0, toInclusive = true) endFraction: Float,
+    @FloatRange(from = 0.0, fromInclusive = true, to = 1.0, toInclusive = true) endFraction: Float,
     @FloatRange(from = 0.0, fromInclusive = true, to = 1.0, toInclusive = true) fraction: Float
 ): Float {
     if (fraction < startFraction) return startValue
@@ -76,9 +76,9 @@ fun lerp(
         from = 0.0,
         fromInclusive = true,
         to = 1.0,
-        toInclusive = false
+        toInclusive = true
     ) startFraction: Float,
-    @FloatRange(from = 0.0, fromInclusive = false, to = 1.0, toInclusive = true) endFraction: Float,
+    @FloatRange(from = 0.0, fromInclusive = true, to = 1.0, toInclusive = true) endFraction: Float,
     @FloatRange(from = 0.0, fromInclusive = true, to = 1.0, toInclusive = true) fraction: Float
 ): Int {
     if (fraction < startFraction) return startValue
@@ -97,9 +97,9 @@ fun lerp(
         from = 0.0,
         fromInclusive = true,
         to = 1.0,
-        toInclusive = false
+        toInclusive = true
     ) startFraction: Float,
-    @FloatRange(from = 0.0, fromInclusive = false, to = 1.0, toInclusive = true) endFraction: Float,
+    @FloatRange(from = 0.0, fromInclusive = true, to = 1.0, toInclusive = true) endFraction: Float,
     @FloatRange(from = 0.0, fromInclusive = true, to = 1.0, toInclusive = true) fraction: Float
 ): CornerRounding {
     if (fraction < startFraction) return startValue
@@ -164,9 +164,9 @@ fun lerpArgb(
         from = 0.0,
         fromInclusive = true,
         to = 1.0,
-        toInclusive = false
+        toInclusive = true
     ) startFraction: Float,
-    @FloatRange(from = 0.0, fromInclusive = false, to = 1.0, toInclusive = true) endFraction: Float,
+    @FloatRange(from = 0.0, fromInclusive = true, to = 1.0, toInclusive = true) endFraction: Float,
     @FloatRange(from = 0.0, fromInclusive = true, to = 1.0, toInclusive = true) fraction: Float
 ): Int {
     if (fraction < startFraction) return startColor

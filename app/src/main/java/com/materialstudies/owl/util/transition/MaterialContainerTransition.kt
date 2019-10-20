@@ -31,6 +31,7 @@ import android.graphics.drawable.Drawable
 import android.util.Property
 import android.view.ViewGroup
 import androidx.annotation.ColorInt
+import androidx.annotation.FloatRange
 import androidx.annotation.IdRes
 import androidx.annotation.Px
 import androidx.core.animation.doOnEnd
@@ -52,20 +53,31 @@ import com.materialstudies.owl.util.lerp
 import com.materialstudies.owl.util.lerpArgb
 import com.materialstudies.owl.util.toCornerRounding
 import com.materialstudies.owl.util.transition.MaterialContainerTransitionDrawable.PROGRESS
+import kotlin.math.roundToInt
 
 @Px
 private const val BITMAP_PADDING_BOTTOM = 1
 private const val PROP_BOUNDS = "materialContainerTransition:bounds"
 private const val PROP_BITMAP = "materialContainerTransition:bitmap"
 private const val PROP_SHAPE_APPEARANCE = "materialContainerTransition:shapeAppearance"
-private val TRANSITION_PROPS = arrayOf(PROP_BOUNDS, PROP_BITMAP, PROP_SHAPE_APPEARANCE)
+private const val PROP_CONTAINER_COLOR = "materialContainerTransition:containerColor"
+private val TRANSITION_PROPS = arrayOf(
+    PROP_BOUNDS,
+    PROP_BITMAP,
+    PROP_SHAPE_APPEARANCE,
+    PROP_CONTAINER_COLOR
+)
 
 /**
  * A [Transition] which implements the Material Container pattern from
  * https://medium.com/google-design/motion-design-doesnt-have-to-be-hard-33089196e6c2
  */
 class MaterialContainerTransition(
-    @IdRes private val drawInId: Int = android.R.id.content
+    @IdRes private val drawInId: Int = android.R.id.content,
+    @FloatRange(from = 0.0, fromInclusive = true, to = 1.0, toInclusive = true)
+    private val crossfadeStartProgress: Float = 0.3f,
+    @FloatRange(from = 0.0, fromInclusive = true, to = 1.0, toInclusive = true)
+    private val crossfadeEndProgress: Float = 0.8f
 ) : Transition() {
 
     override fun getTransitionProperties() = TRANSITION_PROPS
@@ -102,12 +114,15 @@ class MaterialContainerTransition(
             (startValues.values[PROP_SHAPE_APPEARANCE] as ShapeAppearanceModel?).toCornerRounding(
                 startBounds
             ),
+            startValues.values[PROP_CONTAINER_COLOR] as Int,
+            crossfadeStartProgress,
             endValues.values[PROP_BITMAP] as Bitmap,
             endBounds,
             (endValues.values[PROP_SHAPE_APPEARANCE] as ShapeAppearanceModel?).toCornerRounding(
                 endBounds
             ),
-            view.descendantBackgroundColor()
+            endValues.values[PROP_CONTAINER_COLOR] as Int,
+            crossfadeEndProgress
         )
 
         return ObjectAnimator.ofFloat(dr, PROGRESS, 0f, 1f).apply {
@@ -145,7 +160,7 @@ class MaterialContainerTransition(
                 top + view.height
             )
             // Clear any foreground e.g. a ripple in progress
-            view.foreground = null
+            view.jumpDrawablesToCurrentState()
             // Add padding to the bitmap capture so that when we draw it later with a
             // [BitmapShader] with CLAMP [TileMode], the transparency is repeated.
             transitionValues.values[PROP_BITMAP] = view.drawToBitmap(BITMAP_PADDING_BOTTOM)
@@ -168,6 +183,7 @@ class MaterialContainerTransition(
                         }
                     }
             }
+            transitionValues.values[PROP_CONTAINER_COLOR] = view.descendantBackgroundColor()
         }
     }
 }
@@ -178,14 +194,22 @@ class MaterialContainerTransition(
  *
  * Additionally it draws a scrim over non-shared elements and a background to the container.
  */
+private const val scrimAlpha = 102 // 40% opacity
+private const val containerShadow = 0x1a000000
+private const val containerNoShadow = 0x00000000
 private class MaterialContainerTransitionDrawable(
     private val startImage: Bitmap,
     private val startBounds: RectF,
     private val startRadii: CornerRounding,
+    @ColorInt private val containerStartColor: Int,
+    @FloatRange(from = 0.0, fromInclusive = true, to = 1.0, toInclusive = true)
+    private val crossfadeStartProgress: Float,
     private val endImage: Bitmap,
     private val endBounds: RectF,
     private val endRadii: CornerRounding,
-    @ColorInt containerColor: Int = 0xffffffff.toInt(),
+    @ColorInt private val containerEndColor: Int,
+    @FloatRange(from = 0.0, fromInclusive = true, to = 1.0, toInclusive = true)
+    private val crossfadeEndProgress: Float,
     @ColorInt scrimColor: Int = 0xff000000.toInt()
 ) : Drawable() {
 
@@ -198,7 +222,7 @@ private class MaterialContainerTransitionDrawable(
     }
     private val containerPaint = Paint().apply {
         style = Paint.Style.FILL
-        color = containerColor
+        color = containerStartColor
     }
     private val currentBounds = RectF(startBounds)
     private val entering = endBounds.height() > startBounds.height()
@@ -233,29 +257,41 @@ private class MaterialContainerTransitionDrawable(
         }
 
     override fun draw(canvas: Canvas) {
-        // Fade in/out 0–40% opaque scrim over non-shared elements
-        // TODO make opacity configurable
+        // Fade in/out a scrim over non-shared elements
         scrimPaint.alpha = if (entering) {
-            lerp(0, 102, progress)
+            lerp(0, scrimAlpha, progress)
         } else {
-            lerp(102, 0, progress)
+            lerp(scrimAlpha, 0, progress)
         }
         if (scrimPaint.alpha > 0) canvas.drawRect(bounds, scrimPaint)
 
-        // Animate corner radii changes over 0.3–0.8 of `progress` & use this when drawing the
+        // Animate corner radii over the crossfade range & use this when drawing the
         // container background & images
-        val cornerRadii = lerp(startRadii, endRadii, 0.3f, 0.8f, progress)
+        val cornerRadii = lerp(
+            startRadii,
+            endRadii,
+            crossfadeStartProgress,
+            crossfadeEndProgress,
+            progress
+        )
 
         // Draw a background for the container, useful when the container size exceeds the image
         // size which it can in large start/end size changes. Also fade in/out a shadow.
-        // TODO make this configurable / density dependent
+        // TODO make radius configurable / density dependent
         containerPaint.setShadowLayer(
             12f, 0f, 12f,
             if (entering) {
-                lerpArgb(0, 0x1a000000, progress)
+                lerpArgb(containerNoShadow, containerShadow, progress)
             } else {
-                lerpArgb(0x1a000000, 0, progress)
+                lerpArgb(containerShadow, containerNoShadow, progress)
             }
+        )
+        containerPaint.color = lerpArgb(
+            containerStartColor,
+            containerEndColor,
+            crossfadeStartProgress,
+            crossfadeEndProgress,
+            progress
         )
         canvas.drawRoundedRect(
             currentBounds,
@@ -263,8 +299,14 @@ private class MaterialContainerTransitionDrawable(
             containerPaint
         )
 
-        // Cross-fade images of the start/end states over 0.3–0.8 of `progress`
-        imagePaint.alpha = lerp(255, 0, 0.3f, 0.8f, progress)
+        // Cross-fade images of the start/end states over the crossfade range
+        imagePaint.alpha = lerp(
+            255,
+            0,
+            crossfadeStartProgress,
+            crossfadeEndProgress,
+            progress
+        )
         if (imagePaint.alpha > 0) {
             imagePaint.shader = startImageShader
             canvas.drawRoundedRect(
@@ -273,7 +315,13 @@ private class MaterialContainerTransitionDrawable(
                 imagePaint
             )
         }
-        imagePaint.alpha = lerp(0, 255, 0.3f, 0.8f, progress)
+        imagePaint.alpha = lerp(
+            0,
+            255,
+            crossfadeStartProgress,
+            crossfadeEndProgress,
+            progress
+        )
         if (imagePaint.alpha > 0) {
             imagePaint.shader = endImageShader
             canvas.drawRoundedRect(
