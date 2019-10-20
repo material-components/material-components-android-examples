@@ -94,13 +94,19 @@ class MaterialContainerTransition(
         // TODO handle if drawIn is not at [0, 0] as bounds in screen co-ords
         val drawIn = view.findAncestorById(drawInId)
 
+        val startBounds = startValues.values[PROP_BOUNDS] as RectF
+        val endBounds = endValues.values[PROP_BOUNDS] as RectF
         val dr = MaterialContainerTransitionDrawable(
             startValues.values[PROP_BITMAP] as Bitmap,
-            startValues.values[PROP_BOUNDS] as RectF,
-            (startValues.values[PROP_SHAPE_APPEARANCE] as ShapeAppearanceModel?).toCornerRounding(),
+            startBounds,
+            (startValues.values[PROP_SHAPE_APPEARANCE] as ShapeAppearanceModel?).toCornerRounding(
+                startBounds
+            ),
             endValues.values[PROP_BITMAP] as Bitmap,
-            endValues.values[PROP_BOUNDS] as RectF,
-            (endValues.values[PROP_SHAPE_APPEARANCE] as ShapeAppearanceModel?).toCornerRounding(),
+            endBounds,
+            (endValues.values[PROP_SHAPE_APPEARANCE] as ShapeAppearanceModel?).toCornerRounding(
+                endBounds
+            ),
             view.descendantBackgroundColor()
         )
 
@@ -153,11 +159,12 @@ class MaterialContainerTransition(
                     .use {
                         val shapeAppId = it.getResourceId(0, -1)
                         if (shapeAppId != -1) {
-                            transitionValues.values[PROP_SHAPE_APPEARANCE] = ShapeAppearanceModel(
-                                view.context,
-                                shapeAppId,
-                                0
-                            )
+                            transitionValues.values[PROP_SHAPE_APPEARANCE] = ShapeAppearanceModel
+                                .builder(
+                                    view.context,
+                                    shapeAppId,
+                                    0
+                                ).build()
                         }
                     }
             }

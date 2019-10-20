@@ -24,7 +24,6 @@ import android.widget.ImageView
 import androidx.core.view.updateLayoutParams
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestListener
 import com.google.android.material.elevation.ElevationOverlayProvider
 
 @BindingAdapter("srcUrl", "circleCrop", "placeholder", "loadListener", requireAll = false)
@@ -32,7 +31,7 @@ fun ImageView.bindSrcUrl(
     url: String,
     circleCrop: Boolean,
     placeholder: Drawable?,
-    loadListener: RequestListener<Drawable>?
+    loadListener: GlideDrawableLoadListener?
 ) {
     val request = Glide.with(this).load(url)
     if (circleCrop) request.circleCrop()

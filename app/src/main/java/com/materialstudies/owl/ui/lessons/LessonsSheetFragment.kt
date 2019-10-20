@@ -104,9 +104,11 @@ class LessonsSheetFragment : Fragment() {
             val sheetEndColor =
                 lessonsSheet.context.getColorStateList(R.color.primary_sheet).defaultColor
             val sheetBackground = MaterialShapeDrawable(
-                ShapeAppearanceModel(
-                    lessonsSheet.context, R.style.ShapeAppearance_Owl_MinimizedSheet, 0
-                )
+                ShapeAppearanceModel.builder(
+                    lessonsSheet.context,
+                    R.style.ShapeAppearance_Owl_MinimizedSheet,
+                    0
+                ).build()
             ).apply {
                 fillColor = ColorStateList.valueOf(sheetStartColor)
             }
@@ -117,7 +119,7 @@ class LessonsSheetFragment : Fragment() {
                 lessonsSheet.translationX = (lessonsSheet.width - peek).toFloat()
 
                 // Alter views based on the sheet expansion
-                behavior.setBottomSheetCallback(object :
+                behavior.addBottomSheetCallback(object :
                     BottomSheetBehavior.BottomSheetCallback() {
                     override fun onStateChanged(bottomSheet: View, newState: Int) {
                         backCallback.isEnabled = newState == STATE_EXPANDED

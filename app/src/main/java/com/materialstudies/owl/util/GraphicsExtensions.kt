@@ -26,7 +26,6 @@ import androidx.core.graphics.toRectF
 import com.google.android.material.shape.RoundedCornerTreatment
 import com.google.android.material.shape.ShapeAppearanceModel
 
-// TODO make inline class once non-experimental
 class CornerRounding(
     val topLeftRadius: Float = 0f,
     val topRightRadius: Float = 0f,
@@ -44,14 +43,13 @@ fun CornerRounding.toFloatArray(): FloatArray {
     )
 }
 
-fun ShapeAppearanceModel?.toCornerRounding(): CornerRounding {
+fun ShapeAppearanceModel?.toCornerRounding(bounds: RectF): CornerRounding {
     if (this == null) return CornerRounding()
-    // TODO handle non rounded corners?
     return CornerRounding(
-        if (topLeftCorner is RoundedCornerTreatment) topLeftCorner.cornerSize else 0f,
-        if (topRightCorner is RoundedCornerTreatment) topRightCorner.cornerSize else 0f,
-        if (bottomRightCorner is RoundedCornerTreatment) bottomRightCorner.cornerSize else 0f,
-        if (bottomLeftCorner is RoundedCornerTreatment) bottomLeftCorner.cornerSize else 0f
+        topLeftCornerSize.getCornerSize(bounds),
+        topRightCornerSize.getCornerSize(bounds),
+        bottomRightCornerSize.getCornerSize(bounds),
+        bottomLeftCornerSize.getCornerSize(bounds)
     )
 }
 

@@ -25,7 +25,7 @@
         type="com.materialstudies.owl.model.Course"/>
     <variable
         name="imageLoadListener"
-        type="com.bumptech.glide.request.RequestListener"/>
+        type="com.materialstudies.owl.util.GlideDrawableLoadListener"/>
   </data>
 
   <FrameLayout
@@ -54,10 +54,10 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintDimensionRatio="4:3"
-            app:srcCompat="@drawable/course_image_placeholder"
-            android:foreground="@drawable/learn_image_scrim"
             android:scaleType="centerCrop"
+            android:foreground="@drawable/learn_image_scrim"
             app:srcUrl="@{course.thumbUrl}"
+            app:placeholder="@{@drawable/course_image_placeholder}"
             app:loadListener="@{imageLoadListener}"/>
 
         <androidx.appcompat.widget.Toolbar

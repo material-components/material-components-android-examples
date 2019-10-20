@@ -51,7 +51,11 @@ class ShapeAppearanceTransformation(
         outWidth: Int,
         outHeight: Int
     ): Resource<Bitmap> {
-        val model = shapeAppearanceModel ?: ShapeAppearanceModel(context, shapeAppearanceId, 0)
+        val model = shapeAppearanceModel ?: ShapeAppearanceModel.builder(
+            context,
+            shapeAppearanceId,
+            0
+        ).build()
             .also { shapeAppearanceModel = it }
         val bitmap = createBitmap(outWidth, outHeight)
         bitmap.applyCanvas {

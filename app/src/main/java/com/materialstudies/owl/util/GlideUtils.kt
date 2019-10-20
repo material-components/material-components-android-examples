@@ -28,30 +28,32 @@ import com.bumptech.glide.request.target.Target
 import com.google.android.material.animation.ArgbEvaluatorCompat
 import kotlin.math.roundToInt
 
-/**
- * a [RequestListener] which executes an action when an image loads or fails to load.
- */
-fun loadListener(block: () -> Unit) : RequestListener<Drawable> {
-    return object : RequestListener<Drawable> {
-        override fun onLoadFailed(
-            e: GlideException?,
-            model: Any?,
-            target: Target<Drawable>?,
-            isFirstResource: Boolean
-        ): Boolean {
-            block()
-            return true
-        }
+fun loadListener(block: (loaded: Boolean) -> Unit) = GlideDrawableLoadListener(block)
 
-        override fun onResourceReady(
-            resource: Drawable?,
-            model: Any?,
-            target: Target<Drawable>?,
-            dataSource: DataSource?,
-            isFirstResource: Boolean
-        ): Boolean {
-            block()
-            return false
-        }
+/**
+ * A [RequestListener] which executes an action when a [Drawable] loads or fails to load.
+ */
+class GlideDrawableLoadListener(private val block: (loaded: Boolean) -> Unit) :
+    RequestListener<Drawable> {
+
+    override fun onResourceReady(
+        resource: Drawable?,
+        model: Any?,
+        target: Target<Drawable>?,
+        dataSource: DataSource?,
+        isFirstResource: Boolean
+    ): Boolean {
+        block(true)
+        return false
+    }
+
+    override fun onLoadFailed(
+        e: GlideException?,
+        model: Any?,
+        target: Target<Drawable>?,
+        isFirstResource: Boolean
+    ): Boolean {
+        block(false)
+        return true
     }
 }
