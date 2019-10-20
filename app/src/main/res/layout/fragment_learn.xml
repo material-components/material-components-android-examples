@@ -118,8 +118,7 @@
             android:paddingHorizontal="@dimen/grid_2"
             android:gravity="center"
             android:text="@{course.name}"
-            android:textAppearance="?attr/textAppearanceHeadline4"
-            app:lineHeight="40sp"/>
+            android:textAppearance="?attr/textAppearanceHeadline4"/>
 
         <TextView
             android:id="@+id/description"
@@ -132,7 +131,6 @@
             android:padding="@dimen/grid_2"
             android:gravity="center"
             android:textAppearance="?attr/textAppearanceBody1"
-            app:lineHeight="28sp"
             android:text="@string/course_desc"/>
 
         <View
@@ -154,7 +152,6 @@
             android:padding="@dimen/grid_2"
             android:gravity="center"
             android:textAppearance="?attr/textAppearanceHeadline6"
-            app:lineHeight="28sp"
             android:text="@string/what_you_ll_need"/>
 
         <TextView
@@ -167,7 +164,6 @@
             android:padding="@dimen/grid_2"
             android:gravity="center"
             android:textAppearance="?attr/textAppearanceBody1"
-            app:lineHeight="28sp"
             android:text="@string/needs"/>
 
         <View
@@ -193,7 +189,6 @@
             android:gravity="center"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textColor="?attr/colorOnPrimarySurface"
-            app:lineHeight="28sp"
             android:text="@string/you_ll_also_like"
             android:theme="@style/ThemeOverlay.Owl.Blue"/>
 

@@ -98,8 +98,7 @@
         android:paddingHorizontal="@dimen/grid_2"
         android:gravity="center"
         android:text="@{course.name}"
-        android:textAppearance="?attr/textAppearanceSubtitle1"
-        app:lineHeight="22sp"/>
+        android:textAppearance="?attr/textAppearanceSubtitle1"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

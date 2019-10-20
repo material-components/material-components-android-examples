@@ -81,8 +81,7 @@
         android:lines="2"
         android:ellipsize="end"
         android:text="@{course.name}"
-        android:textAppearance="?attr/textAppearanceSubtitle1"
-        app:lineHeight="22sp"/>
+        android:textAppearance="?attr/textAppearanceSubtitle1"/>
 
     <ImageView
         android:id="@+id/course_icon"

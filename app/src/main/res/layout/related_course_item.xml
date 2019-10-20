@@ -61,8 +61,7 @@
         android:maxLines="2"
         android:ellipsize="end"
         android:text="@{course.name}"
-        android:textAppearance="?attr/textAppearanceBody2"
-        app:lineHeight="16sp"/>
+        android:textAppearance="?attr/textAppearanceBody2"/>
 
     <ImageView
         android:id="@+id/course_icon"
