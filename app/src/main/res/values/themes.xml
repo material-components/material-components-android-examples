@@ -66,8 +66,7 @@
 
         <!--Styles-->
         <item name="bottomAppBarStyle">@style/Widget.MaterialComponents.BottomAppBar.Colored</item>
-        <item name="bottomSheetStyle">@style/Widget.Reply.BottomSheet.Modal</item>
-        <item name="bottomSheetDialogTheme">@style/Base.ThemeOverlay.Reply.BottomSheetDialog</item>
+        <item name="bottomSheetStyle">@style/Widget.MaterialComponents.BottomSheet.Modal</item>
         <item name="navigationViewStyle">@style/Widget.Reply.NavigationView</item>
         <item name="chipStyle">@style/Widget.Reply.Chip.Entry</item>
 
@@ -75,15 +74,4 @@
         <item name="android:windowBackground">?android:colorBackground</item>
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
     </style>
-
-    <style name="Base.ThemeOverlay.Reply.BottomSheetDialog" parent="ThemeOverlay.MaterialComponents.Dialog">
-        <item name="android:windowIsFloating">false</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="bottomSheetStyle">@style/Widget.Reply.BottomSheet.Modal</item>
-        <item name="android:windowAnimationStyle">@style/Animation.Reply.BottomSheet.Modal</item>
-        <item name="android:navigationBarColor">?colorSurface</item>
-        <item name="android:windowLightNavigationBar" tools:ignore="newApi">true</item>
-    </style>
-
 </resources>
