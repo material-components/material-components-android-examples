@@ -23,6 +23,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -146,6 +147,17 @@ class BottomNavDrawerFragment :
             }
         }
 
+    private val closeDrawerOnBackPressed = object : OnBackPressedCallback(false) {
+        override fun handleOnBackPressed() {
+            close()
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(this, closeDrawerOnBackPressed)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -189,6 +201,12 @@ class BottomNavDrawerFragment :
                     override fun onStateChanged(sheet: View, newState: Int) {
                         sandwichAnim?.cancel()
                         sandwichProgress = 0F
+                    }
+                })
+                // If the drawer is open, pressing the system back button should close the drawer.
+                addOnStateChangedAction(object : OnStateChangedAction {
+                    override fun onStateChanged(sheet: View, newState: Int) {
+                        closeDrawerOnBackPressed.isEnabled = newState != STATE_HIDDEN
                     }
                 })
             }
