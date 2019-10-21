@@ -29,11 +29,12 @@ import androidx.annotation.ColorInt
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.materialstudies.reply.R
-import com.materialstudies.reply.util.themeColor
 import com.materialstudies.reply.util.lerp
 import com.materialstudies.reply.util.lerpArgb
+import com.materialstudies.reply.util.themeColor
 import kotlin.math.abs
 import kotlin.math.hypot
+import kotlin.math.sin
 
 /**
  * A [Drawable] which handles drawing the background behind an email item preview and responds to
@@ -85,7 +86,7 @@ class EmailSwipeActionDrawable(context: Context) : Drawable() {
         update()
     }
 
-    fun update() {
+    private fun update() {
         circle.set(
             bounds.left.toFloat(),
             bounds.top.toFloat(),
@@ -141,8 +142,7 @@ class EmailSwipeActionDrawable(context: Context) : Drawable() {
         )
         // Take the sin of our ranged progress * our maxScaleAddition as what we should
         // increase the icon's scale by.
-        val additive = (Math.sin(range.toDouble()) * iconMaxScaleAddition)
-            .coerceIn(0.0, 1.0)
+        val additive = (sin(range.toDouble()) * iconMaxScaleAddition).coerceIn(0.0, 1.0)
         val scaleFactor = 1 + additive
         icon.setBounds(
             (cx - (iconIntrinsicWidth / 2F) * scaleFactor).toInt(),
@@ -169,5 +169,4 @@ class EmailSwipeActionDrawable(context: Context) : Drawable() {
     override fun setColorFilter(filter: ColorFilter?) {
         circlePaint.colorFilter = filter
     }
-
 }

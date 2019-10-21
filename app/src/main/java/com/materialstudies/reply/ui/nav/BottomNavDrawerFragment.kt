@@ -37,11 +37,10 @@ import com.materialstudies.reply.data.Account
 import com.materialstudies.reply.data.AccountStore
 import com.materialstudies.reply.databinding.FragmentBottomNavDrawerBinding
 import com.materialstudies.reply.util.FastOutUltraSlowIn
-import com.materialstudies.reply.util.themeColor
 import com.materialstudies.reply.util.lerp
+import com.materialstudies.reply.util.themeColor
 import kotlin.LazyThreadSafetyMode.NONE
 import kotlin.math.abs
-
 
 /**
  * A [Fragment] which acts as a bottom navigation drawer.
@@ -286,7 +285,8 @@ class BottomNavDrawerFragment :
         sandwichAnim = ValueAnimator.ofFloat(initialProgress, newProgress).apply {
             addUpdateListener { sandwichProgress = animatedValue as Float }
             interpolator = sandwichInterp
-            duration = (abs(newProgress - initialProgress) * 250F).toLong()
+            duration = (abs(newProgress - initialProgress) *
+                resources.getInteger(R.integer.reply_motion_short_duration)).toLong()
         }
         sandwichAnim?.start()
     }

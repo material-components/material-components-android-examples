@@ -106,12 +106,12 @@ fun View.findAncestorById(@IdRes ancestorId: Int): View {
 
 /**
  * A copy of the KTX method, adding the ability to add extra padding the bottom of the [Bitmap];
- * useful when it will be used in a [android.graphics.BitmapShader][BitmapShader] with
+ * useful when it will be used in a [android.graphics.BitmapShader] with
  * a [android.graphics.Shader.TileMode.CLAMP][CLAMP tile mode].
  */
 fun View.drawToBitmap(@Px extraPaddingBottom: Int = 0): Bitmap {
-    if (!ViewCompat.isLaidOut(this)) {
-        throw IllegalStateException("View needs to be laid out before calling drawToBitmap()")
+    check(ViewCompat.isLaidOut(this)) {
+        "View needs to be laid out before calling drawToBitmap()"
     }
     return Bitmap.createBitmap(width, height + extraPaddingBottom, ARGB_8888).applyCanvas {
         translate(-scrollX.toFloat(), -scrollY.toFloat())

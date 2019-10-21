@@ -18,7 +18,8 @@ package com.materialstudies.reply.ui.nav
 
 import com.google.android.material.shape.EdgeTreatment
 import com.google.android.material.shape.ShapePath
-import java.lang.IllegalArgumentException
+import kotlin.math.atan
+import kotlin.math.sqrt
 
 private const val ARC_QUARTER = 90
 private const val ARC_HALF = 180
@@ -62,9 +63,9 @@ class SemiCircleEdgeCutoutTreatment(
     private var cutoutArcOffset = 0F
 
     init {
-        if (cutoutVerticalOffset < 0) throw IllegalArgumentException(
+        require(cutoutVerticalOffset >= 0) {
             "cutoutVerticalOffset must be positive but was $cutoutVerticalOffset"
-        )
+        }
     }
 
     override fun getEdgePath(
@@ -104,7 +105,7 @@ class SemiCircleEdgeCutoutTreatment(
         distanceBetweenCenters = cradleRadius + roundedCornerOffset
         distanceBetweenCentersSquared = distanceBetweenCenters * distanceBetweenCenters
         distanceY = verticalOffset + roundedCornerOffset
-        distanceX = Math.sqrt(
+        distanceX = sqrt(
                 (distanceBetweenCentersSquared - distanceY * distanceY).toDouble()
         ).toFloat()
 
@@ -114,7 +115,7 @@ class SemiCircleEdgeCutoutTreatment(
 
         // Calculate the arc between the center of the two circles.
         cornerRadiusArcLength = Math.toDegrees(
-                Math.atan((distanceX / distanceY).toDouble())
+                atan((distanceX / distanceY).toDouble())
         ).toFloat()
         cutoutArcOffset = ARC_QUARTER - cornerRadiusArcLength
 
@@ -153,6 +154,4 @@ class SemiCircleEdgeCutoutTreatment(
         // Draw the ending line after the right rounded corner.
         shapePath.lineTo(length, 0f)
     }
-
 }
-

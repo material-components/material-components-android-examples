@@ -17,18 +17,12 @@
 package com.materialstudies.reply.util
 
 import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Path
 import android.graphics.Rect
 import android.graphics.RectF
-import android.graphics.Shader
 import androidx.annotation.FloatRange
-import androidx.core.graphics.toRectF
-import com.google.android.material.shape.RoundedCornerTreatment
 import com.google.android.material.shape.ShapeAppearanceModel
 import kotlin.math.roundToInt
 
-// TODO make inline class once non-experimental
 class CornerRounding(
     val topLeftRadius: Float = 0f,
     val topRightRadius: Float = 0f,
@@ -48,30 +42,12 @@ fun CornerRounding.toFloatArray(): FloatArray {
 
 fun ShapeAppearanceModel?.toCornerRounding(bounds: RectF): CornerRounding {
     if (this == null) return CornerRounding()
-    // TODO handle non rounded corners?
     return CornerRounding(
-        if (topLeftCorner is RoundedCornerTreatment)
-            topLeftCornerSize.getCornerSize(bounds) else 0f,
-        if (topRightCorner is RoundedCornerTreatment)
-            topRightCornerSize.getCornerSize(bounds) else 0f,
-        if (bottomRightCorner is RoundedCornerTreatment)
-            bottomRightCornerSize.getCornerSize(bounds) else 0f,
-        if (bottomLeftCorner is RoundedCornerTreatment)
-            bottomLeftCornerSize.getCornerSize(bounds) else 0f
+        topLeftCornerSize.getCornerSize(bounds),
+        topRightCornerSize.getCornerSize(bounds),
+        bottomRightCornerSize.getCornerSize(bounds),
+        bottomLeftCornerSize.getCornerSize(bounds)
     )
-}
-
-private val path = Path()
-fun Canvas.drawRoundedRect(
-    location: RectF,
-    cornerRadii: CornerRounding,
-    paint: Paint
-) {
-    path.apply {
-        reset()
-        addRoundRect(location, cornerRadii.toFloatArray(), Path.Direction.CW)
-    }
-    drawPath(path, paint)
 }
 
 private val boundsRectF = RectF()

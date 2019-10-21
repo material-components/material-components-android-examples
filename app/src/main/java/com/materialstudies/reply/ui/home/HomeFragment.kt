@@ -91,5 +91,4 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
     override fun onEmailArchived(email: Email) {
         EmailStore.delete(email.id)
     }
-
 }

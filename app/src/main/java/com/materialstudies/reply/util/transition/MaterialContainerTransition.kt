@@ -176,7 +176,6 @@ class MaterialContainerTransition(
         // Draw in the given ancestor view's overlay. This allows us to draw beyond the bounds of
         // the shared element view, which we might need to do to animate hierarchy changes e.g.
         // from a full screen view to a grid item.
-        // TODO handle if drawIn is not at [0, 0] as bounds in screen co-ords
         val drawIn = endView.findAncestorById(drawInId) as ViewGroup
 
         val startBounds = startValues.values[PROP_BOUNDS] as RectF
@@ -259,10 +258,6 @@ private class MaterialContainerTransitionDrawable(
         } else {
             null
         }
-    private val containerPaint = Paint().apply {
-        style = Paint.Style.FILL
-        color = containerStartColor
-    }
     private val startContainerPaint = Paint().apply {
         style = Paint.Style.FILL
         color = containerStartColor

@@ -22,8 +22,8 @@ import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.databinding.EmailItemLayoutBinding
 import com.materialstudies.reply.ui.common.EmailAttachmentAdapter
-import com.materialstudies.reply.util.themeStyle
 import com.materialstudies.reply.util.setTextAppearanceCompat
+import com.materialstudies.reply.util.themeStyle
 import kotlin.math.abs
 
 class EmailViewHolder(
