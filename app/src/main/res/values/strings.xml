@@ -29,6 +29,9 @@
     <string name="menu_item_reply_all">Reply all</string>
     <string name="menu_item_archive">Archive</string>
     <string name="menu_item_delete">Delete</string>
+    <string name="menu_item_star">Star</string>
+    <string name="menu_item_search">Search</string>
+    <string name="menu_item_settings">Settings</string>
 
     <string name="menu_dark_theme_light">Light</string>
     <string name="menu_dark_theme_dark">Dark</string>
@@ -44,7 +47,6 @@
     <string name="navigation_drafts">Drafts</string>
 
     <!--HomeFragment-->
-    <string name="email_attachment_default_content_desc">Attached email image</string>
     <string name="email_sender_profile_content_desc">Profile image of sender</string>
     <string name="navigate_back_icon_content_desc">Navigate back</string>
 

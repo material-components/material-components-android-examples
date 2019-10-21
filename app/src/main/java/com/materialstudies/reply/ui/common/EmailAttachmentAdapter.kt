@@ -57,5 +57,4 @@ abstract class EmailAttachmentAdapter : RecyclerView.Adapter<EmailAttachmentView
      * of [EmailAttachment].
      */
     abstract fun getLayoutIdForPosition(position: Int): Int
-
 }

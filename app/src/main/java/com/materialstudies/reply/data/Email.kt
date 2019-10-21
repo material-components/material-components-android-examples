@@ -31,7 +31,6 @@ data class Email(
     var isImportant: Boolean = false,
     var isStarred: Boolean = false
 ) {
-    //TODO(hunterstich) Update to use real Dates.
     val senderPreview: String = "${sender.fullName} - 4 hrs ago"
     val hasBody: Boolean = body.isNotBlank()
     val hasAttachments: Boolean = attachments.isNotEmpty()

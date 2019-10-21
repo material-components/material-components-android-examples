@@ -33,7 +33,7 @@
         android:paddingLeft="@dimen/grid_4"
         android:paddingRight="@dimen/grid_4"
         android:background="?attr/selectableItemBackground"
-        android:gravity="center_vertical|left"
+        android:gravity="center_vertical|start"
         android:onClick="@{() -> navListener.onNavMenuItemClicked(navMenuItem)}"
         android:ellipsize="end"
         android:lines="1"
@@ -42,7 +42,7 @@
         android:textAppearance="?attr/textAppearanceSubtitle1"
         android:textColor="@color/color_navigation_drawer_menu_item"
         app:drawableTint="@color/color_navigation_drawer_menu_item"
-        app:drawableLeft="@{navMenuItem.icon}"
+        app:drawableStart="@{navMenuItem.icon}"
         android:drawablePadding="@dimen/grid_4"
         tools:text="Inbox" />
 

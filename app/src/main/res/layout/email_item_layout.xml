@@ -41,6 +41,7 @@
             android:layout_height="wrap_content"
             android:elevation="@dimen/plane_00"
             android:clickable="true"
+            android:focusable="true"
             android:onClick="@{(view) -> listener.onEmailClicked(view, email)}"
             android:onLongClick="@{(view) -> listener.onEmailLongPressed(email)}"
             app:cardPreventCornerOverlap="false"

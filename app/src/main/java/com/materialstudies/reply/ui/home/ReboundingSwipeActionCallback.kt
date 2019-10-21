@@ -20,6 +20,8 @@ import android.graphics.Canvas
 import android.view.View
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import kotlin.math.abs
+import kotlin.math.ln
 
 // The intensity at which dX of a swipe should be decreased as we approach the swipe
 // threshold.
@@ -115,7 +117,7 @@ class ReboundingSwipeActionCallback : ItemTouchHelper.SimpleCallback(
         }
 
         val itemView = viewHolder.itemView
-        val currentSwipePercentage = Math.abs(dX) / itemView.width
+        val currentSwipePercentage = abs(dX) / itemView.width
         viewHolder.onReboundOffsetChanged(
             currentSwipePercentage,
             trueSwipeThreshold,
@@ -137,8 +139,8 @@ class ReboundingSwipeActionCallback : ItemTouchHelper.SimpleCallback(
         // Progressively decrease the amount by which the view is translated to give a 'spring'
         // affect to the item.
         val swipeDismissDistanceHorizontal = itemView.width * trueSwipeThreshold
-        val dragFraction = Math.log(
-            (1 + (dX / swipeDismissDistanceHorizontal)).toDouble()) / Math.log(3.toDouble()
+        val dragFraction = ln(
+            (1 + (dX / swipeDismissDistanceHorizontal)).toDouble()) / ln(3.toDouble()
         )
         val dragTo = dragFraction * swipeDismissDistanceHorizontal *
             swipeReboundingElasticity

@@ -16,9 +16,9 @@
 
 package com.materialstudies.reply.ui.nav
 
+import android.annotation.SuppressLint
 import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.core.view.doOnNextLayout
 import com.google.android.material.R
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.materialstudies.reply.util.normalize
@@ -34,7 +34,7 @@ import kotlin.math.max
  * in [onSlide] is corrected to guarantee that the offset 0.0 <i>always</i> be exactly at the
  * [BottomSheetBehavior.STATE_HALF_EXPANDED] state.
  */
-class BottomNavigationDrawerCallback() : BottomSheetBehavior.BottomSheetCallback() {
+class BottomNavigationDrawerCallback : BottomSheetBehavior.BottomSheetCallback() {
 
     private val onSlideActions: MutableList<OnSlideAction> = mutableListOf()
     private val onStateChangedActions: MutableList<OnStateChangedAction> = mutableListOf()
@@ -80,6 +80,7 @@ class BottomNavigationDrawerCallback() : BottomSheetBehavior.BottomSheetCallback
      * [BottomSheetBehavior.calculateHalfExpandedOffset]
      * [BottomSheetBehavior.dispatchOnSlide]
      */
+    @SuppressLint("PrivateResource")
     private fun calculateInitialHalfExpandedSlideOffset(sheet: View) {
         val parent = sheet.parent as CoordinatorLayout
         val behavior = BottomSheetBehavior.from(sheet)

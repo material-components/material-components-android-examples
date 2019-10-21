@@ -156,7 +156,7 @@ object AccountStore {
     fun getAllUserAccounts() = allUserAccounts
 
     /**
-     * Whether or not the given [accountId] is an account owned by the current user.
+     * Whether or not the given [Account.id] uid is an account owned by the current user.
      */
     fun isUserAccount(uid: Long): Boolean = allUserAccounts.any { it.uid == uid }
 

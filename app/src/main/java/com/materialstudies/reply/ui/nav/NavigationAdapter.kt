@@ -22,7 +22,6 @@ import androidx.recyclerview.widget.ListAdapter
 import com.materialstudies.reply.databinding.NavDividerItemLayoutBinding
 import com.materialstudies.reply.databinding.NavEmailFolderItemLayoutBinding
 import com.materialstudies.reply.databinding.NavMenuItemLayoutBinding
-import java.lang.RuntimeException
 
 private const val VIEW_TYPE_NAV_MENU_ITEM = 4
 private const val VIEW_TYPE_NAV_DIVIDER = 6
@@ -48,6 +47,7 @@ class NavigationAdapter(
         }
     }
 
+    @Suppress("unchecked_cast")
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int

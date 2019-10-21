@@ -41,7 +41,7 @@ class EmailAttachmentGridAdapter(
             val list = mutableListOf<Int>()
 
             var rowSpansOccupied = 0
-            (0..count).forEach {
+            repeat(count) {
                 val size = Random.nextInt(1, spans + 1 - rowSpansOccupied)
                 rowSpansOccupied += size
                 if (rowSpansOccupied >= 3) rowSpansOccupied = 0
@@ -59,5 +59,4 @@ class EmailAttachmentGridAdapter(
 
     override fun getLayoutIdForPosition(position: Int): Int =
         R.layout.email_attachment_grid_item_layout
-
 }

@@ -142,22 +142,6 @@ fun lerp(
 fun lerpArgb(
     @ColorInt startColor: Int,
     @ColorInt endColor: Int,
-    @FloatRange(from = 0.0, fromInclusive = true, to = 1.0, toInclusive = true) fraction: Float
-): Int {
-    return ArgbEvaluatorCompat.getInstance().evaluate(
-        fraction,
-        startColor,
-        endColor
-    )
-}
-
-/**
- * Linearly interpolate between two colors when the fraction is in a given range.
- */
-@ColorInt
-fun lerpArgb(
-    @ColorInt startColor: Int,
-    @ColorInt endColor: Int,
     @FloatRange(
         from = 0.0,
         fromInclusive = true,
