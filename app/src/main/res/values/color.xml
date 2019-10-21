@@ -15,38 +15,38 @@
 <resources>
 
     <!--Color palette-->
-    <color name="colorWhite50">#ffffff</color>
+    <color name="reply_white_50">#ffffff</color>
 
-    <color name="colorBlack800">#121212</color>
-    <color name="colorBlack900">#000000</color>
+    <color name="reply_black_800">#121212</color>
+    <color name="reply_black_900">#000000</color>
 
-    <color name="colorBlue50">#eef0f2</color>
-    <color name="colorBlue100">#d2dbe0</color>
-    <color name="colorBlue200">#adbbc4</color>
-    <color name="colorBlue300">#8ca2ae</color>
-    <color name="colorBlue600">#4a6572</color>
-    <color name="colorBlue700">#344955</color>
-    <color name="colorBlue800">#232f34</color>
+    <color name="reply_blue_50">#eef0f2</color>
+    <color name="reply_blue_100">#d2dbe0</color>
+    <color name="reply_blue_200">#adbbc4</color>
+    <color name="reply_blue_300">#8ca2ae</color>
+    <color name="reply_blue_600">#4a6572</color>
+    <color name="reply_blue_700">#344955</color>
+    <color name="reply_blue_800">#232f34</color>
 
-    <color name="colorOrange300">#fbd790</color>
-    <color name="colorOrange400">#f9be64</color>
-    <color name="colorOrange500">#f9aa33</color>
+    <color name="reply_orange_300">#fbd790</color>
+    <color name="reply_orange_400">#f9be64</color>
+    <color name="reply_orange_500">#f9aa33</color>
 
-    <color name="colorRed200">#cf7779</color>
-    <color name="colorRed400">#ff4c5d</color>
+    <color name="reply_red_200">#cf7779</color>
+    <color name="reply_red_400">#ff4c5d</color>
 
-    <color name="colorWhite50Alpha060">#99ffffff</color>
+    <color name="reply_white_50_alpha_060">#99ffffff</color>
 
-    <color name="colorBlue50Alpha060">#99eef0f2</color>
+    <color name="reply_blue_50_alpha_060">#99eef0f2</color>
 
-    <color name="colorBlack900Alpha020">#33000000</color>
-    <color name="colorBlack900Alpha087">#de000000</color>
-    <color name="colorBlack900Alpha060">#99000000</color>
+    <color name="reply_black_900_alpha_020">#33000000</color>
+    <color name="reply_black_900_alpha_087">#de000000</color>
+    <color name="reply_black_900_alpha_060">#99000000</color>
 
     <!--Nav bar color protection for behavior differences between Android P and Q. All sdk-->
     <!--levels should draw fullscreen. P should color the nav bar with a translucent background -->
     <!--to guard for contrast. Q should have a transparent nav bar as Q will automatically -->
     <!--handles contrast by either dynamically coloring the nav bar handle (gesture nav) -->
     <!--or automatically applying a translucent background (3-button mode).-->
-    <color name="nav_bar">@color/colorBlack900Alpha020</color>
+    <color name="nav_bar">@color/reply_black_900_alpha_020</color>
 </resources>
