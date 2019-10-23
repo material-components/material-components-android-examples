@@ -15,17 +15,17 @@ Owl employs material theming to reflect the energy and excitement of learning a 
 ### Color
 <img src="screenshots/color_header.png" alt="Owl color theming"/>
 
-Owl has three primary colors. Each color is used to create a distinct visual theme for each section. See [colors.xml](https://github.com/material-components/material-components-android-examples/blob/develop/owl/app/src/main/res/values/color.xml) and how they are used in [light](https://github.com/material-components/material-components-android-examples/blob/develop/owl/app/src/main/res/values/themes.xml#L58-L86) and [dark](https://github.com/material-components/material-components-android-examples/blob/develop/owl/app/src/main/res/values-night/themes.xml) themes.
+Owl has three primary colors. Each color is used to create a distinct visual theme for each section. See [colors.xml](https://github.com/material-components/material-components-android-examples/blob/develop/Owl/app/src/main/res/values/color.xml) and how they are used in [light](https://github.com/material-components/material-components-android-examples/blob/develop/Owl/app/src/main/res/values/theme.xml#L58-L86) and [dark](https://github.com/material-components/material-components-android-examples/blob/develop/Owl/app/src/main/res/values-night/theme.xml) themes.
 
 ### Shape
 <img src="screenshots/shape_header.png" alt="Owl shape theming"/>
 
-Owl defines small, medium and large shape categories for different sized components. See [shape.xml](https://github.com/material-components/material-components-android-examples/blob/develop/owl/app/src/main/res/values/shape.xml) which defines the `ShapeAppearance`s, which are then [set in the theme](https://github.com/material-components/material-components-android-examples/blob/develop/owl/app/src/main/res/values/themes.xml#L20-L23) and picked up by all components or refferred to directly.
+Owl defines small, medium and large shape categories for different sized components. See [shape.xml](https://github.com/material-components/material-components-android-examples/blob/develop/Owl/app/src/main/res/values/shape.xml) which defines the `ShapeAppearance`s, which are then [set in the theme](https://github.com/material-components/material-components-android-examples/blob/develop/Owl/app/src/main/res/values/theme.xml#L20-L23) and picked up by all components or refferred to directly.
 
 ### Typography
 <img src="screenshots/type_header.png" alt="Owl typography theming"/>
 
-Owl’s type scale provides the typographic variety necessary for the app content. All items in the type scale use [Rubik](https://fonts.google.com/specimen/Rubik) as the typeface, and make use of the variety of weights available by using Rubik Regular, Medium, and Bold. See [type.xml](https://github.com/material-components/material-components-android-examples/blob/develop/owl/app/src/main/res/values/type.xml) which defines `TextAppearance`s which are then [set in the theme](https://github.com/material-components/material-components-android-examples/blob/develop/owl/app/src/main/res/values/themes.xml#L25-L38) and referred to using `?attr/textAppearance[...]` throughout.
+Owl’s type scale provides the typographic variety necessary for the app content. All items in the type scale use [Rubik](https://fonts.google.com/specimen/Rubik) as the typeface, and make use of the variety of weights available by using Rubik Regular, Medium, and Bold. See [type.xml](https://github.com/material-components/material-components-android-examples/blob/develop/Owl/app/src/main/res/values/type.xml) which defines `TextAppearance`s which are then [set in the theme](https://github.com/material-components/material-components-android-examples/blob/develop/Owl/app/src/main/res/values/theme.xml#L25-L38) and referred to using `?attr/textAppearance[...]` throughout.
 
 ## License
 
