@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2019 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
+<resources>
+
+    <string name="app_name">Reply</string>
+
+    <!--BottomAppBar-->
+    <string name="bottom_app_bar_chevron_content_desc">Open or close bottom navigation drawer</string>
+    <string name="bottom_app_bar_logo_content_desc">Reply logo</string>
+    <string name="bottom_nav_drawer_profile_image_content_desc">profile avatar image</string>
+    <string name="fab_compose_email_content_description">Compose new email</string>
+    <string name="fab_reply_email_content_description">Reply to email</string>
+
+    <!--BottomSheet menus-->
+    <string name="menu_item_forward">Forward</string>
+    <string name="menu_item_reply">Reply</string>
+    <string name="menu_item_reply_all">Reply all</string>
+    <string name="menu_item_archive">Archive</string>
+    <string name="menu_item_delete">Delete</string>
+    <string name="menu_item_star">Star</string>
+    <string name="menu_item_search">Search</string>
+    <string name="menu_item_settings">Settings</string>
+
+    <string name="menu_dark_theme_light">Light</string>
+    <string name="menu_dark_theme_dark">Dark</string>
+    <string name="menu_dark_theme_battery_saver">Set by Battery Saver</string>
+    <string name="menu_dark_theme_system_default">System default</string>
+
+    <!--BottomNavigationDrawer-->
+    <string name="navigation_inbox">Inbox</string>
+    <string name="navigation_starred">Starred</string>
+    <string name="navigation_sent">Send</string>
+    <string name="navigation_trash">Trash</string>
+    <string name="navigation_spam">Spam</string>
+    <string name="navigation_drafts">Drafts</string>
+
+    <!--HomeFragment-->
+    <string name="email_sender_profile_content_desc">Profile image of sender</string>
+    <string name="navigate_back_icon_content_desc">Navigate back</string>
+
+    <!--EmailFragment-->
+    <string name="email_recipient_to">To %1$s</string>
+    <string name="email_card_transition_name">email_card_%1$s</string>
+
+    <!--ComposeFragment-->
+    <string name="compose_close_content_desc">Close editing email</string>
+    <string name="compose_send_content_desc">Send email</string>
+    <string name="compose_add_recipient_icon_content_desc">Add recipient</string>
+    <string name="compose_subject_hint">Subject</string>
+    <string name="compose_body_hint">New message…</string>
+    <string name="compose_recipient_group_content_desc">Recipients</string>
+</resources>
