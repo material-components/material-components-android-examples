@@ -8,5 +8,6 @@ This project is the Android implementation of [Reply](https://material.io/design
 
 ### Screenshots
 
-<img src="screenshots/1_home_screen.png" height="400" alt="Home screen"/> <img src="screenshots/2_navigation_drawer.png" height="400" alt="Navigation drawer open"/> <img src="screenshots/3_account_sandwich.png" height="400" alt="Account picker sandwich open"/> <img src="screenshots/4_star_email_action.png" height="400" alt="Star an email action"/> <img src="screenshots/5_email_details.png" height="400" alt="Email details screen"/> <img src="screenshots/6_email_compose.png" height="400" alt="Compose email screen"/> 
+<img src="screenshots/1_home_screen.png" height="400" alt="Home screen"/> <img src="screenshots/2_navigation_drawer.png" height="400" alt="Navigation drawer open"/> <img src="screenshots/3_account_sandwich.png" height="400" alt="Account picker sandwich open"/> 
+<img src="screenshots/4_star_email_action.png" height="400" alt="Star an email action"/> <img src="screenshots/5_email_details.png" height="400" alt="Email details screen"/> <img src="screenshots/6_email_compose.png" height="400" alt="Compose email screen"/> 
 
