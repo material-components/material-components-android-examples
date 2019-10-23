@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2019 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:targetApi="o"
+    tools:ignore="RtlSymmetry">
+
+  <data>
+    <variable
+        name="course"
+        type="com.materialstudies.owl.model.Course"/>
+    <variable
+        name="imageLoadListener"
+        type="com.materialstudies.owl.util.GlideDrawableLoadListener"/>
+  </data>
+
+  <FrameLayout
+      android:id="@+id/root"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:theme="@style/Owl.Pink"
+      tools:context=".ui.learn.LearnFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:transitionName="shared_element">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/learn_content"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintDimensionRatio="4:3"
+            android:scaleType="centerCrop"
+            android:foreground="@drawable/learn_image_scrim"
+            app:srcUrl="@{course.thumbUrl}"
+            app:placeholder="@{@drawable/course_image_placeholder}"
+            app:loadListener="@{imageLoadListener}"/>
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:minHeight="?attr/actionBarSize"
+            app:contentInsetStartWithNavigation="0dp"
+            app:menu="@menu/learn"
+            app:navigationIcon="@drawable/ic_back"
+            app:marginTopSystemWindowInsets="@{true}">
+
+          <ImageView
+              android:layout_width="24dp"
+              android:layout_height="24dp"
+              app:srcCompat="@drawable/ic_logo"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <ImageView
+            android:id="@+id/course_instructor"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/image"
+            android:background="@drawable/ic_avatar_placeholder"
+            android:foreground="@drawable/avatar_outline"
+            android:importantForAccessibility="no"
+            app:circleCrop="@{true}"
+            app:srcUrl="@{course.instructor}"/>
+
+        <TextView
+            android:id="@+id/course_subject"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/course_instructor"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="@dimen/grid_2"
+            android:gravity="center"
+            android:text="@{course.subject}"
+            android:textColor="?attr/colorPrimary"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textAllCaps="true"/>
+
+        <TextView
+            android:id="@+id/course_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/course_subject"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingHorizontal="@dimen/grid_2"
+            android:gravity="center"
+            android:text="@{course.name}"
+            android:textAppearance="?attr/textAppearanceHeadline4"/>
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/course_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/grid_2"
+            android:padding="@dimen/grid_2"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:text="@string/course_desc"/>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/description"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/inset_divider"/>
+
+        <TextView
+            android:id="@+id/need"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="@dimen/grid_2"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:text="@string/what_you_ll_need"/>
+
+        <TextView
+            android:id="@+id/needs"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/need"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="@dimen/grid_2"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:text="@string/needs"/>
+
+        <View
+            android:id="@+id/also_like_background"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/needs"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="?attr/colorPrimarySurface"
+            android:theme="@style/ThemeOverlay.Owl.Blue"/>
+
+        <TextView
+            android:id="@+id/also_like"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/needs"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingHorizontal="@dimen/grid_2"
+            android:paddingVertical="@dimen/grid_3"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textColor="?attr/colorOnPrimarySurface"
+            android:text="@string/you_ll_also_like"
+            android:theme="@style/ThemeOverlay.Owl.Blue"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/also_like_list"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="@dimen/grid_4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/also_like"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:paddingHorizontal="@dimen/grid_2"
+            android:clipToPadding="false"
+            marginBottomSystemWindowInsets="@{true}"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:hasFixedSize="@{true}"
+            android:theme="@style/ThemeOverlay.Owl.Blue"/>
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <fragment
+        android:id="@+id/lessons_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.materialstudies.owl.ui.lessons.LessonsSheetFragment"/>
+
+  </FrameLayout>
+
+</layout>

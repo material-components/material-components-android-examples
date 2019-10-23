@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2019 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:theme="@style/Owl.Yellow"
+      android:background="?attr/colorPrimarySurface"
+      app:paddingTopSystemWindowInsets="@{true}"
+      android:clipChildren="false"
+      tools:context=".ui.onboarding.OnboardingFragment"
+      tools:targetApi="o">
+
+    <ImageView
+        android:id="@+id/lockup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/choose"
+        app:layout_constraintVertical_chainStyle="spread_inside"
+        android:layout_margin="@dimen/grid_2"
+        app:marginLeftSystemWindowInsets="@{true}"
+        app:srcCompat="@drawable/ic_theme_1_lockup"
+        android:importantForAccessibility="no"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/lockup"
+        app:layout_constraintBottom_toBottomOf="@id/lockup"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/grid_2"
+        app:marginRightSystemWindowInsets="@{true}"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:contentDescription="@string/settings"
+        app:srcCompat="@drawable/ic_gear"/>
+
+    <TextView
+        android:id="@+id/choose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lockup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/topic_grid"
+        android:layout_marginStart="@dimen/grid_4"
+        app:marginLeftSystemWindowInsets="@{true}"
+        app:marginRightSystemWindowInsets="@{true}"
+        android:padding="@dimen/grid_2"
+        android:gravity="end"
+        android:textAppearance="?attr/textAppearanceHeadline4"
+        android:text="@string/choose_topics_that_interest_you"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/topic_grid"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/onboarding_topics_height"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/choose"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/fab"
+        android:paddingHorizontal="@dimen/grid_1"
+        app:paddingLeftSystemWindowInsets="@{true}"
+        app:paddingRightSystemWindowInsets="@{true}"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+        app:spanCount="@integer/onboarding_topics_rows"
+        app:reverseLayout="true"
+        app:hasFixedSize="@{true}"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/topic_grid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="@dimen/grid_2"
+        app:marginBottomSystemWindowInsets="@{true}"
+        app:marginRightSystemWindowInsets="@{true}"
+        app:srcCompat="@drawable/ic_compass"
+        app:tint="?attr/colorOnPrimary"/>
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

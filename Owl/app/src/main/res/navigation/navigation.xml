@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2019 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation.xml"
+    app:startDestination="@id/onboarding">
+
+  <fragment
+      android:id="@+id/onboarding"
+      android:name="com.materialstudies.owl.ui.onboarding.OnboardingFragment"
+      android:label="fragment_onboarding"
+      tools:layout="@layout/fragment_onboarding">
+    <action
+        android:id="@+id/action_onboarding_to_featured"
+        app:destination="@id/featured"
+        app:popUpTo="@+id/featured"/>
+  </fragment>
+
+  <fragment
+      android:id="@+id/myCourses"
+      android:name="com.materialstudies.owl.ui.mycourses.MyCoursesFragment"
+      android:label="fragment_my_courses"
+      tools:layout="@layout/fragment_my_courses">
+    <action
+        android:id="@+id/action_mycourses_to_learn"
+        app:destination="@id/learn"
+        app:exitAnim="@null"/>
+  </fragment>
+
+  <fragment
+      android:id="@+id/featured"
+      android:name="com.materialstudies.owl.ui.featured.FeaturedFragment"
+      android:label="fragment_featured"
+      tools:layout="@layout/fragment_featured">
+    <action
+        android:id="@+id/action_featured_to_learn"
+        app:destination="@id/learn"
+        app:exitAnim="@null"/>
+    <!--app:exitAnim="@anim/shrink_fade_out_center"-->
+  </fragment>
+
+  <fragment
+      android:id="@+id/search"
+      android:name="com.materialstudies.owl.ui.search.SearchFragment"
+      android:label="fragment_search"
+      tools:layout="@layout/fragment_search"/>
+
+  <fragment
+      android:id="@+id/learn"
+      android:name="com.materialstudies.owl.ui.learn.LearnFragment"
+      android:label="fragment_learn"
+      tools:layout="@layout/fragment_learn">
+    <argument
+        android:name="course_id"
+        app:argType="long"/>
+  </fragment>
+
+  <fragment
+      android:id="@+id/lessonsSheetFragment"
+      android:name="com.materialstudies.owl.ui.lessons.LessonsSheetFragment"
+      android:label="fragment_lessons_sheet"
+      tools:layout="@layout/fragment_lessons_sheet">
+    <action
+        android:id="@+id/action_lessons_sheet_to_lesson"
+        app:launchSingleTop="true"
+        app:destination="@+id/lesson"/>
+  </fragment>
+
+  <fragment
+      android:id="@+id/lesson"
+      android:name="com.materialstudies.owl.ui.lessons.LessonFragment"
+      android:label="fragment_lesson"
+      tools:layout="@layout/fragment_lesson">
+    <argument
+        android:name="course_id"
+        app:argType="long"/>
+    <argument
+        android:name="step_number"
+        app:argType="integer"/>
+  </fragment>
+
+</navigation>

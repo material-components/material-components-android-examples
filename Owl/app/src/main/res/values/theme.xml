@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2019 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
+<resources>
+
+  <!--Base theme, all common styling here-->
+  <style name="Base.Owl" parent="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+
+    <!--Material shape attributes-->
+    <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Owl.SmallComponent</item>
+    <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Owl.MediumComponent</item>
+    <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Owl.LargeComponent</item>
+
+    <!--Material type attributes-->
+    <item name="textAppearanceHeadline1">@style/TextAppearance.Owl.Headline1</item>
+    <item name="textAppearanceHeadline2">@style/TextAppearance.Owl.Headline2</item>
+    <item name="textAppearanceHeadline3">@style/TextAppearance.Owl.Headline3</item>
+    <item name="textAppearanceHeadline4">@style/TextAppearance.Owl.Headline4</item>
+    <item name="textAppearanceHeadline5">@style/TextAppearance.Owl.Headline5</item>
+    <item name="textAppearanceHeadline6">@style/TextAppearance.Owl.Headline6</item>
+    <item name="textAppearanceSubtitle1">@style/TextAppearance.Owl.Subtitle1</item>
+    <item name="textAppearanceSubtitle2">@style/TextAppearance.Owl.Subtitle2</item>
+    <item name="textAppearanceBody1">@style/TextAppearance.Owl.Body1</item>
+    <item name="textAppearanceBody2">@style/TextAppearance.Owl.Body2</item>
+    <item name="textAppearanceButton">@style/TextAppearance.Owl.Button</item>
+    <item name="textAppearanceCaption">@style/TextAppearance.Owl.Caption</item>
+    <item name="textAppearanceOverline">@style/TextAppearance.Owl.Overline</item>
+
+    <!--Platform attributes-->
+    <item name="android:navigationBarColor">@color/nav_bar</item>
+    <item name="android:statusBarColor">@color/immersive_sys_ui</item>
+
+    <!--Default styles-->
+    <item name="bottomNavigationStyle">@style/Widget.Owl.BottomNavigationView</item>
+
+  </style>
+
+  <style name="Owl" parent="@style/Base.Owl"/>
+
+  <style name="Owl.Yellow">
+    <item name="colorPrimary">@color/owl_yellow_500</item>
+    <item name="colorPrimaryVariant">@color/owl_yellow_400</item>
+    <item name="colorSecondary">@color/owl_blue_700</item>
+    <item name="colorSecondaryVariant">@color/owl_blue_800</item>
+  </style>
+
+  <style name="Owl.Blue">
+    <item name="colorPrimary">@color/owl_blue_700</item>
+    <item name="colorPrimaryVariant">@color/owl_blue_800</item>
+    <item name="colorSecondary">@color/owl_yellow_500</item>
+    <item name="colorSecondaryVariant">@color/owl_yellow_400</item>
+  </style>
+
+  <style name="ThemeOverlay.Owl.Blue" parent="@style/ThemeOverlay.MaterialComponents.Light">
+    <item name="colorPrimary">@color/owl_blue_700</item>
+    <item name="colorPrimaryVariant">@color/owl_blue_800</item>
+    <item name="colorSecondary">@color/owl_yellow_500</item>
+    <item name="colorSecondaryVariant">@color/owl_yellow_400</item>
+    <item name="colorOnPrimary">#fff</item>
+  </style>
+
+  <style name="ThemeOverlay.Owl.Blue.Dark" parent="@style/ThemeOverlay.MaterialComponents.Dark">
+    <item name="colorPrimary">@color/owl_blue_700</item>
+    <item name="colorPrimaryVariant">@color/owl_blue_800</item>
+    <item name="colorSecondary">@color/owl_yellow_500</item>
+    <item name="colorSecondaryVariant">@color/owl_yellow_400</item>
+    <item name="colorOnPrimary">#fff</item>
+  </style>
+
+  <style name="Owl.Pink">
+    <item name="colorPrimary">@color/owl_pink_500</item>
+    <item name="colorSecondary">@color/owl_pink_500</item>
+    <item name="colorPrimaryVariant">@color/owl_pink_600</item>
+    <item name="colorOnPrimary">#000</item>
+  </style>
+
+  <style name="ThemeOverlay.Owl.TransitionShapeAppearance.Small" parent="">
+    <item name="transitionShapeAppearance">@style/ShapeAppearance.Owl.SmallComponent</item>
+  </style>
+
+</resources>
