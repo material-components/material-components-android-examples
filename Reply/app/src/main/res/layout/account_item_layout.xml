@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2019 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.materialstudies.reply.R"/>
+        <variable
+            name="account"
+            type="com.materialstudies.reply.data.Account" />
+        <variable
+            name="accountListener"
+            type="com.materialstudies.reply.ui.nav.AccountAdapter.AccountAdapterListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/listPreferredItemHeight"
+        android:paddingHorizontal="@dimen/grid_2"
+        android:onClick="@{() -> accountListener.onAccountClicked(account)}"
+        android:background="?attr/selectableItemBackground">
+
+        <ImageView
+            android:id="@+id/account_profile_image_view"
+            android:layout_width="@dimen/navigation_drawer_profile_image_size"
+            android:layout_height="@dimen/navigation_drawer_profile_image_size"
+            android:padding="@dimen/grid_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="@{account.email}"
+            app:glideSrc="@{account.avatar}"
+            app:glideCircularCrop="@{true}" />
+
+        <CheckedTextView
+            android:id="@+id/account_address_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/grid_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/account_profile_image_view"
+            app:layout_constraintTop_toTopOf="parent"
+            android:checked="@{account.currentAccount}"
+            android:text="@{account.email}"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textColor="@color/color_navigation_drawer_menu_item"
+            app:drawableTint="@color/color_navigation_drawer_menu_item"
+            app:drawableRight="@{account.checkedIcon}"
+            android:drawablePadding="@dimen/grid_3"
+            android:lines="1"
+            android:ellipsize="end"
+            tools:text="hikingfan@gmail.com" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
