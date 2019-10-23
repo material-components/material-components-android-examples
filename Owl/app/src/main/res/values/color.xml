@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2019 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
+<resources>
+
+  <!--theme colors-->
+  <color name="owl_yellow_200">#ffeb46</color>
+  <color name="owl_yellow_400">#ffc000</color>
+  <color name="owl_yellow_500">#ffde03</color>
+  <color name="owl_yellow_dark_primary">#242316</color>
+
+  <color name="owl_blue_200">#91a4fc</color>
+  <color name="owl_blue_700">#0336ff</color>
+  <color name="owl_blue_800">#0035c9</color>
+  <color name="owl_blue_dark_primary">#1c1d24</color>
+
+  <color name="owl_pink_200">#ff7597</color>
+  <color name="owl_pink_500">#ff0266</color>
+  <color name="owl_pink_600">#d8004d</color>
+  <color name="owl_pink_dark_primary">#24191c</color>
+
+  <!--background protection for nav-bar, varied on Q+-->
+  <color name="immersive_sys_ui">#33000000</color>
+  <color name="nav_bar">@color/immersive_sys_ui</color>
+
+</resources>

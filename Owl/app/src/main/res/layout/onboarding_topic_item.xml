@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2019 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:targetApi="o">
+
+  <data>
+    <variable name="topic" type="com.materialstudies.owl.model.Topic"/>
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:layout_margin="@dimen/grid_0_5"
+      android:foreground="@drawable/topic_foreground"
+      android:stateListAnimator="@animator/topic_selection">
+
+    <View
+        android:id="@+id/background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@id/topic_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="?attr/colorSurface"
+        app:elevationOverlay="@{@dimen/card_elevation}"/>
+
+    <ImageView
+        android:id="@+id/topic_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/topic_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:scaleType="centerCrop"
+        android:duplicateParentState="true"
+        app:srcCompat="@drawable/course_image_placeholder"/>
+
+    <TextView
+        android:id="@+id/topic_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/topic_image"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingHorizontal="@dimen/grid_2"
+        android:paddingTop="@dimen/grid_2"
+        android:paddingBottom="@dimen/grid_1"
+        android:textAppearance="?attr/textAppearanceBody1"
+        android:text="@{topic.name}"/>
+
+    <ImageView
+        android:id="@+id/course_icon"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        app:layout_constraintStart_toEndOf="@id/topic_image"
+        app:layout_constraintTop_toTopOf="@id/topic_courses"
+        app:layout_constraintBottom_toBottomOf="@id/topic_courses"
+        android:layout_marginStart="@dimen/grid_2"
+        app:srcCompat="@drawable/ic_my_courses"
+        app:tint="?attr/colorControlNormal"/>
+
+    <TextView
+        android:id="@+id/topic_courses"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/course_icon"
+        app:layout_constraintTop_toBottomOf="@id/topic_name"
+        android:layout_marginStart="@dimen/grid_1"
+        android:textAppearance="?attr/textAppearanceCaption"
+        android:text="@{String.valueOf(topic.courses)}"/>
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
