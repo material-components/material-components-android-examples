@@ -16,13 +16,13 @@ Reply uses Material Theming to create a content-forward experience through the c
 ### Color
 <img src="screenshots/color_header.png" width="700" alt="Reply color theming"/> 
 
-Reply uses a simple, subtle color scheme to save emphasis for email content.  Reply’s color palette is defined in [color.xml](https://github.com/material-components/material-components-android-examples/blob/develop/Reply/app/src/main/res/values/color.xml) and applied globally via the app’s [light](https://github.com/material-components/material-components-android-examples/blob/develop/Reply/app/src/main/res/values/themes.xml) and [dark](https://github.com/material-components/material-components-android-examples/blob/develop/Reply/app/src/main/res/values-night/themes.xml) themes.
+Reply uses a simple, subtle color scheme to save emphasis for email content.  Reply’s color palette is defined in [color.xml](https://github.com/material-components/material-components-android-examples/blob/develop/Reply/app/src/main/res/values/color.xml) and applied globally via the app’s [light](https://github.com/material-components/material-components-android-examples/blob/develop/Reply/app/src/main/res/values/themes.xml#L23-L37) and [dark](https://github.com/material-components/material-components-android-examples/blob/develop/Reply/app/src/main/res/values-night/themes.xml#L22-L36) themes.
 
 ### Typography
 <img src="screenshots/typography_header.png" width="700" alt="Reply typography theming"/> 
 
-Reply’s uses [Work Sans](https://fonts.google.com/specimen/Work+Sans)
- as the typeface. All items in the type scale provide the typographic variety necessary for Reply’s content. See [type.xml](https://github.com/material-components/material-components-android-examples/blob/develop/Reply/app/src/main/res/values/type.xml) which defines `TextAppearance`s which are then [set in the theme](https://github.com/material-components/material-components-android-examples/blob/develop/Reply/app/src/main/res/values/themes.xml#L48-L59) and referred to using `?attr/textAppearance[...]` throughout.
+Reply uses [Work Sans](https://fonts.google.com/specimen/Work+Sans)
+ as its typeface. All items in the type scale provide the typographic variety necessary for Reply’s content. See [type.xml](https://github.com/material-components/material-components-android-examples/blob/develop/Reply/app/src/main/res/values/type.xml) which defines `TextAppearance`s which are then [set in the theme](https://github.com/material-components/material-components-android-examples/blob/develop/Reply/app/src/main/res/values/themes.xml#L48-L59) and referred to using `?attr/textAppearance[...]` throughout.
 
 ### Shape
 <img src="screenshots/shape_header.png" width="700" alt="Reply shape theming"/> 
