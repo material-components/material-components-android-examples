@@ -24,6 +24,8 @@
     <attr name="emphasisMediumAlpha" format="float"/>
     <attr name="emphasisDisabledAlpha" format="float"/>
 
+    <attr name="materialMotionInterpolator" format="reference"/>
+
     <!--Custom view themes/styles-->
     <attr name="bottomNavigationDrawerStyle" format="reference" />
     <attr name="bottomNavigationDrawerNavigationViewTheme" format="reference" />
