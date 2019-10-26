@@ -55,7 +55,8 @@
         app:layout_constraintVertical_bias="0"
         android:ellipsize="end"
         android:textAppearance="?attr/textAppearanceSubtitle2"
-        android:text="@{lesson.title}"/>
+        android:text="@{lesson.title}"
+        tools:text="@sample/lessons.json/data/title"/>
 
     <TextView
         android:id="@+id/step"
@@ -65,7 +66,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBaseline_toBaselineOf="@id/title"
         android:textAppearance="?attr/textAppearanceSubtitle2"
-        android:text="@{lesson.formattedStepNumber}"/>
+        android:text="@{lesson.formattedStepNumber}"
+        tools:text="@sample/lessons.json/data/formattedStepNumber"/>
 
     <ImageView
         android:id="@+id/play_icon"
@@ -91,7 +93,8 @@
         android:layout_marginStart="@dimen/grid_0_5"
         android:layout_marginEnd="@dimen/grid_2"
         android:textAppearance="?attr/textAppearanceCaption"
-        android:text="@{lesson.length}"/>
+        android:text="@{lesson.length}"
+        tools:text="@sample/lessons.json/data/length"/>
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 

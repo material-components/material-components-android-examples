@@ -51,7 +51,8 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:hasFixedSize="@{true}"
-        android:scrollbars="vertical"/>
+        android:scrollbars="vertical"
+        tools:listitem="@layout/course_item"/>
 
   </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

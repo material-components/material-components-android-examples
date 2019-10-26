@@ -1,0 +1,40 @@
+{
+  "data": [
+    {
+      "title": "Step 1",
+      "body": "@string/step_0"
+    },
+    {
+      "title": "Step 2",
+      "body": "@string/step_1"
+    },
+    {
+      "title": "Step 3",
+      "body": "@string/step_2"
+    },
+    {
+      "title": "Step 4",
+      "body": "@string/step_0"
+    },
+    {
+      "title": "Step 5",
+      "body": "@string/step_1"
+    },
+    {
+      "title": "Step 6",
+      "body": "@string/step_2"
+    },
+    {
+      "title": "Step 7",
+      "body": "@string/step_0"
+    },
+    {
+      "title": "Step 8",
+      "body": "@string/step_1"
+    },
+    {
+      "title": "Step 9",
+      "body": "@string/step_2"
+    }
+  ]
+}

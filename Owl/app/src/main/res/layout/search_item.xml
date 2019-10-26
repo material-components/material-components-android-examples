@@ -33,6 +33,7 @@
       android:clickable="true"
       android:textAppearance="?attr/textAppearanceHeadline5"
       android:textColor="?attr/colorOnPrimarySurface"
-      android:text="@{topic.name}"/>
+      android:text="@{topic.name}"
+      tools:text="@sample/topics.json/data/name"/>
 
 </layout>

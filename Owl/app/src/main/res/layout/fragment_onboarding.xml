@@ -87,7 +87,8 @@
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
         app:spanCount="@integer/onboarding_topics_rows"
         app:reverseLayout="true"
-        app:hasFixedSize="@{true}"/>
+        app:hasFixedSize="@{true}"
+        tools:listitem="@layout/onboarding_topic_item"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

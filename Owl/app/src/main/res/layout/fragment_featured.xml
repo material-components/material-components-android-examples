@@ -63,7 +63,8 @@
         app:spanCount="@integer/featured_grid_columns"
         app:hasFixedSize="@{true}"
         android:scrollbarStyle="outsideOverlay"
-        android:scrollbars="vertical"/>
+        android:scrollbars="vertical"
+        tools:listitem="@layout/featured_item"/>
 
   </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
