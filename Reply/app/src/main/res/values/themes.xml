@@ -62,7 +62,9 @@
         <item name="emphasisMediumAlpha">0.60</item>
         <item name="emphasisDisabledAlpha">0.38</item>
 
-        <item name="materialMotionInterpolator">@android:interpolator/fast_out_slow_in</item>
+        <item name="motionInterpolatorPersistent">@android:interpolator/fast_out_slow_in</item>
+        <item name="motionInterpolatorIncoming">@android:interpolator/decelerate_cubic</item>
+        <item name="motionInterpolatorOutgoing">@android:interpolator/accelerate_cubic</item>
 
         <!--Styles-->
         <item name="bottomAppBarStyle">@style/Widget.MaterialComponents.BottomAppBar.PrimarySurface</item>

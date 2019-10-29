@@ -341,7 +341,6 @@ private class MaterialContainerTransitionDrawable(
         // Fade out the startView while pinning it to the top of currentBounds and scaling it to
         // fit the width of currentBounds.
         val startAlpha = lerp(1F, 0F, alphaOutStartPoint, alphaOutEndPoint, progress)
-        println("startAlpha: progress: $progress, $startAlpha")
         // Translate to pin to top
         if (startAlpha > 0F) {
             canvas.withTranslation(currentBounds.left, currentBounds.top) {

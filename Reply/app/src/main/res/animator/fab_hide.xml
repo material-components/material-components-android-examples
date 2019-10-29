@@ -17,21 +17,21 @@
         android:propertyName="scale"
         android:valueFrom="1"
         android:valueTo="0"
-        android:duration="@integer/reply_motion_micro_duration"
+        android:duration="@integer/reply_motion_duration_small"
         android:repeatMode="restart"
         android:interpolator="@android:interpolator/fast_out_slow_in"/>
     <objectAnimator
         android:propertyName="iconScale"
         android:valueFrom="1"
         android:valueTo="0"
-        android:duration="@integer/reply_motion_micro_duration"
+        android:duration="@integer/reply_motion_duration_small"
         android:repeatMode="restart"
         android:interpolator="@android:interpolator/fast_out_slow_in"/>
     <objectAnimator
         android:propertyName="opacity"
         android:valueFrom="1"
         android:valueTo="0"
-        android:duration="@integer/reply_motion_micro_duration"
+        android:duration="@integer/reply_motion_duration_small"
         android:repeatMode="restart"
         android:interpolator="@android:interpolator/fast_out_slow_in"/>
 </set>

@@ -78,7 +78,7 @@ class EmailSwipeActionDrawable(context: Context) : Drawable() {
             }
         }
     private var progressAnim: ValueAnimator? = null
-    private val dur = context.resources.getInteger(R.integer.reply_motion_short_duration)
+    private val dur = context.resources.getInteger(R.integer.reply_motion_duration_medium)
     private val interp = FastOutSlowInInterpolator()
 
     override fun onBoundsChange(bounds: Rect?) {

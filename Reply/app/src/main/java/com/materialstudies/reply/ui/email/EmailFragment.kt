@@ -95,15 +95,15 @@ class EmailFragment : Fragment() {
             R.id.nested_scroll_view,
             correctForZOrdering = true
         ).apply {
-            duration = resources.getInteger(R.integer.reply_motion_default_duration).toLong()
-            interpolator = requireContext().themeInterpolator(R.attr.materialMotionInterpolator)
+            duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
         }
         sharedElementReturnTransition = MaterialContainerTransition(
             R.id.recycler_view,
             correctForZOrdering = true
         ).apply {
-            duration = resources.getInteger(R.integer.reply_motion_default_duration).toLong()
-            interpolator = requireContext().themeInterpolator(R.attr.materialMotionInterpolator)
+            duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
         }
     }
 

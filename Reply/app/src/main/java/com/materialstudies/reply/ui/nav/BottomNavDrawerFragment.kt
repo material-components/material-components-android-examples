@@ -129,7 +129,7 @@ class BottomNavDrawerFragment :
     private var sandwichState: SandwichState = SandwichState.CLOSED
     private var sandwichAnim: ValueAnimator? = null
     private val sandwichInterp by lazy(NONE) {
-        requireContext().themeInterpolator(R.attr.materialMotionInterpolator)
+        requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
     }
     // Progress value which drives the animation of the sandwiching account picker. Responsible
     // for both calling progress updates and state updates.
@@ -306,7 +306,7 @@ class BottomNavDrawerFragment :
             addUpdateListener { sandwichProgress = animatedValue as Float }
             interpolator = sandwichInterp
             duration = (abs(newProgress - initialProgress) *
-                resources.getInteger(R.integer.reply_motion_short_duration)).toLong()
+                resources.getInteger(R.integer.reply_motion_duration_medium)).toLong()
         }
         sandwichAnim?.start()
     }
