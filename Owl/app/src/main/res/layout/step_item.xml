@@ -38,7 +38,8 @@
         android:gravity="center"
         android:text="@{step.title}"
         android:textAppearance="?attr/textAppearanceHeadline6"
-        app:lineHeight="36sp"/>
+        app:lineHeight="36sp"
+        tools:text="@sample/steps.json/data/title"/>
 
     <TextView
         android:id="@+id/body"
@@ -47,7 +48,8 @@
         android:layout_marginTop="@dimen/grid_2"
         android:gravity="center"
         android:textAppearance="?attr/textAppearanceBody1"
-        android:text="@{step.body}"/>
+        android:text="@{step.body}"
+        tools:text="@sample/steps.json/data/body"/>
 
   </LinearLayout>
 

@@ -63,7 +63,8 @@
         android:paddingTop="@dimen/grid_2"
         android:paddingBottom="@dimen/grid_1"
         android:textAppearance="?attr/textAppearanceBody1"
-        android:text="@{topic.name}"/>
+        android:text="@{topic.name}"
+        tools:text="@sample/topics.json/data/name"/>
 
     <ImageView
         android:id="@+id/course_icon"
@@ -84,7 +85,8 @@
         app:layout_constraintTop_toBottomOf="@id/topic_name"
         android:layout_marginStart="@dimen/grid_1"
         android:textAppearance="?attr/textAppearanceCaption"
-        android:text="@{String.valueOf(topic.courses)}"/>
+        android:text="@{String.valueOf(topic.courses)}"
+        tools:text="@sample/topics.json/data/courses"/>
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,0 +1,60 @@
+{
+  "data": [
+    {
+      "name": "Architecture",
+      "courses": "58"
+    },
+    {
+      "name": "Arts & Crafts",
+      "courses": "121"
+    },
+    {
+      "name": "Business",
+      "courses": "78"
+    },
+    {
+      "name": "Culinary",
+      "courses": "118"
+    },
+    {
+      "name": "Design",
+      "courses": "423"
+    },
+    {
+      "name": "Fashion",
+      "courses": "92"
+    },
+    {
+      "name": "Film",
+      "courses": "165"
+    },
+    {
+      "name": "Gaming",
+      "courses": "164"
+    },
+    {
+      "name": "Illustration",
+      "courses": "326"
+    },
+    {
+      "name": "Lifestyle",
+      "courses": "305"
+    },
+    {
+      "name": "Music",
+      "courses": "212"
+    },
+    {
+      "name": "Painting",
+      "courses": "172"
+    },
+    {
+      "name": "Photography",
+      "courses": "321"
+    },
+    {
+      "name": "Technology",
+      "courses": "118"
+    }
+  ]
+}

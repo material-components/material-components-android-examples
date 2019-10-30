@@ -81,7 +81,8 @@
         android:lines="2"
         android:ellipsize="end"
         android:text="@{course.name}"
-        android:textAppearance="?attr/textAppearanceSubtitle1"/>
+        android:textAppearance="?attr/textAppearanceSubtitle1"
+        tools:text="@sample/courses.json/data/name"/>
 
     <ImageView
         android:id="@+id/course_icon"
@@ -107,7 +108,8 @@
         android:paddingVertical="@dimen/grid_2"
         android:textColor="?attr/colorPrimary"
         android:textAppearance="?attr/textAppearanceCaption"
-        android:text="@{@string/course_steps(course.step, course.steps)}"/>
+        android:text="@{@string/course_steps(course.step, course.steps)}"
+        tools:text="@sample/courses.json/data/step"/>
 
     <ImageView
         android:id="@+id/course_instructor"

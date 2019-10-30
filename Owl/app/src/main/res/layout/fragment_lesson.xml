@@ -93,7 +93,8 @@
           android:paddingBottom="?attr/actionBarSize"
           android:clipToPadding="false"
           app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-          app:hasFixedSize="@{true}"/>
+          app:hasFixedSize="@{true}"
+          tools:listitem="@layout/step_item"/>
 
       <SeekBar
           android:id="@+id/seek"
@@ -113,7 +114,8 @@
         android:id="@+id/lessons_sheet"
         android:name="com.materialstudies.owl.ui.lessons.LessonsSheetFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_lessons_sheet" />
 
   </FrameLayout>
 

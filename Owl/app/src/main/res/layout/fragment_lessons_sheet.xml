@@ -63,7 +63,8 @@
           android:lines="1"
           android:alpha="0"
           android:textAppearance="?attr/textAppearanceSubtitle1"
-          android:text="@{course.name}"/>
+          android:text="@{course.name}"
+          tools:text="@sample/courses.json/data/name"/>
 
       <ImageView
           android:id="@+id/collapse_playlist"
@@ -111,7 +112,8 @@
           android:clipToPadding="false"
           app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
           app:hasFixedSize="@{true}"
-          android:alpha="0"/>
+          android:alpha="0"
+          tools:listitem="@layout/lesson_item"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

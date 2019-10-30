@@ -118,7 +118,8 @@
             android:paddingHorizontal="@dimen/grid_2"
             android:gravity="center"
             android:text="@{course.name}"
-            android:textAppearance="?attr/textAppearanceHeadline4"/>
+            android:textAppearance="?attr/textAppearanceHeadline4"
+            tools:text="@sample/courses.json/data/name"/>
 
         <TextView
             android:id="@+id/description"
@@ -207,7 +208,8 @@
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:hasFixedSize="@{true}"
-            android:theme="@style/ThemeOverlay.Owl.Blue"/>
+            android:theme="@style/ThemeOverlay.Owl.Blue"
+            tools:listitem="@layout/course_item"/>
 
       </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -217,7 +219,8 @@
         android:id="@+id/lessons_sheet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.materialstudies.owl.ui.lessons.LessonsSheetFragment"/>
+        android:name="com.materialstudies.owl.ui.lessons.LessonsSheetFragment"
+        tools:layout="@layout/fragment_lessons_sheet" />
 
   </FrameLayout>
 

@@ -86,7 +86,8 @@
         android:text="@{course.subject}"
         android:textColor="?attr/colorPrimary"
         android:textAppearance="?attr/textAppearanceOverline"
-        android:textAllCaps="true"/>
+        android:textAllCaps="true"
+        tools:text="@sample/courses.json/data/subject"/>
 
     <TextView
         android:id="@+id/course_name"
@@ -98,7 +99,8 @@
         android:paddingHorizontal="@dimen/grid_2"
         android:gravity="center"
         android:text="@{course.name}"
-        android:textAppearance="?attr/textAppearanceSubtitle1"/>
+        android:textAppearance="?attr/textAppearanceSubtitle1"
+        tools:text="@sample/courses.json/data/name"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -128,7 +130,8 @@
         android:paddingStart="@dimen/grid_0_5"
         android:textColor="?attr/colorPrimary"
         android:textAppearance="?attr/textAppearanceSubtitle2"
-        android:text="@{String.valueOf(course.steps)}"/>
+        android:text="@{String.valueOf(course.steps)}"
+        tools:text="@sample/courses.json/data/steps"/>
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 
