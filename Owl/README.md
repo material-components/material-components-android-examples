@@ -20,7 +20,7 @@ Owl has three primary colors. Each color is used to create a distinct visual the
 ### Shape
 <img src="screenshots/shape_header.png" width="700" alt="Owl shape theming"/>
 
-Owl defines small, medium and large shape categories for different sized components. See [shape.xml](https://github.com/material-components/material-components-android-examples/blob/develop/Owl/app/src/main/res/values/shape.xml) which defines the `ShapeAppearance`s, which are then [set in the theme](https://github.com/material-components/material-components-android-examples/blob/develop/Owl/app/src/main/res/values/theme.xml#L20-L23) and picked up by all components or refferred to directly.
+Owl defines small, medium and large shape categories for different sized components. See [shape.xml](https://github.com/material-components/material-components-android-examples/blob/develop/Owl/app/src/main/res/values/shape.xml) which defines the `ShapeAppearance`s, which are then [set in the theme](https://github.com/material-components/material-components-android-examples/blob/develop/Owl/app/src/main/res/values/theme.xml#L20-L23) and picked up by all components or referred to directly.
 
 ### Typography
 <img src="screenshots/type_header.png" width="700" alt="Owl typography theming"/>
