@@ -27,7 +27,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.FragmentEmailBinding
-import com.materialstudies.reply.util.FastOutUltraSlowIn
+import com.materialstudies.reply.util.themeInterpolator
 import com.materialstudies.reply.util.transition.MaterialContainerTransition
 import kotlin.LazyThreadSafetyMode.NONE
 
@@ -95,15 +95,15 @@ class EmailFragment : Fragment() {
             R.id.nested_scroll_view,
             correctForZOrdering = true
         ).apply {
-            duration = resources.getInteger(R.integer.reply_motion_default_duration).toLong()
-            interpolator = FastOutUltraSlowIn()
+            duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
         }
         sharedElementReturnTransition = MaterialContainerTransition(
             R.id.recycler_view,
             correctForZOrdering = true
         ).apply {
-            duration = resources.getInteger(R.integer.reply_motion_default_duration).toLong()
-            interpolator = FastOutUltraSlowIn()
+            duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
         }
     }
 

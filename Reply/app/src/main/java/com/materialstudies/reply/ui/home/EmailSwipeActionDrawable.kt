@@ -27,11 +27,11 @@ import android.graphics.RectF
 import android.graphics.drawable.Drawable
 import androidx.annotation.ColorInt
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.materialstudies.reply.R
 import com.materialstudies.reply.util.lerp
 import com.materialstudies.reply.util.lerpArgb
 import com.materialstudies.reply.util.themeColor
+import com.materialstudies.reply.util.themeInterpolator
 import kotlin.math.abs
 import kotlin.math.hypot
 import kotlin.math.sin
@@ -78,8 +78,8 @@ class EmailSwipeActionDrawable(context: Context) : Drawable() {
             }
         }
     private var progressAnim: ValueAnimator? = null
-    private val dur = context.resources.getInteger(R.integer.reply_motion_short_duration)
-    private val interp = FastOutSlowInInterpolator()
+    private val dur = context.resources.getInteger(R.integer.reply_motion_duration_medium)
+    private val interp = context.themeInterpolator(R.attr.motionInterpolatorPersistent)
 
     override fun onBoundsChange(bounds: Rect?) {
         if (bounds == null)  return

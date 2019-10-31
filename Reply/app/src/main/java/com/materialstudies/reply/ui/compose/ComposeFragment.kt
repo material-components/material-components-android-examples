@@ -33,7 +33,7 @@ import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.ComposeRecipientChipBinding
 import com.materialstudies.reply.databinding.FragmentComposeBinding
-import com.materialstudies.reply.util.FastOutUltraSlowIn
+import com.materialstudies.reply.util.themeInterpolator
 import com.materialstudies.reply.util.transition.MaterialContainerTransition
 import kotlin.LazyThreadSafetyMode.NONE
 
@@ -118,12 +118,12 @@ class ComposeFragment : Fragment() {
                 requireActivity().findViewById(R.id.fab),
                 binding.emailCardView
             )
-            duration = resources.getInteger(R.integer.reply_motion_default_duration).toLong()
-            interpolator = FastOutUltraSlowIn()
+            duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
         }
         returnTransition = Slide().apply {
-            duration = resources.getInteger(R.integer.reply_motion_micro_duration).toLong()
-            interpolator = AccelerateInterpolator()
+            duration = resources.getInteger(R.integer.reply_motion_duration_medium).toLong()
+            interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorOutgoing)
         }
         startPostponedEnterTransition()
     }
