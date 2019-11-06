@@ -9,12 +9,12 @@ This project is an Android implementation of [Owl](https://material.io/design/ma
 <img src="screenshots/owl_demo.gif" height="400" alt="Owl sample demo"/>
 
 ## Material Theming
-Owl uses Material Theming to customize the app’s [color](https://material.io/develop/android/theming/color/), [shape](https://material.io/develop/android/theming/shape/) and [typography](https://material.io/develop/android/theming/typography/) to achieve this.
+Owl uses Material Theming to customize the app’s [color](https://material.io/develop/android/theming/color/), [shape](https://material.io/develop/android/theming/shape/) and [typography](https://material.io/develop/android/theming/typography/).
 
 ### Color
 <img src="screenshots/color_header.png" width="700" alt="Owl color theming"/>
 
-Owl has three primary colors. Each color is used to create a distinct visual theme for each section. See [colors.xml](https://github.com/material-components/material-components-android-examples/blob/develop/Owl/app/src/main/res/values/color.xml) and how they are used in [default](https://github.com/material-components/material-components-android-examples/blob/develop/Owl/app/src/main/res/values/theme.xml#L58-L86) and [dark](https://github.com/material-components/material-components-android-examples/blob/develop/Owl/app/src/main/res/values-night/theme.xml) themes.
+Owl has three primary colors which are used to create distinct visual themes for each section. See [color.xml](https://github.com/material-components/material-components-android-examples/blob/develop/Owl/app/src/main/res/values/color.xml) for the full color scheme and how colors are applied across [default](https://github.com/material-components/material-components-android-examples/blob/develop/Owl/app/src/main/res/values/theme.xml#L58-L86) and [dark](https://github.com/material-components/material-components-android-examples/blob/develop/Owl/app/src/main/res/values-night/theme.xml) themes.
 
 ### Shape
 <img src="screenshots/shape_header.png" width="700" alt="Owl shape theming"/>
