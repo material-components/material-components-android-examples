@@ -4,8 +4,8 @@
 
 The apps in this repository are Android implementations of fictional [Material Studies](https://material.io/design/material-studies/). Each one is built using the [MDC-Android library](http://github.com/material-components/material-components-android/) and showcases customizations of color, typography, and shape made with [Material Theming](https://material.io/design/material-theming/).
 
-* [Reply](https://github.com/material-components/material-components-android-examples/tree/develop/Reply)
-* [Owl](https://github.com/material-components/material-components-android-examples/tree/develop/Owl)
+* [Reply](Reply)
+* [Owl](Owl)
 * [Coming Soon] Basil
 
 ## License
