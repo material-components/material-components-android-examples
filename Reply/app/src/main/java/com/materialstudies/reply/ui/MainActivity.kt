@@ -23,7 +23,6 @@ import androidx.annotation.MenuRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
@@ -38,6 +37,7 @@ import com.materialstudies.reply.ui.nav.HalfClockwiseRotateSlideAction
 import com.materialstudies.reply.ui.nav.HalfCounterClockwiseRotateSlideAction
 import com.materialstudies.reply.ui.nav.ShowHideFabStateAction
 import com.materialstudies.reply.util.contentView
+import com.materialstudies.reply.util.showUnimplementedFeatureMessage
 import kotlin.LazyThreadSafetyMode.NONE
 
 class MainActivity : AppCompatActivity(),
@@ -192,6 +192,7 @@ class MainActivity : AppCompatActivity(),
                 bottomNavDrawer.close()
                 showDarkThemeMenu()
             }
+            else -> showUnimplementedFeatureMessage()
         }
         return true
     }

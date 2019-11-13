@@ -31,6 +31,7 @@ import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.FragmentHomeBinding
 import com.materialstudies.reply.ui.MenuBottomSheetDialogFragment
+import com.materialstudies.reply.util.showUnimplementedFeatureMessage
 
 /**
  * A [Fragment] that displays a list of emails.
@@ -78,6 +79,7 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
     override fun onEmailLongPressed(email: Email): Boolean {
         MenuBottomSheetDialogFragment(R.menu.email_bottom_sheet_menu) {
             // Do nothing.
+            requireContext().showUnimplementedFeatureMessage()
             true
         }.show(requireFragmentManager(), null)
 

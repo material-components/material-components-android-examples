@@ -39,6 +39,16 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.elevation.ElevationOverlayProvider
 import com.materialstudies.reply.R
 
+/**
+ * Mark a view as unimplemented. This configures the View to show a Toast when clicked.
+ */
+@BindingAdapter(
+    "unimplementedFeature"
+)
+fun View.bindUnimplementedFeature(unimplemented: Boolean) {
+    if (unimplemented) setOnClickListener { context.showUnimplementedFeatureMessage() }
+}
+
 @BindingAdapter(
     "popupElevationOverlay"
 )

@@ -61,4 +61,6 @@
     <string name="compose_subject_hint">Subject</string>
     <string name="compose_body_hint">New message…</string>
     <string name="compose_recipient_group_content_desc">Recipients</string>
+
+    <string name="feature_not_implemented_message">Feature not implemented</string>
 </resources>

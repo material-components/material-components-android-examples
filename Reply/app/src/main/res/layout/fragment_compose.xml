@@ -80,10 +80,9 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:contentDescription="@string/compose_send_content_desc"
                     android:background="?attr/actionBarItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
                     app:tint="?attr/colorPrimary"
-                    app:srcCompat="@drawable/ic_twotone_send" />
+                    app:srcCompat="@drawable/ic_twotone_send"
+                    app:unimplementedFeature="@{true}" />
 
                 <ImageView
                     android:id="@+id/subject_divider"
@@ -160,10 +159,9 @@
                     android:padding="@dimen/min_icon_target_padding"
                     android:contentDescription="@string/compose_add_recipient_icon_content_desc"
                     android:background="?attr/actionBarItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
                     app:tint="@color/color_on_surface_emphasis_disabled"
-                    app:srcCompat="@drawable/ic_twotone_add_circle_outline"/>
+                    app:srcCompat="@drawable/ic_twotone_add_circle_outline"
+                    app:unimplementedFeature="@{true}"/>
 
                 <ImageView
                     android:id="@+id/recipient_divider"

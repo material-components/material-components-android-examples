@@ -38,6 +38,7 @@ import com.materialstudies.reply.data.Account
 import com.materialstudies.reply.data.AccountStore
 import com.materialstudies.reply.databinding.FragmentBottomNavDrawerBinding
 import com.materialstudies.reply.util.lerp
+import com.materialstudies.reply.util.showUnimplementedFeatureMessage
 import com.materialstudies.reply.util.themeColor
 import com.materialstudies.reply.util.themeInterpolator
 import kotlin.LazyThreadSafetyMode.NONE
@@ -275,6 +276,7 @@ class BottomNavDrawerFragment :
 
     override fun onNavEmailFolderClicked(folder: NavigationModelItem.NavEmailFolder) {
         // Do nothing
+        requireContext().showUnimplementedFeatureMessage()
     }
 
     override fun onAccountClicked(account: Account) {

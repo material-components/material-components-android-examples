@@ -23,12 +23,14 @@ import android.graphics.drawable.Drawable
 import android.util.TypedValue
 import android.view.animation.AnimationUtils
 import android.view.animation.Interpolator
+import android.widget.Toast
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.annotation.StyleRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.res.use
+import com.materialstudies.reply.R
 
 /**
  * Retrieve a color from the current [android.content.res.Resources.Theme].
@@ -68,3 +70,10 @@ fun Context.themeInterpolator(@AttrRes attr: Int): Interpolator {
 fun Context.getDrawableOrNull(@DrawableRes id: Int?): Drawable? {
     return if (id == null || id == 0) null else AppCompatResources.getDrawable(this, id)
 }
+
+/**
+ * Show a Toast confirming a feature is not implemented for the purposes of this sample.
+ */
+fun Context.showUnimplementedFeatureMessage() = Toast
+    .makeText(this, R.string.feature_not_implemented_message, Toast.LENGTH_SHORT)
+    .show()
