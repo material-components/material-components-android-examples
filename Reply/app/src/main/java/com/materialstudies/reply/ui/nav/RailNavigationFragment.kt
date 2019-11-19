@@ -76,7 +76,9 @@ class RailNavigationFragment : Fragment(), NavigationAdapter.NavigationAdapterLi
             }
             NavigationModel.setNavigationMenuItemChecked(0)
 
-            composeFab.setOnClickListener { toggleRail() }
+            if (!resources.getBoolean(R.bool.drawerLockedOpen)) {
+                logoImageView.setOnClickListener { toggleRail() }
+            }
         }
     }
 
