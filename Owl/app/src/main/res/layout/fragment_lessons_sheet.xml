@@ -34,7 +34,7 @@
         android:id="@+id/lessons_sheet"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        app:layout_behavior="com.materialstudies.owl.ui.lessons.LessonBottomSheetBehavior"
         app:behavior_peekHeight="56dp">
 
       <ImageView
