@@ -7,6 +7,9 @@ import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
+/**
+ *  A [BottomSheetBehavior] that helps to restrict touchable area depends on translationX
+ */
 class LessonBottomSheetBehavior<T : View>(context: Context, attrs: AttributeSet?) :
     BottomSheetBehavior<T>(context, attrs) {
 
