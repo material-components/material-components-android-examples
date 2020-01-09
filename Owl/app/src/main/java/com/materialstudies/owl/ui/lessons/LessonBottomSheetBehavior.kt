@@ -10,13 +10,21 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 /**
  *  A [BottomSheetBehavior] that helps to restrict touchable area depends on translationX
  */
-class LessonBottomSheetBehavior<T : View>(context: Context, attrs: AttributeSet?) :
-    BottomSheetBehavior<T>(context, attrs) {
+class LessonBottomSheetBehavior<T : View> (
+    context: Context,
+    attrs: AttributeSet?
+) : BottomSheetBehavior<T>(context, attrs) {
 
-    override fun onTouchEvent(parent: CoordinatorLayout, child: T, event: MotionEvent): Boolean {
-        if (event.x < child.translationX) {
-            return false
+    override fun onTouchEvent(
+        parent: CoordinatorLayout,
+        child: T,
+        event: MotionEvent
+    ): Boolean {
+        return if (event.x < child.translationX && state != STATE_DRAGGING) {
+            false
+        } else {
+            super.onTouchEvent(parent, child, event)
         }
-        return super.onTouchEvent(parent, child, event)
     }
+
 }
