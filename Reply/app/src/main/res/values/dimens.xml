@@ -32,4 +32,8 @@
     <dimen name="email_sender_profile_image_size">42dp</dimen>
 
     <dimen name="chip_icon_diameter">32dp</dimen>
+
+    <!--RailNavigation-->
+    <dimen name="max_rail_nav_width">300dp</dimen>
+    <dimen name="min_rail_nav_width">88dp</dimen>
 </resources>

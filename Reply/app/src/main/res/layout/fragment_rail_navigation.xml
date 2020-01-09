@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2019 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="currentUserAccount"
+            type="com.materialstudies.reply.data.Account" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/scrim_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:alpha="0"
+            android:background="?attr/scrimBackground"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rail_container"
+            android:layout_width="@dimen/max_rail_nav_width"
+            android:layout_height="match_parent"
+            android:background="?attr/colorPrimary"
+            android:layout_gravity="left"
+            app:paddingLeftSystemWindowInsets="@{true}"
+            app:paddingTopSystemWindowInsets="@{true}">
+
+            <ImageView
+                android:id="@+id/logo_image_view"
+                android:layout_width="@dimen/bottom_app_bar_logo_size"
+                android:layout_height="@dimen/bottom_app_bar_logo_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/bottom_app_bar_logo_content_desc"
+                app:srcCompat="@drawable/ic_reply_logo"/>
+
+            <TextView
+                android:id="@+id/logo_title_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:text="@string/app_name"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textAllCaps="true"
+                android:textColor="@color/color_on_primary_surface_emphasis_high"
+                app:layout_constraintBottom_toBottomOf="@id/logo_image_view"
+                app:layout_constraintStart_toEndOf="@id/logo_image_view"
+                app:layout_constraintTop_toTopOf="@id/logo_image_view" />
+<!--            android:textColor="@color/color_on_branded_surface_emphasis_high"-->
+
+            <ImageView
+                android:id="@+id/profile_image_view"
+                android:layout_width="@dimen/navigation_drawer_profile_image_size"
+                android:layout_height="@dimen/navigation_drawer_profile_image_size"
+                app:layout_constraintTop_toTopOf="@id/logo_image_view"
+                app:layout_constraintBottom_toBottomOf="@id/logo_image_view"
+                app:layout_constraintEnd_toStartOf="@id/settings_icon"
+                android:layout_gravity="center|top"
+                android:foreground="?attr/selectableItemBackground"
+                android:contentDescription="@string/bottom_nav_drawer_profile_image_content_desc"
+                app:glideCenterCrop="@{true}"
+                app:glideCircularCrop="@{true}"/>
+
+            <ImageView
+                android:id="@+id/settings_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_settings"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/logo_image_view"
+                app:layout_constraintBottom_toBottomOf="@id/logo_image_view" />
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/compose_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/logo_image_view"
+                app:icon="@drawable/ic_edit"
+                android:text="Compose"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/nav_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="24dp"
+                android:clipToPadding="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/compose_fab"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>
