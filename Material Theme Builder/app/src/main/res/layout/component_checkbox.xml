@@ -34,7 +34,7 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.checkbox.MaterialCheckBox
+    <CheckBox
       android:id="@+id/checkbox_one"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="@+id/checkbox_two" />
 
-    <com.google.android.material.checkbox.MaterialCheckBox
+    <CheckBox
       android:id="@+id/checkbox_two"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"

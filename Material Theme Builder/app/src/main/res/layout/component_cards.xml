@@ -47,7 +47,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <ImageView
               android:id="@+id/card_header"
               android:layout_width="match_parent"
               android:layout_height="192dp"
@@ -97,7 +97,7 @@
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintTop_toBottomOf="@id/card_title" />
 
-            <com.google.android.material.button.MaterialButton
+            <Button
               style="@style/Widget.MaterialComponents.Button.TextButton"
               android:id="@+id/card_button_one"
               android:layout_width="wrap_content"
@@ -111,7 +111,7 @@
               app:layout_constraintTop_toBottomOf="@id/card_body"
               app:layout_constraintBottom_toBottomOf="parent" />
 
-            <com.google.android.material.button.MaterialButton
+            <Button
               style="@style/Widget.MaterialComponents.Button.TextButton"
               android:id="@+id/card_button_two"
               android:layout_width="wrap_content"

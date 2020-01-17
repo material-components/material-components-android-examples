@@ -34,7 +34,7 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
       android:id="@+id/button_filled"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/label" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
       style="@style/Widget.MaterialComponents.Button.TextButton"
       android:id="@+id/button_text"
       android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
       app:layout_constraintStart_toEndOf="@+id/button_filled"
       app:layout_constraintTop_toTopOf="@+id/button_filled" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
       style="?materialButtonOutlinedStyle"
       android:id="@+id/button_outlined"
       android:layout_width="wrap_content"
@@ -82,21 +82,21 @@
       app:layout_constraintTop_toBottomOf="@+id/button_filled"
       app:layout_constraintStart_toStartOf="parent">
 
-        <com.google.android.material.button.MaterialButton
+        <Button
           style="?materialButtonOutlinedStyle"
           android:id="@+id/button_one"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/button_left_button_label" />
 
-        <com.google.android.material.button.MaterialButton
+        <Button
           style="?materialButtonOutlinedStyle"
           android:id="@+id/button_center"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/button_center_button_label" />
 
-        <com.google.android.material.button.MaterialButton
+        <Button
           style="?materialButtonOutlinedStyle"
           android:id="@+id/button_three"
           android:layout_width="wrap_content"

@@ -27,7 +27,7 @@
       android:textAppearance="?textAppearanceBody1"
       android:alpha="?alphaEmphasisMedium" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <TextView
       android:id="@+id/shape_preview"
       android:layout_width="56dp"
       android:layout_height="48dp"
