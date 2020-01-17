@@ -21,6 +21,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import android.widget.LinearLayout
+import androidx.appcompat.content.res.AppCompatResources
 import io.material.materialthemebuilder.R
 
 /**
@@ -54,9 +55,12 @@ class TypeAttributeView @JvmOverloads constructor(
       field = value
     }
 
-  var typeAttrPreviewAlpha: Float = 1F
+  var typeAttrPreviewTextColor = AppCompatResources.getColorStateList(
+      context,
+      R.color.material_on_background_emphasis_high_type
+  )
     set(value) {
-      typeAttributePreviewTextView.alpha = value
+      typeAttributePreviewTextView.setTextColor(value)
       field = value
     }
 
@@ -80,10 +84,9 @@ class TypeAttributeView @JvmOverloads constructor(
       R.styleable.TypeAttributeView_previewTextAppearance,
       typeAttrPreviewTextAppearance
     )
-    typeAttrPreviewAlpha = a.getFloat(
-      R.styleable.TypeAttributeView_previewAlpha,
-      typeAttrPreviewAlpha
-    )
+    typeAttrPreviewTextColor = a.getColorStateList(
+        R.styleable.TypeAttributeView_previewTextColor
+    ) ?: typeAttrPreviewTextColor
     a.recycle()
   }
 }

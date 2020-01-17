@@ -29,7 +29,7 @@
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_1"
       android:textAppearance="?textAppearanceHeadline6"
-      android:alpha="?alphaEmphasisHigh" />
+      android:textColor="@color/material_on_surface_emphasis_high_type"/>
 
     <TextView
       android:id="@+id/header_subtitle"
@@ -39,6 +39,6 @@
       android:layout_marginBottom="@dimen/keyline_2"
       android:text="@string/text_body_2"
       android:textAppearance="?textAppearanceBody2"
-      android:alpha="?alphaEmphasisMedium" />
+      android:textColor="@color/material_on_surface_emphasis_medium"/>
 
 </LinearLayout>

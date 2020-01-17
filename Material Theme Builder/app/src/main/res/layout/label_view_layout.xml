@@ -24,7 +24,7 @@
       android:layout_height="24dp"
       android:padding="5dp"
       android:layout_marginEnd="@dimen/keyline_2"
-      android:alpha="?alphaEmphasisMedium"
+      app:tint="@color/material_on_background_emphasis_medium"
       app:srcCompat="@drawable/ic_format_size_24dp"
       android:visibility="gone" />
 
@@ -35,7 +35,7 @@
       android:layout_gravity="center_vertical"
       android:text="@string/button_label_title"
       android:textAppearance="?textAppearanceOverline"
-      android:alpha="?alphaEmphasisMedium" />
+      android:textColor="@color/material_on_background_emphasis_medium" />
 
     <ImageView
       android:id="@+id/label_trailing_image_view"
@@ -44,9 +44,9 @@
       android:padding="5dp"
       android:layout_marginStart="@dimen/keyline_2"
       android:layout_marginEnd="@dimen/keyline_2"
-      android:alpha="?alphaEmphasisMedium"
-      app:srcCompat="@drawable/ic_open_in_new_24dp"
       android:layout_gravity="center_vertical"
-      android:background="?selectableItemBackgroundBorderless" />
+      android:background="?selectableItemBackgroundBorderless"
+      app:tint="@color/material_on_background_emphasis_medium"
+      app:srcCompat="@drawable/ic_open_in_new_24dp" />
 
 </merge>

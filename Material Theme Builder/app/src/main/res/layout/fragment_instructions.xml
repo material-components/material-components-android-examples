@@ -35,7 +35,7 @@
           android:layout_height="wrap_content"
           android:text="@string/instructions_how_to_title"
           android:textAppearance="?textAppearanceOverline"
-          android:alpha="?alphaEmphasisMedium" />
+          android:textColor="@color/material_on_background_emphasis_medium"/>
 
         <TextView
           android:id="@+id/usage_body_text_view"
@@ -45,7 +45,7 @@
           android:layout_marginBottom="@dimen/keyline_5"
           android:text="@string/instructions_how_to"
           android:textAppearance="?textAppearanceBody1"
-          android:alpha="?alphaEmphasisMedium" />
+          android:textColor="@color/material_on_background_emphasis_medium"/>
 
         <TextView
           android:id="@+id/options_title_text_view"
@@ -54,7 +54,7 @@
           android:layout_marginTop="@dimen/keyline_5"
           android:text="@string/instructions_options_title"
           android:textAppearance="?textAppearanceOverline"
-          android:alpha="?alphaEmphasisMedium" />
+          android:textColor="@color/material_on_background_emphasis_medium"/>
 
         <FrameLayout
           android:layout_width="match_parent"
@@ -68,7 +68,7 @@
               android:layout_gravity="start|center_vertical"
               android:text="@string/instructions_enable_dark_title"
               android:textAppearance="?textAppearanceBody1"
-              android:alpha="?alphaEmphasisMedium" />
+              android:textColor="@color/material_on_background_emphasis_medium"/>
 
             <com.google.android.material.switchmaterial.SwitchMaterial
               android:id="@+id/dark_theme_switch"

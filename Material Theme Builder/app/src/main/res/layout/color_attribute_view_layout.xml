@@ -24,7 +24,7 @@
       android:layout_gravity="start|center_vertical"
       android:layout_marginEnd="26dp"
       android:textAppearance="?textAppearanceBody1"
-      android:alpha="?alphaEmphasisMedium"
+      android:textColor="@color/material_on_background_emphasis_medium"
       android:text="\?colorPrimary" />
 
     <io.material.materialthemebuilder.widget.ColorDotView

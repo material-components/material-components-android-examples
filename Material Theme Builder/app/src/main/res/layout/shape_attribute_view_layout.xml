@@ -25,7 +25,7 @@
       android:layout_marginEnd="72dp"
       android:text="\?shapeAppearanceSmallComponent"
       android:textAppearance="?textAppearanceBody1"
-      android:alpha="?alphaEmphasisMedium" />
+      android:textColor="@color/material_on_background_emphasis_medium"/>
 
     <TextView
       android:id="@+id/shape_preview"

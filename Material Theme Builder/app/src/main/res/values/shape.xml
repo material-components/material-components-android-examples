@@ -24,7 +24,7 @@
     <!--medium and large. Each component size group can be themed by overriding the Material -->
     <!--Components attributes ?shapeAppearanceSmallComponent, ?shapeAppearanceMediumComponent -->
     <!--and ?shapeAppearanceLargeComponent in your app's theme. Those attributes are already -->
-    <!--defined as default stylesoverridden for you in themes.xml and point to the styles in -->
+    <!--defined as default styles overridden for you in themes.xml and point to the styles in -->
     <!--this file.-->
 
     <!--Experiment with ShapeAppearance properties such as cornerFamily (either ‘cut’ or -->

@@ -14,30 +14,33 @@
 ~ See the License for the specific language governing permissions and
 ~ limitations under the License.
 -->
-
 <resources xmlns:tools="http://schemas.android.com/tools">
-
     <!--Top level DayNight theme to be used in AndroidManifest.xml-->
-    <style name="MyTheme.DayNight" parent="Base.MyTheme"/>
-
+    <style name="Theme.MyApp" parent="Base.Theme.MyApp"/>
     <!--Base custom theme which will be shared between both light and dark theme variants-->
-    <style name="Base.MyTheme" parent="Base.MaterialThemeBuilder">
-        <!--Material color attributes -->
-        <item name="colorPrimary">@color/color_primary</item>
-        <item name="colorPrimaryVariant">@color/color_primary_variant</item>
-        <item name="colorSecondary">@color/color_secondary</item>
-        <item name="colorSecondaryVariant">@color/color_secondary_variant</item>
-
-        <item name="android:colorBackground">@color/color_background</item>
-        <item name="colorSurface">@color/color_surface</item>
-        <item name="colorError">@color/color_error</item>
-
-        <item name="colorOnPrimary">@color/color_on_primary</item>
-        <item name="colorOnSecondary">@color/color_on_secondary</item>
-        <item name="colorOnBackground">@color/color_on_background</item>
-        <item name="colorOnSurface">@color/color_on_surface</item>
-        <item name="colorOnError">@color/color_on_error</item>
-
+    <style name="Base.Theme.MyApp" parent="Base.Theme.MaterialThemeBuilder">
+        <!--Material color attributes (light theme) -->
+        <!--colorPrimary colors map to components and elements, such as app bars and buttons. -->
+        <!--colorSecondary colors are most often used as accents on components, such as FABs and -->
+        <!--selection controls.-->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorSecondary">@color/green_200</item>
+        <item name="colorSecondaryVariant">@color/green_500</item>
+        <!--colorBackground appears behind scrollable content and is used for the default window-->
+        <!--background. colorSurface is mapped to the surface of components such as cards, sheets-->
+        <!--and menus. colorError is used to indicate an error state for components such as-->
+        <!--text fields.-->
+        <item name="android:colorBackground">@color/white_50</item>
+        <item name="colorSurface">@color/white_50</item>
+        <item name="colorError">@color/red_600</item>
+        <!--"On" colors define how text, icons and strokes are colored in relation to the surface-->
+        <!--on which they appear.-->
+        <item name="colorOnPrimary">@color/white_50</item>
+        <item name="colorOnSecondary">@color/black_900</item>
+        <item name="colorOnBackground">@color/black_900</item>
+        <item name="colorOnSurface">@color/black_900</item>
+        <item name="colorOnError">@color/white_50</item>
         <!--Material type attributes-->
         <item name="textAppearanceHeadline1">@style/TextAppearance.MyTheme.Headline1</item>
         <item name="textAppearanceHeadline2">@style/TextAppearance.MyTheme.Headline2</item>
@@ -52,33 +55,21 @@
         <item name="textAppearanceButton">@style/TextAppearance.MyTheme.Button</item>
         <item name="textAppearanceCaption">@style/TextAppearance.MyTheme.Caption</item>
         <item name="textAppearanceOverline">@style/TextAppearance.MyTheme.Overline</item>
-
         <!--Material shape attributes-->
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.MyTheme.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.MyTheme.MediumComponent</item>
         <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.MyTheme.LargeComponent</item>
-
         <!--Component styles-->
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.MaterialComponents.Dialog.Alert</item>
         <item name="bottomSheetDialogTheme">@style/ThemeOverlay.MyTheme.BottomSheetDialog</item>
         <item name="navigationViewStyle">@style/Widget.MyTheme.NavigationView</item>
         <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar.PrimarySurface</item>
     </style>
-
-    <style name="Base.MaterialThemeBuilder" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="alphaEmphasisHigh">@dimen/alpha_emphasis_high</item>
-        <item name="alphaEmphasisMedium">@dimen/alpha_emphasis_medium</item>
-        <item name="alphaEmphasisDisabled">@dimen/alpha_emphasis_disabled</item>
-
-        <item name="android:statusBarColor">?colorSurface</item>
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:navigationBarColor">?android:colorBackground</item>
+    <style name="Base.Theme.MaterialThemeBuilder" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor" tools:ignore="NewApi">?attr/colorSurface</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+        <item name="android:navigationBarColor" tools:ignore="NewApi">?android:attr/colorBackground</item>
         <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
-        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">?colorControlHighlight</item>
-
-        <!--Remap legacy AppCompat attributes to MaterialComponent attributes-->
-        <item name="colorPrimaryDark">?colorPrimaryVariant</item>
-        <item name="colorAccent">?colorSecondary</item>
+        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">?attr/colorControlHighlight</item>
     </style>
-
 </resources>

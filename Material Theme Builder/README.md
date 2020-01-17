@@ -12,13 +12,11 @@ By default, apps built with Material Components inherit our baseline theme value
 ### type.xml
 To change your theme’s typography, we recommend using [Google Fonts](https://fonts.google.com/) and choosing a font family that best reflects your style. Set TextApperances to use your custom font and additional type properties to apply a custom type scale globally. [Learn how to add fonts in Android Studio](https://developer.android.com/guide/topics/ui/look-and-feel/downloadable-fonts)
 
-
 ### shape.xml
 To systematically apply shape throughout your app, it helps to understand that components are grouped by size into categories of small, medium and large. The shape of each component size group can be themed by customizing its ShapeApperance style.  We recommend using our [shape customization tool](https://material.io/design/shape/about-shape.html#shape-customization-tool) to help you pick your corner family and size values.
 
-### color.xml & night/color.xml
+### color.xml
 To change your theme's color scheme, replace the existing HEX color values with your custom HEX values. This project has both light and dark themes, toggle between them within the app to see your changes. Use our [color palette generator](https://material.io/design/color/the-color-system.html#tools-for-picking-colors) to help come up with pairings and check your color contrast.
-
 
 ## Get Started
 Clone the material-components-android repository 

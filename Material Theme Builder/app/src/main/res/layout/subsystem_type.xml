@@ -40,7 +40,6 @@
       android:text="\?textAppearanceHeadline1"
       app:previewText="@string/text_appearance_h1_label"
       app:previewTextAppearance="?textAppearanceHeadline1"
-      app:previewAlpha="?alphaEmphasisHigh"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -50,7 +49,6 @@
       android:text="\?textAppearanceHeadline2"
       app:previewText="@string/text_appearance_h2_label"
       app:previewTextAppearance="?textAppearanceHeadline2"
-      app:previewAlpha="?alphaEmphasisHigh"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -60,7 +58,6 @@
       android:text="\?textAppearanceHeadline3"
       app:previewText="@string/text_appearance_h3_label"
       app:previewTextAppearance="?textAppearanceHeadline3"
-      app:previewAlpha="?alphaEmphasisHigh"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -70,7 +67,6 @@
       android:text="\?textAppearanceHeadline4"
       app:previewText="@string/text_appearance_h4_label"
       app:previewTextAppearance="?textAppearanceHeadline4"
-      app:previewAlpha="?alphaEmphasisHigh"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -80,7 +76,6 @@
       android:text="\?textAppearanceHeadline5"
       app:previewText="@string/text_appearance_h5_label"
       app:previewTextAppearance="?textAppearanceHeadline5"
-      app:previewAlpha="?alphaEmphasisHigh"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -90,7 +85,6 @@
       android:text="\?textAppearanceHeadline6"
       app:previewText="@string/text_appearance_h6_label"
       app:previewTextAppearance="?textAppearanceHeadline6"
-      app:previewAlpha="?alphaEmphasisHigh"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -100,7 +94,7 @@
       android:text="\?textAppearanceSubtitle1"
       app:previewText="@string/text_appearance_subtitle_1_label"
       app:previewTextAppearance="?textAppearanceSubtitle1"
-      app:previewAlpha="?alphaEmphasisMedium"
+      app:previewTextColor="@color/material_on_background_emphasis_medium"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -110,7 +104,7 @@
       android:text="\?textAppearanceSubtitle2"
       app:previewText="@string/text_appearance_subtitle_2_label"
       app:previewTextAppearance="?textAppearanceSubtitle2"
-      app:previewAlpha="?alphaEmphasisMedium"
+      app:previewTextColor="@color/material_on_background_emphasis_medium"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -120,7 +114,7 @@
       android:text="\?textAppearanceBody1"
       app:previewText="@string/text_appearance_body_1_label"
       app:previewTextAppearance="?textAppearanceBody1"
-      app:previewAlpha="?alphaEmphasisMedium"
+      app:previewTextColor="@color/material_on_background_emphasis_medium"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -130,7 +124,7 @@
       android:text="\?textAppearanceBody2"
       app:previewText="@string/text_appearance_body_2_label"
       app:previewTextAppearance="?textAppearanceBody2"
-      app:previewAlpha="?alphaEmphasisMedium"
+      app:previewTextColor="@color/material_on_background_emphasis_medium"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -140,7 +134,7 @@
       android:text="\?textAppearanceButton"
       app:previewText="@string/text_appearance_button_label"
       app:previewTextAppearance="?textAppearanceButton"
-      app:previewAlpha="?alphaEmphasisHigh"
+      app:previewTextColor="@color/material_on_background_emphasis_medium"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -150,7 +144,7 @@
       android:text="\?textAppearanceCaption"
       app:previewText="@string/text_appearance_caption_label"
       app:previewTextAppearance="?textAppearanceCaption"
-      app:previewAlpha="?alphaEmphasisMedium"
+      app:previewTextColor="@color/material_on_background_emphasis_medium"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -160,7 +154,7 @@
       android:text="\?textAppearanceOverline"
       app:previewText="@string/text_appearance_overline_label"
       app:previewTextAppearance="?textAppearanceOverline"
-      app:previewAlpha="?alphaEmphasisMedium"
+      app:previewTextColor="@color/material_on_background_emphasis_medium"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 

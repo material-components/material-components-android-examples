@@ -17,10 +17,6 @@
 
 <resources>
 
-    <attr name="alphaEmphasisHigh" format="float"/>
-    <attr name="alphaEmphasisMedium" format="float"/>
-    <attr name="alphaEmphasisDisabled" format="float"/>
-
     <!--Common attributes-->
     <attr name="colorFillColor" format="color"/>
     <attr name="colorStrokeColor" format="color"/>
@@ -50,7 +46,7 @@
         <attr name="android:text"/>
         <attr name="previewText" format="string"/>
         <attr name="previewTextAppearance" format="reference"/>
-        <attr name="previewAlpha" format="reference"/>
+        <attr name="previewTextColor" format="reference"/>
     </declare-styleable>
 
     <!--Shape attribute view attributes-->

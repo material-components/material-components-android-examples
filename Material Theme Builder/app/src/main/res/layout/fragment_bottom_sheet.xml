@@ -29,7 +29,7 @@
       android:layout_height="wrap_content"
       android:gravity="center_vertical"
       android:textAppearance="?textAppearanceHeadline6"
-      android:alpha="?alphaEmphasisHigh"
+      android:textColor="@color/material_on_surface_emphasis_high_type"
       android:firstBaselineToTopHeight="40dp"
       android:text="@string/text_headline_6" />
 
@@ -37,7 +37,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:textAppearance="?textAppearanceBody1"
-      android:alpha="?alphaEmphasisMedium"
+      android:textColor="@color/material_on_surface_emphasis_medium"
       android:firstBaselineToTopHeight="36dp"
       android:text="@string/lorem_ipsum" />
 

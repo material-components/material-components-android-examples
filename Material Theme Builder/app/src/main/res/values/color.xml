@@ -19,40 +19,47 @@
 
     <!--Color-->
 
-    <!--Material uses an organized approach to applying color by providing a set of attributes -->
-    <!--which define the color of generalized UI elements such as backgrounds, surfaces, type -->
-    <!--and icons. Using these attributes throughout your app makes it easy to change a single -->
-    <!--color, or the entire theme, and have those changes cascade through the interface.-->
+    <!--Material uses an organized approach to applying color by -->
+    <!--providing a set of attributes which define semantically named -->
+    <!--colors for generalized UI concepts such as backgrounds, -->
+    <!--surfaces, type and icons. Using these attributes throughout -->
+    <!--your app makes it easy to change a single color, or the -->
+    <!--entire theme, and have those changes cascade through the interface.-->
 
-    <!--Color is customized by overriding Material Components color attributes with custom -->
-    <!--color values. In this project, your theme’s color attributes are already overridden -->
-    <!--with default values defined in this file, color.xml.  Change any of the values in -->
-    <!--this file to see changes applied across all elements of your app.-->
+    <!--Color is customized by overriding Material Components color -->
+    <!--attributes with custom color values. In this project, your theme’s -->
+    <!--color attributes are already overridden with default values -->
+    <!--defined in this file, colors.xml. This file holds the color palette -->
+    <!--for both light and dark themes of the Material baseline (default) -->
+    <!--theme. Next to each color is a comment describing the semantic theme -->
+    <!--color attribute which the palette color maps to.-->
 
-    <!--LIGHT COLOR THEME-->
+    <!--Replace the colors here with your own brand's palette and ensure -->
+    <!--they are applied as desired in both light and dark theme -->
+    <!--(values/themes.xml and values-night/themes.xml). For more -->
+    <!--information on color palettes and their application color -->
+    <!--theme attributes, see https://www.youtube.com/watch?v=Owkf8DhAOSo-->
 
-    <!--colorPrimary colors map to components and elements, such as app bars and buttons. -->
-    <!--colorSecondary colors are most often used as accents on components, such as FABs and -->
-    <!--selection controls.-->
-    <color name="color_primary">#6200ee</color>
-    <color name="color_primary_variant">#3700b3</color>
-    <color name="color_secondary">#03dac6</color>
-    <color name="color_secondary_variant">#018786</color>
+    <!--Color palette-->
 
-    <!--colorBackground appears behind scrollable content and is used for the default window-->
-    <!--background. colorSurface is mapped to the surface of components such as cards, sheets-->
-    <!--and menus. colorError is used to indicate an error state for components such as-->
-    <!--text fields.-->
-    <color name="color_background">#ffffff</color>
-    <color name="color_surface">#ffffff</color>
-    <color name="color_error">#b00020</color>
+    <color name="purple_200">#bb86fc</color> <!--Color primary (dark)-->
+    <color name="purple_500">#6200ee</color> <!--Color primary (light)-->
+    <color name="purple_600">#4b01d0</color> <!--Color primary variant (dark)-->
+    <color name="purple_700">#3700b3</color> <!--Color primary variant (light)-->
 
-    <!--"On" colors define how text, icons and strokes are colored in relation to the surface-->
-    <!--on which they appear.-->
-    <color name="color_on_primary">#ffffff</color>
-    <color name="color_on_secondary">#000000</color>
-    <color name="color_on_background">#000000</color>
-    <color name="color_on_surface">#000000</color>
-    <color name="color_on_error">#ffffff</color>
+    <color name="green_200">#03dac6</color> <!--Color secondary-->
+    <color name="green_500">#018786</color> <!--Color secondary variant-->
+
+    <color name="red_200">#cf6679</color> <!--Color error (dark)-->
+    <color name="red_600">#b00020</color> <!--Color error (light)-->
+
+    <!--Color surface (light), color on error (light), -->
+    <!--color on surface (dark), color on surface (dark)-->
+    <color name="white_50">#ffffff</color>
+
+    <color name="black_800">#121212</color> <!--Color surface (dark)-->
+    <!--Color on secondary (light), color on background (light),-->
+    <!--color on surface (light)-->
+    <color name="black_900">#000000</color>
 
 </resources>
