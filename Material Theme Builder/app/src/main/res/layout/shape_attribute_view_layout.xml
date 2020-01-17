@@ -15,7 +15,8 @@
 ~ limitations under the License.
 -->
 
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
       android:id="@+id/shape_attribute"
@@ -23,9 +24,9 @@
       android:layout_height="wrap_content"
       android:layout_gravity="start|center_vertical"
       android:layout_marginEnd="72dp"
-      android:text="\?shapeAppearanceSmallComponent"
       android:textAppearance="?attr/textAppearanceBody1"
-      android:textColor="@color/material_on_background_emphasis_medium"/>
+      android:textColor="@color/material_on_background_emphasis_medium"
+      tools:text="shapeAppearanceSmallComponent" />
 
     <TextView
       android:id="@+id/shape_preview"

@@ -15,7 +15,8 @@
 ~ limitations under the License.
 -->
 
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
       android:id="@+id/color_attribute"
@@ -25,7 +26,7 @@
       android:layout_marginEnd="26dp"
       android:textAppearance="?attr/textAppearanceBody1"
       android:textColor="@color/material_on_background_emphasis_medium"
-      android:text="\?colorPrimary" />
+      tools:text="colorPrimary" />
 
     <io.material.materialthemebuilder.widget.ColorDotView
       android:id="@+id/color_dot"

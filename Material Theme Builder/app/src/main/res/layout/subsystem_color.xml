@@ -37,7 +37,7 @@
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="\?colorPrimary"
+      android:text="colorPrimary"
       app:colorFillColor="?attr/colorPrimary"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
@@ -46,7 +46,7 @@
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="\?colorPrimaryVariant"
+      android:text="colorPrimaryVariant"
       app:colorFillColor="?attr/colorPrimaryVariant"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
@@ -55,7 +55,7 @@
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="\?colorSecondary"
+      android:text="colorSecondary"
       app:colorFillColor="?attr/colorSecondary"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
@@ -65,7 +65,7 @@
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="\?colorSecondaryVariant"
+      android:text="colorSecondaryVariant"
       app:colorFillColor="?attr/colorSecondaryVariant"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
@@ -75,7 +75,7 @@
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="\?colorBackground"
+      android:text="colorBackground"
       app:colorFillColor="?android:attr/colorBackground"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
@@ -84,7 +84,7 @@
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="\?colorSurface"
+      android:text="colorSurface"
       app:colorFillColor="?attr/colorSurface"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
@@ -93,7 +93,7 @@
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="\?colorError"
+      android:text="colorError"
       app:colorFillColor="?attr/colorError"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
@@ -102,7 +102,7 @@
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="\?colorOnPrimary"
+      android:text="colorOnPrimary"
       app:colorFillColor="?attr/colorOnPrimary"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
@@ -111,7 +111,7 @@
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="\?colorOnSecondary"
+      android:text="colorOnSecondary"
       app:colorFillColor="?attr/colorOnSecondary"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
@@ -120,7 +120,7 @@
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="\?colorOnBackground"
+      android:text="colorOnBackground"
       app:colorFillColor="?attr/colorOnBackground"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
@@ -129,7 +129,7 @@
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="\?colorOnSurface"
+      android:text="colorOnSurface"
       app:colorFillColor="?attr/colorOnSurface"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
@@ -138,7 +138,7 @@
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="\?colorOnError"
+      android:text="colorOnError"
       app:colorFillColor="?attr/colorOnError"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
