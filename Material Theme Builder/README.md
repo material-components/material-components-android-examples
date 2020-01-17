@@ -19,18 +19,16 @@ To systematically apply shape throughout your app, it helps to understand that c
 To change your theme's color scheme, replace the existing HEX color values with your custom HEX values. This project has both light and dark themes, toggle between them within the app to see your changes. Use our [color palette generator](https://material.io/design/color/the-color-system.html#tools-for-picking-colors) to help come up with pairings and check your color contrast.
 
 ## Get Started
-Clone the material-components-android repository 
+Clone the material-components-android-examples repository 
 
 ```
-git clone https://github.com/material-components/material-components-android.git
+git clone https://github.com/material-components/material-components-android-examples.git
 ```
 
-In Android Studio - Choose ‘Open an existing Android Studio Project’ and select ‘material-components-android’
+In Android Studio - Choose ‘Open an existing Android Studio Project’ and select ‘material-components-android-examples/Material Theme Builder’
 
-Sync and build the project. All of the library’s modules will be shown in the left-hand `Project` pane. Find `material-theme-builder`and expand the module - it should look like a standard Android Studio project.
+Sync, build and run the project. The project, by default, will be configured with the baseline Material theme.
 
-Run the project by going to ‘Run>Run’ and selecting the ‘material-theme-builder’ run configuration. The project will build and deploy on a device or emulator and will be configured, by default, with the baseline Material theme.
+Under the ‘res’ folder, open `color.xml`, `type.xml` and `shape.xml`. Each file has detailed comments describing the Material subsystem it controls. Try modifying each subsystem, re-running the app and seeing how changes are propagated throughout the app.
 
-Under the modules ‘res’ folder, open `color.xml`, `type.xml` and `shape.xml`. Each file has detailed comments describing the Material subsystem it controls. Try modifying each subsystem, re-running the app and seeing how changes are propagated throughout the app.
-
-Once you build your Material theme, move the theme resources (`color.xml` `night/color.xml`, `type.xml`, `shape.xml`, `styles.xml`, `themes.xml` and `night/themes.xml`) over to your app to start using your Material theme in projects.
+Once you build your Material theme, move the theme resources (`color.xml`, `type.xml`, `shape.xml`, `styles.xml`, `themes.xml` and `night/themes.xml`) over to your app to start using your Material theme in your own projects.
