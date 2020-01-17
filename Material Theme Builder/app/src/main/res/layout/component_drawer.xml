@@ -40,14 +40,14 @@
       android:layout_width="400dp"
       android:layout_height="324dp"
       android:layout_marginTop="@dimen/keyline_4"
-      android:background="?colorControlHighlight"
+      android:background="?attr/colorControlHighlight"
       tools:openDrawer="left"
       app:layout_constraintTop_toBottomOf="@+id/label"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.navigation.NavigationView
-          style="?navigationViewStyle"
+          style="?attr/navigationViewStyle"
           android:id="@+id/nav_view"
           android:layout_width="wrap_content"
           android:layout_height="match_parent"

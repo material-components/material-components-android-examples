@@ -35,7 +35,7 @@
       app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.appbar.MaterialToolbar
-      style="?toolbarStyle"
+      style="?attr/toolbarStyle"
       android:id="@+id/toolbar"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"

@@ -28,7 +28,7 @@
       android:text="@string/text_headline_6"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_1"
-      android:textAppearance="?textAppearanceHeadline6"
+      android:textAppearance="?attr/textAppearanceHeadline6"
       android:textColor="@color/material_on_surface_emphasis_high_type"/>
 
     <TextView
@@ -38,7 +38,7 @@
       android:layout_marginTop="@dimen/keyline_1"
       android:layout_marginBottom="@dimen/keyline_2"
       android:text="@string/text_body_2"
-      android:textAppearance="?textAppearanceBody2"
+      android:textAppearance="?attr/textAppearanceBody2"
       android:textColor="@color/material_on_surface_emphasis_medium"/>
 
 </LinearLayout>

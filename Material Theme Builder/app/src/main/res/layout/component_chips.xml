@@ -51,23 +51,23 @@
           android:text="@string/chip_action_title" />
 
         <com.google.android.material.chip.Chip
-          android:id="@+id/chip_filter"
           style="@style/Widget.MaterialComponents.Chip.Filter"
+          android:id="@+id/chip_filter"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:checked="true"
           android:text="@string/chip_filter_title" />
 
         <com.google.android.material.chip.Chip
-          android:id="@+id/chip_choice"
           style="@style/Widget.MaterialComponents.Chip.Choice"
+          android:id="@+id/chip_choice"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/chip_choice_title" />
 
         <com.google.android.material.chip.Chip
-          android:id="@+id/chip_entry"
           style="@style/Widget.MaterialComponents.Chip.Entry"
+          android:id="@+id/chip_entry"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/chip_entry_title" />

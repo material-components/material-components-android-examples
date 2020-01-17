@@ -24,7 +24,7 @@
       android:layout_gravity="start|center_vertical"
       android:gravity="start"
       android:layout_weight=".6"
-      android:textAppearance="?textAppearanceBody1"
+      android:textAppearance="?attr/textAppearanceBody1"
       android:textColor="@color/material_on_background_emphasis_medium" />
 
     <TextView
@@ -35,7 +35,7 @@
       android:layout_gravity="end|center_vertical"
       android:gravity="end"
       android:layout_weight=".4"
-      android:textAppearance="?textAppearanceHeadline1"
+      android:textAppearance="?attr/textAppearanceHeadline1"
       android:textColor="@color/material_on_background_emphasis_high_type"
       android:text="@string/text_appearance_h1_label" />
 

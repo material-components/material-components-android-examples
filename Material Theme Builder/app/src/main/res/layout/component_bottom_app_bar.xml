@@ -46,7 +46,7 @@
         <com.google.android.material.bottomappbar.BottomAppBar
           android:id="@+id/bottom_app_bar"
           android:layout_width="match_parent"
-          android:layout_height="?actionBarSize"
+          android:layout_height="?attr/actionBarSize"
           android:layout_gravity="bottom"
           app:fabAlignmentMode="center"
           app:menu="@menu/bottom_app_bar_menu"

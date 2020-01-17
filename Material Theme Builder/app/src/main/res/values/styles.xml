@@ -26,16 +26,16 @@
         <item name="android:windowAnimationStyle">@style/Animation.MyTheme.BottomSheet.Modal</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="bottomSheetStyle">@style/Widget.MyTheme.BottomSheet.Modal</item>
-        <item name="android:navigationBarColor">?colorSurface</item>
+        <item name="android:navigationBarColor">?attr/colorSurface</item>
         <item name="android:navigationBarDividerColor" tools:ignore="NewApi">@android:color/transparent</item>
     </style>
     <style name="Widget.MyTheme.BottomSheet.Modal" parent="Widget.MaterialComponents.BottomSheet.Modal">
-        <item name="shapeAppearanceOverlay">?shapeAppearanceLargeComponent</item>
+        <item name="shapeAppearanceOverlay">?attr/shapeAppearanceLargeComponent</item>
     </style>
 
     <!--Navigation Drawer-->
     <style name="Widget.MyTheme.NavigationView" parent="Widget.MaterialComponents.NavigationView">
-        <item name="itemTextAppearance">?textAppearanceBody2</item>
+        <item name="itemTextAppearance">?attr/textAppearanceBody2</item>
     </style>
 
 </resources>

@@ -34,7 +34,7 @@
       android:layout_height="wrap_content"
       android:layout_gravity="center_vertical"
       android:text="@string/button_label_title"
-      android:textAppearance="?textAppearanceOverline"
+      android:textAppearance="?attr/textAppearanceOverline"
       android:textColor="@color/material_on_background_emphasis_medium" />
 
     <ImageView
@@ -45,7 +45,7 @@
       android:layout_marginStart="@dimen/keyline_2"
       android:layout_marginEnd="@dimen/keyline_2"
       android:layout_gravity="center_vertical"
-      android:background="?selectableItemBackgroundBorderless"
+      android:background="?attr/selectableItemBackgroundBorderless"
       app:tint="@color/material_on_background_emphasis_medium"
       app:srcCompat="@drawable/ic_open_in_new_24dp" />
 

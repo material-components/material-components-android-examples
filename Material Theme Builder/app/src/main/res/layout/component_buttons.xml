@@ -83,21 +83,21 @@
       app:layout_constraintStart_toStartOf="parent">
 
         <Button
-          style="?materialButtonOutlinedStyle"
+          style="?attr/materialButtonOutlinedStyle"
           android:id="@+id/button_one"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/button_left_button_label" />
 
         <Button
-          style="?materialButtonOutlinedStyle"
+          style="?attr/materialButtonOutlinedStyle"
           android:id="@+id/button_center"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/button_center_button_label" />
 
         <Button
-          style="?materialButtonOutlinedStyle"
+          style="?attr/materialButtonOutlinedStyle"
           android:id="@+id/button_three"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"

@@ -38,10 +38,10 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="\?shapeAppearanceSmallComponent"
-      app:shapeAppearance="?shapeAppearanceSmallComponent"
+      app:shapeAppearance="?attr/shapeAppearanceSmallComponent"
       app:shapeSizeLetter="@string/shape_appearance_small_label"
-      app:shapeStrokeColor="?colorOnBackground"
-      app:shapeFillColor="?colorControlHighlight"
+      app:shapeStrokeColor="?attr/colorOnBackground"
+      app:shapeFillColor="?attr/colorControlHighlight"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -49,10 +49,10 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="\?shapeAppearanceMediumComponent"
-      app:shapeAppearance="?shapeAppearanceMediumComponent"
+      app:shapeAppearance="?attr/shapeAppearanceMediumComponent"
       app:shapeSizeLetter="@string/shape_appearance_medium_label"
-      app:shapeStrokeColor="?colorOnBackground"
-      app:shapeFillColor="?colorControlHighlight"
+      app:shapeStrokeColor="?attr/colorOnBackground"
+      app:shapeFillColor="?attr/colorControlHighlight"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -62,8 +62,8 @@
       android:text="\?shapeAppearanceLargeComponent"
       app:shapeAppearance="?shapeAppearanceLargeComponent"
       app:shapeSizeLetter="@string/shape_appearance_large_label"
-      app:shapeStrokeColor="?colorOnBackground"
-      app:shapeFillColor="?colorControlHighlight"
+      app:shapeStrokeColor="?attr/colorOnBackground"
+      app:shapeFillColor="?attr/colorControlHighlight"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 

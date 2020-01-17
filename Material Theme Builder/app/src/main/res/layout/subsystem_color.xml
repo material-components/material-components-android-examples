@@ -38,8 +38,8 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="\?colorPrimary"
-      app:colorFillColor="?colorPrimary"
-      app:colorStrokeColor="?colorOnBackground"
+      app:colorFillColor="?attr/colorPrimary"
+      app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -47,8 +47,8 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="\?colorPrimaryVariant"
-      app:colorFillColor="?colorPrimaryVariant"
-      app:colorStrokeColor="?colorOnBackground"
+      app:colorFillColor="?attr/colorPrimaryVariant"
+      app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -56,8 +56,8 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="\?colorSecondary"
-      app:colorFillColor="?colorSecondary"
-      app:colorStrokeColor="?colorOnBackground"
+      app:colorFillColor="?attr/colorSecondary"
+      app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -66,8 +66,8 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="\?colorSecondaryVariant"
-      app:colorFillColor="?colorSecondaryVariant"
-      app:colorStrokeColor="?colorOnBackground"
+      app:colorFillColor="?attr/colorSecondaryVariant"
+      app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -76,8 +76,8 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="\?colorBackground"
-      app:colorFillColor="?android:colorBackground"
-      app:colorStrokeColor="?colorOnBackground"
+      app:colorFillColor="?android:attr/colorBackground"
+      app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -85,8 +85,8 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="\?colorSurface"
-      app:colorFillColor="?colorSurface"
-      app:colorStrokeColor="?colorOnBackground"
+      app:colorFillColor="?attr/colorSurface"
+      app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -94,8 +94,8 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="\?colorError"
-      app:colorFillColor="?colorError"
-      app:colorStrokeColor="?colorOnBackground"
+      app:colorFillColor="?attr/colorError"
+      app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -103,8 +103,8 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="\?colorOnPrimary"
-      app:colorFillColor="?colorOnPrimary"
-      app:colorStrokeColor="?colorOnBackground"
+      app:colorFillColor="?attr/colorOnPrimary"
+      app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -112,8 +112,8 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="\?colorOnSecondary"
-      app:colorFillColor="?colorOnSecondary"
-      app:colorStrokeColor="?colorOnBackground"
+      app:colorFillColor="?attr/colorOnSecondary"
+      app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -121,8 +121,8 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="\?colorOnBackground"
-      app:colorFillColor="?colorOnBackground"
-      app:colorStrokeColor="?colorOnBackground"
+      app:colorFillColor="?attr/colorOnBackground"
+      app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -130,8 +130,8 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="\?colorOnSurface"
-      app:colorFillColor="?colorOnSurface"
-      app:colorStrokeColor="?colorOnBackground"
+      app:colorFillColor="?attr/colorOnSurface"
+      app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
@@ -139,8 +139,8 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="\?colorOnError"
-      app:colorFillColor="?colorOnError"
-      app:colorStrokeColor="?colorOnBackground"
+      app:colorFillColor="?attr/colorOnError"
+      app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
       android:layout_marginBottom="@dimen/keyline_2" />
 
