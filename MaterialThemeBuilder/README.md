@@ -25,7 +25,7 @@ Clone the material-components-android-examples repository
 git clone https://github.com/material-components/material-components-android-examples.git
 ```
 
-In Android Studio - Choose ‘Open an existing Android Studio Project’ and select ‘material-components-android-examples/Material Theme Builder’
+In Android Studio - Choose ‘Open an existing Android Studio Project’ and select ‘material-components-android-examples/MaterialThemeBuilder’
 
 Sync, build and run the project. The project, by default, will be configured with the baseline Material theme.
 
