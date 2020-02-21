@@ -86,56 +86,6 @@ fun lerp(
 }
 
 /**
- * Linearly interpolate between two [CornerRounding]s when the fraction is in a given range.
- */
-fun lerp(
-    startValue: CornerRounding,
-    endValue: CornerRounding,
-    @FloatRange(
-        from = 0.0,
-        fromInclusive = true,
-        to = 1.0,
-        toInclusive = false
-    ) startFraction: Float,
-    @FloatRange(from = 0.0, fromInclusive = false, to = 1.0, toInclusive = true) endFraction: Float,
-    @FloatRange(from = 0.0, fromInclusive = true, to = 1.0, toInclusive = true) fraction: Float
-): CornerRounding {
-    if (fraction < startFraction) return startValue
-    if (fraction > endFraction) return endValue
-
-    return CornerRounding(
-        lerp(
-            startValue.topLeftRadius,
-            endValue.topLeftRadius,
-            startFraction,
-            endFraction,
-            fraction
-        ),
-        lerp(
-            startValue.topRightRadius,
-            endValue.topRightRadius,
-            startFraction,
-            endFraction,
-            fraction
-        ),
-        lerp(
-            startValue.bottomRightRadius,
-            endValue.bottomRightRadius,
-            startFraction,
-            endFraction,
-            fraction
-        ),
-        lerp(
-            startValue.bottomLeftRadius,
-            endValue.bottomLeftRadius,
-            startFraction,
-            endFraction,
-            fraction
-        )
-    )
-}
-
-/**
  * Linearly interpolate between two colors when the fraction is in a given range.
  */
 @ColorInt

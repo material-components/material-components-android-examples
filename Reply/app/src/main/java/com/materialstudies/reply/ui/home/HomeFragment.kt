@@ -26,6 +26,7 @@ import androidx.lifecycle.observe
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
+import com.google.android.material.transition.Hold
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.data.EmailStore
@@ -40,6 +41,13 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
     private lateinit var binding: FragmentHomeBinding
 
     private val emailAdapter = EmailAdapter(this)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        exitTransition = Hold().apply {
+            duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

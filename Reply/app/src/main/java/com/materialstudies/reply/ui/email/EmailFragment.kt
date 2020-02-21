@@ -24,11 +24,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.transition.MaterialContainerTransform
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.FragmentEmailBinding
 import com.materialstudies.reply.util.themeInterpolator
-import com.materialstudies.reply.util.transition.MaterialContainerTransition
 import kotlin.LazyThreadSafetyMode.NONE
 
 private const val MAX_GRID_SPANS = 3
@@ -91,17 +91,16 @@ class EmailFragment : Fragment() {
     private fun prepareTransitions() {
         postponeEnterTransition()
 
-        sharedElementEnterTransition = MaterialContainerTransition(
-            R.id.nested_scroll_view,
-            correctForZOrdering = true
-        ).apply {
+        sharedElementEnterTransition = MaterialContainerTransform(requireContext()).apply {
+            // Scope the transition to a view in the hierarchy so we know it will be added under
+            // the bottom app bar but over the Hold transition from the exiting HomeFragment.
+            drawingViewId = R.id.nav_host_fragment
             duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
             interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
         }
-        sharedElementReturnTransition = MaterialContainerTransition(
-            R.id.recycler_view,
-            correctForZOrdering = true
-        ).apply {
+        sharedElementReturnTransition = MaterialContainerTransform(requireContext()).apply {
+            // Again, scope the return transition so it is added below the bottom app bar.
+            drawingViewId = R.id.recycler_view
             duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
             interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
         }

@@ -16,6 +16,8 @@
 
 package com.materialstudies.reply.ui
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -23,7 +25,6 @@ import androidx.annotation.MenuRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
@@ -179,10 +180,22 @@ class MainActivity : AppCompatActivity(),
     private fun setBottomAppBarForCompose() {
         binding.run {
             bottomAppBar.performHide()
-            fab.hide()
-            // Hide the BottomAppBar to avoid it showing above the keyboard
-            // when composing a new email.
-            bottomAppBar.visibility = View.GONE
+            // Get a handle on the animator that hides the bottom app bar so we can wait to hide
+            // the fab and bottom app bar until after it's exit animation finishes.
+            bottomAppBar.animate().setListener(object : AnimatorListenerAdapter() {
+                var isCanceled = false
+                override fun onAnimationEnd(animation: Animator?) {
+                    if (isCanceled) return
+
+                    // Hide the BottomAppBar to avoid it showing above the keyboard
+                    // when composing a new email.
+                    bottomAppBar.visibility = View.GONE
+                    fab.visibility = View.INVISIBLE
+                }
+                override fun onAnimationCancel(animation: Animator?) {
+                    isCanceled = true
+                }
+            })
         }
     }
 
