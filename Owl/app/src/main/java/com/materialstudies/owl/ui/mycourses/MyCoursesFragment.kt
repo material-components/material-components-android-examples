@@ -22,6 +22,7 @@ import androidx.annotation.Px
 import androidx.core.view.doOnNextLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.transition.Hold
 import com.materialstudies.owl.R
 import com.materialstudies.owl.databinding.FragmentMyCoursesBinding
 import com.materialstudies.owl.model.courses
@@ -37,7 +38,7 @@ class MyCoursesFragment : Fragment() {
     ): View {
         val binding = FragmentMyCoursesBinding.inflate(inflater, container, false).apply {
             list.apply {
-                itemAnimator = SpringAddItemAnimator()
+                //itemAnimator = SpringAddItemAnimator()
                 addItemDecoration(
                     BottomSpacingItemDecoration(resources.getDimensionPixelSize(R.dimen.grid_2))
                 )
@@ -53,6 +54,7 @@ class MyCoursesFragment : Fragment() {
             }
         }
         postponeEnterTransition(1000L, TimeUnit.MILLISECONDS)
+        exitTransition = Hold()
         return binding.root
     }
 }

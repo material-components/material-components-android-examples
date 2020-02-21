@@ -24,14 +24,17 @@ import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.transition.MaterialArcMotion
+import com.google.android.material.transition.MaterialContainerTransform
+import com.google.android.material.transition.MaterialContainerTransform.FADE_MODE_THROUGH
 import com.materialstudies.owl.R
 import com.materialstudies.owl.databinding.FragmentLearnBinding
 import com.materialstudies.owl.model.CourseRepo
 import com.materialstudies.owl.model.courses
 import com.materialstudies.owl.ui.lessons.LessonsSheetFragment
-import com.materialstudies.owl.util.transition.DiagonalSlide
-import com.materialstudies.owl.util.transition.MaterialContainerTransition
 import com.materialstudies.owl.util.loadListener
+import com.materialstudies.owl.util.themeColor
+import com.materialstudies.owl.util.transition.DiagonalSlide
 import java.util.concurrent.TimeUnit
 
 /**
@@ -67,7 +70,12 @@ class LearnFragment : Fragment() {
             context,
             android.R.interpolator.fast_out_slow_in
         )
-        sharedElementEnterTransition = MaterialContainerTransition(R.id.scroll).apply {
+        val containerColor = requireContext().themeColor(R.attr.colorSurface)
+        sharedElementEnterTransition = MaterialContainerTransform(requireContext()).apply {
+            drawingViewId = R.id.nav_host
+            this.containerColor = containerColor
+            pathMotion = MaterialArcMotion()
+            fadeMode = FADE_MODE_THROUGH
             duration = 400L
             interpolator = interp
         }
@@ -77,7 +85,11 @@ class LearnFragment : Fragment() {
             duration = 200L
             interpolator = interp
         }
-        sharedElementReturnTransition = MaterialContainerTransition().apply {
+        sharedElementReturnTransition = MaterialContainerTransform(requireContext()).apply {
+            drawingViewId = R.id.nav_host
+            fadeMode = FADE_MODE_THROUGH
+            this.containerColor = containerColor
+            pathMotion = MaterialArcMotion()
             duration = 300L
             interpolator = interp
         }

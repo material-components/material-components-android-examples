@@ -18,11 +18,11 @@ package com.materialstudies.owl.util.transition
 
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
+import android.transition.TransitionValues
+import android.transition.Visibility
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.animation.doOnEnd
-import androidx.transition.TransitionValues
-import androidx.transition.Visibility
 
 /**
  * A [androidx.transition.Transition] which animates visibility changes by sliding in/out diagonally

@@ -18,27 +18,19 @@ package com.materialstudies.owl.util
 
 import android.animation.ValueAnimator
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Bitmap.Config.ARGB_8888
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.view.View
-import android.view.View.GONE
-import android.view.View.MeasureSpec
-import android.view.View.VISIBLE
+import android.view.View.*
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
 import androidx.annotation.IdRes
-import androidx.annotation.Px
 import androidx.core.animation.doOnEnd
 import androidx.core.content.res.use
-import androidx.core.graphics.applyCanvas
-import androidx.core.view.ViewCompat
 import androidx.core.view.drawToBitmap
-import androidx.core.view.forEach
 import androidx.dynamicanimation.animation.DynamicAnimation.ViewProperty
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
@@ -109,42 +101,6 @@ fun Context.themeColor(
 }
 
 /**
- * Search this view and any children for a [ColorDrawable] `background` and return it's `color`,
- * else return `colorSurface`.
- */
-@ColorInt
-fun View.descendantBackgroundColor(): Int {
-    val bg = backgroundColor()
-    if (bg != null) {
-        return bg
-    } else if (this is ViewGroup) {
-        forEach {
-            val childBg = descendantBackgroundColorOrNull()
-            if (childBg != null) {
-                return childBg
-            }
-        }
-    }
-    return context.themeColor(android.R.attr.colorBackground)
-}
-
-@ColorInt
-private fun View.descendantBackgroundColorOrNull(): Int? {
-    val bg = backgroundColor()
-    if (bg != null) {
-        return bg
-    } else if (this is ViewGroup) {
-        forEach {
-            val childBg = backgroundColor()
-            if (childBg != null) {
-                return childBg
-            }
-        }
-    }
-    return null
-}
-
-/**
  * Check if this [View]'s `background` is a [ColorDrawable] and if so, return it's `color`,
  * otherwise `null`.
  */
@@ -155,17 +111,6 @@ fun View.backgroundColor(): Int? {
         return bg.color
     }
     return null
-}
-
-/**
- * Walk up from a [View] looking for an ancestor with a given `id`.
- */
-fun View.findAncestorById(@IdRes ancestorId: Int): View {
-    return when {
-        id == ancestorId -> this
-        parent is View -> (parent as View).findAncestorById(ancestorId)
-        else -> throw IllegalArgumentException("$ancestorId not a valid ancestor")
-    }
 }
 
 /**
@@ -245,20 +190,5 @@ fun BottomNavigationView.hide() {
             parent.overlay.remove(drawable)
         }
         start()
-    }
-}
-
-/**
- * A copy of the KTX method, adding the ability to add extra padding the bottom of the [Bitmap];
- * useful when it will be used in a [android.graphics.BitmapShader][BitmapShader] with
- * a [android.graphics.Shader.TileMode.CLAMP][CLAMP tile mode].
- */
-fun View.drawToBitmap(@Px extraPaddingBottom: Int = 0): Bitmap {
-    if (!ViewCompat.isLaidOut(this)) {
-        throw IllegalStateException("View needs to be laid out before calling drawToBitmap()")
-    }
-    return Bitmap.createBitmap(width, height + extraPaddingBottom, ARGB_8888).applyCanvas {
-        translate(-scrollX.toFloat(), -scrollY.toFloat())
-        draw(this)
     }
 }
