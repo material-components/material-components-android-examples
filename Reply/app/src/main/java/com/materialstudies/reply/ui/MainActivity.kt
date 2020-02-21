@@ -17,6 +17,7 @@
 package com.materialstudies.reply.ui
 
 import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -181,9 +182,8 @@ class MainActivity : AppCompatActivity(),
             bottomAppBar.performHide()
             // Get a handle on the animator that hides the bottom app bar so we can wait to hide
             // the fab and bottom app bar until after it's exit animation finishes.
-            bottomAppBar.animate().setListener(object : Animator.AnimatorListener {
+            bottomAppBar.animate().setListener(object : AnimatorListenerAdapter() {
                 var isCanceled = false
-                override fun onAnimationRepeat(animation: Animator?) { }
                 override fun onAnimationEnd(animation: Animator?) {
                     if (isCanceled) return
 
@@ -195,7 +195,6 @@ class MainActivity : AppCompatActivity(),
                 override fun onAnimationCancel(animation: Animator?) {
                     isCanceled = true
                 }
-                override fun onAnimationStart(animation: Animator?) { }
             })
         }
     }
