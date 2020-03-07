@@ -16,11 +16,13 @@
 
 package com.materialstudies.reply.ui.compose
 
+import android.content.Context
 import android.os.Bundle
 import android.transition.Slide
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import androidx.core.transition.addListener
 import androidx.fragment.app.Fragment
@@ -71,7 +73,11 @@ class ComposeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.run {
-            closeIcon.setOnClickListener { findNavController().navigateUp() }
+            closeIcon.setOnClickListener {
+                (requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?)
+                    ?.hideSoftInputFromWindow(requireActivity().currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+                findNavController().navigateUp()
+            }
             email = composeEmail
 
             composeEmail.nonUserAccountRecipients.forEach { addRecipientChip(it) }
