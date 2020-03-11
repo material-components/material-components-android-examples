@@ -39,10 +39,12 @@ class MainActivity : AppCompatActivity() {
             bottomNav.setupWithNavController(navController)
 
             // Hide bottom nav on screens which don't require it
-            navController.addOnDestinationChangedListener { _, destination, _ ->
-                when (destination.id) {
-                    R.id.myCourses, R.id.featured, R.id.search -> bottomNav.show()
-                    else -> bottomNav.hide()
+            lifecycleScope.launchWhenResumed {
+                navController.addOnDestinationChangedListener { _, destination, _ ->
+                    when (destination.id) {
+                        R.id.myCourses, R.id.featured, R.id.search -> bottomNav.show()
+                        else -> bottomNav.hide()
+                    }
                 }
             }
         }
