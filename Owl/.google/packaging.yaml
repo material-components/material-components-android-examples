@@ -17,9 +17,9 @@
 ---
 status:       PUBLISHED
 technologies: [Android]
-categories:   [Material Components Examples]
-languages:    [Java]
+categories:   [Material Components]
+languages:    [Kotlin]
 solutions:    [Mobile]
 github:       material-components/material-components-android-examples
-level:        BEGINNER
+level:        ADVANCED
 license:      apache2
