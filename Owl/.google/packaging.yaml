@@ -20,6 +20,6 @@ technologies: [Android]
 categories:   [Material Components Examples]
 languages:    [Java]
 solutions:    [Mobile]
-github:       material-components/material-components-android
+github:       material-components/material-components-android-examples
 level:        BEGINNER
 license:      apache2
