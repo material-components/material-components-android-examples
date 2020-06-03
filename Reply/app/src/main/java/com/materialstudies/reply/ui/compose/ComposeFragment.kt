@@ -17,15 +17,14 @@
 package com.materialstudies.reply.ui.compose
 
 import android.os.Bundle
-import android.transition.Slide
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import androidx.core.transition.addListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.transition.Slide
 import com.google.android.material.transition.MaterialContainerTransform
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Account
@@ -34,7 +33,6 @@ import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.ComposeRecipientChipBinding
 import com.materialstudies.reply.databinding.FragmentComposeBinding
-import com.materialstudies.reply.ui.MainActivity
 import com.materialstudies.reply.util.themeInterpolator
 import kotlin.LazyThreadSafetyMode.NONE
 
@@ -110,7 +108,7 @@ class ComposeFragment : Fragment() {
         binding.executePendingBindings()
         // Delay creating the enterTransition until after we have inflated this Fragment's binding
         // and are able to access the view to be transitioned to.
-        enterTransition = MaterialContainerTransform(requireContext()).apply {
+        enterTransition = MaterialContainerTransform().apply {
             // Manually add the Views to be shared since this is not a standard Fragment to Fragment
             // shared element transition.
             startView = requireActivity().findViewById(R.id.fab)
