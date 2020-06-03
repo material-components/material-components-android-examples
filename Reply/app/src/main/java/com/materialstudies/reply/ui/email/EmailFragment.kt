@@ -91,14 +91,14 @@ class EmailFragment : Fragment() {
     private fun prepareTransitions() {
         postponeEnterTransition()
 
-        sharedElementEnterTransition = MaterialContainerTransform(requireContext()).apply {
+        sharedElementEnterTransition = MaterialContainerTransform().apply {
             // Scope the transition to a view in the hierarchy so we know it will be added under
             // the bottom app bar but over the Hold transition from the exiting HomeFragment.
             drawingViewId = R.id.nav_host_fragment
             duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
             interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
         }
-        sharedElementReturnTransition = MaterialContainerTransform(requireContext()).apply {
+        sharedElementReturnTransition = MaterialContainerTransform().apply {
             // Again, scope the return transition so it is added below the bottom app bar.
             drawingViewId = R.id.recycler_view
             duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
