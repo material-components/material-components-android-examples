@@ -44,4 +44,12 @@
     <action
         android:id="@+id/action_global_composeFragment"
         app:destination="@+id/composeFragment" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.materialstudies.reply.ui.search.SearchFragment"
+        android:label="SearchFragment">
+    </fragment>
+    <action
+        android:id="@+id/action_global_searchFragment"
+        app:destination="@+id/searchFragment" />
 </navigation>

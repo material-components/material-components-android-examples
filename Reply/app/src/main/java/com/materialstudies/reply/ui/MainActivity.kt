@@ -38,6 +38,8 @@ import com.materialstudies.reply.ui.nav.ChangeSettingsMenuStateAction
 import com.materialstudies.reply.ui.nav.HalfClockwiseRotateSlideAction
 import com.materialstudies.reply.ui.nav.HalfCounterClockwiseRotateSlideAction
 import com.materialstudies.reply.ui.nav.ShowHideFabStateAction
+import com.materialstudies.reply.ui.search.SearchFragment
+import com.materialstudies.reply.ui.search.SearchFragmentDirections
 import com.materialstudies.reply.util.contentView
 import kotlin.LazyThreadSafetyMode.NONE
 
@@ -132,6 +134,10 @@ class MainActivity : AppCompatActivity(),
                 currentEmailId = -1
                 setBottomAppBarForCompose()
             }
+            R.id.searchFragment -> {
+                currentEmailId = -1
+                setBottomAppBarForSearch()
+            }
         }
     }
 
@@ -178,6 +184,17 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun setBottomAppBarForCompose() {
+        hideBottomAppBar()
+    }
+
+    private fun setBottomAppBarForSearch() {
+        hideBottomAppBar()
+        binding.run {
+            fab.hide()
+        }
+    }
+
+    private fun hideBottomAppBar() {
         binding.run {
             bottomAppBar.performHide()
             // Get a handle on the animator that hides the bottom app bar so we can wait to hide
@@ -204,6 +221,10 @@ class MainActivity : AppCompatActivity(),
             R.id.menu_settings -> {
                 bottomNavDrawer.close()
                 showDarkThemeMenu()
+            }
+            R.id.menu_search -> {
+                findNavController(R.id.nav_host_fragment)
+                  .navigate(SearchFragmentDirections.actionGlobalSearchFragment())
             }
         }
         return true
