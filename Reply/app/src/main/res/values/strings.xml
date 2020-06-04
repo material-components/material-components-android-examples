@@ -41,7 +41,7 @@
     <!--BottomNavigationDrawer-->
     <string name="navigation_inbox">Inbox</string>
     <string name="navigation_starred">Starred</string>
-    <string name="navigation_sent">Send</string>
+    <string name="navigation_sent">Sent</string>
     <string name="navigation_trash">Trash</string>
     <string name="navigation_spam">Spam</string>
     <string name="navigation_drafts">Drafts</string>
