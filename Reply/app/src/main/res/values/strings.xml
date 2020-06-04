@@ -61,4 +61,9 @@
     <string name="compose_subject_hint">Subject</string>
     <string name="compose_body_hint">New message…</string>
     <string name="compose_recipient_group_content_desc">Recipients</string>
+
+    <!--SearchFragment-->
+    <string name="search_suggestion_hint">Search email</string>
+    <string name="search_suggestion_section_title_yesterday">YESTERDAY</string>
+    <string name="search_suggestion_section_title_this_week">THIS WEEK</string>
 </resources>

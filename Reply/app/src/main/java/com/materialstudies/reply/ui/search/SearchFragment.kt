@@ -20,9 +20,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.transition.MaterialSharedAxis
+import com.materialstudies.reply.R
+import com.materialstudies.reply.data.SearchSuggestion
+import com.materialstudies.reply.data.SearchSuggestionStore
 import com.materialstudies.reply.databinding.FragmentSearchBinding
+import com.materialstudies.reply.databinding.SearchSuggestionItemBinding
+import com.materialstudies.reply.databinding.SearchSuggestionTitleBinding
 
 /**
  * A [Fragment] that displays search.
@@ -39,11 +47,41 @@ class SearchFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.searchToolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+        setUpSuggestions(binding.searchSuggestionContainer)
+    }
+
+    private fun setUpSuggestions(suggestionContainer: ViewGroup) {
+        addSuggestionTitleView(
+                suggestionContainer, R.string.search_suggestion_section_title_yesterday)
+        addSuggestionItemViews(suggestionContainer, SearchSuggestionStore.YESTERDAY_SUGGESTIONS)
+        addSuggestionTitleView(
+                suggestionContainer, R.string.search_suggestion_section_title_this_week)
+        addSuggestionItemViews(suggestionContainer, SearchSuggestionStore.THIS_WEEK_SUGGESTIONS)
+    }
+
+    private fun addSuggestionTitleView(parent: ViewGroup, @StringRes titleResId: Int) {
+        val titleBinding =
+                SearchSuggestionTitleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        titleBinding.title = titleResId
+        parent.addView(titleBinding.root)
+    }
+
+    private fun addSuggestionItemViews(parent: ViewGroup, suggestions: List<SearchSuggestion>) {
+        suggestions.forEach {
+            val suggestionBinding =
+                    SearchSuggestionItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            suggestionBinding.suggestion = it
+            parent.addView(suggestionBinding.root)
+        }
     }
 }
