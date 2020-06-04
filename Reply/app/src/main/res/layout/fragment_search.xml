@@ -17,12 +17,14 @@
       android:id="@+id/search_root"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:background="?attr/colorSurface">
+      android:background="?attr/colorSurface"
+      android:transitionGroup="true">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search"
+        android:textSize="24sp"
         android:layout_gravity="center"/>
   </FrameLayout>
 

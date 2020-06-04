@@ -28,6 +28,9 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
+import androidx.transition.Transition
+import androidx.transition.TransitionListenerAdapter
+import com.google.android.material.transition.MaterialSharedAxis
 import com.materialstudies.reply.R
 import com.materialstudies.reply.databinding.ActivityMainBinding
 import com.materialstudies.reply.ui.compose.ComposeFragmentDirections
@@ -38,7 +41,6 @@ import com.materialstudies.reply.ui.nav.ChangeSettingsMenuStateAction
 import com.materialstudies.reply.ui.nav.HalfClockwiseRotateSlideAction
 import com.materialstudies.reply.ui.nav.HalfCounterClockwiseRotateSlideAction
 import com.materialstudies.reply.ui.nav.ShowHideFabStateAction
-import com.materialstudies.reply.ui.search.SearchFragment
 import com.materialstudies.reply.ui.search.SearchFragmentDirections
 import com.materialstudies.reply.util.contentView
 import kotlin.LazyThreadSafetyMode.NONE
@@ -222,10 +224,7 @@ class MainActivity : AppCompatActivity(),
                 bottomNavDrawer.close()
                 showDarkThemeMenu()
             }
-            R.id.menu_search -> {
-                findNavController(R.id.nav_host_fragment)
-                  .navigate(SearchFragmentDirections.actionGlobalSearchFragment())
-            }
+            R.id.menu_search -> navigateToSearch()
         }
         return true
     }
@@ -234,6 +233,30 @@ class MainActivity : AppCompatActivity(),
         MenuBottomSheetDialogFragment(R.menu.dark_theme_bottom_sheet_menu) {
             onDarkThemeMenuItemSelected(it.itemId)
         }.show(supportFragmentManager, null)
+    }
+
+    private fun navigateToSearch() {
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)!!
+        val currentFragment = navHostFragment.childFragmentManager.fragments.first()
+
+        val originalReenterTransition = currentFragment.reenterTransition
+        currentFragment.reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false)
+          .addListener(object : TransitionListenerAdapter() {
+              override fun onTransitionEnd(transition: Transition) {
+                  currentFragment.reenterTransition = originalReenterTransition
+              }
+          })
+
+        val originalExitTransition = currentFragment.exitTransition
+        currentFragment.exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true)
+          .addListener(object : TransitionListenerAdapter() {
+              override fun onTransitionEnd(transition: Transition) {
+                  currentFragment.exitTransition = originalExitTransition
+              }
+          })
+
+        findNavController(R.id.nav_host_fragment)
+          .navigate(SearchFragmentDirections.actionGlobalSearchFragment())
     }
 
     /**
