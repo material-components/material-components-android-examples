@@ -24,6 +24,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.transition.Hold
 import com.google.android.material.transition.MaterialContainerTransform
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.EmailStore
@@ -103,6 +104,9 @@ class EmailFragment : Fragment() {
             drawingViewId = R.id.recycler_view
             duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
             interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
+        }
+        exitTransition = Hold().apply {
+            duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
         }
     }
 
