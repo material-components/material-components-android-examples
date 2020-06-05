@@ -191,9 +191,7 @@ class MainActivity : AppCompatActivity(),
 
     private fun setBottomAppBarForSearch() {
         hideBottomAppBar()
-        binding.run {
-            fab.hide()
-        }
+        binding.fab.hide()
     }
 
     private fun hideBottomAppBar() {
