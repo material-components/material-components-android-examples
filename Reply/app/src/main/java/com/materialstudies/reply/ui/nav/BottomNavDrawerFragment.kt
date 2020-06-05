@@ -83,6 +83,9 @@ class BottomNavDrawerFragment :
 
     private val sandwichSlideActions = mutableListOf<OnSandwichSlideAction>()
 
+    private val navigationListeners: MutableList<NavigationAdapter.NavigationAdapterListener> =
+      mutableListOf()
+
     private val backgroundShapeDrawable: MaterialShapeDrawable by lazy(NONE) {
         val backgroundContext = binding.backgroundContainer.context
         MaterialShapeDrawable(
@@ -220,14 +223,14 @@ class BottomNavDrawerFragment :
             val adapter = NavigationAdapter(this@BottomNavDrawerFragment)
 
             navRecyclerView.adapter = adapter
-            NavigationModel.navigationList.observe(this@BottomNavDrawerFragment) {
+            NavigationModel.navigationList.observe(viewLifecycleOwner) {
                 adapter.submitList(it)
             }
             NavigationModel.setNavigationMenuItemChecked(0)
 
             val accountAdapter = AccountAdapter(this@BottomNavDrawerFragment)
             accountRecyclerView.adapter = accountAdapter
-            AccountStore.userAccounts.observe(this@BottomNavDrawerFragment) {
+            AccountStore.userAccounts.observe(viewLifecycleOwner) {
                 accountAdapter.submitList(it)
                 currentUserAccount = it.first { acc -> acc.isCurrentAccount }
             }
@@ -261,6 +264,10 @@ class BottomNavDrawerFragment :
         bottomSheetCallback.addOnStateChangedAction(action)
     }
 
+    fun addNavigationListener(listener: NavigationAdapter.NavigationAdapterListener) {
+        navigationListeners.add(listener)
+    }
+
     /**
      * Add actions to be run when the slide offset (animation progress) or the sandwiching account
      * picker has changed.
@@ -271,10 +278,11 @@ class BottomNavDrawerFragment :
 
     override fun onNavMenuItemClicked(item: NavigationModelItem.NavMenuItem) {
         if (NavigationModel.setNavigationMenuItemChecked(item.id)) close()
+        navigationListeners.forEach { it.onNavMenuItemClicked(item) }
     }
 
     override fun onNavEmailFolderClicked(folder: NavigationModelItem.NavEmailFolder) {
-        // Do nothing
+        navigationListeners.forEach { it.onNavEmailFolderClicked(folder) }
     }
 
     override fun onAccountClicked(account: Account) {

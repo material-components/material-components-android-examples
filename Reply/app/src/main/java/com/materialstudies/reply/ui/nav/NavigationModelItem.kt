@@ -39,7 +39,7 @@ sealed class NavigationModelItem {
 
     /**
      * A class which is used to show a section divider (a subtitle and underline) between
-     * sections of differen NavigationModelItem types.
+     * sections of different NavigationModelItem types.
      */
     data class NavDivider(val title: String) : NavigationModelItem()
 

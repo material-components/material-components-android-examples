@@ -39,6 +39,8 @@ import com.materialstudies.reply.ui.nav.BottomNavDrawerFragment
 import com.materialstudies.reply.ui.nav.ChangeSettingsMenuStateAction
 import com.materialstudies.reply.ui.nav.HalfClockwiseRotateSlideAction
 import com.materialstudies.reply.ui.nav.HalfCounterClockwiseRotateSlideAction
+import com.materialstudies.reply.ui.nav.NavigationAdapter
+import com.materialstudies.reply.ui.nav.NavigationModelItem
 import com.materialstudies.reply.ui.nav.ShowHideFabStateAction
 import com.materialstudies.reply.ui.search.SearchFragmentDirections
 import com.materialstudies.reply.util.contentView
@@ -47,8 +49,9 @@ import com.materialstudies.reply.util.setOutgoingTransitions
 import kotlin.LazyThreadSafetyMode.NONE
 
 class MainActivity : AppCompatActivity(),
-    Toolbar.OnMenuItemClickListener,
-    NavController.OnDestinationChangedListener {
+                     Toolbar.OnMenuItemClickListener,
+                     NavController.OnDestinationChangedListener,
+                     NavigationAdapter.NavigationAdapterListener {
 
     private val binding: ActivityMainBinding by contentView(R.layout.activity_main)
     private val bottomNavDrawer: BottomNavDrawerFragment by lazy(NONE) {
@@ -97,6 +100,7 @@ class MainActivity : AppCompatActivity(),
             })
 
             addOnSandwichSlideAction(HalfCounterClockwiseRotateSlideAction(binding.bottomAppBarChevron))
+            addNavigationListener(this@MainActivity)
         }
 
         // Set up the BottomAppBar menu
@@ -216,6 +220,16 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
+    override fun onNavMenuItemClicked(item: NavigationModelItem.NavMenuItem) {
+        // Swap the list of emails showing
+        binding.bottomAppBarTitle.text = getString(item.titleRes)
+        // TODO:
+    }
+
+    override fun onNavEmailFolderClicked(folder: NavigationModelItem.NavEmailFolder) {
+        // Do nothing
+    }
+
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.menu_settings -> {
@@ -267,4 +281,5 @@ class MainActivity : AppCompatActivity(),
         delegate.localNightMode = nightMode
         return true
     }
+
 }
