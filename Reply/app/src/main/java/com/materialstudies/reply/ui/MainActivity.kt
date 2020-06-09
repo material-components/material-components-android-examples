@@ -28,21 +28,17 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
-import androidx.transition.Transition
-import androidx.transition.TransitionListenerAdapter
+import com.google.android.material.transition.Hold
 import com.google.android.material.transition.MaterialSharedAxis
 import com.materialstudies.reply.R
 import com.materialstudies.reply.databinding.ActivityMainBinding
 import com.materialstudies.reply.ui.compose.ComposeFragmentDirections
 import com.materialstudies.reply.ui.email.EmailFragmentArgs
-import com.materialstudies.reply.ui.nav.AlphaSlideAction
-import com.materialstudies.reply.ui.nav.BottomNavDrawerFragment
-import com.materialstudies.reply.ui.nav.ChangeSettingsMenuStateAction
-import com.materialstudies.reply.ui.nav.HalfClockwiseRotateSlideAction
-import com.materialstudies.reply.ui.nav.HalfCounterClockwiseRotateSlideAction
-import com.materialstudies.reply.ui.nav.ShowHideFabStateAction
+import com.materialstudies.reply.ui.nav.*
 import com.materialstudies.reply.ui.search.SearchFragmentDirections
 import com.materialstudies.reply.util.contentView
+import com.materialstudies.reply.util.currentNavigationFragment
+import com.materialstudies.reply.util.setOutgoingTransitions
 import kotlin.LazyThreadSafetyMode.NONE
 
 class MainActivity : AppCompatActivity(),
@@ -77,8 +73,7 @@ class MainActivity : AppCompatActivity(),
             setShowMotionSpecResource(R.animator.fab_show)
             setHideMotionSpecResource(R.animator.fab_hide)
             setOnClickListener {
-                findNavController(R.id.nav_host_fragment)
-                    .navigate(ComposeFragmentDirections.actionGlobalComposeFragment(currentEmailId))
+                navigateToCompose()
             }
         }
 
@@ -233,28 +228,23 @@ class MainActivity : AppCompatActivity(),
         }.show(supportFragmentManager, null)
     }
 
-    private fun navigateToSearch() {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)!!
-        val currentFragment = navHostFragment.childFragmentManager.fragments.first()
-
-        val originalReenterTransition = currentFragment.reenterTransition
-        currentFragment.reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false)
-          .addListener(object : TransitionListenerAdapter() {
-              override fun onTransitionEnd(transition: Transition) {
-                  currentFragment.reenterTransition = originalReenterTransition
-              }
-          })
-
-        val originalExitTransition = currentFragment.exitTransition
-        currentFragment.exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true)
-          .addListener(object : TransitionListenerAdapter() {
-              override fun onTransitionEnd(transition: Transition) {
-                  currentFragment.exitTransition = originalExitTransition
-              }
-          })
-
+    private fun navigateToCompose() {
+        supportFragmentManager.currentNavigationFragment?.setOutgoingTransitions(
+                exitTransition = Hold().apply {
+                    duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+                }
+        )
         findNavController(R.id.nav_host_fragment)
-          .navigate(SearchFragmentDirections.actionGlobalSearchFragment())
+                .navigate(ComposeFragmentDirections.actionGlobalComposeFragment(currentEmailId))
+    }
+
+    private fun navigateToSearch() {
+        supportFragmentManager.currentNavigationFragment?.setOutgoingTransitions(
+                reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false),
+                exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true)
+        )
+        findNavController(R.id.nav_host_fragment)
+                .navigate(SearchFragmentDirections.actionGlobalSearchFragment())
     }
 
     /**

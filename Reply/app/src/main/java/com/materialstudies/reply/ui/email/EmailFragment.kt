@@ -105,9 +105,6 @@ class EmailFragment : Fragment() {
             duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
             interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
         }
-        exitTransition = Hold().apply {
-            duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
-        }
     }
 
     private fun startTransitions() {
