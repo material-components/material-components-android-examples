@@ -277,7 +277,8 @@ class BottomNavDrawerFragment :
     }
 
     override fun onNavMenuItemClicked(item: NavigationModelItem.NavMenuItem) {
-        if (NavigationModel.setNavigationMenuItemChecked(item.id)) close()
+        NavigationModel.setNavigationMenuItemChecked(item.id)
+        close()
         navigationListeners.forEach { it.onNavMenuItemClicked(item) }
     }
 

@@ -21,6 +21,7 @@ import androidx.annotation.StringRes
 import androidx.recyclerview.widget.DiffUtil
 import com.materialstudies.reply.data.EmailFolder
 import com.materialstudies.reply.data.EmailFolderDiff
+import com.materialstudies.reply.ui.home.Mailbox
 
 /**
  * A sealed class which encapsulates all objects [NavigationAdapter] is able to display.
@@ -34,6 +35,7 @@ sealed class NavigationModelItem {
         val id: Int,
         @DrawableRes val icon: Int,
         @StringRes val titleRes: Int,
+        val mailbox: Mailbox,
         var checked: Boolean
     ) : NavigationModelItem()
 

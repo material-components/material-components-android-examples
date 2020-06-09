@@ -17,6 +17,7 @@
 package com.materialstudies.reply.data
 
 import androidx.recyclerview.widget.DiffUtil
+import com.materialstudies.reply.ui.home.Mailbox
 
 /**
  * A simple data class to represent an Email.
@@ -29,7 +30,8 @@ data class Email(
     val body: String = "",
     val attachments: List<EmailAttachment> = emptyList(),
     var isImportant: Boolean = false,
-    var isStarred: Boolean = false
+    var isStarred: Boolean = false,
+    var mailbox: Mailbox = Mailbox.INBOX
 ) {
     val senderPreview: String = "${sender.fullName} - 4 hrs ago"
     val hasBody: Boolean = body.isNotBlank()

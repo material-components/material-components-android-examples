@@ -25,6 +25,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.google.android.material.transition.Hold
 import com.materialstudies.reply.R
@@ -38,6 +39,8 @@ import com.materialstudies.reply.util.setOutgoingTransitions
  * A [Fragment] that displays a list of emails.
  */
 class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
+
+    private val args: HomeFragmentArgs by navArgs()
 
     private lateinit var binding: FragmentHomeBinding
 
@@ -66,7 +69,7 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
         }
         binding.recyclerView.adapter = emailAdapter
 
-        EmailStore.emails.observe(viewLifecycleOwner) {
+        EmailStore.getEmails(args.listType).observe(viewLifecycleOwner) {
             emailAdapter.submitList(it)
         }
     }

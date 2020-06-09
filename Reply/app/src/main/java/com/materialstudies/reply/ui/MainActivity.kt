@@ -34,6 +34,7 @@ import com.materialstudies.reply.R
 import com.materialstudies.reply.databinding.ActivityMainBinding
 import com.materialstudies.reply.ui.compose.ComposeFragmentDirections
 import com.materialstudies.reply.ui.email.EmailFragmentArgs
+import com.materialstudies.reply.ui.home.HomeFragmentDirections
 import com.materialstudies.reply.ui.nav.AlphaSlideAction
 import com.materialstudies.reply.ui.nav.BottomNavDrawerFragment
 import com.materialstudies.reply.ui.nav.ChangeSettingsMenuStateAction
@@ -222,8 +223,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun onNavMenuItemClicked(item: NavigationModelItem.NavMenuItem) {
         // Swap the list of emails showing
-        binding.bottomAppBarTitle.text = getString(item.titleRes)
-        // TODO:
+        navigateToMailbox(item)
     }
 
     override fun onNavEmailFolderClicked(folder: NavigationModelItem.NavEmailFolder) {
@@ -245,6 +245,12 @@ class MainActivity : AppCompatActivity(),
         MenuBottomSheetDialogFragment(R.menu.dark_theme_bottom_sheet_menu) {
             onDarkThemeMenuItemSelected(it.itemId)
         }.show(supportFragmentManager, null)
+    }
+
+    private fun navigateToMailbox(item: NavigationModelItem.NavMenuItem) {
+        binding.bottomAppBarTitle.text = getString(item.titleRes)
+        findNavController(R.id.nav_host_fragment)
+            .navigate(HomeFragmentDirections.actionHomeFragmentToHomeFragment(item.mailbox))
     }
 
     private fun navigateToCompose() {
