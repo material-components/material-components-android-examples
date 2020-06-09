@@ -34,7 +34,12 @@ import com.materialstudies.reply.R
 import com.materialstudies.reply.databinding.ActivityMainBinding
 import com.materialstudies.reply.ui.compose.ComposeFragmentDirections
 import com.materialstudies.reply.ui.email.EmailFragmentArgs
-import com.materialstudies.reply.ui.nav.*
+import com.materialstudies.reply.ui.nav.AlphaSlideAction
+import com.materialstudies.reply.ui.nav.BottomNavDrawerFragment
+import com.materialstudies.reply.ui.nav.ChangeSettingsMenuStateAction
+import com.materialstudies.reply.ui.nav.HalfClockwiseRotateSlideAction
+import com.materialstudies.reply.ui.nav.HalfCounterClockwiseRotateSlideAction
+import com.materialstudies.reply.ui.nav.ShowHideFabStateAction
 import com.materialstudies.reply.ui.search.SearchFragmentDirections
 import com.materialstudies.reply.util.contentView
 import com.materialstudies.reply.util.currentNavigationFragment
