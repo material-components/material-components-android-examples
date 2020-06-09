@@ -47,9 +47,9 @@ class SearchFragment : Fragment() {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
@@ -61,25 +61,23 @@ class SearchFragment : Fragment() {
     }
 
     private fun setUpSuggestions(suggestionContainer: ViewGroup) {
-        addSuggestionTitleView(
-                suggestionContainer, R.string.search_suggestion_section_title_yesterday)
+        addSuggestionTitleView(suggestionContainer, R.string.search_suggestion_title_yesterday)
         addSuggestionItemViews(suggestionContainer, SearchSuggestionStore.YESTERDAY_SUGGESTIONS)
-        addSuggestionTitleView(
-                suggestionContainer, R.string.search_suggestion_section_title_this_week)
+        addSuggestionTitleView(suggestionContainer, R.string.search_suggestion_title_this_week)
         addSuggestionItemViews(suggestionContainer, SearchSuggestionStore.THIS_WEEK_SUGGESTIONS)
     }
 
     private fun addSuggestionTitleView(parent: ViewGroup, @StringRes titleResId: Int) {
-        val titleBinding =
-                SearchSuggestionTitleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val inflater = LayoutInflater.from(parent.context)
+        val titleBinding = SearchSuggestionTitleBinding.inflate(inflater, parent, false)
         titleBinding.title = titleResId
         parent.addView(titleBinding.root)
     }
 
     private fun addSuggestionItemViews(parent: ViewGroup, suggestions: List<SearchSuggestion>) {
         suggestions.forEach {
-            val suggestionBinding =
-                    SearchSuggestionItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            val inflater = LayoutInflater.from(parent.context)
+            val suggestionBinding = SearchSuggestionItemBinding.inflate(inflater, parent, false)
             suggestionBinding.suggestion = it
             parent.addView(suggestionBinding.root)
         }

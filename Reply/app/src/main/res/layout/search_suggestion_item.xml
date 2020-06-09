@@ -29,10 +29,8 @@
         android:focusable="true"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingLeft="24dp"
-        android:paddingTop="16dp"
-        android:paddingRight="24dp"
-        android:paddingBottom="16dp">
+        android:paddingHorizontal="@dimen/grid_3"
+        android:paddingVertical="@dimen/grid_2">
 
         <ImageView
             android:id="@+id/search_suggestion_icon"
@@ -43,15 +41,15 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="@dimen/grid_2"
+            android:layout_marginLeft="@dimen/grid_2"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/search_suggestion_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
+                android:layout_marginBottom="@dimen/grid_0_5"
                 android:text="@{suggestion.title}"
                 android:textAppearance="?attr/textAppearanceBody1" />
 

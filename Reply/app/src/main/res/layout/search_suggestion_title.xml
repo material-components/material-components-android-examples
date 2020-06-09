@@ -23,10 +23,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="24dp"
-        android:paddingTop="16dp"
-        android:paddingRight="24dp"
-        android:paddingBottom="4dp"
+        android:paddingLeft="@dimen/grid_3"
+        android:paddingTop="@dimen/grid_2"
+        android:paddingRight="@dimen/grid_3"
+        android:paddingBottom="@dimen/grid_0_5"
         android:text="@{title}"
         android:textAppearance="?attr/textAppearanceSubtitle2" />
 </layout>
