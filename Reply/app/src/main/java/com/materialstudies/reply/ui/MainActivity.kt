@@ -28,6 +28,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
+import com.google.android.material.transition.Hold
+import com.google.android.material.transition.MaterialSharedAxis
 import com.materialstudies.reply.R
 import com.materialstudies.reply.databinding.ActivityMainBinding
 import com.materialstudies.reply.ui.compose.ComposeFragmentDirections
@@ -38,7 +40,10 @@ import com.materialstudies.reply.ui.nav.ChangeSettingsMenuStateAction
 import com.materialstudies.reply.ui.nav.HalfClockwiseRotateSlideAction
 import com.materialstudies.reply.ui.nav.HalfCounterClockwiseRotateSlideAction
 import com.materialstudies.reply.ui.nav.ShowHideFabStateAction
+import com.materialstudies.reply.ui.search.SearchFragmentDirections
 import com.materialstudies.reply.util.contentView
+import com.materialstudies.reply.util.currentNavigationFragment
+import com.materialstudies.reply.util.setOutgoingTransitions
 import kotlin.LazyThreadSafetyMode.NONE
 
 class MainActivity : AppCompatActivity(),
@@ -73,8 +78,7 @@ class MainActivity : AppCompatActivity(),
             setShowMotionSpecResource(R.animator.fab_show)
             setHideMotionSpecResource(R.animator.fab_hide)
             setOnClickListener {
-                findNavController(R.id.nav_host_fragment)
-                    .navigate(ComposeFragmentDirections.actionGlobalComposeFragment(currentEmailId))
+                navigateToCompose()
             }
         }
 
@@ -132,6 +136,10 @@ class MainActivity : AppCompatActivity(),
                 currentEmailId = -1
                 setBottomAppBarForCompose()
             }
+            R.id.searchFragment -> {
+                currentEmailId = -1
+                setBottomAppBarForSearch()
+            }
         }
     }
 
@@ -178,6 +186,15 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun setBottomAppBarForCompose() {
+        hideBottomAppBar()
+    }
+
+    private fun setBottomAppBarForSearch() {
+        hideBottomAppBar()
+        binding.fab.hide()
+    }
+
+    private fun hideBottomAppBar() {
         binding.run {
             bottomAppBar.performHide()
             // Get a handle on the animator that hides the bottom app bar so we can wait to hide
@@ -205,6 +222,7 @@ class MainActivity : AppCompatActivity(),
                 bottomNavDrawer.close()
                 showDarkThemeMenu()
             }
+            R.id.menu_search -> navigateToSearch()
         }
         return true
     }
@@ -213,6 +231,25 @@ class MainActivity : AppCompatActivity(),
         MenuBottomSheetDialogFragment(R.menu.dark_theme_bottom_sheet_menu) {
             onDarkThemeMenuItemSelected(it.itemId)
         }.show(supportFragmentManager, null)
+    }
+
+    private fun navigateToCompose() {
+        supportFragmentManager.currentNavigationFragment?.setOutgoingTransitions(
+                exitTransition = Hold().apply {
+                    duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+                }
+        )
+        findNavController(R.id.nav_host_fragment)
+                .navigate(ComposeFragmentDirections.actionGlobalComposeFragment(currentEmailId))
+    }
+
+    private fun navigateToSearch() {
+        supportFragmentManager.currentNavigationFragment?.setOutgoingTransitions(
+                reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false),
+                exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true)
+        )
+        findNavController(R.id.nav_host_fragment)
+                .navigate(SearchFragmentDirections.actionGlobalSearchFragment())
     }
 
     /**
