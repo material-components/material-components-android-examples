@@ -19,6 +19,9 @@
         <variable
             name="account"
             type="com.materialstudies.reply.data.Account" />
+        <variable
+            name="handlers"
+            type="com.materialstudies.reply.ui.compose.ContainerTransformHandler"/>
     </data>
 
     <com.google.android.material.chip.Chip
@@ -27,6 +30,7 @@
         app:glideChipIcon="@{account.avatar}"
         app:glideChipIconCenterCrop="@{true}"
         app:glideChipIconCircularCrop="@{true}"
+        android:onClick="@{() -> handlers.containerTransformChipToCard()"
         android:text="@{account.fullName}"/>
 
 </layout>

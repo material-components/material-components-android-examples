@@ -36,4 +36,14 @@
         <item name="android:checkable">false</item>
     </style>
 
+    <style name="Widget.Reply.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.RoundedCornersCard</item>
+        <item name="cardCornerRadius">@null</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.RoundedCornersCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
 </resources>

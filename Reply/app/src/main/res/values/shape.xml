@@ -31,6 +31,17 @@
         <item name="cornerSize">@dimen/reply_large_component_corner_radius</item>
     </style>
 
+    <style name="ShapeAppearanceOverlay.Reply.Button.Rounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!--ShapeAppearance overlay for components which can be 'marked' by rounding their top left -->
+    <!--corner - ie. email cards which have been starred-->
+    <style name="ShapeAppearanceOverlay.Reply.MediumComponent.Marked" parent="">
+        <item name="cornerSizeTopLeft">@dimen/reply_small_component_corner_radius</item>
+    </style>
+
     <dimen name="reply_small_component_corner_radius">24dp</dimen>
     <dimen name="reply_medium_component_corner_radius">0dp</dimen>
     <dimen name="reply_large_component_corner_radius">12dp</dimen>

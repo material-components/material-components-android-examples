@@ -19,6 +19,9 @@
         <variable
             name="email"
             type="com.materialstudies.reply.data.Email" />
+        <variable
+            name="handlers"
+            type="com.materialstudies.reply.ui.compose.ContainerTransformHandler"/>
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -38,6 +41,7 @@
             android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/compose_constraint_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/grid_2">
@@ -141,6 +145,7 @@
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/recipient_chip_group"
+                        android:onClick="@{() -> handlers.containerTransformChipToCard()"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingStart="@dimen/grid_2"
@@ -195,6 +200,18 @@
                     android:gravity="top"
                     android:textAppearance="?attr/textAppearanceBody1"
                     app:lineHeight="24sp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/recipient_card_view"
+                    android:layout_width="360dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="@id/close_icon"
+                    android:layout_marginTop="@dimen/grid_2"
+                    android:layout_marginStart="@dimen/grid_2"
+                    android:layout_marginEnd="@dimen/grid_2"
+                    app:layout_constraintTop_toTopOf="@id/close_icon">
+                </com.google.android.material.card.MaterialCardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
