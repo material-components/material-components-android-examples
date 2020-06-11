@@ -18,6 +18,7 @@ package com.materialstudies.reply.ui.home
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.shape.ShapeAppearanceModel
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.databinding.EmailItemLayoutBinding
@@ -35,6 +36,13 @@ class EmailViewHolder(
         override fun getLayoutIdForPosition(position: Int): Int
             = R.layout.email_attachment_preview_item_layout
     }
+
+    private val defaultShapeAppearanceModel = ShapeAppearanceModel.builder().build()
+    private val starredShapeAppearanceModel = ShapeAppearanceModel.Builder()
+        .setTopLeftCornerSize(
+                itemView.resources.getDimension(R.dimen.reply_small_component_corner_radius)
+        )
+        .build()
 
     override val reboundableView: View = binding.cardView
 
@@ -69,7 +77,7 @@ class EmailViewHolder(
         // rounded or squared. Since all other corners are set to 0dp rounded, they are
         // not affected.
         val interpolation = if (email.isStarred) 1F else 0F
-        binding.cardView.progress = interpolation
+        setCardViewProgressAndShapeAppearanceModel(interpolation)
 
         binding.executePendingBindings()
     }
@@ -89,7 +97,7 @@ class EmailViewHolder(
         // Animate the top left corner radius of the email card as swipe happens.
         val interpolation = (currentSwipePercentage / swipeThreshold).coerceIn(0F, 1F)
         val adjustedInterpolation = abs((if (isStarred) 1F else 0F) - interpolation)
-        binding.cardView.progress = adjustedInterpolation
+        setCardViewProgressAndShapeAppearanceModel(adjustedInterpolation)
 
         // Start the background animation once the threshold is met.
         val thresholdMet = currentSwipePercentage >= swipeThreshold
@@ -104,5 +112,11 @@ class EmailViewHolder(
     override fun onRebounded() {
         val email = binding.email ?: return
         binding.listener?.onEmailStarChanged(email, !email.isStarred)
+    }
+
+    private fun setCardViewProgressAndShapeAppearanceModel(progress: Float) {
+        binding.cardView.progress = progress
+        binding.cardView.shapeAppearanceModel =
+            if (progress != 0F) starredShapeAppearanceModel else defaultShapeAppearanceModel
     }
 }
