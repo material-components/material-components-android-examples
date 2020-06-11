@@ -22,7 +22,7 @@
         android:label="HomeFragment">
         <argument
             android:name="listType"
-            app:argType="com.materialstudies.reply.ui.home.EmailListType"
+            app:argType="com.materialstudies.reply.ui.home.Mailbox"
             android:defaultValue="INBOX"/>
         <action
             android:id="@+id/action_homeFragment_to_emailFragment"

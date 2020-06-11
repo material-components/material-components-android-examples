@@ -29,6 +29,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import com.google.android.material.transition.Hold
+import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.MaterialSharedAxis
 import com.materialstudies.reply.R
 import com.materialstudies.reply.databinding.ActivityMainBinding
@@ -223,7 +224,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun onNavMenuItemClicked(item: NavigationModelItem.NavMenuItem) {
         // Swap the list of emails showing
-        navigateToMailbox(item)
+        navigateToHome(item)
     }
 
     override fun onNavEmailFolderClicked(folder: NavigationModelItem.NavEmailFolder) {
@@ -247,8 +248,13 @@ class MainActivity : AppCompatActivity(),
         }.show(supportFragmentManager, null)
     }
 
-    private fun navigateToMailbox(item: NavigationModelItem.NavMenuItem) {
+    private fun navigateToHome(item: NavigationModelItem.NavMenuItem) {
         binding.bottomAppBarTitle.text = getString(item.titleRes)
+        supportFragmentManager.currentNavigationFragment?.setOutgoingTransitions(
+            exitTransition = MaterialFadeThrough().apply {
+                duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            }
+        )
         findNavController(R.id.nav_host_fragment)
             .navigate(HomeFragmentDirections.actionHomeFragmentToHomeFragment(item.mailbox))
     }
@@ -265,8 +271,12 @@ class MainActivity : AppCompatActivity(),
 
     private fun navigateToSearch() {
         supportFragmentManager.currentNavigationFragment?.setOutgoingTransitions(
-                reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false),
-                exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true)
+                reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false).apply {
+                    duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+                },
+                exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).apply {
+                    duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+                }
         )
         findNavController(R.id.nav_host_fragment)
                 .navigate(SearchFragmentDirections.actionGlobalSearchFragment())
