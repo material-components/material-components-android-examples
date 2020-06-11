@@ -37,12 +37,9 @@ class EmailViewHolder(
             = R.layout.email_attachment_preview_item_layout
     }
 
-    private val defaultShapeAppearanceModel = ShapeAppearanceModel.builder().build()
-    private val starredShapeAppearanceModel = ShapeAppearanceModel.Builder()
-        .setTopLeftCornerSize(
-                itemView.resources.getDimension(R.dimen.reply_small_component_corner_radius)
-        )
-        .build()
+    private val defaultCornerSize = 0F
+    private val starredCornerSize =
+        itemView.resources.getDimension(R.dimen.reply_small_component_corner_radius)
 
     override val reboundableView: View = binding.cardView
 
@@ -115,8 +112,11 @@ class EmailViewHolder(
     }
 
     private fun setCardViewProgressAndShapeAppearanceModel(progress: Float) {
-        binding.cardView.progress = progress
-        binding.cardView.shapeAppearanceModel =
-            if (progress != 0F) starredShapeAppearanceModel else defaultShapeAppearanceModel
+        binding.cardView.apply {
+            this.progress = progress
+            shapeAppearanceModel = shapeAppearanceModel.toBuilder().setTopLeftCornerSize(
+                if (progress == 0F) defaultCornerSize else starredCornerSize
+            ).build()
+        }
     }
 }
