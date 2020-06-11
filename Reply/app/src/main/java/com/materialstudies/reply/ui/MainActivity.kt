@@ -223,7 +223,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onNavMenuItemClicked(item: NavigationModelItem.NavMenuItem) {
-        // Swap the list of emails showing
+        // Swap the list of emails for the given mailbox
         navigateToHome(item)
     }
 

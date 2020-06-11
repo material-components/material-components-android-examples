@@ -78,7 +78,7 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
         }
         binding.recyclerView.adapter = emailAdapter
 
-        EmailStore.getEmails(args.listType).observe(viewLifecycleOwner) {
+        EmailStore.getEmails(args.mailbox).observe(viewLifecycleOwner) {
             emailAdapter.submitList(it)
         }
     }
