@@ -18,7 +18,6 @@ package com.materialstudies.reply.ui.home
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.shape.ShapeAppearanceModel
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.databinding.EmailItemLayoutBinding
