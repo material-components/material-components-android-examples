@@ -20,6 +20,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
@@ -28,12 +29,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.google.android.material.transition.Hold
-import com.google.android.material.transition.MaterialFade
 import com.google.android.material.transition.MaterialFadeThrough
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.FragmentHomeBinding
+import com.materialstudies.reply.ui.MainActivity
 import com.materialstudies.reply.ui.MenuBottomSheetDialogFragment
 import com.materialstudies.reply.util.setOutgoingTransitions
 
@@ -47,6 +48,15 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
     private lateinit var binding: FragmentHomeBinding
 
     private val emailAdapter = EmailAdapter(this)
+
+    // An on back pressed callback that handles replacing any non-Inbox HomeFragment with inbox
+    // on back pressed.
+    private val nonInboxOnBackCallback = object : OnBackPressedCallback(false) {
+        override fun handleOnBackPressed() {
+            (requireActivity() as MainActivity)
+                .navigateToHome(R.string.navigation_inbox, Mailbox.INBOX);
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,6 +81,14 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
 
+        // Only enable the on back callback if this home fragment is a mailbox other than Inbox.
+        // This is to make sure we always navigate back to Inbox before exiting the app.
+        nonInboxOnBackCallback.isEnabled = args.mailbox != Mailbox.INBOX
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            nonInboxOnBackCallback
+        )
+
         binding.recyclerView.apply {
             val itemTouchHelper = ItemTouchHelper(ReboundingSwipeActionCallback())
             itemTouchHelper.attachToRecyclerView(this)
@@ -85,9 +103,9 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
 
     override fun onEmailClicked(cardView: View, email: Email) {
         setOutgoingTransitions(
-                exitTransition = Hold().apply {
-                    duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
-                }
+            exitTransition = Hold().apply {
+                duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            }
         )
         val extras = FragmentNavigatorExtras(cardView to cardView.transitionName)
         val directions = HomeFragmentDirections.actionHomeFragmentToEmailFragment(email.id)

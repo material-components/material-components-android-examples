@@ -22,6 +22,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.annotation.MenuRes
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
@@ -35,7 +36,9 @@ import com.materialstudies.reply.R
 import com.materialstudies.reply.databinding.ActivityMainBinding
 import com.materialstudies.reply.ui.compose.ComposeFragmentDirections
 import com.materialstudies.reply.ui.email.EmailFragmentArgs
+import com.materialstudies.reply.ui.home.HomeFragmentArgs
 import com.materialstudies.reply.ui.home.HomeFragmentDirections
+import com.materialstudies.reply.ui.home.Mailbox
 import com.materialstudies.reply.ui.nav.AlphaSlideAction
 import com.materialstudies.reply.ui.nav.BottomNavDrawerFragment
 import com.materialstudies.reply.ui.nav.ChangeSettingsMenuStateAction
@@ -224,7 +227,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun onNavMenuItemClicked(item: NavigationModelItem.NavMenuItem) {
         // Swap the list of emails for the given mailbox
-        navigateToHome(item)
+        navigateToHome(item.titleRes, item.mailbox)
     }
 
     override fun onNavEmailFolderClicked(folder: NavigationModelItem.NavEmailFolder) {
@@ -248,38 +251,38 @@ class MainActivity : AppCompatActivity(),
         }.show(supportFragmentManager, null)
     }
 
-    private fun navigateToHome(item: NavigationModelItem.NavMenuItem) {
-        binding.bottomAppBarTitle.text = getString(item.titleRes)
+    fun navigateToHome(@StringRes titleRes: Int, mailbox: Mailbox) {
+        binding.bottomAppBarTitle.text = getString(titleRes)
         supportFragmentManager.currentNavigationFragment?.setOutgoingTransitions(
             exitTransition = MaterialFadeThrough().apply {
                 duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
             }
         )
         findNavController(R.id.nav_host_fragment)
-            .navigate(HomeFragmentDirections.actionHomeFragmentToHomeFragment(item.mailbox))
+            .navigate(HomeFragmentDirections.actionHomeFragmentToHomeFragment(mailbox))
     }
 
     private fun navigateToCompose() {
         supportFragmentManager.currentNavigationFragment?.setOutgoingTransitions(
-                exitTransition = Hold().apply {
-                    duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
-                }
+            exitTransition = Hold().apply {
+                duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            }
         )
         findNavController(R.id.nav_host_fragment)
-                .navigate(ComposeFragmentDirections.actionGlobalComposeFragment(currentEmailId))
+            .navigate(ComposeFragmentDirections.actionGlobalComposeFragment(currentEmailId))
     }
 
     private fun navigateToSearch() {
         supportFragmentManager.currentNavigationFragment?.setOutgoingTransitions(
-                reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false).apply {
-                    duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
-                },
-                exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).apply {
-                    duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
-                }
+            reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false).apply {
+                duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            },
+            exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).apply {
+                duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            }
         )
         findNavController(R.id.nav_host_fragment)
-                .navigate(SearchFragmentDirections.actionGlobalSearchFragment())
+            .navigate(SearchFragmentDirections.actionGlobalSearchFragment())
     }
 
     /**
