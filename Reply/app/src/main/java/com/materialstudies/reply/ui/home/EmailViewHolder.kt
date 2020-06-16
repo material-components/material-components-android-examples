@@ -109,6 +109,10 @@ class EmailViewHolder(
         binding.listener?.onEmailStarChanged(email, !email.isStarred)
     }
 
+    // We have to update the shape appearance itself to have the MaterialContainerTransform pick up
+    // the correct shape appearance, since it doesn't have access to the MaterialShapeDrawable
+    // interpolation. If you don't need this work around, prefer using MaterialShapeDrawable's
+    // interpolation property, or in the case of MaterialCardView, the progress property.
     private fun updateCardViewTopLeftCornerSize(interpolation: Float) {
         binding.cardView.apply {
             shapeAppearanceModel = shapeAppearanceModel.toBuilder()
