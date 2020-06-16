@@ -29,6 +29,7 @@ import com.google.android.material.transition.MaterialContainerTransform
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.FragmentEmailBinding
+import com.materialstudies.reply.util.themeColor
 import com.materialstudies.reply.util.themeInterpolator
 import kotlin.LazyThreadSafetyMode.NONE
 
@@ -94,18 +95,12 @@ class EmailFragment : Fragment() {
 
         sharedElementEnterTransition = MaterialContainerTransform().apply {
             // Scope the transition to a view in the hierarchy so we know it will be added under
-            // the bottom app bar but over the Hold transition from the exiting HomeFragment.
+            // the bottom app bar but over the elevation scale of the exiting HomeFragment.
             drawingViewId = R.id.nav_host_fragment
             duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
             scrimColor = Color.TRANSPARENT
-        }
-        sharedElementReturnTransition = MaterialContainerTransform().apply {
-            // Again, scope the return transition so it is added below the bottom app bar.
-            drawingViewId = R.id.home_root
-            duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
-            interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
-            scrimColor = Color.TRANSPARENT
+            setAllContainerColors(requireContext().themeColor(R.attr.colorSurface))
         }
     }
 

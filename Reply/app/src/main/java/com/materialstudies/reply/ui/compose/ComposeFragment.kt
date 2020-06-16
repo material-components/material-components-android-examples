@@ -34,6 +34,7 @@ import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.ComposeRecipientChipBinding
 import com.materialstudies.reply.databinding.FragmentComposeBinding
+import com.materialstudies.reply.util.themeColor
 import com.materialstudies.reply.util.themeInterpolator
 import kotlin.LazyThreadSafetyMode.NONE
 
@@ -117,6 +118,9 @@ class ComposeFragment : Fragment() {
             duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
             scrimColor = Color.TRANSPARENT
+            containerColor = requireContext().themeColor(R.attr.colorSurface)
+            startContainerColor = requireContext().themeColor(R.attr.colorSecondary)
+            endContainerColor = requireContext().themeColor(R.attr.colorSurface)
         }
         returnTransition = Slide().apply {
             duration = resources.getInteger(R.integer.reply_motion_duration_medium).toLong()

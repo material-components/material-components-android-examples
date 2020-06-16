@@ -15,26 +15,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- Add a wrapper layout so we can run return transitions independent of any reenter
-         transitions that may be running on the RecyclerView. -->
-    <FrameLayout
-        android:id="@+id/home_root"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:paddingTop="@dimen/grid_0_25"
-            android:paddingBottom="@dimen/bottom_app_bar_height"
-            android:transitionGroup="true"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:paddingTopSystemWindowInsets="@{true}"
-            app:paddingBottomSystemWindowInsets="@{true}"/>
-
-    </FrameLayout>
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/grid_0_25"
+        android:paddingBottom="@dimen/bottom_app_bar_height"
+        android:transitionGroup="true"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:paddingTopSystemWindowInsets="@{true}"
+        app:paddingBottomSystemWindowInsets="@{true}"/>
 
 </layout>
