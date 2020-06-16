@@ -22,22 +22,28 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.annotation.MenuRes
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
+import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.MaterialSharedAxis
 import com.materialstudies.reply.R
 import com.materialstudies.reply.databinding.ActivityMainBinding
 import com.materialstudies.reply.ui.compose.ComposeFragmentDirections
 import com.materialstudies.reply.ui.email.EmailFragmentArgs
+import com.materialstudies.reply.ui.home.HomeFragmentDirections
+import com.materialstudies.reply.ui.home.Mailbox
 import com.materialstudies.reply.ui.nav.AlphaSlideAction
 import com.materialstudies.reply.ui.nav.BottomNavDrawerFragment
 import com.materialstudies.reply.ui.nav.ChangeSettingsMenuStateAction
 import com.materialstudies.reply.ui.nav.HalfClockwiseRotateSlideAction
 import com.materialstudies.reply.ui.nav.HalfCounterClockwiseRotateSlideAction
+import com.materialstudies.reply.ui.nav.NavigationAdapter
+import com.materialstudies.reply.ui.nav.NavigationModelItem
 import com.materialstudies.reply.ui.nav.ShowHideFabStateAction
 import com.materialstudies.reply.ui.search.SearchFragmentDirections
 import com.materialstudies.reply.util.contentView
@@ -47,8 +53,9 @@ import com.materialstudies.reply.util.setOutgoingTransitions
 import kotlin.LazyThreadSafetyMode.NONE
 
 class MainActivity : AppCompatActivity(),
-    Toolbar.OnMenuItemClickListener,
-    NavController.OnDestinationChangedListener {
+                     Toolbar.OnMenuItemClickListener,
+                     NavController.OnDestinationChangedListener,
+                     NavigationAdapter.NavigationAdapterListener {
 
     private val binding: ActivityMainBinding by contentView(R.layout.activity_main)
     private val bottomNavDrawer: BottomNavDrawerFragment by lazy(NONE) {
@@ -97,6 +104,7 @@ class MainActivity : AppCompatActivity(),
             })
 
             addOnSandwichSlideAction(HalfCounterClockwiseRotateSlideAction(binding.bottomAppBarChevron))
+            addNavigationListener(this@MainActivity)
         }
 
         // Set up the BottomAppBar menu
@@ -216,6 +224,15 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
+    override fun onNavMenuItemClicked(item: NavigationModelItem.NavMenuItem) {
+        // Swap the list of emails for the given mailbox
+        navigateToHome(item.titleRes, item.mailbox)
+    }
+
+    override fun onNavEmailFolderClicked(folder: NavigationModelItem.NavEmailFolder) {
+        // Do nothing
+    }
+
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.menu_settings -> {
@@ -233,6 +250,17 @@ class MainActivity : AppCompatActivity(),
         }.show(supportFragmentManager, null)
     }
 
+    fun navigateToHome(@StringRes titleRes: Int, mailbox: Mailbox) {
+        binding.bottomAppBarTitle.text = getString(titleRes)
+        supportFragmentManager.currentNavigationFragment?.setOutgoingTransitions(
+            exitTransition = MaterialFadeThrough().apply {
+                duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            }
+        )
+        findNavController(R.id.nav_host_fragment)
+            .navigate(HomeFragmentDirections.actionHomeFragmentToHomeFragment(mailbox))
+    }
+
     private fun navigateToCompose() {
         supportFragmentManager.currentNavigationFragment?.setOutgoingTransitions(
             reenterTransition = createMaterialElevationScale(true).apply {
@@ -243,16 +271,20 @@ class MainActivity : AppCompatActivity(),
             }
         )
         findNavController(R.id.nav_host_fragment)
-                .navigate(ComposeFragmentDirections.actionGlobalComposeFragment(currentEmailId))
+            .navigate(ComposeFragmentDirections.actionGlobalComposeFragment(currentEmailId))
     }
 
     private fun navigateToSearch() {
         supportFragmentManager.currentNavigationFragment?.setOutgoingTransitions(
-                reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false),
-                exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true)
+            reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false).apply {
+                duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            },
+            exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).apply {
+                duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            }
         )
         findNavController(R.id.nav_host_fragment)
-                .navigate(SearchFragmentDirections.actionGlobalSearchFragment())
+            .navigate(SearchFragmentDirections.actionGlobalSearchFragment())
     }
 
     /**
@@ -270,4 +302,5 @@ class MainActivity : AppCompatActivity(),
         delegate.localNightMode = nightMode
         return true
     }
+
 }

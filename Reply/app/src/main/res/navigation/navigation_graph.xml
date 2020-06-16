@@ -19,10 +19,18 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.materialstudies.reply.ui.home.HomeFragment"
-        android:label="HomeFragment" >
+        android:label="HomeFragment">
+        <argument
+            android:name="mailbox"
+            app:argType="com.materialstudies.reply.ui.home.Mailbox"
+            android:defaultValue="INBOX" />
         <action
             android:id="@+id/action_homeFragment_to_emailFragment"
             app:destination="@id/emailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_homeFragment"
+            app:destination="@+id/homeFragment"
+            app:launchSingleTop="true"/>
     </fragment>
     <fragment
         android:id="@+id/emailFragment"

@@ -18,7 +18,9 @@ package com.materialstudies.reply.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import com.materialstudies.reply.R
+import com.materialstudies.reply.ui.home.Mailbox
 
 /**
  * A static data store of [Email]s.
@@ -80,7 +82,8 @@ object EmailStore {
                 I was at the grocery store on Sunday night.. when I ran into Genie Williams! I almost didn't recognize her afer 20 years!
 
                 Anyway, it turns out she is on the organizing committee for the high school reunion this fall. I don't know if you were planning on going or not, but she could definitely use our help in trying to track down lots of missing alums. If you can make it, we're doing a little phone-tree party at her place next Saturday, hoping that if we can find one person, thee more will...
-            """.trimIndent()
+            """.trimIndent(),
+            mailbox = Mailbox.SENT
         ),
         Email(
             4L,
@@ -113,7 +116,8 @@ object EmailStore {
             listOf(AccountStore.getDefaultUserAccount()),
             "Recipe to try",
             "Raspberry Pie: We should make this pie recipe tonight! The filling is " +
-                "very quick to put together."
+                "very quick to put together.",
+            mailbox = Mailbox.SENT
         ),
         Email(
             7L,
@@ -121,15 +125,100 @@ object EmailStore {
             listOf(AccountStore.getDefaultUserAccount()),
             "Delivered",
             "Your shoes should be waiting for you at home!"
+        ),
+        Email(
+          8L,
+          AccountStore.getContactAccountById(13L),
+          listOf(AccountStore.getDefaultUserAccount()),
+          "Your update on Google Play Store is live!",
+          """
+              Your update, 0.1.1, is now live on the Play Store and available for your alpha users to start testing.
+              
+              Your alpha testers will be automatically notified. If you'd rather send them a link directly, go to your Google Play Console and follow the instructions for obtaining an open alpha testing link.
+          """.trimIndent(),
+          mailbox = Mailbox.TRASH
+        ),
+        Email(
+          9L,
+          AccountStore.getContactAccountById(10L),
+          listOf(AccountStore.getDefaultUserAccount()),
+          "(No subject)",
+          """
+            Hey, 
+            
+            Wanted to email and see what you thought of
+          """.trimIndent(),
+          mailbox = Mailbox.DRAFTS
+        ),
+        Email(
+          10L,
+          AccountStore.getContactAccountById(5L),
+          listOf(AccountStore.getDefaultUserAccount()),
+          "Try a free TrailGo account",
+          """
+            Looking for the best hiking trails in your area? TrailGo gets you on the path to the outdoors faster than you can pack a sandwich. 
+            
+            Whether you're an experienced hiker or just looking to get outside for the afternoon, there's a segment that suits you.
+          """.trimIndent(),
+          mailbox = Mailbox.TRASH
+        ),
+        Email(
+          10L,
+          AccountStore.getContactAccountById(5L),
+          listOf(AccountStore.getDefaultUserAccount()),
+          "Free money",
+          """
+            You've been selected as a winner in our latest raffle! To claim your prize, click on the link.
+          """.trimIndent(),
+          mailbox = Mailbox.SPAM
         )
     )
 
     private val _emails: MutableLiveData<List<Email>> = MutableLiveData()
-    val emails: LiveData<List<Email>>
-        get() = _emails
+
+    private val inbox: LiveData<List<Email>>
+        get() = Transformations.map(_emails) { emails ->
+            emails.filter { it.mailbox == Mailbox.INBOX }
+        }
+
+    private val starred: LiveData<List<Email>>
+        get() = Transformations.map(_emails) { emails ->
+            emails.filter { it.isStarred }
+        }
+
+    private val sent: LiveData<List<Email>>
+        get() = Transformations.map(_emails) { emails ->
+            emails.filter { it.mailbox == Mailbox.SENT }
+        }
+
+    private val trash: LiveData<List<Email>>
+        get() = Transformations.map(_emails) { emails ->
+            emails.filter { it.mailbox == Mailbox.TRASH }
+        }
+
+    private val spam: LiveData<List<Email>>
+        get() = Transformations.map(_emails) { emails ->
+            emails.filter { it.mailbox == Mailbox.SPAM }
+        }
+
+    private val drafts: LiveData<List<Email>>
+        get() = Transformations.map(_emails) { emails ->
+            emails.filter { it.mailbox == Mailbox.DRAFTS }
+        }
 
     init {
         _emails.value = allEmails
+    }
+
+    fun getEmails(mailbox: Mailbox): LiveData<List<Email>> {
+        return when (mailbox) {
+            Mailbox.INBOX -> inbox
+            Mailbox.STARRED -> starred
+            Mailbox.SENT -> sent
+            Mailbox.TRASH -> trash
+            Mailbox.SPAM -> spam
+            Mailbox.DRAFTS -> drafts
+        }
     }
 
     /**
