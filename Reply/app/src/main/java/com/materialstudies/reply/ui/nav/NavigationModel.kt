@@ -20,6 +20,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.EmailStore
+import com.materialstudies.reply.ui.home.Mailbox
 
 /**
  * A class which maintains and generates a navigation list to be displayed by [NavigationAdapter].
@@ -31,37 +32,43 @@ object NavigationModel {
             id = 0,
             icon = R.drawable.ic_twotone_inbox,
             titleRes = R.string.navigation_inbox,
-            checked = false
+            checked = false,
+            mailbox = Mailbox.INBOX
         ),
         NavigationModelItem.NavMenuItem(
             id = 1,
             icon = R.drawable.ic_twotone_stars,
             titleRes = R.string.navigation_starred,
-            checked = false
+            checked = false,
+            mailbox = Mailbox.STARRED
         ),
         NavigationModelItem.NavMenuItem(
             id = 2,
             icon = R.drawable.ic_twotone_send,
             titleRes = R.string.navigation_sent,
-            checked = false
+            checked = false,
+            mailbox = Mailbox.SENT
         ),
         NavigationModelItem.NavMenuItem(
             id = 3,
             icon = R.drawable.ic_twotone_delete,
             titleRes = R.string.navigation_trash,
-            checked = false
+            checked = false,
+            mailbox = Mailbox.TRASH
         ),
         NavigationModelItem.NavMenuItem(
             id = 4,
             icon = R.drawable.ic_twotone_error,
             titleRes = R.string.navigation_spam,
-            checked = false
+            checked = false,
+            mailbox = Mailbox.SPAM
         ),
         NavigationModelItem.NavMenuItem(
             id = 5,
             icon = R.drawable.ic_twotone_drafts,
             titleRes = R.string.navigation_drafts,
-            checked = false
+            checked = false,
+            mailbox = Mailbox.DRAFTS
         )
     )
 
