@@ -114,7 +114,7 @@ class ComposeFragment : Fragment() {
             // shared element transition.
             startView = requireActivity().findViewById(R.id.fab)
             endView = binding.emailCardView
-            duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
             scrimColor = Color.TRANSPARENT
         }

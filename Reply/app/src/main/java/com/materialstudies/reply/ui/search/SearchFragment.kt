@@ -20,7 +20,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -43,10 +42,10 @@ class SearchFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         enterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).apply {
-            duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
         }
         returnTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false).apply {
-            duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
         }
     }
 
