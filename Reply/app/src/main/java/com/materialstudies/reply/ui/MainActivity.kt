@@ -257,8 +257,8 @@ class MainActivity : AppCompatActivity(),
                 duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
             }
         )
-        findNavController(R.id.nav_host_fragment)
-            .navigate(HomeFragmentDirections.actionHomeFragmentToHomeFragment(mailbox))
+        val directions = HomeFragmentDirections.actionHomeFragmentToHomeFragment(mailbox)
+        findNavController(R.id.nav_host_fragment).navigate(directions)
     }
 
     private fun navigateToCompose() {
@@ -270,8 +270,8 @@ class MainActivity : AppCompatActivity(),
                 duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
             }
         )
-        findNavController(R.id.nav_host_fragment)
-            .navigate(ComposeFragmentDirections.actionGlobalComposeFragment(currentEmailId))
+        val directions = ComposeFragmentDirections.actionGlobalComposeFragment(currentEmailId)
+        findNavController(R.id.nav_host_fragment).navigate(directions)
     }
 
     private fun navigateToSearch() {
@@ -283,8 +283,8 @@ class MainActivity : AppCompatActivity(),
                 duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
             }
         )
-        findNavController(R.id.nav_host_fragment)
-            .navigate(SearchFragmentDirections.actionGlobalSearchFragment())
+        val directions = SearchFragmentDirections.actionGlobalSearchFragment()
+        findNavController(R.id.nav_host_fragment).navigate(directions)
     }
 
     /**
