@@ -29,14 +29,12 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
-import com.google.android.material.transition.Hold
 import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.MaterialSharedAxis
 import com.materialstudies.reply.R
 import com.materialstudies.reply.databinding.ActivityMainBinding
 import com.materialstudies.reply.ui.compose.ComposeFragmentDirections
 import com.materialstudies.reply.ui.email.EmailFragmentArgs
-import com.materialstudies.reply.ui.home.HomeFragmentArgs
 import com.materialstudies.reply.ui.home.HomeFragmentDirections
 import com.materialstudies.reply.ui.home.Mailbox
 import com.materialstudies.reply.ui.nav.AlphaSlideAction
@@ -49,6 +47,7 @@ import com.materialstudies.reply.ui.nav.NavigationModelItem
 import com.materialstudies.reply.ui.nav.ShowHideFabStateAction
 import com.materialstudies.reply.ui.search.SearchFragmentDirections
 import com.materialstudies.reply.util.contentView
+import com.materialstudies.reply.util.createMaterialElevationScale
 import com.materialstudies.reply.util.currentNavigationFragment
 import com.materialstudies.reply.util.setOutgoingTransitions
 import kotlin.LazyThreadSafetyMode.NONE
@@ -264,7 +263,10 @@ class MainActivity : AppCompatActivity(),
 
     private fun navigateToCompose() {
         supportFragmentManager.currentNavigationFragment?.setOutgoingTransitions(
-            exitTransition = Hold().apply {
+            reenterTransition = createMaterialElevationScale(true).apply {
+                duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            },
+            exitTransition = createMaterialElevationScale(false).apply {
                 duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
             }
         )
