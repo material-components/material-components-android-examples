@@ -235,12 +235,12 @@ class MainActivity : AppCompatActivity(),
 
     private fun navigateToCompose() {
         supportFragmentManager.currentNavigationFragment?.setOutgoingTransitions(
-                reenterTransition = createMaterialElevationScale(true).apply {
-                    duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
-                },
-                exitTransition = createMaterialElevationScale( false).apply {
-                    duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
-                }
+            reenterTransition = createMaterialElevationScale(true).apply {
+                duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            },
+            exitTransition = createMaterialElevationScale(false).apply {
+                duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            }
         )
         findNavController(R.id.nav_host_fragment)
                 .navigate(ComposeFragmentDirections.actionGlobalComposeFragment(currentEmailId))

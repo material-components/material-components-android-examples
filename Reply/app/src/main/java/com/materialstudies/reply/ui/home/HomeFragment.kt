@@ -73,12 +73,12 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
 
     override fun onEmailClicked(cardView: View, email: Email) {
         setOutgoingTransitions(
-                reenterTransition = createMaterialElevationScale(true).apply {
-                    duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
-                },
-                exitTransition = createMaterialElevationScale( false).apply {
-                    duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
-                }
+            reenterTransition = createMaterialElevationScale(true).apply {
+                duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            },
+            exitTransition = createMaterialElevationScale(false).apply {
+                duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            }
         )
         val extras = FragmentNavigatorExtras(cardView to cardView.transitionName)
         val directions = HomeFragmentDirections.actionHomeFragmentToEmailFragment(email.id)
