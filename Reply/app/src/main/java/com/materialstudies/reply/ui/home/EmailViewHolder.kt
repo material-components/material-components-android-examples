@@ -36,6 +36,9 @@ class EmailViewHolder(
             = R.layout.email_attachment_preview_item_layout
     }
 
+    private val starredCornerSize =
+        itemView.resources.getDimension(R.dimen.reply_small_component_corner_radius)
+
     override val reboundableView: View = binding.cardView
 
     init {
@@ -69,7 +72,7 @@ class EmailViewHolder(
         // rounded or squared. Since all other corners are set to 0dp rounded, they are
         // not affected.
         val interpolation = if (email.isStarred) 1F else 0F
-        binding.cardView.progress = interpolation
+        updateCardViewTopLeftCornerSize(interpolation)
 
         binding.executePendingBindings()
     }
@@ -89,7 +92,7 @@ class EmailViewHolder(
         // Animate the top left corner radius of the email card as swipe happens.
         val interpolation = (currentSwipePercentage / swipeThreshold).coerceIn(0F, 1F)
         val adjustedInterpolation = abs((if (isStarred) 1F else 0F) - interpolation)
-        binding.cardView.progress = adjustedInterpolation
+        updateCardViewTopLeftCornerSize(adjustedInterpolation)
 
         // Start the background animation once the threshold is met.
         val thresholdMet = currentSwipePercentage >= swipeThreshold
@@ -104,5 +107,17 @@ class EmailViewHolder(
     override fun onRebounded() {
         val email = binding.email ?: return
         binding.listener?.onEmailStarChanged(email, !email.isStarred)
+    }
+
+    // We have to update the shape appearance itself to have the MaterialContainerTransform pick up
+    // the correct shape appearance, since it doesn't have access to the MaterialShapeDrawable
+    // interpolation. If you don't need this work around, prefer using MaterialShapeDrawable's
+    // interpolation property, or in the case of MaterialCardView, the progress property.
+    private fun updateCardViewTopLeftCornerSize(interpolation: Float) {
+        binding.cardView.apply {
+            shapeAppearanceModel = shapeAppearanceModel.toBuilder()
+                .setTopLeftCornerSize(interpolation * starredCornerSize)
+                .build()
+        }
     }
 }
