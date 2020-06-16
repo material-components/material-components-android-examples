@@ -26,12 +26,12 @@ import androidx.lifecycle.observe
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
-import com.google.android.material.transition.Hold
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.FragmentHomeBinding
 import com.materialstudies.reply.ui.MenuBottomSheetDialogFragment
+import com.materialstudies.reply.util.createMaterialElevationScale
 import com.materialstudies.reply.util.setOutgoingTransitions
 
 /**
@@ -73,7 +73,10 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
 
     override fun onEmailClicked(cardView: View, email: Email) {
         setOutgoingTransitions(
-                exitTransition = Hold().apply {
+                reenterTransition = createMaterialElevationScale(true).apply {
+                    duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+                },
+                exitTransition = createMaterialElevationScale( false).apply {
                     duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
                 }
         )

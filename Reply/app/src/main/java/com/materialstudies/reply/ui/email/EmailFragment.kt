@@ -16,6 +16,7 @@
 
 package com.materialstudies.reply.ui.email
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,7 +25,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.android.material.transition.Hold
 import com.google.android.material.transition.MaterialContainerTransform
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.EmailStore
@@ -98,12 +98,14 @@ class EmailFragment : Fragment() {
             drawingViewId = R.id.nav_host_fragment
             duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
             interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
+            scrimColor = Color.TRANSPARENT
         }
         sharedElementReturnTransition = MaterialContainerTransform().apply {
             // Again, scope the return transition so it is added below the bottom app bar.
-            drawingViewId = R.id.recycler_view
+            drawingViewId = R.id.home_root
             duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
             interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
+            scrimColor = Color.TRANSPARENT
         }
     }
 

@@ -16,6 +16,7 @@
 
 package com.materialstudies.reply.ui.compose
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -115,6 +116,7 @@ class ComposeFragment : Fragment() {
             endView = binding.emailCardView
             duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
             interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
+            scrimColor = Color.TRANSPARENT
         }
         returnTransition = Slide().apply {
             duration = resources.getInteger(R.integer.reply_motion_duration_medium).toLong()
