@@ -36,7 +36,6 @@ class EmailViewHolder(
             = R.layout.email_attachment_preview_item_layout
     }
 
-    private val defaultCornerSize = 0F
     private val starredCornerSize =
         itemView.resources.getDimension(R.dimen.reply_small_component_corner_radius)
 
@@ -73,7 +72,7 @@ class EmailViewHolder(
         // rounded or squared. Since all other corners are set to 0dp rounded, they are
         // not affected.
         val interpolation = if (email.isStarred) 1F else 0F
-        setCardViewProgressAndShapeAppearanceModel(interpolation)
+        updateCardViewTopLeftCornerSize(interpolation)
 
         binding.executePendingBindings()
     }
@@ -93,7 +92,7 @@ class EmailViewHolder(
         // Animate the top left corner radius of the email card as swipe happens.
         val interpolation = (currentSwipePercentage / swipeThreshold).coerceIn(0F, 1F)
         val adjustedInterpolation = abs((if (isStarred) 1F else 0F) - interpolation)
-        setCardViewProgressAndShapeAppearanceModel(adjustedInterpolation)
+        updateCardViewTopLeftCornerSize(adjustedInterpolation)
 
         // Start the background animation once the threshold is met.
         val thresholdMet = currentSwipePercentage >= swipeThreshold
@@ -110,12 +109,11 @@ class EmailViewHolder(
         binding.listener?.onEmailStarChanged(email, !email.isStarred)
     }
 
-    private fun setCardViewProgressAndShapeAppearanceModel(progress: Float) {
+    private fun updateCardViewTopLeftCornerSize(interpolation: Float) {
         binding.cardView.apply {
-            this.progress = progress
-            shapeAppearanceModel = shapeAppearanceModel.toBuilder().setTopLeftCornerSize(
-                if (progress == 0F) defaultCornerSize else starredCornerSize
-            ).build()
+            shapeAppearanceModel = shapeAppearanceModel.toBuilder()
+                .setTopLeftCornerSize(interpolation * starredCornerSize)
+                .build()
         }
     }
 }
