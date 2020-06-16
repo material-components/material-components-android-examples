@@ -21,7 +21,7 @@ import com.google.android.material.transition.FadeProvider
 import com.google.android.material.transition.MaterialSharedAxis
 import com.google.android.material.transition.ScaleProvider
 
-const val ELEVATION_START_SCALE = 0.92F
+private const val ELEVATION_START_SCALE = 0.92F
 
 /**
  * Create an elevation scale transition that, e.g., can be used in conjunction with a container
