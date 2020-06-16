@@ -254,7 +254,7 @@ class MainActivity : AppCompatActivity(),
         binding.bottomAppBarTitle.text = getString(titleRes)
         supportFragmentManager.currentNavigationFragment?.setOutgoingTransitions(
             exitTransition = MaterialFadeThrough().apply {
-                duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             }
         )
         val directions = HomeFragmentDirections.actionHomeFragmentToHomeFragment(mailbox)
@@ -264,10 +264,10 @@ class MainActivity : AppCompatActivity(),
     private fun navigateToCompose() {
         supportFragmentManager.currentNavigationFragment?.setOutgoingTransitions(
             reenterTransition = createMaterialElevationScale(true).apply {
-                duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             },
             exitTransition = createMaterialElevationScale(false).apply {
-                duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             }
         )
         val directions = ComposeFragmentDirections.actionGlobalComposeFragment(currentEmailId)
@@ -277,10 +277,10 @@ class MainActivity : AppCompatActivity(),
     private fun navigateToSearch() {
         supportFragmentManager.currentNavigationFragment?.setOutgoingTransitions(
             reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false).apply {
-                duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             },
             exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).apply {
-                duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             }
         )
         val directions = SearchFragmentDirections.actionGlobalSearchFragment()

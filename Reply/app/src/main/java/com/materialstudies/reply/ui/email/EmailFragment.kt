@@ -96,14 +96,14 @@ class EmailFragment : Fragment() {
             // Scope the transition to a view in the hierarchy so we know it will be added under
             // the bottom app bar but over the Hold transition from the exiting HomeFragment.
             drawingViewId = R.id.nav_host_fragment
-            duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
             scrimColor = Color.TRANSPARENT
         }
         sharedElementReturnTransition = MaterialContainerTransform().apply {
             // Again, scope the return transition so it is added below the bottom app bar.
             drawingViewId = R.id.home_root
-            duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
             scrimColor = Color.TRANSPARENT
         }

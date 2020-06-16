@@ -61,7 +61,7 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enterTransition = MaterialFadeThrough().apply {
-            duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+            duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
         }
     }
 
@@ -104,10 +104,10 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
     override fun onEmailClicked(cardView: View, email: Email) {
         setOutgoingTransitions(
             reenterTransition = createMaterialElevationScale(true).apply {
-                duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             },
             exitTransition = createMaterialElevationScale(false).apply {
-                duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
+                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             }
         )
         val extras = FragmentNavigatorExtras(cardView to cardView.transitionName)
