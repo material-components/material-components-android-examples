@@ -14,17 +14,17 @@ Owl uses Material Theming to customize the app’s [color](https://material.io/d
 ### Color
 <img src="screenshots/color_header.png" width="700" alt="Owl color theming"/>
 
-Owl has three primary colors which are used to create distinct visual themes for each section. See [color.xml](Owl/app/src/main/res/values/color.xml) for the full color scheme and how colors are applied across [default](Owl/app/src/main/res/values/theme.xml#L58-L86) and [dark](Owl/app/src/main/res/values-night/theme.xml) themes.
+Owl has three primary colors which are used to create distinct visual themes for each section. See [color.xml](Owl/app/src/main/res/values/color.xml) for the full color scheme and how colors are applied across [default](app/src/main/res/values/theme.xml#L58-L86) and [dark](app/src/main/res/values-night/theme.xml) themes.
 
 ### Shape
 <img src="screenshots/shape_header.png" width="700" alt="Owl shape theming"/>
 
-Owl defines small, medium and large shape categories for different sized components. See [shape.xml](Owl/app/src/main/res/values/shape.xml) which defines the `ShapeAppearance`s, which are then [set in the theme](Owl/app/src/main/res/values/theme.xml#L20-L23) and picked up by all components or referred to directly.
+Owl defines small, medium and large shape categories for different sized components. See [shape.xml](app/src/main/res/values/shape.xml) which defines the `ShapeAppearance`s, which are then [set in the theme](app/src/main/res/values/theme.xml#L20-L23) and picked up by all components or referred to directly.
 
 ### Typography
 <img src="screenshots/type_header.png" width="700" alt="Owl typography theming"/>
 
-Owl’s type scale provides the typographic variety necessary for the app content. All items in the type scale use [Rubik](https://fonts.google.com/specimen/Rubik) as the typeface, and make use of the variety of weights available by using Rubik Regular, Medium, and Bold. See [type.xml](Owl/app/src/main/res/values/type.xml) which defines `TextAppearance`s which are then [set in the theme](Owl/app/src/main/res/values/theme.xml#L25-L38) and referred to using `?attr/textAppearance[...]` throughout.
+Owl’s type scale provides the typographic variety necessary for the app content. All items in the type scale use [Rubik](https://fonts.google.com/specimen/Rubik) as the typeface, and make use of the variety of weights available by using Rubik Regular, Medium, and Bold. See [type.xml](app/src/main/res/values/type.xml) which defines `TextAppearance`s which are then [set in the theme](app/src/main/res/values/theme.xml#L25-L38) and referred to using `?attr/textAppearance[...]` throughout.
 
 ## License
 
