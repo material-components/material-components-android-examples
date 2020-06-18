@@ -26,6 +26,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
@@ -48,8 +49,6 @@ import com.materialstudies.reply.ui.nav.ShowHideFabStateAction
 import com.materialstudies.reply.ui.search.SearchFragmentDirections
 import com.materialstudies.reply.util.contentView
 import com.materialstudies.reply.util.createMaterialElevationScale
-import com.materialstudies.reply.util.currentNavigationFragment
-import com.materialstudies.reply.util.setOutgoingTransitions
 import kotlin.LazyThreadSafetyMode.NONE
 
 class MainActivity : AppCompatActivity(),
@@ -65,6 +64,12 @@ class MainActivity : AppCompatActivity(),
     // Keep track of the current Email being viewed, if any, in order to pass the correct email id
     // to ComposeFragment when this Activity's FAB is clicked.
     private var currentEmailId = -1L
+
+    val currentNavigationFragment: Fragment?
+        get() = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+                ?.childFragmentManager
+                ?.fragments
+                ?.first()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -252,37 +257,37 @@ class MainActivity : AppCompatActivity(),
 
     fun navigateToHome(@StringRes titleRes: Int, mailbox: Mailbox) {
         binding.bottomAppBarTitle.text = getString(titleRes)
-        supportFragmentManager.currentNavigationFragment?.setOutgoingTransitions(
+        currentNavigationFragment?.apply {
             exitTransition = MaterialFadeThrough().apply {
                 duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             }
-        )
+        }
         val directions = HomeFragmentDirections.actionHomeFragmentToHomeFragment(mailbox)
         findNavController(R.id.nav_host_fragment).navigate(directions)
     }
 
     private fun navigateToCompose() {
-        supportFragmentManager.currentNavigationFragment?.setOutgoingTransitions(
-            reenterTransition = createMaterialElevationScale(true).apply {
-                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
-            },
+        currentNavigationFragment?.apply {
             exitTransition = createMaterialElevationScale(false).apply {
                 duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             }
-        )
+            reenterTransition = createMaterialElevationScale(true).apply {
+                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+            }
+        }
         val directions = ComposeFragmentDirections.actionGlobalComposeFragment(currentEmailId)
         findNavController(R.id.nav_host_fragment).navigate(directions)
     }
 
     private fun navigateToSearch() {
-        supportFragmentManager.currentNavigationFragment?.setOutgoingTransitions(
-            reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false).apply {
-                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
-            },
+        currentNavigationFragment?.apply {
             exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).apply {
                 duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             }
-        )
+            reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false).apply {
+                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+            }
+        }
         val directions = SearchFragmentDirections.actionGlobalSearchFragment()
         findNavController(R.id.nav_host_fragment).navigate(directions)
     }
