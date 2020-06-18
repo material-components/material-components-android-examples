@@ -96,6 +96,8 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
 
     override fun onEmailClicked(cardView: View, email: Email) {
         // TODO: Set up MaterialElevationScale transition as exit and reenter transitions
+        // Set exit and reenter transitions here as opposed to in onCreate because these transitions
+        // will be set and overwritten on HomeFragment for other navigation actions.
         val directions = HomeFragmentDirections.actionHomeFragmentToEmailFragment(email.id)
         findNavController().navigate(directions)
     }
