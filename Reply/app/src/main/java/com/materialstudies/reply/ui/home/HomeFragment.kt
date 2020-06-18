@@ -36,7 +36,6 @@ import com.materialstudies.reply.databinding.FragmentHomeBinding
 import com.materialstudies.reply.ui.MainActivity
 import com.materialstudies.reply.ui.MenuBottomSheetDialogFragment
 import com.materialstudies.reply.util.createMaterialElevationScale
-import com.materialstudies.reply.util.setOutgoingTransitions
 
 /**
  * A [Fragment] that displays a list of emails.
@@ -102,14 +101,14 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
     }
 
     override fun onEmailClicked(cardView: View, email: Email) {
-        setOutgoingTransitions(
-            reenterTransition = createMaterialElevationScale(true).apply {
-                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
-            },
-            exitTransition = createMaterialElevationScale(false).apply {
-                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
-            }
-        )
+        // Set exit and reenter transitions here as opposed to in onCreate because these transitions
+        // will be set and overwritten on HomeFragment for other navigation actions.
+        exitTransition = createMaterialElevationScale(false).apply {
+            duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+        }
+        reenterTransition = createMaterialElevationScale(true).apply {
+            duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+        }
         val emailCardDetailTransitionName = getString(R.string.email_card_detail_transition_name)
         val extras = FragmentNavigatorExtras(cardView to emailCardDetailTransitionName)
         val directions = HomeFragmentDirections.actionHomeFragmentToEmailFragment(email.id)
