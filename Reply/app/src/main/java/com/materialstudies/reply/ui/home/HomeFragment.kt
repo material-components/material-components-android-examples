@@ -110,7 +110,8 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
                 duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             }
         )
-        val extras = FragmentNavigatorExtras(cardView to cardView.transitionName)
+        val emailCardDetailTransitionName = getString(R.string.email_card_detail_transition_name)
+        val extras = FragmentNavigatorExtras(cardView to emailCardDetailTransitionName)
         val directions = HomeFragmentDirections.actionHomeFragmentToEmailFragment(email.id)
         findNavController().navigate(directions, extras)
     }
