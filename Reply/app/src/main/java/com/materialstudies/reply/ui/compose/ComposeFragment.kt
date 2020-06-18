@@ -16,7 +16,6 @@
 
 package com.materialstudies.reply.ui.compose
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,8 +24,6 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.transition.Slide
-import com.google.android.material.transition.MaterialContainerTransform
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Account
 import com.materialstudies.reply.data.AccountStore
@@ -34,7 +31,6 @@ import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.ComposeRecipientChipBinding
 import com.materialstudies.reply.databinding.FragmentComposeBinding
-import com.materialstudies.reply.util.themeColor
 import kotlin.LazyThreadSafetyMode.NONE
 
 /**
