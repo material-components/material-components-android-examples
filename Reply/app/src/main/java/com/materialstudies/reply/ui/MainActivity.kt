@@ -26,6 +26,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
@@ -48,7 +49,6 @@ import com.materialstudies.reply.ui.nav.ShowHideFabStateAction
 import com.materialstudies.reply.ui.search.SearchFragmentDirections
 import com.materialstudies.reply.util.contentView
 import com.materialstudies.reply.util.createMaterialElevationScale
-import com.materialstudies.reply.util.currentNavigationFragment
 import kotlin.LazyThreadSafetyMode.NONE
 
 class MainActivity : AppCompatActivity(),
@@ -64,6 +64,12 @@ class MainActivity : AppCompatActivity(),
     // Keep track of the current Email being viewed, if any, in order to pass the correct email id
     // to ComposeFragment when this Activity's FAB is clicked.
     private var currentEmailId = -1L
+
+    val currentNavigationFragment: Fragment?
+        get() = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+                ?.childFragmentManager
+                ?.fragments
+                ?.first()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -251,7 +257,7 @@ class MainActivity : AppCompatActivity(),
 
     fun navigateToHome(@StringRes titleRes: Int, mailbox: Mailbox) {
         binding.bottomAppBarTitle.text = getString(titleRes)
-        supportFragmentManager.currentNavigationFragment?.apply {
+        currentNavigationFragment?.apply {
             exitTransition = MaterialFadeThrough().apply {
                 duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             }
@@ -261,7 +267,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun navigateToCompose() {
-        supportFragmentManager.currentNavigationFragment?.apply {
+        currentNavigationFragment?.apply {
             exitTransition = createMaterialElevationScale(false).apply {
                 duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             }
@@ -274,7 +280,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun navigateToSearch() {
-        supportFragmentManager.currentNavigationFragment?.apply {
+        currentNavigationFragment?.apply {
             exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).apply {
                 duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             }
