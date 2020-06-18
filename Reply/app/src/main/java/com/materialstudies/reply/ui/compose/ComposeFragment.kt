@@ -116,7 +116,6 @@ class ComposeFragment : Fragment() {
             startView = requireActivity().findViewById(R.id.fab)
             endView = binding.emailCardView
             duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
-            interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
             scrimColor = Color.TRANSPARENT
             containerColor = requireContext().themeColor(R.attr.colorSurface)
             startContainerColor = requireContext().themeColor(R.attr.colorSecondary)
@@ -124,7 +123,6 @@ class ComposeFragment : Fragment() {
         }
         returnTransition = Slide().apply {
             duration = resources.getInteger(R.integer.reply_motion_duration_medium).toLong()
-            interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorOutgoing)
         }
         startPostponedEnterTransition()
     }
