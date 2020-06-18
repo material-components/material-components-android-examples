@@ -255,11 +255,7 @@ class MainActivity : AppCompatActivity(),
 
     fun navigateToHome(@StringRes titleRes: Int, mailbox: Mailbox) {
         binding.bottomAppBarTitle.text = getString(titleRes)
-        currentNavigationFragment?.apply {
-            exitTransition = MaterialFadeThrough().apply {
-                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
-            }
-        }
+        // TODO: Set up MaterialFadeThrough transition as exit transition.
         val directions = HomeFragmentDirections.actionHomeFragmentToHomeFragment(mailbox)
         findNavController(R.id.nav_host_fragment).navigate(directions)
     }
