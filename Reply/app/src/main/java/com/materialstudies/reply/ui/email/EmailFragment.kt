@@ -48,7 +48,16 @@ class EmailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        prepareTransitions()
+
+        sharedElementEnterTransition = MaterialContainerTransform().apply {
+            // Scope the transition to a view in the hierarchy so we know it will be added under
+            // the bottom app bar but over the elevation scale of the exiting HomeFragment.
+            drawingViewId = R.id.nav_host_fragment
+            duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+            interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
+            scrimColor = Color.TRANSPARENT
+            setAllContainerColors(requireContext().themeColor(R.attr.colorSurface))
+        }
     }
 
     override fun onCreateView(
@@ -86,27 +95,6 @@ class EmailFragment : Fragment() {
             attachmentRecyclerView.adapter = attachmentAdapter
             attachmentAdapter.submitList(email.attachments)
         }
-
-        startTransitions()
-    }
-
-    private fun prepareTransitions() {
-        postponeEnterTransition()
-
-        sharedElementEnterTransition = MaterialContainerTransform().apply {
-            // Scope the transition to a view in the hierarchy so we know it will be added under
-            // the bottom app bar but over the elevation scale of the exiting HomeFragment.
-            drawingViewId = R.id.nav_host_fragment
-            duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
-            interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
-            scrimColor = Color.TRANSPARENT
-            setAllContainerColors(requireContext().themeColor(R.attr.colorSurface))
-        }
-    }
-
-    private fun startTransitions() {
-        binding.executePendingBindings()
-        startPostponedEnterTransition()
     }
 
     private fun showError() {
