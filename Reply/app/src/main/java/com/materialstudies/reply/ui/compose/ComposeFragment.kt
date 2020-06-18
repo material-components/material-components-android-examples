@@ -55,11 +55,6 @@ class ComposeFragment : Fragment() {
         if (id == -1L) EmailStore.create() else EmailStore.createReplyTo(id)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        prepareTransitions()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -81,9 +76,24 @@ class ComposeFragment : Fragment() {
                 R.layout.spinner_item_layout,
                 AccountStore.getAllUserAccounts().map { it.email }
             )
-        }
 
-        startTransitions()
+            // Set transitions here so we are able to access Fragment's binding views.
+            enterTransition = MaterialContainerTransform().apply {
+                // Manually add the Views to be shared since this is not a standard Fragment to Fragment
+                // shared element transition.
+                startView = requireActivity().findViewById(R.id.fab)
+                endView = emailCardView
+                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+                scrimColor = Color.TRANSPARENT
+                containerColor = requireContext().themeColor(R.attr.colorSurface)
+                startContainerColor = requireContext().themeColor(R.attr.colorSecondary)
+                endContainerColor = requireContext().themeColor(R.attr.colorSurface)
+            }
+            returnTransition = Slide().apply {
+                duration = resources.getInteger(R.integer.reply_motion_duration_medium).toLong()
+                addTarget(R.id.email_card_view)
+            }
+        }
     }
 
     /**
@@ -100,30 +110,5 @@ class ComposeFragment : Fragment() {
             }
             addView(chipBinding.root)
         }
-    }
-
-    private fun prepareTransitions() {
-        postponeEnterTransition()
-    }
-
-    private fun startTransitions() {
-        binding.executePendingBindings()
-        // Delay creating the enterTransition until after we have inflated this Fragment's binding
-        // and are able to access the view to be transitioned to.
-        enterTransition = MaterialContainerTransform().apply {
-            // Manually add the Views to be shared since this is not a standard Fragment to Fragment
-            // shared element transition.
-            startView = requireActivity().findViewById(R.id.fab)
-            endView = binding.emailCardView
-            duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
-            scrimColor = Color.TRANSPARENT
-            containerColor = requireContext().themeColor(R.attr.colorSurface)
-            startContainerColor = requireContext().themeColor(R.attr.colorSecondary)
-            endContainerColor = requireContext().themeColor(R.attr.colorSurface)
-        }
-        returnTransition = Slide().apply {
-            duration = resources.getInteger(R.integer.reply_motion_duration_medium).toLong()
-        }
-        startPostponedEnterTransition()
     }
 }
