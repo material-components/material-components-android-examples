@@ -44,7 +44,7 @@ class EmailFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // TODO: Set up MaterialContainerTransform transition as sharedElementEnterTransition
+        // TODO: Set up MaterialContainerTransform transition as sharedElementEnterTransition.
     }
 
     override fun onCreateView(

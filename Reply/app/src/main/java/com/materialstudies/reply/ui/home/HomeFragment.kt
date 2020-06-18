@@ -72,7 +72,7 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // TODO: Set up postponed enter transition
+        // TODO: Set up postponed enter transition.
 
         // Only enable the on back callback if this home fragment is a mailbox other than Inbox.
         // This is to make sure we always navigate back to Inbox before exiting the app.
@@ -95,9 +95,7 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
     }
 
     override fun onEmailClicked(cardView: View, email: Email) {
-        // TODO: Set up MaterialElevationScale transition as exit and reenter transitions
-        // Set exit and reenter transitions here as opposed to in onCreate because these transitions
-        // will be set and overwritten on HomeFragment for other navigation actions.
+        // TODO: Set up MaterialElevationScale transition as exit and reenter transitions.
         val directions = HomeFragmentDirections.actionHomeFragmentToEmailFragment(email.id)
         findNavController().navigate(directions)
     }

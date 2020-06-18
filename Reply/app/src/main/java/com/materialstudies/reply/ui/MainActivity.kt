@@ -261,14 +261,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun navigateToCompose() {
-        supportFragmentManager.currentNavigationFragment?.apply {
-            exitTransition = createMaterialElevationScale(false).apply {
-                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
-            }
-            reenterTransition = createMaterialElevationScale(true).apply {
-                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
-            }
-        }
+        // TODO: Set up MaterialElevationScale transition as exit and reenter transitions.
         val directions = ComposeFragmentDirections.actionGlobalComposeFragment(currentEmailId)
         findNavController(R.id.nav_host_fragment).navigate(directions)
     }
