@@ -44,8 +44,7 @@
             android:focusable="true"
             android:onClick="@{(view) -> listener.onEmailClicked(view, email)}"
             android:onLongClick="@{(view) -> listener.onEmailLongPressed(email)}"
-            app:cardPreventCornerOverlap="false"
-            android:transitionName="@{@string/email_card_transition_name(email.id)}">
+            app:cardPreventCornerOverlap="false">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
