@@ -35,7 +35,6 @@ import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.ComposeRecipientChipBinding
 import com.materialstudies.reply.databinding.FragmentComposeBinding
 import com.materialstudies.reply.util.themeColor
-import com.materialstudies.reply.util.themeInterpolator
 import kotlin.LazyThreadSafetyMode.NONE
 
 /**
