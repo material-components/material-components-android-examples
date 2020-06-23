@@ -35,6 +35,7 @@
         android:layout_marginHorizontal="@dimen/grid_0_5"
         android:background="?attr/colorSecondary">
 
+        <!-- TODO: Set MaterialCardView transition name. -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_view"
             android:layout_width="match_parent"

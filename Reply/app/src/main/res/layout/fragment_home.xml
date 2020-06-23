@@ -15,6 +15,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- TODO: Mark RecyclerView as transition group. -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
@@ -22,7 +23,6 @@
         android:clipToPadding="false"
         android:paddingTop="@dimen/grid_0_25"
         android:paddingBottom="@dimen/bottom_app_bar_height"
-        android:transitionGroup="true"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:paddingTopSystemWindowInsets="@{true}"
