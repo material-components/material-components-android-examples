@@ -262,7 +262,7 @@ class MainActivity : AppCompatActivity(),
                 duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             }
         }
-        val directions = HomeFragmentDirections.actionHomeFragmentToHomeFragment(mailbox)
+        val directions = HomeFragmentDirections.actionGlobalHomeFragment(mailbox)
         findNavController(R.id.nav_host_fragment).navigate(directions)
     }
 

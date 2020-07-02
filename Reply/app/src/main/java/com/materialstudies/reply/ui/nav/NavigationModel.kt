@@ -27,9 +27,11 @@ import com.materialstudies.reply.ui.home.Mailbox
  */
 object NavigationModel {
 
+    const val INBOX_ID = 0
+
     private var navigationMenuItems = mutableListOf(
         NavigationModelItem.NavMenuItem(
-            id = 0,
+            id = INBOX_ID,
             icon = R.drawable.ic_twotone_inbox,
             titleRes = R.string.navigation_inbox,
             checked = false,

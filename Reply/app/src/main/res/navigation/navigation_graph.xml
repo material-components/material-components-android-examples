@@ -27,10 +27,6 @@
         <action
             android:id="@+id/action_homeFragment_to_emailFragment"
             app:destination="@id/emailFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_homeFragment"
-            app:destination="@+id/homeFragment"
-            app:launchSingleTop="true"/>
     </fragment>
     <fragment
         android:id="@+id/emailFragment"
@@ -49,6 +45,12 @@
             app:argType="long"
             android:defaultValue="-1L"/>
     </fragment>
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@+id/homeFragment"
+        app:launchSingleTop="true"
+        app:popUpTo="@+id/navigation_graph"
+        app:popUpToInclusive="true"/>
     <action
         android:id="@+id/action_global_composeFragment"
         app:destination="@+id/composeFragment" />
