@@ -23,6 +23,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.activity.OnBackPressedCallback
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -144,6 +145,9 @@ class ComposeFragment : Fragment() {
             startView = chip
             endView = binding.recipientCardView
             scrimColor = Color.TRANSPARENT
+            endElevation = requireContext().resources.getDimension(
+                R.dimen.email_recipient_card_popup_elevation_compat
+            )
             // Avoid having this transform from running on both the start and end views by setting
             // its target to the endView.
             addTarget(binding.recipientCardView)
@@ -172,6 +176,9 @@ class ComposeFragment : Fragment() {
             startView = binding.recipientCardView
             endView = chip
             scrimColor = Color.TRANSPARENT
+            startElevation = requireContext().resources.getDimension(
+                R.dimen.email_recipient_card_popup_elevation_compat
+            )
             // Avoid having this transform from running on both the start and end views by setting
             // its target to the endView.
             addTarget(chip)
