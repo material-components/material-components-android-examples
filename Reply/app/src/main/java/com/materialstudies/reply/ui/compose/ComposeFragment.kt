@@ -125,7 +125,7 @@ class ComposeFragment : Fragment() {
             ).apply {
                 account = acnt
                 root.setOnClickListener {
-                    // Bind the views in the expanded card view to this accounts details when
+                    // Bind the views in the expanded card view to this account's details when
                     // clicked and expand.
                     binding.focusedRecipient = acnt
                     expandChip(it)
@@ -143,6 +143,7 @@ class ComposeFragment : Fragment() {
             startView = chip
             endView = binding.recipientCardView
             scrimColor = Color.TRANSPARENT
+            // Have the transform match the endView card's native elevation as closely as possible.
             endElevation = requireContext().resources.getDimension(
                 R.dimen.email_recipient_card_popup_elevation_compat
             )
@@ -163,6 +164,8 @@ class ComposeFragment : Fragment() {
 
         TransitionManager.beginDelayedTransition(binding.composeConstraintLayout, transform)
         binding.recipientCardView.visibility = View.VISIBLE
+        // Using INVISIBLE instead of GONE ensures the chip's parent layout won't shift during
+        // the transition due to chips being effectively removed.
         chip.visibility = View.INVISIBLE
     }
 
@@ -177,8 +180,6 @@ class ComposeFragment : Fragment() {
             startElevation = requireContext().resources.getDimension(
                 R.dimen.email_recipient_card_popup_elevation_compat
             )
-            // Avoid having this transform from running on both the start and end views by setting
-            // its target to the endView.
             addTarget(chip)
         }
 
