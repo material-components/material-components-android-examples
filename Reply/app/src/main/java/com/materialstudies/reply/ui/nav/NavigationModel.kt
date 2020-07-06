@@ -27,44 +27,51 @@ import com.materialstudies.reply.ui.home.Mailbox
  */
 object NavigationModel {
 
+    const val INBOX_ID = 0
+    const val STARRED_ID = 1
+    const val SENT_ID = 2
+    const val TRASH_ID = 3
+    const val SPAM_ID = 4
+    const val DRAFTS_ID = 5
+
     private var navigationMenuItems = mutableListOf(
         NavigationModelItem.NavMenuItem(
-            id = 0,
+            id = INBOX_ID,
             icon = R.drawable.ic_twotone_inbox,
             titleRes = R.string.navigation_inbox,
             checked = false,
             mailbox = Mailbox.INBOX
         ),
         NavigationModelItem.NavMenuItem(
-            id = 1,
+            id = STARRED_ID,
             icon = R.drawable.ic_twotone_stars,
             titleRes = R.string.navigation_starred,
             checked = false,
             mailbox = Mailbox.STARRED
         ),
         NavigationModelItem.NavMenuItem(
-            id = 2,
+            id = SENT_ID,
             icon = R.drawable.ic_twotone_send,
             titleRes = R.string.navigation_sent,
             checked = false,
             mailbox = Mailbox.SENT
         ),
         NavigationModelItem.NavMenuItem(
-            id = 3,
+            id = TRASH_ID,
             icon = R.drawable.ic_twotone_delete,
             titleRes = R.string.navigation_trash,
             checked = false,
             mailbox = Mailbox.TRASH
         ),
         NavigationModelItem.NavMenuItem(
-            id = 4,
+            id = SPAM_ID,
             icon = R.drawable.ic_twotone_error,
             titleRes = R.string.navigation_spam,
             checked = false,
             mailbox = Mailbox.SPAM
         ),
         NavigationModelItem.NavMenuItem(
-            id = 5,
+            id = DRAFTS_ID,
             icon = R.drawable.ic_twotone_drafts,
             titleRes = R.string.navigation_drafts,
             checked = false,
