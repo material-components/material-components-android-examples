@@ -30,7 +30,6 @@
 
     <!--Email previews-->
     <dimen name="email_sender_profile_image_size">42dp</dimen>
-    <dimen name="compose_recipient_profile_image_size">56dp</dimen>
 
     <dimen name="chip_icon_diameter">32dp</dimen>
 </resources>

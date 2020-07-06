@@ -13,15 +13,16 @@
   the License.
   -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
             name="email"
             type="com.materialstudies.reply.data.Email" />
         <variable
-            name="handlers"
-            type="com.materialstudies.reply.ui.compose.ContainerTransformHandler"/>
+            name="focusedRecipient"
+            type="com.materialstudies.reply.data.Account" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -145,7 +146,6 @@
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/recipient_chip_group"
-                        android:onClick="@{() -> handlers.containerTransformChipToCard()"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingStart="@dimen/grid_2"
@@ -201,16 +201,120 @@
                     android:textAppearance="?attr/textAppearanceBody1"
                     app:lineHeight="24sp" />
 
+                <View
+                    android:id="@+id/recipient_card_scrim"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/recipient_card_view"
                     android:layout_width="360dp"
                     android:layout_height="wrap_content"
                     android:visibility="gone"
+                    app:cardElevation="16dp"
+                    app:cardCornerRadius="4dp"
                     app:layout_constraintStart_toStartOf="@id/close_icon"
                     android:layout_marginTop="@dimen/grid_2"
                     android:layout_marginStart="@dimen/grid_2"
                     android:layout_marginEnd="@dimen/grid_2"
                     app:layout_constraintTop_toTopOf="@id/close_icon">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="?attr/listPreferredItemHeight"
+                            android:paddingHorizontal="@dimen/grid_2"
+                            android:background="?attr/colorOnSecondary">
+
+                            <ImageView
+                                android:id="@+id/account_profile_image_view"
+                                android:layout_width="@dimen/email_sender_profile_image_size"
+                                android:layout_height="@dimen/email_sender_profile_image_size"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:contentDescription="@{focusedRecipient.email}"
+                                app:glideSrc="@{focusedRecipient.avatar}"
+                                app:glideCircularCrop="@{true}" />
+
+                            <TextView
+                                android:id="@+id/account_address_text_view"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/grid_2"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@id/remove_button"
+                                app:layout_constraintStart_toEndOf="@id/account_profile_image_view"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:text="@{focusedRecipient.email}"
+                                android:textAppearance="?attr/textAppearanceBody1"
+                                android:textColor="@color/color_navigation_drawer_menu_item"
+                                android:drawablePadding="@dimen/grid_3"
+                                android:lines="1"
+                                android:ellipsize="end"
+                                tools:text="hikingfan@gmail.com" />
+
+                            <!-- This button's functionality is disabled since removing a recipient is not supported -->
+                            <!-- in this sample app.-->
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:id="@+id/remove_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/grid_0_5"
+                                android:contentDescription="@string/compose_close_content_desc"
+                                android:background="@drawable/ic_circle"
+                                android:backgroundTint="@color/color_navigation_drawer_menu_item"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/ic_close_small"
+                                app:tint="?attr/colorOnSecondary"
+                                android:clickable="false"
+                                android:focusable="false"/>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="?attr/listPreferredItemHeight"
+                            android:paddingHorizontal="@dimen/grid_2">
+
+                            <ImageView
+                                android:id="@+id/alt_account_profile_image_view"
+                                android:layout_width="@dimen/email_sender_profile_image_size"
+                                android:layout_height="@dimen/email_sender_profile_image_size"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:contentDescription="@{focusedRecipient.email}"
+                                app:glideSrc="@{focusedRecipient.avatar}"
+                                app:glideCircularCrop="@{true}" />
+
+                            <TextView
+                                android:id="@+id/alt_account_address_text_view"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/grid_2"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/alt_account_profile_image_view"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:text="@{focusedRecipient.altEmail}"
+                                android:textAppearance="?attr/textAppearanceBody1"
+                                android:textColor="@color/color_on_surface_emphasis_high"
+                                android:lines="1"
+                                android:ellipsize="end"
+                                tools:text="hikingfan@gmail.com" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
