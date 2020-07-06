@@ -201,6 +201,7 @@
                     android:textAppearance="?attr/textAppearanceBody1"
                     app:lineHeight="24sp" />
 
+                <!-- An invisible scrim that captures click events when a chip has been expanded.-->
                 <View
                     android:id="@+id/recipient_card_scrim"
                     android:layout_width="match_parent"
@@ -210,8 +211,8 @@
                     android:id="@+id/recipient_card_view"
                     android:layout_width="360dp"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    app:cardElevation="16dp"
+                    android:visibility="invisible"
+                    app:cardElevation="@dimen/email_recipient_card_popup_elevation"
                     app:cardCornerRadius="4dp"
                     app:layout_constraintStart_toStartOf="@id/close_icon"
                     android:layout_marginTop="@dimen/grid_2"
@@ -259,8 +260,8 @@
                                 android:ellipsize="end"
                                 tools:text="hikingfan@gmail.com" />
 
-                            <!-- This button's functionality is disabled since removing a recipient is not supported -->
-                            <!-- in this sample app.-->
+                            <!-- This button's functionality is disabled since removing a -->
+                            <!-- recipient is not supported in this sample app.-->
                             <androidx.appcompat.widget.AppCompatImageButton
                                 android:id="@+id/remove_button"
                                 android:layout_width="wrap_content"
