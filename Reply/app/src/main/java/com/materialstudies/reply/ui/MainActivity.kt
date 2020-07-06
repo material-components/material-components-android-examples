@@ -33,6 +33,7 @@ import androidx.navigation.findNavController
 import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.MaterialSharedAxis
 import com.materialstudies.reply.R
+import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.ActivityMainBinding
 import com.materialstudies.reply.ui.compose.ComposeFragmentDirections
 import com.materialstudies.reply.ui.email.EmailFragmentArgs
@@ -245,6 +246,13 @@ class MainActivity : AppCompatActivity(),
                 showDarkThemeMenu()
             }
             R.id.menu_search -> navigateToSearch()
+            R.id.menu_email_star -> {
+                EmailStore.update(currentEmailId) { isStarred = !isStarred }
+            }
+            R.id.menu_email_delete -> {
+                EmailStore.delete(currentEmailId)
+                findNavController(R.id.nav_host_fragment).popBackStack()
+            }
         }
         return true
     }
