@@ -139,6 +139,17 @@ class ComposeFragment : Fragment() {
      * Expand the recipient [chip] into a popup with a list of contact addresses to choose from.
      */
     private fun expandChip(chip: View) {
+        // Configure the analogous collapse transform back to the recipient chip. This should
+        // happen when the card is clicked, any region outside of the card (the card's transparent
+        // scrim) is clicked, or when the back button is pressed.
+        binding.run {
+            recipientCardView.setOnClickListener { collapseChip(chip) }
+            recipientCardScrim.visibility = View.VISIBLE
+            recipientCardScrim.setOnClickListener { collapseChip(chip) }
+        }
+        closeRecipientCardOnBackPressed.expandedChip = chip
+        closeRecipientCardOnBackPressed.isEnabled = true
+
         val transform = MaterialContainerTransform().apply {
             startView = chip
             endView = binding.recipientCardView
@@ -152,17 +163,6 @@ class ComposeFragment : Fragment() {
             addTarget(binding.recipientCardView)
         }
 
-        // Configure the analogous collapse transform back to the recipient chip. This should
-        // happen when the card is clicked, any region outside of the card (the card's transparent
-        // scrim) is clicked, or when the back button is pressed.
-        binding.run {
-            recipientCardView.setOnClickListener { collapseChip(chip) }
-            recipientCardScrim.visibility = View.VISIBLE
-            recipientCardScrim.setOnClickListener { collapseChip(chip) }
-        }
-        closeRecipientCardOnBackPressed.expandedChip = chip
-        closeRecipientCardOnBackPressed.isEnabled = true
-
         TransitionManager.beginDelayedTransition(binding.composeConstraintLayout, transform)
         binding.recipientCardView.visibility = View.VISIBLE
         // Using INVISIBLE instead of GONE ensures the chip's parent layout won't shift during
@@ -174,6 +174,11 @@ class ComposeFragment : Fragment() {
      * Collapse the recipient card back into its [chip] form.
      */
     private fun collapseChip(chip: View) {
+        // Remove the scrim view and on back pressed callbacks
+        binding.recipientCardScrim.visibility = View.GONE
+        closeRecipientCardOnBackPressed.expandedChip = null
+        closeRecipientCardOnBackPressed.isEnabled = false
+
         val transform = MaterialContainerTransform().apply {
             startView = binding.recipientCardView
             endView = chip
@@ -183,11 +188,6 @@ class ComposeFragment : Fragment() {
             )
             addTarget(chip)
         }
-
-        // Remove the scrim view and on back pressed callbacks
-        binding.recipientCardScrim.visibility = View.GONE
-        closeRecipientCardOnBackPressed.expandedChip = null
-        closeRecipientCardOnBackPressed.isEnabled = false
 
         TransitionManager.beginDelayedTransition(binding.composeConstraintLayout, transform)
         chip.visibility = View.VISIBLE
