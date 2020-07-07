@@ -35,4 +35,5 @@
         <item name="chipStartPadding">0dp</item>
         <item name="android:checkable">false</item>
     </style>
+
 </resources>

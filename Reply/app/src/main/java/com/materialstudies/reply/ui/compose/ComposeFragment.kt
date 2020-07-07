@@ -139,7 +139,7 @@ class ComposeFragment : Fragment() {
      * Expand the recipient [chip] into a popup with a list of contact addresses to choose from.
      */
     private fun expandChip(chip: View) {
-        val transform = MaterialContainerTransform().apply{
+        val transform = MaterialContainerTransform().apply {
             startView = chip
             endView = binding.recipientCardView
             scrimColor = Color.TRANSPARENT
@@ -157,6 +157,7 @@ class ComposeFragment : Fragment() {
         // scrim) is clicked, or when the back button is pressed.
         binding.run {
             recipientCardView.setOnClickListener { collapseChip(chip) }
+            recipientCardScrim.visibility = View.VISIBLE
             recipientCardScrim.setOnClickListener { collapseChip(chip) }
         }
         closeRecipientCardOnBackPressed.expandedChip = chip
@@ -173,7 +174,7 @@ class ComposeFragment : Fragment() {
      * Collapse the recipient card back into its [chip] form.
      */
     private fun collapseChip(chip: View) {
-        val transform = MaterialContainerTransform().apply{
+        val transform = MaterialContainerTransform().apply {
             startView = binding.recipientCardView
             endView = chip
             scrimColor = Color.TRANSPARENT
@@ -183,12 +184,8 @@ class ComposeFragment : Fragment() {
             addTarget(chip)
         }
 
-        // Clear the scrim listener and on back pressed callbacks
-        binding.recipientCardScrim.run {
-            setOnClickListener {  }
-            isClickable = false
-            isFocusable = false
-        }
+        // Remove the scrim view and on back pressed callbacks
+        binding.recipientCardScrim.visibility = View.GONE
         closeRecipientCardOnBackPressed.expandedChip = null
         closeRecipientCardOnBackPressed.isEnabled = false
 

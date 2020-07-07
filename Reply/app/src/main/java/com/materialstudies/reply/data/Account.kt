@@ -17,7 +17,6 @@
 package com.materialstudies.reply.data
 
 import androidx.annotation.DrawableRes
-import androidx.annotation.Nullable
 import androidx.recyclerview.widget.DiffUtil
 import com.materialstudies.reply.R
 
