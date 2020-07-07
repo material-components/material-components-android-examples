@@ -32,6 +32,7 @@ import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.FragmentHomeBinding
 import com.materialstudies.reply.ui.MainActivity
 import com.materialstudies.reply.ui.MenuBottomSheetDialogFragment
+import com.materialstudies.reply.ui.nav.NavigationModel
 
 /**
  * A [Fragment] that displays a list of emails.
@@ -48,6 +49,7 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
     // on back pressed.
     private val nonInboxOnBackCallback = object : OnBackPressedCallback(false) {
         override fun handleOnBackPressed() {
+            NavigationModel.setNavigationMenuItemChecked(NavigationModel.INBOX_ID)
             (requireActivity() as MainActivity)
                 .navigateToHome(R.string.navigation_inbox, Mailbox.INBOX);
         }

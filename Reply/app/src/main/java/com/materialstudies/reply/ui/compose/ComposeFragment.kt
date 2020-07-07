@@ -16,14 +16,18 @@
 
 package com.materialstudies.reply.ui.compose
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.transition.TransitionManager
+import com.google.android.material.transition.MaterialContainerTransform
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Account
 import com.materialstudies.reply.data.AccountStore
@@ -48,6 +52,19 @@ class ComposeFragment : Fragment() {
         // or a new reply email.
         val id = args.replyToEmailId
         if (id == -1L) EmailStore.create() else EmailStore.createReplyTo(id)
+    }
+
+    // Handle closing an expanded recipient card when on back is pressed.
+    private val closeRecipientCardOnBackPressed = object : OnBackPressedCallback(false) {
+        var expandedChip: View? = null
+        override fun handleOnBackPressed() {
+            expandedChip?.let { collapseChip(it) }
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(this, closeRecipientCardOnBackPressed)
     }
 
     override fun onCreateView(
@@ -78,6 +95,9 @@ class ComposeFragment : Fragment() {
 
     /**
      * Add a chip for the given [Account] to the recipients chip group.
+     *
+     * This method also sets up the ability for expanding/collapsing the chip into a recipient
+     * address selection dialog.
      */
     private fun addRecipientChip(acnt: Account) {
         binding.recipientChipGroup.run {
@@ -87,8 +107,73 @@ class ComposeFragment : Fragment() {
                 false
             ).apply {
                 account = acnt
+                root.setOnClickListener {
+                    // Bind the views in the expanded card view to this account's details when
+                    // clicked and expand.
+                    binding.focusedRecipient = acnt
+                    expandChip(it)
+                }
             }
             addView(chipBinding.root)
         }
+    }
+
+    /**
+     * Expand the recipient [chip] into a popup with a list of contact addresses to choose from.
+     */
+    private fun expandChip(chip: View) {
+        // Configure the analogous collapse transform back to the recipient chip. This should
+        // happen when the card is clicked, any region outside of the card (the card's transparent
+        // scrim) is clicked, or when the back button is pressed.
+        binding.run {
+            recipientCardView.setOnClickListener { collapseChip(chip) }
+            recipientCardScrim.visibility = View.VISIBLE
+            recipientCardScrim.setOnClickListener { collapseChip(chip) }
+        }
+        closeRecipientCardOnBackPressed.expandedChip = chip
+        closeRecipientCardOnBackPressed.isEnabled = true
+
+        val transform = MaterialContainerTransform().apply {
+            startView = chip
+            endView = binding.recipientCardView
+            scrimColor = Color.TRANSPARENT
+            // Have the transform match the endView card's native elevation as closely as possible.
+            endElevation = requireContext().resources.getDimension(
+                R.dimen.email_recipient_card_popup_elevation_compat
+            )
+            // Avoid having this transform from running on both the start and end views by setting
+            // its target to the endView.
+            addTarget(binding.recipientCardView)
+        }
+
+        TransitionManager.beginDelayedTransition(binding.composeConstraintLayout, transform)
+        binding.recipientCardView.visibility = View.VISIBLE
+        // Using INVISIBLE instead of GONE ensures the chip's parent layout won't shift during
+        // the transition due to chips being effectively removed.
+        chip.visibility = View.INVISIBLE
+    }
+
+    /**
+     * Collapse the recipient card back into its [chip] form.
+     */
+    private fun collapseChip(chip: View) {
+        // Remove the scrim view and on back pressed callbacks
+        binding.recipientCardScrim.visibility = View.GONE
+        closeRecipientCardOnBackPressed.expandedChip = null
+        closeRecipientCardOnBackPressed.isEnabled = false
+
+        val transform = MaterialContainerTransform().apply {
+            startView = binding.recipientCardView
+            endView = chip
+            scrimColor = Color.TRANSPARENT
+            startElevation = requireContext().resources.getDimension(
+                R.dimen.email_recipient_card_popup_elevation_compat
+            )
+            addTarget(chip)
+        }
+
+        TransitionManager.beginDelayedTransition(binding.composeConstraintLayout, transform)
+        chip.visibility = View.VISIBLE
+        binding.recipientCardView.visibility = View.INVISIBLE
     }
 }

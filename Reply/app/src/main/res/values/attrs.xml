@@ -31,6 +31,4 @@
     <!--Custom view themes/styles-->
     <attr name="bottomNavigationDrawerStyle" format="reference" />
     <attr name="bottomNavigationDrawerNavigationViewTheme" format="reference" />
-
-    <attr name="transitionShapeAppearance" format="reference"/>
 </resources>
