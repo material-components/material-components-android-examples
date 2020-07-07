@@ -33,6 +33,7 @@ object AccountStore {
             "Jeff",
             "Hansen",
             "hikingfan@gmail.com",
+            "hkngfan@outside.com",
             R.drawable.avatar_10,
             true
         ),
@@ -42,6 +43,7 @@ object AccountStore {
             "Jeff",
             "H",
             "jeffersonloveshiking@gmail.com",
+            "jeffersonloveshiking@work.com",
             R.drawable.avatar_2
         ),
         Account(
@@ -50,6 +52,7 @@ object AccountStore {
             "Jeff",
             "Hansen",
             "jeffersonc@google.com",
+            "jeffersonc@gmail.com",
             R.drawable.avatar_9
         )
     )
@@ -61,6 +64,7 @@ object AccountStore {
             "Tracy",
             "Alvarez",
             "tracealvie@gmail.com",
+            "tracealvie@gravity.com",
             R.drawable.avatar_1
         ),
         Account(
@@ -69,6 +73,7 @@ object AccountStore {
             "Allison",
             "Trabucco",
             "atrabucco222@gmail.com",
+            "atrabucco222@work.com",
             R.drawable.avatar_3
         ),
         Account(
@@ -77,6 +82,7 @@ object AccountStore {
             "Ali",
             "Connors",
             "aliconnors@gmail.com",
+            "aliconnors@android.com",
             R.drawable.avatar_5
         ),
         Account(
@@ -85,6 +91,7 @@ object AccountStore {
             "Alberto",
             "Williams",
             "albertowilliams124@gmail.com",
+            "albertowilliams124@chromeos.com",
             R.drawable.avatar_0
         ),
         Account(
@@ -93,6 +100,7 @@ object AccountStore {
             "Kim",
             "Alen",
             "alen13@gmail.com",
+            "alen13@mountainview.gov",
             R.drawable.avatar_7
         ),
         Account(
@@ -101,6 +109,7 @@ object AccountStore {
             "Google",
             "Express",
             "express@google.com",
+            "express@gmail.com",
             R.drawable.avatar_express
         ),
         Account(
@@ -109,6 +118,7 @@ object AccountStore {
             "Sandra",
             "Adams",
             "sandraadams@gmail.com",
+            "sandraadams@textera.com",
             R.drawable.avatar_2
         ),
         Account(
@@ -117,6 +127,7 @@ object AccountStore {
             "Trevor",
             "Hansen",
             "trevorhandsen@gmail.com",
+            "trevorhandsen@express.com",
             R.drawable.avatar_8
         ),
         Account(
@@ -125,6 +136,7 @@ object AccountStore {
             "Sean",
             "Holt",
             "sholt@gmail.com",
+            "sholt@art.com",
             R.drawable.avatar_6
         ),
         Account(
@@ -133,6 +145,7 @@ object AccountStore {
             "Frank",
             "Hawkins",
             "fhawkank@gmail.com",
+            "fhawkank@thisisme.com",
             R.drawable.avatar_4
         )
     )
