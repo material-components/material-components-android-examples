@@ -13,7 +13,8 @@
   the License.
   -->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_graph"
     app:startDestination="@id/homeFragment">
 
     <fragment
@@ -45,6 +46,10 @@
             app:argType="long"
             android:defaultValue="-1L"/>
     </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.materialstudies.reply.ui.search.SearchFragment"
+        android:label="SearchFragment" />
     <action
         android:id="@+id/action_global_homeFragment"
         app:destination="@+id/homeFragment"
@@ -54,11 +59,6 @@
     <action
         android:id="@+id/action_global_composeFragment"
         app:destination="@+id/composeFragment" />
-    <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.materialstudies.reply.ui.search.SearchFragment"
-        android:label="SearchFragment">
-    </fragment>
     <action
         android:id="@+id/action_global_searchFragment"
         app:destination="@+id/searchFragment" />
