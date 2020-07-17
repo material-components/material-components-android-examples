@@ -30,6 +30,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
+import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.MaterialSharedAxis
 import com.materialstudies.reply.R
@@ -49,7 +50,6 @@ import com.materialstudies.reply.ui.nav.NavigationModelItem
 import com.materialstudies.reply.ui.nav.ShowHideFabStateAction
 import com.materialstudies.reply.ui.search.SearchFragmentDirections
 import com.materialstudies.reply.util.contentView
-import com.materialstudies.reply.util.createMaterialElevationScale
 import kotlin.LazyThreadSafetyMode.NONE
 
 class MainActivity : AppCompatActivity(),
@@ -276,10 +276,10 @@ class MainActivity : AppCompatActivity(),
 
     private fun navigateToCompose() {
         currentNavigationFragment?.apply {
-            exitTransition = createMaterialElevationScale(false).apply {
+            exitTransition = MaterialElevationScale(false).apply {
                 duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             }
-            reenterTransition = createMaterialElevationScale(true).apply {
+            reenterTransition = MaterialElevationScale(true).apply {
                 duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
             }
         }
