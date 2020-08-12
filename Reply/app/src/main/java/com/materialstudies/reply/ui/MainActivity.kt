@@ -40,14 +40,7 @@ import com.materialstudies.reply.ui.compose.ComposeFragmentDirections
 import com.materialstudies.reply.ui.email.EmailFragmentArgs
 import com.materialstudies.reply.ui.home.HomeFragmentDirections
 import com.materialstudies.reply.ui.home.Mailbox
-import com.materialstudies.reply.ui.nav.AlphaSlideAction
-import com.materialstudies.reply.ui.nav.BottomNavDrawerFragment
-import com.materialstudies.reply.ui.nav.ChangeSettingsMenuStateAction
-import com.materialstudies.reply.ui.nav.HalfClockwiseRotateSlideAction
-import com.materialstudies.reply.ui.nav.HalfCounterClockwiseRotateSlideAction
-import com.materialstudies.reply.ui.nav.NavigationAdapter
-import com.materialstudies.reply.ui.nav.NavigationModelItem
-import com.materialstudies.reply.ui.nav.ShowHideFabStateAction
+import com.materialstudies.reply.ui.nav.*
 import com.materialstudies.reply.ui.search.SearchFragmentDirections
 import com.materialstudies.reply.util.contentView
 import kotlin.LazyThreadSafetyMode.NONE
@@ -258,9 +251,9 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun showDarkThemeMenu() {
-        MenuBottomSheetDialogFragment(R.menu.dark_theme_bottom_sheet_menu) {
-            onDarkThemeMenuItemSelected(it.itemId)
-        }.show(supportFragmentManager, null)
+        MenuBottomSheetDialogFragment
+            .newInstance(R.menu.dark_theme_bottom_sheet_menu)
+            .show(supportFragmentManager, null)
     }
 
     fun navigateToHome(@StringRes titleRes: Int, mailbox: Mailbox) {
