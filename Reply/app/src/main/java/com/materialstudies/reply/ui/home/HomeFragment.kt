@@ -118,11 +118,9 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
     }
 
     override fun onEmailLongPressed(email: Email): Boolean {
-        MenuBottomSheetDialogFragment(R.menu.email_bottom_sheet_menu) {
-            // Do nothing.
-            true
-        }.show(parentFragmentManager, null)
-
+        MenuBottomSheetDialogFragment
+                .newInstance(R.menu.email_bottom_sheet_menu)
+                .show(parentFragmentManager, null)
         return true
     }
 
