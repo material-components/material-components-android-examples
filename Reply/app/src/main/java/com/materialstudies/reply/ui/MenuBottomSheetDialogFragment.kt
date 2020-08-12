@@ -28,7 +28,7 @@ import com.materialstudies.reply.R
 /**
  * A bottom sheet dialog for displaying a simple list of action items.
  */
-class MenuBottomSheetDialogFragment: BottomSheetDialogFragment() {
+class MenuBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
     private lateinit var navigationView: NavigationView
     @MenuRes private var menuResId: Int = 0
