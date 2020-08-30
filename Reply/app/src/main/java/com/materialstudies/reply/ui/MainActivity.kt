@@ -22,28 +22,40 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.annotation.MenuRes
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
+import com.google.android.material.transition.MaterialElevationScale
+import com.google.android.material.transition.MaterialFadeThrough
+import com.google.android.material.transition.MaterialSharedAxis
 import com.materialstudies.reply.R
+import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.ActivityMainBinding
 import com.materialstudies.reply.ui.compose.ComposeFragmentDirections
 import com.materialstudies.reply.ui.email.EmailFragmentArgs
+import com.materialstudies.reply.ui.home.HomeFragmentDirections
+import com.materialstudies.reply.ui.home.Mailbox
 import com.materialstudies.reply.ui.nav.AlphaSlideAction
 import com.materialstudies.reply.ui.nav.BottomNavDrawerFragment
 import com.materialstudies.reply.ui.nav.ChangeSettingsMenuStateAction
 import com.materialstudies.reply.ui.nav.HalfClockwiseRotateSlideAction
 import com.materialstudies.reply.ui.nav.HalfCounterClockwiseRotateSlideAction
+import com.materialstudies.reply.ui.nav.NavigationAdapter
+import com.materialstudies.reply.ui.nav.NavigationModelItem
 import com.materialstudies.reply.ui.nav.ShowHideFabStateAction
+import com.materialstudies.reply.ui.search.SearchFragmentDirections
 import com.materialstudies.reply.util.contentView
 import kotlin.LazyThreadSafetyMode.NONE
 
 class MainActivity : AppCompatActivity(),
-    Toolbar.OnMenuItemClickListener,
-    NavController.OnDestinationChangedListener {
+                     Toolbar.OnMenuItemClickListener,
+                     NavController.OnDestinationChangedListener,
+                     NavigationAdapter.NavigationAdapterListener {
 
     private val binding: ActivityMainBinding by contentView(R.layout.activity_main)
     private val bottomNavDrawer: BottomNavDrawerFragment by lazy(NONE) {
@@ -53,6 +65,12 @@ class MainActivity : AppCompatActivity(),
     // Keep track of the current Email being viewed, if any, in order to pass the correct email id
     // to ComposeFragment when this Activity's FAB is clicked.
     private var currentEmailId = -1L
+
+    val currentNavigationFragment: Fragment?
+        get() = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+                ?.childFragmentManager
+                ?.fragments
+                ?.first()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,8 +91,7 @@ class MainActivity : AppCompatActivity(),
             setShowMotionSpecResource(R.animator.fab_show)
             setHideMotionSpecResource(R.animator.fab_hide)
             setOnClickListener {
-                findNavController(R.id.nav_host_fragment)
-                    .navigate(ComposeFragmentDirections.actionGlobalComposeFragment(currentEmailId))
+                navigateToCompose()
             }
         }
 
@@ -93,6 +110,7 @@ class MainActivity : AppCompatActivity(),
             })
 
             addOnSandwichSlideAction(HalfCounterClockwiseRotateSlideAction(binding.bottomAppBarChevron))
+            addNavigationListener(this@MainActivity)
         }
 
         // Set up the BottomAppBar menu
@@ -131,6 +149,10 @@ class MainActivity : AppCompatActivity(),
             R.id.composeFragment -> {
                 currentEmailId = -1
                 setBottomAppBarForCompose()
+            }
+            R.id.searchFragment -> {
+                currentEmailId = -1
+                setBottomAppBarForSearch()
             }
         }
     }
@@ -178,6 +200,15 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun setBottomAppBarForCompose() {
+        hideBottomAppBar()
+    }
+
+    private fun setBottomAppBarForSearch() {
+        hideBottomAppBar()
+        binding.fab.hide()
+    }
+
+    private fun hideBottomAppBar() {
         binding.run {
             bottomAppBar.performHide()
             // Get a handle on the animator that hides the bottom app bar so we can wait to hide
@@ -199,20 +230,74 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
+    override fun onNavMenuItemClicked(item: NavigationModelItem.NavMenuItem) {
+        // Swap the list of emails for the given mailbox
+        navigateToHome(item.titleRes, item.mailbox)
+    }
+
+    override fun onNavEmailFolderClicked(folder: NavigationModelItem.NavEmailFolder) {
+        // Do nothing
+    }
+
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.menu_settings -> {
                 bottomNavDrawer.close()
                 showDarkThemeMenu()
             }
+            R.id.menu_search -> navigateToSearch()
+            R.id.menu_email_star -> {
+                EmailStore.update(currentEmailId) { isStarred = !isStarred }
+            }
+            R.id.menu_email_delete -> {
+                EmailStore.delete(currentEmailId)
+                findNavController(R.id.nav_host_fragment).popBackStack()
+            }
         }
         return true
     }
 
     private fun showDarkThemeMenu() {
-        MenuBottomSheetDialogFragment(R.menu.dark_theme_bottom_sheet_menu) {
-            onDarkThemeMenuItemSelected(it.itemId)
-        }.show(supportFragmentManager, null)
+        MenuBottomSheetDialogFragment
+            .newInstance(R.menu.dark_theme_bottom_sheet_menu)
+            .show(supportFragmentManager, null)
+    }
+
+    fun navigateToHome(@StringRes titleRes: Int, mailbox: Mailbox) {
+        binding.bottomAppBarTitle.text = getString(titleRes)
+        currentNavigationFragment?.apply {
+            exitTransition = MaterialFadeThrough().apply {
+                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+            }
+        }
+        val directions = HomeFragmentDirections.actionGlobalHomeFragment(mailbox)
+        findNavController(R.id.nav_host_fragment).navigate(directions)
+    }
+
+    private fun navigateToCompose() {
+        currentNavigationFragment?.apply {
+            exitTransition = MaterialElevationScale(false).apply {
+                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+            }
+            reenterTransition = MaterialElevationScale(true).apply {
+                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+            }
+        }
+        val directions = ComposeFragmentDirections.actionGlobalComposeFragment(currentEmailId)
+        findNavController(R.id.nav_host_fragment).navigate(directions)
+    }
+
+    private fun navigateToSearch() {
+        currentNavigationFragment?.apply {
+            exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).apply {
+                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+            }
+            reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false).apply {
+                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+            }
+        }
+        val directions = SearchFragmentDirections.actionGlobalSearchFragment()
+        findNavController(R.id.nav_host_fragment).navigate(directions)
     }
 
     /**
@@ -230,4 +315,5 @@ class MainActivity : AppCompatActivity(),
         delegate.localNightMode = nightMode
         return true
     }
+
 }

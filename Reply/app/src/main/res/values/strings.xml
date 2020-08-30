@@ -41,7 +41,7 @@
     <!--BottomNavigationDrawer-->
     <string name="navigation_inbox">Inbox</string>
     <string name="navigation_starred">Starred</string>
-    <string name="navigation_sent">Send</string>
+    <string name="navigation_sent">Sent</string>
     <string name="navigation_trash">Trash</string>
     <string name="navigation_spam">Spam</string>
     <string name="navigation_drafts">Drafts</string>
@@ -53,6 +53,7 @@
     <!--EmailFragment-->
     <string name="email_recipient_to">To %1$s</string>
     <string name="email_card_transition_name">email_card_%1$s</string>
+    <string name="email_card_detail_transition_name">email_card_detail</string>
 
     <!--ComposeFragment-->
     <string name="compose_close_content_desc">Close editing email</string>
@@ -61,4 +62,9 @@
     <string name="compose_subject_hint">Subject</string>
     <string name="compose_body_hint">New message…</string>
     <string name="compose_recipient_group_content_desc">Recipients</string>
+
+    <!--SearchFragment-->
+    <string name="search_suggestion_hint">Search email</string>
+    <string name="search_suggestion_title_yesterday">YESTERDAY</string>
+    <string name="search_suggestion_title_this_week">THIS WEEK</string>
 </resources>

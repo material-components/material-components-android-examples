@@ -18,19 +18,25 @@ package com.materialstudies.reply.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.MenuRes
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.navigation.NavigationView
 import com.materialstudies.reply.R
 
-class MenuBottomSheetDialogFragment(
-    private val menuRes: Int,
-    private val onNavigationItemSelected: (MenuItem) -> Boolean
-) : BottomSheetDialogFragment() {
+/**
+ * A bottom sheet dialog for displaying a simple list of action items.
+ */
+class MenuBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
     private lateinit var navigationView: NavigationView
+    @MenuRes private var menuResId: Int = 0
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        menuResId = arguments?.getInt(KEY_MENU_RES_ID, 0) ?: 0
+    }
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -47,11 +53,24 @@ class MenuBottomSheetDialogFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navigationView = view.findViewById(R.id.navigation_view)
-        navigationView.inflateMenu(menuRes)
+        navigationView.inflateMenu(menuResId)
         navigationView.setNavigationItemSelectedListener {
-            val consumed = onNavigationItemSelected(it)
-            if (consumed) dismiss()
-            consumed
+            dismiss()
+            true
+        }
+    }
+
+    companion object {
+
+        private const val KEY_MENU_RES_ID = "MenuBottomSheetDialogFragment_menuResId"
+
+        fun newInstance(@MenuRes menuResId: Int): MenuBottomSheetDialogFragment {
+            val fragment = MenuBottomSheetDialogFragment()
+            val bundle = Bundle().apply {
+                putInt(KEY_MENU_RES_ID, menuResId)
+            }
+            fragment.arguments = bundle
+            return fragment
         }
     }
 }

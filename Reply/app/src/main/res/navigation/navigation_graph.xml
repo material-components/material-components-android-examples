@@ -13,13 +13,18 @@
   the License.
   -->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_graph"
     app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.materialstudies.reply.ui.home.HomeFragment"
-        android:label="HomeFragment" >
+        android:label="HomeFragment">
+        <argument
+            android:name="mailbox"
+            app:argType="com.materialstudies.reply.ui.home.Mailbox"
+            android:defaultValue="INBOX" />
         <action
             android:id="@+id/action_homeFragment_to_emailFragment"
             app:destination="@id/emailFragment" />
@@ -41,7 +46,20 @@
             app:argType="long"
             android:defaultValue="-1L"/>
     </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.materialstudies.reply.ui.search.SearchFragment"
+        android:label="SearchFragment" />
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@+id/homeFragment"
+        app:launchSingleTop="true"
+        app:popUpTo="@+id/navigation_graph"
+        app:popUpToInclusive="true"/>
     <action
         android:id="@+id/action_global_composeFragment"
         app:destination="@+id/composeFragment" />
+    <action
+        android:id="@+id/action_global_searchFragment"
+        app:destination="@+id/searchFragment" />
 </navigation>

@@ -15,16 +15,14 @@
 buildscript {
     ext {
         kotlin_version = '1.3.50'
-        navigation_version = '2.2.0-beta01'
+        navigation_version = '2.2.0'
     }
     repositories {
         google()
         jcenter()
     }
     dependencies{
-        // Wait to move to 3.6 until ConstraintLayout related attribute bugs are resolved. See
-        // https://issuetracker.google.com/issues/138601946 for more details.
-        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath 'com.android.tools.build:gradle:4.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_version"
 

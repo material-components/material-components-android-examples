@@ -16,6 +16,7 @@
 
 package com.materialstudies.reply.ui.email
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -28,7 +29,7 @@ import com.google.android.material.transition.MaterialContainerTransform
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.FragmentEmailBinding
-import com.materialstudies.reply.util.themeInterpolator
+import com.materialstudies.reply.util.themeColor
 import kotlin.LazyThreadSafetyMode.NONE
 
 private const val MAX_GRID_SPANS = 3
@@ -46,7 +47,15 @@ class EmailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        prepareTransitions()
+
+        sharedElementEnterTransition = MaterialContainerTransform().apply {
+            // Scope the transition to a view in the hierarchy so we know it will be added under
+            // the bottom app bar but over the elevation scale of the exiting HomeFragment.
+            drawingViewId = R.id.nav_host_fragment
+            duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+            scrimColor = Color.TRANSPARENT
+            setAllContainerColors(requireContext().themeColor(R.attr.colorSurface))
+        }
     }
 
     override fun onCreateView(
@@ -84,31 +93,6 @@ class EmailFragment : Fragment() {
             attachmentRecyclerView.adapter = attachmentAdapter
             attachmentAdapter.submitList(email.attachments)
         }
-
-        startTransitions()
-    }
-
-    private fun prepareTransitions() {
-        postponeEnterTransition()
-
-        sharedElementEnterTransition = MaterialContainerTransform(requireContext()).apply {
-            // Scope the transition to a view in the hierarchy so we know it will be added under
-            // the bottom app bar but over the Hold transition from the exiting HomeFragment.
-            drawingViewId = R.id.nav_host_fragment
-            duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
-            interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
-        }
-        sharedElementReturnTransition = MaterialContainerTransform(requireContext()).apply {
-            // Again, scope the return transition so it is added below the bottom app bar.
-            drawingViewId = R.id.recycler_view
-            duration = resources.getInteger(R.integer.reply_motion_default_large).toLong()
-            interpolator = requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
-        }
-    }
-
-    private fun startTransitions() {
-        binding.executePendingBindings()
-        startPostponedEnterTransition()
     }
 
     private fun showError() {
