@@ -17,6 +17,7 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:clipToPadding="false"
@@ -58,7 +59,8 @@
           android:layout_height="wrap_content"
           app:fabSize="normal"
           android:src="@drawable/ic_add_on_secondary_24dp"
-          app:layout_anchor="@+id/bottom_app_bar"/>
+          app:layout_anchor="@+id/bottom_app_bar"
+          tools:ignore="ContentDescription"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

@@ -51,7 +51,7 @@
           android:id="@+id/nav_view"
           android:layout_width="wrap_content"
           android:layout_height="match_parent"
-          android:layout_gravity="start|left"
+          android:layout_gravity="start"
           android:backgroundTint="?colorSurface"
           app:headerLayout="@layout/drawer_header_layout"
           app:menu="@menu/navigation_view_menu" />

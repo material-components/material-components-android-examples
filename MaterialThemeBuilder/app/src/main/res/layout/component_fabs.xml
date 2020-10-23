@@ -17,6 +17,7 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:clipToPadding="false"
@@ -60,7 +61,8 @@
       app:layout_constraintEnd_toStartOf="@+id/mini_fab"
       app:layout_constraintHorizontal_bias="0.5"
       app:layout_constraintStart_toEndOf="@+id/extended_fab"
-      app:layout_constraintTop_toTopOf="@+id/extended_fab" />
+      app:layout_constraintTop_toTopOf="@+id/extended_fab"
+      tools:ignore="ContentDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
       android:id="@+id/mini_fab"
@@ -72,6 +74,7 @@
       app:layout_constraintBottom_toBottomOf="@+id/fab"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toEndOf="@+id/fab"
-      app:layout_constraintTop_toTopOf="@+id/fab" />
+      app:layout_constraintTop_toTopOf="@+id/fab"
+      tools:ignore="ContentDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
