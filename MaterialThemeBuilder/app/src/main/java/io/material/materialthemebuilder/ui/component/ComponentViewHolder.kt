@@ -16,12 +16,14 @@
 
 package io.material.materialthemebuilder.ui.component
 
+import android.annotation.SuppressLint
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomappbar.BottomAppBar
@@ -83,7 +85,7 @@ sealed class ComponentViewHolder(val view: View) : RecyclerView.ViewHolder(view)
     private val navigationView: NavigationView = view.findViewById(R.id.nav_view)
 
     override fun bind(component: Component) {
-      drawerLayout.openDrawer(Gravity.LEFT)
+      drawerLayout.openDrawer(GravityCompat.START)
       navigationView.setNavigationItemSelectedListener { true }
       navigationView.setCheckedItem(R.id.nav_item_one)
     }
@@ -126,6 +128,7 @@ sealed class ComponentViewHolder(val view: View) : RecyclerView.ViewHolder(view)
     parent: ViewGroup
   ) : ComponentViewHolder(inflate(parent, R.layout.component_tabs))
 
+  @SuppressLint("ShowToast")
   class SnackbarComponentViewHolder(
     parent: ViewGroup
   ) : ComponentViewHolder(inflate(parent, R.layout.component_snackbar)) {
@@ -183,22 +186,22 @@ sealed class ComponentViewHolder(val view: View) : RecyclerView.ViewHolder(view)
       listener: ComponentAdapter.ComponentAdapterListener
     ): ComponentViewHolder {
       return when (Component.values()[viewType]) {
-        BUTTON -> ComponentViewHolder.ButtonComponentViewHolder(parent)
-        FAB -> ComponentViewHolder.FabComponentViewHolder(parent)
-        CARD -> ComponentViewHolder.CardComponentViewHolder(parent)
-        TOP_APP_BAR -> ComponentViewHolder.TopAppBarComponentViewHolder(parent)
-        CHIP -> ComponentViewHolder.ChipComponentViewHolder(parent)
-        DRAWER -> ComponentViewHolder.DrawerComponentViewHolder(parent)
-        TEXT_FIELD -> ComponentViewHolder.TextFieldComponentViewHolder(parent)
-        BOTTOM_NAVIGATION -> ComponentViewHolder.BottomNavigationComponentViewHolder(parent)
-        SWITCH -> ComponentViewHolder.SwitchComponentViewHolder(parent)
-        RADIO_BUTTON -> ComponentViewHolder.RadioButtonComponentViewHolder(parent)
-        CHECKBOX -> ComponentViewHolder.CheckboxComponentViewHolder(parent)
-        BOTTOM_APP_BAR -> ComponentViewHolder.BottomAppBarComponentViewHolder(parent)
-        TABS -> ComponentViewHolder.TabsComponentViewHolder(parent)
-        SNACKBAR -> ComponentViewHolder.SnackbarComponentViewHolder(parent)
-        DIALOG -> ComponentViewHolder.DialogComponentViewHolder(parent)
-        BOTTOM_SHEET -> ComponentViewHolder.BottomSheetComponentViewHolder(parent, listener)
+        BUTTON -> ButtonComponentViewHolder(parent)
+        FAB -> FabComponentViewHolder(parent)
+        CARD -> CardComponentViewHolder(parent)
+        TOP_APP_BAR -> TopAppBarComponentViewHolder(parent)
+        CHIP -> ChipComponentViewHolder(parent)
+        DRAWER -> DrawerComponentViewHolder(parent)
+        TEXT_FIELD -> TextFieldComponentViewHolder(parent)
+        BOTTOM_NAVIGATION -> BottomNavigationComponentViewHolder(parent)
+        SWITCH -> SwitchComponentViewHolder(parent)
+        RADIO_BUTTON -> RadioButtonComponentViewHolder(parent)
+        CHECKBOX -> CheckboxComponentViewHolder(parent)
+        BOTTOM_APP_BAR -> BottomAppBarComponentViewHolder(parent)
+        TABS -> TabsComponentViewHolder(parent)
+        SNACKBAR -> SnackbarComponentViewHolder(parent)
+        DIALOG -> DialogComponentViewHolder(parent)
+        BOTTOM_SHEET -> BottomSheetComponentViewHolder(parent, listener)
       }
     }
 

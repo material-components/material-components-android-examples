@@ -18,7 +18,6 @@ package io.material.materialthemebuilder.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.Observer
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import io.material.materialthemebuilder.R
@@ -47,9 +46,8 @@ class MainActivity : AppCompatActivity() {
     viewPager.adapter = adapter
 
     (application as App).preferenceRepository
-      .nightModeLive.observe(this, Observer { nightMode ->
+      .nightModeLive.observe(this) { nightMode ->
         nightMode?.let { delegate.localNightMode = it }
       }
-    )
   }
 }

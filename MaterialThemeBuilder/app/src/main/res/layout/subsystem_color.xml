@@ -17,6 +17,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
   android:orientation="vertical"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
@@ -41,7 +42,8 @@
       app:colorFillColor="?attr/colorPrimary"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
-      android:layout_marginBottom="@dimen/keyline_2" />
+      android:layout_marginBottom="@dimen/keyline_2"
+      tools:ignore="HardcodedText" />
 
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
@@ -50,7 +52,8 @@
       app:colorFillColor="?attr/colorPrimaryVariant"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
-      android:layout_marginBottom="@dimen/keyline_2" />
+      android:layout_marginBottom="@dimen/keyline_2"
+      tools:ignore="HardcodedText" />
 
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
@@ -59,8 +62,8 @@
       app:colorFillColor="?attr/colorSecondary"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
-      android:layout_marginBottom="@dimen/keyline_2" />
-
+      android:layout_marginBottom="@dimen/keyline_2"
+      tools:ignore="HardcodedText" />
 
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
@@ -69,8 +72,8 @@
       app:colorFillColor="?attr/colorSecondaryVariant"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
-      android:layout_marginBottom="@dimen/keyline_2" />
-
+      android:layout_marginBottom="@dimen/keyline_2"
+      tools:ignore="HardcodedText" />
 
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
@@ -79,7 +82,8 @@
       app:colorFillColor="?android:attr/colorBackground"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
-      android:layout_marginBottom="@dimen/keyline_2" />
+      android:layout_marginBottom="@dimen/keyline_2"
+      tools:ignore="HardcodedText" />
 
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
@@ -88,7 +92,8 @@
       app:colorFillColor="?attr/colorSurface"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
-      android:layout_marginBottom="@dimen/keyline_2" />
+      android:layout_marginBottom="@dimen/keyline_2"
+      tools:ignore="HardcodedText" />
 
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
@@ -97,7 +102,8 @@
       app:colorFillColor="?attr/colorError"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
-      android:layout_marginBottom="@dimen/keyline_2" />
+      android:layout_marginBottom="@dimen/keyline_2"
+      tools:ignore="HardcodedText" />
 
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
@@ -106,7 +112,8 @@
       app:colorFillColor="?attr/colorOnPrimary"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
-      android:layout_marginBottom="@dimen/keyline_2" />
+      android:layout_marginBottom="@dimen/keyline_2"
+      tools:ignore="HardcodedText" />
 
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
@@ -115,7 +122,8 @@
       app:colorFillColor="?attr/colorOnSecondary"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
-      android:layout_marginBottom="@dimen/keyline_2" />
+      android:layout_marginBottom="@dimen/keyline_2"
+      tools:ignore="HardcodedText" />
 
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
@@ -124,7 +132,8 @@
       app:colorFillColor="?attr/colorOnBackground"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
-      android:layout_marginBottom="@dimen/keyline_2" />
+      android:layout_marginBottom="@dimen/keyline_2"
+      tools:ignore="HardcodedText" />
 
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
@@ -133,7 +142,8 @@
       app:colorFillColor="?attr/colorOnSurface"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
-      android:layout_marginBottom="@dimen/keyline_2" />
+      android:layout_marginBottom="@dimen/keyline_2"
+      tools:ignore="HardcodedText" />
 
     <io.material.materialthemebuilder.widget.ColorAttributeView
       android:layout_width="match_parent"
@@ -142,6 +152,7 @@
       app:colorFillColor="?attr/colorOnError"
       app:colorStrokeColor="?attr/colorOnBackground"
       android:layout_marginTop="@dimen/keyline_2"
-      android:layout_marginBottom="@dimen/keyline_2" />
+      android:layout_marginBottom="@dimen/keyline_2"
+      tools:ignore="HardcodedText" />
 
 </LinearLayout>

@@ -49,9 +49,9 @@ sealed class SubsystemViewHolder(val view: View) : RecyclerView.ViewHolder(view)
   companion object {
     fun create(parent: ViewGroup, viewType: Int): SubsystemViewHolder {
       return when (Subsystem.values()[viewType]) {
-        COLOR -> SubsystemViewHolder.ColorSubsystemViewHolder(parent)
-        TYPE -> SubsystemViewHolder.TypeSubsystemViewHolder(parent)
-        SHAPE -> SubsystemViewHolder.ShapeSubsystemViewHolder(parent)
+        COLOR -> ColorSubsystemViewHolder(parent)
+        TYPE -> TypeSubsystemViewHolder(parent)
+        SHAPE -> ShapeSubsystemViewHolder(parent)
       }
     }
 
