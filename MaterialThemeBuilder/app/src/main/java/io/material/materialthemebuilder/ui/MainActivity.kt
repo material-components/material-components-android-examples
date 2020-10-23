@@ -46,9 +46,8 @@ class MainActivity : AppCompatActivity() {
     viewPager.adapter = adapter
 
     (application as App).preferenceRepository
-      .nightModeLive.observe(this, { nightMode ->
+      .nightModeLive.observe(this) { nightMode ->
         nightMode?.let { delegate.localNightMode = it }
       }
-    )
   }
 }
