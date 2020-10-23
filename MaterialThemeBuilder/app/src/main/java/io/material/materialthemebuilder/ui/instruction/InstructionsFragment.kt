@@ -21,7 +21,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.google.android.material.switchmaterial.SwitchMaterial
 import io.material.materialthemebuilder.App
 import io.material.materialthemebuilder.R
@@ -44,7 +43,7 @@ class InstructionsFragment : Fragment() {
     val darkThemeSwitch: SwitchMaterial = view.findViewById(R.id.dark_theme_switch)
     val preferenceRepository = (requireActivity().application as App).preferenceRepository
 
-    preferenceRepository.isDarkThemeLive.observe(this, Observer { isDarkTheme ->
+    preferenceRepository.isDarkThemeLive.observe(this, { isDarkTheme ->
       isDarkTheme?.let { darkThemeSwitch.isChecked = it }
     })
 

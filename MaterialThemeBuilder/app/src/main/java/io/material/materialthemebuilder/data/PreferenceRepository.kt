@@ -26,7 +26,7 @@ import androidx.lifecycle.MutableLiveData
  */
 class PreferenceRepository(private val sharedPreferences: SharedPreferences) {
 
-  val nightMode: Int
+  private val nightMode: Int
     get() = sharedPreferences.getInt(PREFERENCE_NIGHT_MODE, PREFERENCE_NIGHT_MODE_DEF_VAL)
 
   private val _nightModeLive: MutableLiveData<Int> = MutableLiveData()

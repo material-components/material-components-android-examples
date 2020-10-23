@@ -17,6 +17,7 @@
 package io.material.materialthemebuilder.widget
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.util.AttributeSet
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
@@ -37,7 +38,7 @@ class TypeAttributeView @JvmOverloads constructor(
   private val typeAttributeTextView: AppCompatTextView
   private val typeAttributePreviewTextView: AppCompatTextView
 
-  var typeAttrText: String = "?textAppearanceHeadline1"
+  private var typeAttrText: String = "?textAppearanceHeadline1"
     set(value) {
       typeAttributeTextView.text = value
       field = value
@@ -49,13 +50,13 @@ class TypeAttributeView @JvmOverloads constructor(
       field = value
     }
 
-  var typeAttrPreviewTextAppearance: Int = R.attr.textAppearanceHeadline1
+  private var typeAttrPreviewTextAppearance: Int = R.attr.textAppearanceHeadline1
     set(value) {
       typeAttributePreviewTextView.setTextAppearance(value)
       field = value
     }
 
-  var typeAttrPreviewTextColor = AppCompatResources.getColorStateList(
+  private var typeAttrPreviewTextColor: ColorStateList = AppCompatResources.getColorStateList(
       context,
       R.color.material_on_background_emphasis_high_type
   )
@@ -65,7 +66,7 @@ class TypeAttributeView @JvmOverloads constructor(
     }
 
   init {
-    orientation = LinearLayout.HORIZONTAL
+    orientation = HORIZONTAL
     val view = View.inflate(context, R.layout.type_attribute_view_layout, this)
     typeAttributeTextView = view.findViewById(R.id.type_attribute)
     typeAttributePreviewTextView = view.findViewById(R.id.type_attribute_preview)

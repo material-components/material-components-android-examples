@@ -71,7 +71,7 @@ class LabelLinkView @JvmOverloads constructor(
 
   init {
     clipToPadding = false
-    orientation = LinearLayout.HORIZONTAL
+    orientation = HORIZONTAL
 
     val view = View.inflate(context, R.layout.label_view_layout, this)
     leadingImageView = view.findViewById(R.id.label_leading_image_view)
