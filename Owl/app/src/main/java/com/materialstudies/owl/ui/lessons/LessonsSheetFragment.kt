@@ -24,11 +24,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowInsets
 import androidx.activity.addCallback
 import androidx.annotation.ColorInt
 import androidx.annotation.Px
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsCompat.Type
 import androidx.core.view.doOnLayout
 import androidx.core.view.forEach
