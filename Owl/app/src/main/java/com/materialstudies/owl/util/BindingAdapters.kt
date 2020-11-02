@@ -19,8 +19,9 @@ package com.materialstudies.owl.util
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowInsets
 import android.widget.ImageView
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -55,6 +56,9 @@ fun View.bindElevationOverlay(previousElevation: Float, elevation: Float) {
 @BindingAdapter("layoutFullscreen")
 fun View.bindLayoutFullscreen(previousFullscreen: Boolean, fullscreen: Boolean) {
     if (previousFullscreen != fullscreen && fullscreen) {
+        @Suppress("DEPRECATION")
+        // The new alternative is WindowCompat.setDecorFitsSystemWindows, but we can't
+        // always get access to the window from a view.
         systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
                 View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -87,10 +91,11 @@ fun View.applySystemWindowInsetsPadding(
     }
 
     doOnApplyWindowInsets { view, insets, padding, _ ->
-        val left = if (applyLeft) insets.systemWindowInsetLeft else 0
-        val top = if (applyTop) insets.systemWindowInsetTop else 0
-        val right = if (applyRight) insets.systemWindowInsetRight else 0
-        val bottom = if (applyBottom) insets.systemWindowInsetBottom else 0
+        val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+        val left = if (applyLeft) systemBars.left else 0
+        val top = if (applyTop) systemBars.top else 0
+        val right = if (applyRight) systemBars.right else 0
+        val bottom = if (applyBottom) systemBars.bottom else 0
 
         view.setPadding(
             padding.left + left,
@@ -127,10 +132,11 @@ fun View.applySystemWindowInsetsMargin(
     }
 
     doOnApplyWindowInsets { view, insets, _, margin ->
-        val left = if (applyLeft) insets.systemWindowInsetLeft else 0
-        val top = if (applyTop) insets.systemWindowInsetTop else 0
-        val right = if (applyRight) insets.systemWindowInsetRight else 0
-        val bottom = if (applyBottom) insets.systemWindowInsetBottom else 0
+        val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+        val left = if (applyLeft) systemBars.left else 0
+        val top = if (applyTop) systemBars.top else 0
+        val right = if (applyRight) systemBars.right else 0
+        val bottom = if (applyBottom) systemBars.bottom else 0
 
         view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
             leftMargin = margin.left + left
@@ -142,14 +148,14 @@ fun View.applySystemWindowInsetsMargin(
 }
 
 fun View.doOnApplyWindowInsets(
-    block: (View, WindowInsets, InitialPadding, InitialMargin) -> Unit
+    block: (View, WindowInsetsCompat, InitialPadding, InitialMargin) -> Unit
 ) {
     // Create a snapshot of the view's padding & margin states
     val initialPadding = recordInitialPaddingForView(this)
     val initialMargin = recordInitialMarginForView(this)
     // Set an actual OnApplyWindowInsetsListener which proxies to the given
     // lambda, also passing in the original padding & margin states
-    setOnApplyWindowInsetsListener { v, insets ->
+    ViewCompat.setOnApplyWindowInsetsListener(this) { v, insets ->
         block(v, insets, initialPadding, initialMargin)
         // Always return the insets, so that children can also use them
         insets

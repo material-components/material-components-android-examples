@@ -24,9 +24,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowInsets
 import androidx.activity.addCallback
 import androidx.annotation.ColorInt
 import androidx.annotation.Px
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsCompat.Type
 import androidx.core.view.doOnLayout
 import androidx.core.view.forEach
 import androidx.core.view.postDelayed
@@ -148,7 +151,7 @@ class LessonsSheetFragment : Fragment() {
                     }
                 })
                 lessonsSheet.doOnApplyWindowInsets { _, insets, _, _ ->
-                    behavior.peekHeight = peek + insets.systemWindowInsetBottom
+                    behavior.peekHeight = peek + insets.getInsets(Type.navigationBars()).bottom
                 }
             }
             collapsePlaylist.setOnClickListener {
