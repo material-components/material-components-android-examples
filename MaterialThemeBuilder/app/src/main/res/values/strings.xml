@@ -16,7 +16,7 @@
 
 <resources>
     <string name="app_name">Build a Material Theme</string>
-    <string name="theme_name_hint">Theme name...</string>
+    <string name="theme_name_hint">Theme name…</string>
 
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
 
@@ -88,6 +88,7 @@
     <string name="bottom_sheet_label_title">Bottom sheet</string>
     <string name="bottom_sheet_button_label">Show bottom sheet</string>
 
+    <string name="image_label_title">Image</string>
 
     <!--Theme Summary-->
     <string name="label_color_scheme_title">Color scheme</string>

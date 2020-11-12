@@ -48,6 +48,7 @@ import io.material.materialthemebuilder.ui.component.Component.TABS
 import io.material.materialthemebuilder.ui.component.Component.SNACKBAR
 import io.material.materialthemebuilder.ui.component.Component.DIALOG
 import io.material.materialthemebuilder.ui.component.Component.BOTTOM_SHEET
+import io.material.materialthemebuilder.ui.component.Component.IMAGE
 
 /**
  * Sealed class to define all [RecyclerView.ViewHolder]s used to display [Component]s.
@@ -179,6 +180,10 @@ sealed class ComponentViewHolder(val view: View) : RecyclerView.ViewHolder(view)
     }
   }
 
+  class ImageComponentViewHolder(
+    parent: ViewGroup
+  ) : ComponentViewHolder(inflate(parent, R.layout.component_image))
+
   companion object {
     fun create(
       parent: ViewGroup,
@@ -202,6 +207,7 @@ sealed class ComponentViewHolder(val view: View) : RecyclerView.ViewHolder(view)
         SNACKBAR -> SnackbarComponentViewHolder(parent)
         DIALOG -> DialogComponentViewHolder(parent)
         BOTTOM_SHEET -> BottomSheetComponentViewHolder(parent, listener)
+        IMAGE -> ImageComponentViewHolder(parent)
       }
     }
 
