@@ -48,4 +48,10 @@
         <!--Your custom shape here-->
     </style>
 
+    <!--Shape Appearance overlay for ShapeableImageView -->
+    <style name="ShapeAppearanceOverlay.MyTheme.Image" parent="">
+        <item name="cornerSize">0dp</item>
+        <item name="cornerSizeTopLeft">50%</item>
+    </style>
+
 </resources>

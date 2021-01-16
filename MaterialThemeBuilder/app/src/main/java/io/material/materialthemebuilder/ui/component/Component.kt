@@ -38,5 +38,6 @@ enum class Component {
   TABS,
   SNACKBAR,
   DIALOG,
-  BOTTOM_SHEET
+  BOTTOM_SHEET,
+  IMAGE
 }
