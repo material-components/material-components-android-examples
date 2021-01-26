@@ -21,34 +21,38 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.switchmaterial.SwitchMaterial
 import io.material.materialthemebuilder.App
 import io.material.materialthemebuilder.R
+import kotlinx.coroutines.flow.collect
 
 /**
  * Fragment to display static instructions text and in-app theming options.
  */
 class InstructionsFragment : Fragment() {
 
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View? {
-    return inflater.inflate(R.layout.fragment_instructions, container, false)
-  }
-
-  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    super.onViewCreated(view, savedInstanceState)
-    val darkThemeSwitch: SwitchMaterial = view.findViewById(R.id.dark_theme_switch)
-    val preferenceRepository = (requireActivity().application as App).preferenceRepository
-
-    preferenceRepository.isDarkThemeLive.observe(this) { isDarkTheme ->
-      isDarkTheme?.let { darkThemeSwitch.isChecked = it }
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_instructions, container, false)
     }
 
-    darkThemeSwitch.setOnCheckedChangeListener { _, checked ->
-      preferenceRepository.isDarkTheme = checked
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val darkThemeSwitch: SwitchMaterial = view.findViewById(R.id.dark_theme_switch)
+        val preferenceRepository = (requireActivity().application as App).preferenceRepository
+
+        lifecycleScope.launchWhenStarted {
+            preferenceRepository.isDarkThemeLive.collect { isDarkTheme ->
+                isDarkTheme.let { darkThemeSwitch.isChecked = it }
+            }
+        }
+
+        darkThemeSwitch.setOnCheckedChangeListener { _, checked ->
+            preferenceRepository.isDarkTheme = checked
+        }
     }
-  }
 }
