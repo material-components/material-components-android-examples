@@ -10,7 +10,7 @@ class ShadowSharedPreference : SharedPreferences {
     var editor: Editor? = null
 
     var changeListeners: MutableList<OnSharedPreferenceChangeListener> = ArrayList()
-    var concurrentMap: Map<String?, Any?> = ConcurrentHashMap()
+    var concurrentMap: ConcurrentHashMap<String?, Any?> = ConcurrentHashMap()
 
     init {
         editor = ShadowEditor(object : EditorCall {
@@ -20,16 +20,14 @@ class ShadowSharedPreference : SharedPreferences {
                     return
                 }
 
-                val realMap: MutableMap<String?, Any?> = concurrentMap as MutableMap<String?, Any?>
-
                 // clear
                 if (commitClear) {
-                    realMap.clear()
+                    concurrentMap.clear()
                 }
 
                 // remove the element
                 for (key in removeList) {
-                    realMap.remove(key)
+                    concurrentMap.remove(key)
                     for (listener in changeListeners) {
                         listener.onSharedPreferenceChanged(this@ShadowSharedPreference, key)
                     }
@@ -40,17 +38,17 @@ class ShadowSharedPreference : SharedPreferences {
 
                 // Change before and after comparison
                 for (key in keys) {
-                    val lastValue = realMap[key]
+                    val lastValue = concurrentMap[key]
                     val value = map[key]
                     if (lastValue == null && value != null || lastValue != null && value == null || lastValue != value) {
+                        //CHANGE VALUE BEFORE
+                        concurrentMap[key] = value
                         for (listener in changeListeners) {
                             listener.onSharedPreferenceChanged(this@ShadowSharedPreference, key)
                         }
                     }
                 }
-
-                realMap.putAll(map)
-
+                concurrentMap.putAll(map)
             }
 
         })
