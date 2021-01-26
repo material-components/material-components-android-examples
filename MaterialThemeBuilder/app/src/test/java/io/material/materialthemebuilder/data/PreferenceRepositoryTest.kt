@@ -2,8 +2,7 @@ package io.material.materialthemebuilder.data
 
 import android.content.SharedPreferences
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.first
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
@@ -26,20 +25,15 @@ class PreferenceRepositoryTest {
     }
 
     @Test
-    fun `testing changes in preferences`() = coroutineTestRule.runBlockingTest {
-
+    fun `Given a preference When it is set to true Then the stateflow changes its value to true`() = coroutineTestRule.runBlockingTest {
         repository.isDarkTheme = true
-        delay(5000)
-        repository.isDarkThemeLive.collect {
-            Assert.assertTrue("$it", it)
-        }
+        Assert.assertTrue(repository.isDarkThemeLive.first())
+    }
 
+    @Test
+    fun `Given a preference When it is set to false Then the stateflow changes its value to fals`() = coroutineTestRule.runBlockingTest {
         repository.isDarkTheme = false
-        delay(5000)
-        repository.isDarkThemeLive.collect {
-            Assert.assertFalse("$it", it)
-        }
-
+        Assert.assertFalse(repository.isDarkThemeLive.first())
     }
 
 
