@@ -21,5 +21,6 @@ categories:   [Material Components]
 languages:    [Kotlin]
 solutions:    [Mobile]
 github:       material-components/material-components-android-examples
+branch:       develop
 level:        ADVANCED
 license:      apache2
