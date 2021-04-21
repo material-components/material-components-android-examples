@@ -54,7 +54,7 @@ dependencies {
     implementation 'androidx.fragment:fragment-ktx:1.2.5'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.core:core-ktx:1.5.0-alpha04'
-    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.google.android.material:material:1.4.0-alpha02'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     implementation "androidx.navigation:navigation-runtime-ktx:$nav_version"
