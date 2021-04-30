@@ -110,7 +110,7 @@ class ShapeAttributeView @JvmOverloads constructor(
       R.styleable.ShapeAttributeView_shapeStrokeColor,
       Color.DKGRAY
     )
-    shapeAppearanceRes = a.getInt(
+    shapeAppearanceRes = a.getResourceId(
       R.styleable.ShapeAttributeView_shapeAppearanceAttr,
       R.attr.shapeAppearanceSmallComponent
     )
