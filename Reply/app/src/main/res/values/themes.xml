@@ -17,9 +17,10 @@
     <!--Final, top-level theme-->
     <style name="Theme.Reply.DayNight" parent="Theme.Reply"/>
 
-    <style name="Theme.Reply" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Reply" parent="Theme.Material3.DayNight.NoActionBar">
 
         <!--Color-->
+        <!--For ReplyM3 delete this to correspond to default Material3 Colour Theme-->
         <item name="colorPrimary">@color/reply_blue_700</item>
         <item name="colorPrimaryVariant">@color/reply_blue_800</item>
         <item name="colorSecondary">@color/reply_orange_500</item>
