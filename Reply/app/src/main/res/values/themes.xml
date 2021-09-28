@@ -46,18 +46,18 @@
         <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Reply.LargeComponent</item>
 
         <!--Typography-->
-        <item name="textAppearanceHeadline2">@style/TextAppearance.Reply.Headline2</item>
-        <item name="textAppearanceHeadline3">@style/TextAppearance.Reply.Headline3</item>
-        <item name="textAppearanceHeadline4">@style/TextAppearance.Reply.Headline4</item>
-        <item name="textAppearanceHeadline5">@style/TextAppearance.Reply.Headline5</item>
-        <item name="textAppearanceHeadline6">@style/TextAppearance.Reply.Headline6</item>
-        <item name="textAppearanceSubtitle1">@style/TextAppearance.Reply.Subtitle1</item>
-        <item name="textAppearanceSubtitle2">@style/TextAppearance.Reply.Subtitle2</item>
-        <item name="textAppearanceBody1">@style/TextAppearance.Reply.Body1</item>
-        <item name="textAppearanceBody2">@style/TextAppearance.Reply.Body2</item>
-        <item name="textAppearanceButton">@style/TextAppearance.Reply.Button</item>
-        <item name="textAppearanceCaption">@style/TextAppearance.Reply.Caption</item>
-        <item name="textAppearanceOverline">@style/TextAppearance.Reply.Overline</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.Reply.DisplayLarge</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.Reply.DisplayMedium</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.Reply.DisplaySmall</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.Reply.HeadlineMedium</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.Reply.HeadlineSmall</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.Reply.TitleMedium</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.Reply.TitleSmall</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.Reply.BodyLarge</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.Reply.BodyMedium</item>
+        <item name="textAppearanceButton">@style/TextAppearance.Reply.LabelLarge</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.Reply.BodySmall</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.Reply.LabelSmall</item>
 
         <item name="emphasisHighAlpha">0.87</item>
         <item name="emphasisMediumAlpha">0.60</item>
