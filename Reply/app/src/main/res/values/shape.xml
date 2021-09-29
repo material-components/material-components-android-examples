@@ -16,17 +16,17 @@
 
     <!--Shape-->
 
-    <style name="ShapeAppearance.Reply.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+    <style name="ShapeAppearance.Reply.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/reply_small_component_corner_radius</item>
     </style>
 
-    <style name="ShapeAppearance.Reply.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+    <style name="ShapeAppearance.Reply.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/reply_medium_component_corner_radius</item>
     </style>
 
-    <style name="ShapeAppearance.Reply.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+    <style name="ShapeAppearance.Reply.LargeComponent" parent="ShapeAppearance.Material3.LargeComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/reply_large_component_corner_radius</item>
     </style>

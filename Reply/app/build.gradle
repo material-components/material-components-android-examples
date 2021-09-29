@@ -18,11 +18,11 @@ apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     defaultConfig {
         applicationId "com.materialstudies.reply"
         minSdkVersion 23
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -62,7 +62,7 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:4.11.0"
 
     // Material Components
-    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.google.android.material:material:1.5.0-alpha03'
 
     // Testing
     testImplementation 'junit:junit:4.13.1'
