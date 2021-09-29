@@ -32,6 +32,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDE
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HALF_EXPANDED
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HIDDEN
 import com.google.android.material.bottomsheet.BottomSheetBehavior.from
+import com.google.android.material.color.DynamicColors
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Account
@@ -87,16 +88,13 @@ class BottomNavDrawerFragment :
       mutableListOf()
 
     private val backgroundShapeDrawable: MaterialShapeDrawable by lazy(NONE) {
-        val backgroundContext = binding.backgroundContainer.context
+        val dynamicContext = DynamicColors.wrapContextIfAvailable(requireContext())
         MaterialShapeDrawable(
-            backgroundContext,
+            dynamicContext,
             null,
             R.attr.bottomSheetStyle,
             0
         ).apply {
-            fillColor = ColorStateList.valueOf(
-                backgroundContext.themeColor(R.attr.colorPrimarySurfaceVariant)
-            )
             elevation = resources.getDimension(R.dimen.plane_08)
             initializeElevationOverlay(requireContext())
         }
