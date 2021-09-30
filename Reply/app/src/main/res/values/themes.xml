@@ -20,7 +20,6 @@
     <style name="Theme.Reply" parent="Theme.Material3.DayNight.NoActionBar">
 
         <!--Color-->
-        <!--For ReplyM3 delete this to correspond to default Material3 Colour Theme-->
         <item name="colorPrimary">@color/reply_blue_700</item>
         <item name="colorPrimaryVariant">@color/reply_blue_800</item>
         <item name="colorSecondary">@color/reply_orange_500</item>
@@ -38,7 +37,7 @@
         <item name="colorOnError">@color/reply_black_900</item>
 
         <item name="scrimBackground">@color/reply_white_50_alpha_060</item>
-        <item name="android:statusBarColor">@color/reply_blue_50_alpha_060</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@color/nav_bar</item>
 
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Reply.SmallComponent</item>
