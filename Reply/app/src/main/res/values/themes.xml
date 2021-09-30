@@ -19,10 +19,6 @@
 
     <style name="Theme.Reply" parent="Theme.Material3.DayNight.NoActionBar">
 
-	      <!--Transparent Navigation Bar and StatusBar-->
-	      <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
-
         <!--Color-->
         <item name="colorPrimary">@color/reply_blue_700</item>
         <item name="colorPrimaryVariant">@color/reply_blue_800</item>
@@ -41,6 +37,8 @@
         <item name="colorOnError">@color/reply_black_900</item>
 
         <item name="scrimBackground">@color/reply_white_50_alpha_060</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
 
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Reply.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Reply.MediumComponent</item>
