@@ -14,34 +14,64 @@
   -->
 <resources>
 
-    <!--Color palette-->
-    <color name="reply_white_50">#ffffff</color>
+    <!--Light Colours-->
+    <color name="reply_light_primary">#00668A</color>
+    <color name="reply_light_onPrimary">#FFFFFF</color>
+    <color name="reply_light_primaryContainer">#C0E8FF</color>
+    <color name="reply_light_onPrimaryContainer">#001E2C</color>
+    <color name="reply_light_secondary">#406376</color>
+    <color name="reply_light_onSecondary">#FFFFFF</color>
+    <color name="reply_light_secondaryContainer">#C3E7FE</color>
+    <color name="reply_light_onSecondaryContainer">#001E2C</color>
+    <color name="reply_light_tertiary">#605A7D</color>
+    <color name="reply_light_onTertiary">#FFFFFF</color>
+    <color name="reply_light_tertiaryContainer">#E6DEFF</color>
+    <color name="reply_light_onTertiaryContainer">#1C1736</color>
+    <color name="reply_light_error">#BA1B1B</color>
+    <color name="reply_light_errorContainer">#FFDAD4</color>
+    <color name="reply_light_onError">#FFFFFF</color>
+    <color name="reply_light_onErrorContainer">#410001</color>
+    <color name="reply_light_background">#F9FCFF</color>
+    <color name="reply_light_onBackground">#151D21</color>
+    <color name="reply_light_surface">#F9FCFF</color>
+    <color name="reply_light_onSurface">#000000</color>
+    <color name="reply_light_surfaceVariant">#E1E2E5</color>
+    <color name="reply_light_onSurfaceVariant">#454749</color>
+    <color name="reply_light_outline">#757779</color>
+    <color name="reply_light_inverseOnSurface">#EBF2F7</color>
+    <color name="reply_light_inverseSurface">#2A3136</color>
 
-    <color name="reply_black_800">#121212</color>
-    <color name="reply_black_900">#000000</color>
-
-    <color name="reply_blue_50">#eef0f2</color>
-    <color name="reply_blue_100">#d2dbe0</color>
-    <color name="reply_blue_200">#adbbc4</color>
-    <color name="reply_blue_300">#8ca2ae</color>
-    <color name="reply_blue_600">#4a6572</color>
-    <color name="reply_blue_700">#344955</color>
-    <color name="reply_blue_800">#232f34</color>
-
-    <color name="reply_orange_300">#fbd790</color>
-    <color name="reply_orange_400">#f9be64</color>
-    <color name="reply_orange_500">#f9aa33</color>
-
-    <color name="reply_red_200">#cf7779</color>
-    <color name="reply_red_400">#ff4c5d</color>
+    <!--Dark Colours-->
+    <color name="reply_dark_primary">#71D1FF</color>
+    <color name="reply_dark_onPrimary">#003549</color>
+    <color name="reply_dark_primaryContainer">#49B6E8</color>
+    <color name="reply_dark_onPrimaryContainer">#001E2C</color>
+    <color name="reply_dark_secondary">#A8CCE2</color>
+    <color name="reply_dark_onSecondary">#0C3446</color>
+    <color name="reply_dark_secondaryContainer">#8DB0C5</color>
+    <color name="reply_dark_onSecondaryContainer">#001E2C</color>
+    <color name="reply_dark_tertiary">#C9C1EA</color>
+    <color name="reply_dark_onTertiary">#312C4C</color>
+    <color name="reply_dark_tertiaryContainer">#ADA6CD</color>
+    <color name="reply_dark_onTertiaryContainer">#1C1736</color>
+    <color name="reply_dark_error">#FFB4A9</color>
+    <color name="reply_dark_errorContainer">#FF897A</color>
+    <color name="reply_dark_onError">#680003</color>
+    <color name="reply_dark_onErrorContainer">#410001</color>
+    <color name="reply_dark_background">#151D21</color>
+    <color name="reply_dark_onBackground">#DCE3E9</color>
+    <color name="reply_dark_surface">#151D21</color>
+    <color name="reply_dark_onSurface">#FFFFFF</color>
+    <color name="reply_dark_surfaceVariant">#454749</color>
+    <color name="reply_dark_onSurfaceVariant">#C5C7C9</color>
+    <color name="reply_dark_outline">#8F9193</color>
+    <color name="reply_dark_inverseOnSurface">#151D21</color>
+    <color name="reply_dark_inverseSurface">#DCE3E9</color>
 
     <color name="reply_white_50_alpha_060">#99ffffff</color>
 
-    <color name="reply_blue_50_alpha_060">#99eef0f2</color>
-
     <color name="reply_black_900_alpha_020">#33000000</color>
     <color name="reply_black_900_alpha_087">#de000000</color>
-    <color name="reply_black_900_alpha_060">#99000000</color>
 
     <!--Nav bar color protection for behavior differences between Android P and Q. All sdk-->
     <!--levels should draw fullscreen. P should color the nav bar with a translucent background -->
