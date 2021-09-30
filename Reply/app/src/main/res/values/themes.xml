@@ -38,7 +38,7 @@
 
         <item name="scrimBackground">@color/reply_white_50_alpha_060</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/nav_bar</item>
 
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Reply.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Reply.MediumComponent</item>
