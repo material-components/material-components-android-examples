@@ -20,36 +20,36 @@
     <style name="Theme.Reply.Dark" parent="Theme.Reply">
         <!--Color-->
         <item name="colorPrimary">@color/reply_dark_primary</item>
-        <item name="colorOnPrimary">@color/reply_dark_onPrimary</item>
-        <item name="colorPrimaryContainer">@color/reply_dark_primaryContainer</item>
-        <item name="colorOnPrimaryContainer">@color/reply_dark_onPrimaryContainer</item>
+        <item name="colorOnPrimary">@color/reply_dark_on_primary</item>
+        <item name="colorPrimaryContainer">@color/reply_dark_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/reply_dark_on_primary_container</item>
 
         <item name="colorSecondary">@color/reply_dark_secondary</item>
-        <item name="colorOnSecondary">@color/reply_dark_onSecondary</item>
-        <item name="colorSecondaryContainer">@color/reply_dark_secondaryContainer</item>
-        <item name="colorOnSecondaryContainer">@color/reply_dark_onSecondaryContainer</item>
+        <item name="colorOnSecondary">@color/reply_dark_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/reply_dark_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/reply_dark_on_secondary_container</item>
 
         <item name="colorTertiary">@color/reply_dark_tertiary</item>
-        <item name="colorOnTertiary">@color/reply_dark_onTertiary</item>
-        <item name="colorTertiaryContainer">@color/reply_dark_tertiaryContainer</item>
-        <item name="colorOnTertiaryContainer">@color/reply_dark_onTertiaryContainer</item>
+        <item name="colorOnTertiary">@color/reply_dark_on_tertiary</item>
+        <item name="colorTertiaryContainer">@color/reply_dark_tertiary_container</item>
+        <item name="colorOnTertiaryContainer">@color/reply_dark_on_tertiary_container</item>
 
         <item name="colorError">@color/reply_dark_error</item>
-        <item name="colorErrorContainer">@color/reply_dark_errorContainer</item>
-        <item name="colorOnError">@color/reply_dark_onError</item>
-        <item name="colorOnErrorContainer">@color/reply_dark_onErrorContainer</item>
+        <item name="colorErrorContainer">@color/reply_dark_error_container</item>
+        <item name="colorOnError">@color/reply_dark_on_error</item>
+        <item name="colorOnErrorContainer">@color/reply_dark_on_error_container</item>
 
         <item name="android:colorBackground">@color/reply_dark_background</item>
-        <item name="colorOnBackground">@color/reply_dark_onBackground</item>
+        <item name="colorOnBackground">@color/reply_dark_on_background</item>
 
         <item name="colorSurface">@color/reply_dark_surface</item>
-        <item name="colorOnSurface">@color/reply_dark_onSurface</item>
-        <item name="colorSurfaceVariant">@color/reply_dark_surfaceVariant</item>
-        <item name="colorOnSurfaceVariant">@color/reply_dark_onSurfaceVariant</item>
+        <item name="colorOnSurface">@color/reply_dark_on_surface</item>
+        <item name="colorSurfaceVariant">@color/reply_dark_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/reply_dark_on_surface_variant</item>
 
         <item name="colorOutline">@color/reply_dark_outline</item>
-        <item name="colorOnSurfaceInverse">@color/reply_dark_inverseOnSurface</item>
-        <item name="colorSurfaceInverse">@color/reply_dark_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/reply_dark_inverse_on_surface</item>
+        <item name="colorSurfaceInverse">@color/reply_dark_inverse_surface</item>
 
         <item name="scrimBackground">@color/reply_black_900_alpha_087</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
