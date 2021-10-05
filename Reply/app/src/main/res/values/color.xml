@@ -14,7 +14,7 @@
   -->
 <resources>
 
-    <!--Light Colours-->
+    <!--Light Colors-->
     <color name="reply_light_primary">#00668A</color>
     <color name="reply_light_on_primary">#FFFFFF</color>
     <color name="reply_light_primary_container">#C0E8FF</color>
@@ -41,7 +41,7 @@
     <color name="reply_light_inverse_on_surface">#EBF2F7</color>
     <color name="reply_light_inverse_surface">#2A3136</color>
 
-    <!--Dark Colours-->
+    <!--Dark Colors-->
     <color name="reply_dark_primary">#71D1FF</color>
     <color name="reply_dark_on_primary">#003549</color>
     <color name="reply_dark_primary_container">#49B6E8</color>

@@ -52,9 +52,6 @@
         <item name="colorSurfaceInverse">@color/reply_dark_inverse_surface</item>
 
         <item name="scrimBackground">@color/reply_black_900_alpha_087</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-
-        <item name="elevationOverlayEnabled">true</item>
 
         <!--System/Platform attributes-->
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">false</item>
