@@ -20,21 +20,37 @@
     <style name="Theme.Reply" parent="Theme.Material3.DayNight.NoActionBar">
 
         <!--Color-->
-        <item name="colorPrimary">@color/reply_blue_700</item>
-        <item name="colorPrimaryVariant">@color/reply_blue_800</item>
-        <item name="colorSecondary">@color/reply_orange_500</item>
-        <item name="colorSecondaryVariant">@color/reply_orange_400</item>
+        <item name="colorPrimary">@color/reply_light_primary</item>
+        <item name="colorOnPrimary">@color/reply_light_on_primary</item>
+        <item name="colorPrimaryContainer">@color/reply_light_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/reply_light_on_primary_container</item>
 
-        <item name="android:colorBackground">@color/reply_blue_50</item>
-        <item name="colorSurface">@color/reply_white_50</item>
-        <item name="colorPrimarySurfaceVariant">?attr/colorPrimaryVariant</item>
-        <item name="colorError">@color/reply_red_400</item>
+        <item name="colorSecondary">@color/reply_light_secondary</item>
+        <item name="colorOnSecondary">@color/reply_light_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/reply_light_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/reply_light_on_secondary_container</item>
 
-        <item name="colorOnPrimary">@color/reply_white_50</item>
-        <item name="colorOnSecondary">@color/reply_black_900</item>
-        <item name="colorOnBackground">@color/reply_black_900</item>
-        <item name="colorOnSurface">@color/reply_black_900</item>
-        <item name="colorOnError">@color/reply_black_900</item>
+        <item name="colorTertiary">@color/reply_light_tertiary</item>
+        <item name="colorOnTertiary">@color/reply_light_on_tertiary</item>
+        <item name="colorTertiaryContainer">@color/reply_light_tertiary_container</item>
+        <item name="colorOnTertiaryContainer">@color/reply_light_on_tertiary_container</item>
+
+        <item name="colorError">@color/reply_light_error</item>
+        <item name="colorErrorContainer">@color/reply_light_error_container</item>
+        <item name="colorOnError">@color/reply_light_on_error</item>
+        <item name="colorOnErrorContainer">@color/reply_light_on_error_container</item>
+
+        <item name="android:colorBackground">@color/reply_light_background</item>
+        <item name="colorOnBackground">@color/reply_light_on_background</item>
+
+        <item name="colorSurface">@color/reply_light_surface</item>
+        <item name="colorOnSurface">@color/reply_light_on_surface</item>
+        <item name="colorSurfaceVariant">@color/reply_light_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/reply_light_on_surface_variant</item>
+
+        <item name="colorOutline">@color/reply_light_outline</item>
+        <item name="colorOnSurfaceInverse">@color/reply_light_inverse_on_surface</item>
+        <item name="colorSurfaceInverse">@color/reply_light_inverse_surface</item>
 
         <item name="scrimBackground">@color/reply_white_50_alpha_060</item>
         <item name="android:statusBarColor">@android:color/transparent</item>

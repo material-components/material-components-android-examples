@@ -95,7 +95,7 @@ class BottomNavDrawerFragment :
             0
         ).apply {
             fillColor = ColorStateList.valueOf(
-                backgroundContext.themeColor(R.attr.colorPrimarySurfaceVariant)
+                backgroundContext.themeColor(R.attr.colorPrimaryContainer)
             )
             elevation = resources.getDimension(R.dimen.plane_08)
             initializeElevationOverlay(requireContext())

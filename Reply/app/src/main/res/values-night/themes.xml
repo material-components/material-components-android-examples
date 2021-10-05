@@ -19,26 +19,39 @@
 
     <style name="Theme.Reply.Dark" parent="Theme.Reply">
         <!--Color-->
-        <item name="colorPrimary">@color/reply_blue_200</item>
-        <item name="colorPrimaryVariant">@color/reply_blue_300</item>
-        <item name="colorSecondary">@color/reply_orange_300</item>
-        <item name="colorSecondaryVariant">@color/reply_orange_300</item>
+        <item name="colorPrimary">@color/reply_dark_primary</item>
+        <item name="colorOnPrimary">@color/reply_dark_on_primary</item>
+        <item name="colorPrimaryContainer">@color/reply_dark_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/reply_dark_on_primary_container</item>
 
-        <item name="android:colorBackground">@color/reply_black_900</item>
-        <item name="colorSurface">@color/reply_black_800</item>
-        <item name="colorPrimarySurfaceVariant">?attr/colorSurface</item>
-        <item name="colorError">@color/reply_red_200</item>
+        <item name="colorSecondary">@color/reply_dark_secondary</item>
+        <item name="colorOnSecondary">@color/reply_dark_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/reply_dark_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/reply_dark_on_secondary_container</item>
 
-        <item name="colorOnPrimary">@color/reply_black_900</item>
-        <item name="colorOnSecondary">@color/reply_black_900</item>
-        <item name="colorOnBackground">@color/reply_white_50</item>
-        <item name="colorOnSurface">@color/reply_white_50</item>
-        <item name="colorOnError">@color/reply_black_900</item>
+        <item name="colorTertiary">@color/reply_dark_tertiary</item>
+        <item name="colorOnTertiary">@color/reply_dark_on_tertiary</item>
+        <item name="colorTertiaryContainer">@color/reply_dark_tertiary_container</item>
+        <item name="colorOnTertiaryContainer">@color/reply_dark_on_tertiary_container</item>
+
+        <item name="colorError">@color/reply_dark_error</item>
+        <item name="colorErrorContainer">@color/reply_dark_error_container</item>
+        <item name="colorOnError">@color/reply_dark_on_error</item>
+        <item name="colorOnErrorContainer">@color/reply_dark_on_error_container</item>
+
+        <item name="android:colorBackground">@color/reply_dark_background</item>
+        <item name="colorOnBackground">@color/reply_dark_on_background</item>
+
+        <item name="colorSurface">@color/reply_dark_surface</item>
+        <item name="colorOnSurface">@color/reply_dark_on_surface</item>
+        <item name="colorSurfaceVariant">@color/reply_dark_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/reply_dark_on_surface_variant</item>
+
+        <item name="colorOutline">@color/reply_dark_outline</item>
+        <item name="colorOnSurfaceInverse">@color/reply_dark_inverse_on_surface</item>
+        <item name="colorSurfaceInverse">@color/reply_dark_inverse_surface</item>
 
         <item name="scrimBackground">@color/reply_black_900_alpha_087</item>
-        <item name="android:statusBarColor">@color/reply_black_900_alpha_060</item>
-
-        <item name="elevationOverlayEnabled">true</item>
 
         <!--System/Platform attributes-->
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">false</item>
