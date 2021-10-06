@@ -31,20 +31,21 @@
         android:id="@+id/email_frame"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_marginEnd="@dimen/grid_2"
+        android:layout_marginStart="@dimen/grid_2"
         android:layout_marginVertical="@dimen/grid_0_25"
-        android:layout_marginHorizontal="@dimen/grid_0_5"
-        android:background="?attr/colorSecondary">
+        android:layout_marginHorizontal="@dimen/grid_0_5">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="@dimen/plane_00"
             android:clickable="true"
             android:focusable="true"
             android:onClick="@{(view) -> listener.onEmailClicked(view, email)}"
             android:onLongClick="@{(view) -> listener.onEmailLongPressed(email)}"
             app:cardPreventCornerOverlap="false"
+            style="?attr/materialCardViewElevatedStyle"
             android:transitionName="@{@string/email_card_transition_name(email.id)}">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -52,9 +53,18 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/grid_2"
                 android:paddingBottom="@dimen/grid_2">
-
+                <ImageView
+                    android:id="@+id/email_item_star_image_view"
+                    android:layout_width="@dimen/email_star_image_size"
+                    android:layout_height="@dimen/email_star_image_size"
+                    android:layout_marginTop="@dimen/grid_1"
+                    android:layout_marginEnd="@dimen/grid_4"
+                    android:contentDescription="@string/email_sender_profile_content_desc"
+                    android:src="@drawable/ic_star_border"
+                    app:glideCircularCrop="@{true}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
                 <TextView
-                    android:textAppearance="?attr/textAppearanceBody2"
                     android:id="@+id/sender_text_view"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -63,29 +73,37 @@
                     android:layout_marginEnd="@dimen/grid_2"
                     android:maxLines="1"
                     android:text="@{email.senderPreview}"
-                    tools:text="Google Express - 12m"
-                    app:layout_constraintEnd_toStartOf="@+id/sender_profile_image_view"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    app:layout_constraintStart_toEndOf="@+id/sender_profile_image_view"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Google Express" />
+                <TextView
+                    android:id="@+id/time_sent_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:layout_marginTop="@dimen/grid_1"
+                    android:layout_marginStart="@dimen/grid_2"
+                    android:text="@{email.timeSent}"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    app:layout_constraintStart_toEndOf="@+id/sender_profile_image_view"
+                    app:layout_constraintTop_toBottomOf="@+id/sender_text_view"
+                    tools:text="10 min ago" />
                 <TextView
                     android:id="@+id/subject_text_view"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/grid_1"
-                    android:layout_marginEnd="@dimen/grid_2"
-                    android:layout_marginStart="@dimen/grid_2"
-                    android:textAppearance="?attr/textAppearanceHeadline5"
-                    app:layout_goneMarginEnd="@dimen/grid_2"
                     android:maxLines="1"
                     android:text="@{email.subject}"
-                    tools:text="Package Shipped!"
-                    app:layout_constraintEnd_toStartOf="@+id/sender_profile_image_view"
+                    android:layout_marginTop="@dimen/grid_1"
+                    android:layout_marginStart="@dimen/grid_2"
+                    android:textAppearance="@style/TextAppearance.Reply.EmailSubjectTitle"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/sender_text_view"/>
-
+                    app:layout_constraintTop_toBottomOf="@+id/time_sent_text_view"
+                    app:layout_goneMarginEnd="@dimen/grid_2"
+                    tools:text="Package Shipped!" />
                 <TextView
-                    android:textAppearance="?attr/textAppearanceBody1"
+                    android:textAppearance="?attr/textAppearanceBody2"
                     android:id="@+id/body_preview_text_view"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -115,7 +133,6 @@
                     app:goneIf="@{!email.hasAttachments}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     android:orientation="horizontal" />
-
                 <ImageView
                     android:id="@+id/sender_profile_image_view"
                     android:layout_width="@dimen/email_sender_profile_image_size"
@@ -124,7 +141,7 @@
                     android:layout_marginStart="@dimen/grid_2"
                     android:layout_marginEnd="@dimen/grid_2"
                     android:contentDescription="@string/email_sender_profile_content_desc"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:glideSrc="@{email.sender.avatar}"
                     app:glideCircularCrop="@{true}" />

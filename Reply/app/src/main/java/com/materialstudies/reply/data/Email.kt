@@ -31,9 +31,10 @@ data class Email(
     val attachments: List<EmailAttachment> = emptyList(),
     var isImportant: Boolean = false,
     var isStarred: Boolean = false,
-    var mailbox: Mailbox = Mailbox.INBOX
+    var mailbox: Mailbox = Mailbox.INBOX,
+    var timeSent: String = ""
 ) {
-    val senderPreview: String = "${sender.fullName} - 4 hrs ago"
+    val senderPreview: String = "${sender.fullName}"
     val hasBody: Boolean = body.isNotBlank()
     val hasAttachments: Boolean = attachments.isNotEmpty()
     val recipientsPreview: String = recipients

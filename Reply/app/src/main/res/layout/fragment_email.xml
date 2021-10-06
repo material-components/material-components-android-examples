@@ -58,7 +58,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:text="@{email.subject}"
-                    android:textAppearance="?attr/textAppearanceHeadline3"
+                    android:textAppearance="?attr/textAppearanceBody1"
                     tools:text="High school reunion" />
 
                 <ImageButton

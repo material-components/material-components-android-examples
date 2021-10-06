@@ -40,7 +40,8 @@ object EmailStore {
 
                 As always, thank you for shopping with us and we hope you love our specially formulated Cucumber Mask!
             """.trimIndent(),
-            isStarred = true
+            isStarred = true,
+            timeSent = "10 min ago"
         ),
         Email(
             1L,
@@ -55,7 +56,8 @@ object EmailStore {
                 Talk to you soon,
 
                 Ali
-            """.trimIndent()
+            """.trimIndent(),
+            timeSent = "2 hours ago"
         ),
         Email(
             2L,
@@ -69,7 +71,8 @@ object EmailStore {
                 EmailAttachment(R.drawable.paris_3, "City street in Paris"),
                 EmailAttachment(R.drawable.paris_4, "Street with bike in Paris")
             ),
-            true
+            true,
+            timeSent = "20 min ago"
         ),
         Email(
             3L,
@@ -83,7 +86,8 @@ object EmailStore {
 
                 Anyway, it turns out she is on the organizing committee for the high school reunion this fall. I don't know if you were planning on going or not, but she could definitely use our help in trying to track down lots of missing alums. If you can make it, we're doing a little phone-tree party at her place next Saturday, hoping that if we can find one person, thee more will...
             """.trimIndent(),
-            mailbox = Mailbox.SENT
+            mailbox = Mailbox.SENT,
+            timeSent = "10 min ago"
         ),
         Email(
             4L,
@@ -101,14 +105,16 @@ object EmailStore {
 
                 Maybe we can jump on the phone later today if you have a second.
             """.trimIndent(),
-            isStarred = true
+            isStarred = true,
+            timeSent = "10 min ago"
         ),
         Email(
             5L,
             AccountStore.getContactAccountById(13L),
             listOf(AccountStore.getDefaultUserAccount()),
             "Update to Your Itinerary",
-            ""
+            "",
+            timeSent = "10 min ago"
         ),
         Email(
             6L,
@@ -117,14 +123,16 @@ object EmailStore {
             "Recipe to try",
             "Raspberry Pie: We should make this pie recipe tonight! The filling is " +
                 "very quick to put together.",
-            mailbox = Mailbox.SENT
+            mailbox = Mailbox.SENT,
+            timeSent = "10 min ago"
         ),
         Email(
             7L,
             AccountStore.getContactAccountById(9L),
             listOf(AccountStore.getDefaultUserAccount()),
             "Delivered",
-            "Your shoes should be waiting for you at home!"
+            "Your shoes should be waiting for you at home!",
+            timeSent = "10 min ago"
         ),
         Email(
           8L,
@@ -136,7 +144,8 @@ object EmailStore {
               
               Your alpha testers will be automatically notified. If you'd rather send them a link directly, go to your Google Play Console and follow the instructions for obtaining an open alpha testing link.
           """.trimIndent(),
-          mailbox = Mailbox.TRASH
+          mailbox = Mailbox.TRASH,
+          timeSent = "10 min ago"
         ),
         Email(
           9L,
@@ -148,7 +157,8 @@ object EmailStore {
             
             Wanted to email and see what you thought of
           """.trimIndent(),
-          mailbox = Mailbox.DRAFTS
+          mailbox = Mailbox.DRAFTS,
+          timeSent = "10 min ago"
         ),
         Email(
           10L,
@@ -160,7 +170,8 @@ object EmailStore {
             
             Whether you're an experienced hiker or just looking to get outside for the afternoon, there's a segment that suits you.
           """.trimIndent(),
-          mailbox = Mailbox.TRASH
+          mailbox = Mailbox.TRASH,
+          timeSent = "10 min ago"
         ),
         Email(
           10L,
@@ -170,7 +181,8 @@ object EmailStore {
           """
             You've been selected as a winner in our latest raffle! To claim your prize, click on the link.
           """.trimIndent(),
-          mailbox = Mailbox.SPAM
+          mailbox = Mailbox.SPAM,
+          timeSent = "10 min ago"
         )
     )
 
