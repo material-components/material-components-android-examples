@@ -57,7 +57,7 @@ class EmailViewHolder(
         binding.root.isActivated = email.isStarred
         starImageView.setOnClickListener { view: View ->
             email.isStarred = !email.isStarred
-            fillStarImageView(view as ImageView, email.isStarred)
+            fillStarImageView(starImageView, email.isStarred)
         }
         fillStarImageView(starImageView, email.isStarred)
 

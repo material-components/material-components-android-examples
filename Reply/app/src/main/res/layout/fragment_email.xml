@@ -83,7 +83,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/sender_profile_image_view"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/subject_text_view"
-                    android:text="@{email.senderPreview}"
+                    android:text="@{email.sender.fullName}"
                     android:textAppearance="?attr/textAppearanceBody2"
                     tools:text="Ali Connors -- 12m" />
 

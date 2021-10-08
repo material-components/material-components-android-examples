@@ -34,7 +34,6 @@ data class Email(
     var mailbox: Mailbox = Mailbox.INBOX,
     var timeSent: String = ""
 ) {
-    val senderPreview: String = "${sender.fullName}"
     val hasBody: Boolean = body.isNotBlank()
     val hasAttachments: Boolean = attachments.isNotEmpty()
     val recipientsPreview: String = recipients
