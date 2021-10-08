@@ -22,14 +22,13 @@ import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.databinding.EmailItemLayoutBinding
 import com.materialstudies.reply.ui.common.EmailAttachmentAdapter
-import com.materialstudies.reply.util.setTextAppearanceCompat
-import com.materialstudies.reply.util.themeStyle
 import kotlin.math.abs
+import android.widget.ImageView
 
 class EmailViewHolder(
     private val binding: EmailItemLayoutBinding,
     listener: EmailAdapter.EmailAdapterListener
-): RecyclerView.ViewHolder(binding.root), ReboundingSwipeActionCallback.ReboundableViewHolder {
+): RecyclerView.ViewHolder(binding.root), ReboundingSwipeActionCallback.ReboundableViewHolder{
 
     private val attachmentAdapter = object : EmailAttachmentAdapter() {
         override fun getLayoutIdForPosition(position: Int): Int
@@ -45,26 +44,22 @@ class EmailViewHolder(
         binding.run {
             this.listener = listener
             attachmentRecyclerView.adapter = attachmentAdapter
-            root.background = EmailSwipeActionDrawable(root.context)
+            /*
+                TODO: Alter animation to not populate corners
+                root.background = EmailSwipeActionDrawable(root.context)
+             */
         }
     }
 
     fun bind(email: Email) {
+        val starImageView = binding.emailItemStarImageView
         binding.email = email
         binding.root.isActivated = email.isStarred
-
-        // Set the subject's TextAppearance
-        val textAppearance = binding.subjectTextView.context.themeStyle(
-            if (email.isImportant) {
-                R.attr.textAppearanceHeadline4
-            } else {
-                R.attr.textAppearanceHeadline5
-            }
-        )
-        binding.subjectTextView.setTextAppearanceCompat(
-            binding.subjectTextView.context,
-            textAppearance
-        )
+        starImageView.setOnClickListener { view: View ->
+            email.isStarred = !email.isStarred
+            fillStarImageView(email.isStarred)
+        }
+        fillStarImageView(email.isStarred)
 
         attachmentAdapter.submitList(email.attachments)
 
@@ -101,6 +96,7 @@ class EmailViewHolder(
             thresholdMet && !isStarred -> true
             else -> return
         }
+        fillStarImageView(shouldStar)
         binding.root.isActivated = shouldStar
     }
 
@@ -118,6 +114,15 @@ class EmailViewHolder(
             shapeAppearanceModel = shapeAppearanceModel.toBuilder()
                 .setTopLeftCornerSize(interpolation * starredCornerSize)
                 .build()
+        }
+    }
+
+    private fun fillStarImageView(isStarred: Boolean) {
+        val starImageView = binding.emailItemStarImageView
+        if (!isStarred) {
+            starImageView.setImageResource(R.drawable.ic_star_border)
+        } else {
+            starImageView.setImageResource(R.drawable.ic_star_filled)
         }
     }
 }
