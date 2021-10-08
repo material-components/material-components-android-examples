@@ -57,9 +57,9 @@ class EmailViewHolder(
         binding.root.isActivated = email.isStarred
         starImageView.setOnClickListener { view: View ->
             email.isStarred = !email.isStarred
-            fillStarImageView(starImageView, email.isStarred)
+            fillStarImageView(email.isStarred)
         }
-        fillStarImageView(starImageView, email.isStarred)
+        fillStarImageView(email.isStarred)
 
         attachmentAdapter.submitList(email.attachments)
 
@@ -96,7 +96,7 @@ class EmailViewHolder(
             thresholdMet && !isStarred -> true
             else -> return
         }
-        fillStarImageView(binding.emailItemStarImageView, shouldStar)
+        fillStarImageView(shouldStar)
         binding.root.isActivated = shouldStar
     }
 
@@ -117,11 +117,12 @@ class EmailViewHolder(
         }
     }
 
-    private fun fillStarImageView(iv: ImageView, isStarred: Boolean) {
+    private fun fillStarImageView(isStarred: Boolean) {
+        val starImageView = binding.emailItemStarImageView
         if (!isStarred) {
-            iv.setImageResource(R.drawable.ic_star_border)
+            starImageView.setImageResource(R.drawable.ic_star_border)
         } else {
-            iv.setImageResource(R.drawable.ic_star_filled)
+            starImageView.setImageResource(R.drawable.ic_star_filled)
         }
     }
 }

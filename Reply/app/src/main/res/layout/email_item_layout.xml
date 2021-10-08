@@ -37,6 +37,7 @@
         android:layout_marginHorizontal="@dimen/grid_0_5">
 
         <com.google.android.material.card.MaterialCardView
+            style="?attr/materialCardViewElevatedStyle"
             android:id="@+id/card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,7 +48,6 @@
             app:cardPreventCornerOverlap="false"
             android:outlineAmbientShadowColor="@android:color/transparent"
             android:outlineSpotShadowColor="@android:color/transparent"
-            style="?attr/materialCardViewElevatedStyle"
             android:transitionName="@{@string/email_card_transition_name(email.id)}">
 
             <androidx.constraintlayout.widget.ConstraintLayout
