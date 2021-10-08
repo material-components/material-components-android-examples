@@ -16,128 +16,69 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-        <variable
-            name="email"
-            type="com.materialstudies.reply.data.Email" />
-    </data>
+  <data>
+    <variable
+        name="email"
+        type="com.materialstudies.reply.data.Email" />
+  </data>
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nested_scroll_view"
+  <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginEnd="@dimen/grid_2"
+      android:layout_marginStart="@dimen/grid_2"
+      android:layout_marginVertical="@dimen/grid_4"
+      android:layout_marginHorizontal="@dimen/grid_0_5">
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:paddingHorizontal="@dimen/grid_0_5"
-        android:paddingTop="@dimen/grid_1"
-        android:clipToPadding="false"
-        android:background="?android:colorBackground"
-        app:paddingTopSystemWindowInsets="@{true}">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/email_card_view"
-            android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:paddingTop="@dimen/grid_2"
+          android:paddingBottom="@dimen/grid_2">
+        <TextView
+            android:id="@+id/subject_text_view"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:transitionName="@string/email_card_detail_transition_name">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/menu_item_constraint_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="@dimen/grid_2"
-                android:paddingTop="@dimen/grid_3"
-                android:paddingBottom="@dimen/bottom_app_bar_height"
-                app:paddingBottomSystemWindowInsets="@{true}">
-
-                <TextView
-                    android:id="@+id/subject_text_view"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/grid_1"
-                    android:layout_marginEnd="@dimen/grid_1"
-                    app:layout_constraintEnd_toStartOf="@+id/navigation_icon"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:text="@{email.subject}"
-                    android:textAppearance="?attr/textAppearanceBody1"
-                    tools:text="High school reunion" />
-
-                <ImageButton
-                    android:id="@+id/navigation_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/grid_2"
-                    app:layout_constraintEnd_toEndOf="@+id/sender_profile_image_view"
-                    app:layout_constraintStart_toStartOf="@+id/sender_profile_image_view"
-                    app:layout_constraintTop_toTopOf="@+id/subject_text_view"
-                    android:alpha="?attr/emphasisMediumAlpha"
-                    android:background="?attr/actionBarItemBackground"
-                    android:contentDescription="@string/navigate_back_icon_content_desc"
-                    app:srcCompat="@drawable/ic_arrow_down" />
-
-                <TextView
-                    android:id="@+id/sender_text_view"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/grid_1"
-                    android:layout_marginEnd="@dimen/grid_1"
-                    app:layout_constraintEnd_toStartOf="@+id/sender_profile_image_view"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/subject_text_view"
-                    android:text="@{email.sender.fullName}"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    tools:text="Ali Connors -- 12m" />
-
-                <TextView
-                    android:id="@+id/recipient_text_view"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/grid_0_25"
-                    android:layout_marginEnd="@dimen/grid_1"
-                    app:layout_constraintEnd_toStartOf="@+id/sender_profile_image_view"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/sender_text_view"
-                    android:text="@{@string/email_recipient_to(email.recipientsPreview)}"
-                    android:textAppearance="?attr/textAppearanceCaption"
-                    android:textColor="@color/color_on_surface_emphasis_medium" />
-
-                <ImageView
-                    android:id="@+id/sender_profile_image_view"
-                    android:layout_width="@dimen/email_sender_profile_image_size"
-                    android:layout_height="@dimen/email_sender_profile_image_size"
-                    android:contentDescription="@string/email_sender_profile_content_desc"
-                    android:scaleType="centerCrop"
-                    app:glideCircularCrop="@{true}"
-                    app:glideSrc="@{email.sender.avatar}"
-                    app:layout_constraintTop_toTopOf="@id/sender_text_view"
-                    app:layout_constraintBottom_toBottomOf="@+id/recipient_text_view"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    tools:src="@drawable/avatar_3" />
-
-                <TextView
-                    android:id="@+id/body_text_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/grid_3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/sender_profile_image_view"
-                    android:text="@{email.body}"
-                    android:textAppearance="?attr/textAppearanceBody1" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/attachment_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/grid_3"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/body_text_view"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:overScrollMode="never" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-    </androidx.core.widget.NestedScrollView>
-
+            android:layout_marginTop="@dimen/grid_1"
+            android:layout_marginStart="@dimen/grid_2"
+            android:text="@{email.subject}"
+            android:textAppearance="@style/TextAppearance.Reply.EmailSubject"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="High school reunion" />
+        <!-- TODO: Update this with dynamic data (text)-->
+        <TextView
+            android:id="@+id/num_messages_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="3 more messages"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:layout_marginTop="@dimen/grid_1"
+            android:layout_marginStart="@dimen/grid_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subject_text_view"
+            tools:text="3 more messages" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/email_delete_button"
+            style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_delete"
+            app:iconSize="24dp"
+            tools:layout_editor_absoluteX="246dp"
+            tools:layout_editor_absoluteY="7dp" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/email_settings_button"
+            style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_settings"
+            app:iconSize="24dp"
+            tools:layout_editor_absoluteX="307dp"
+            tools:layout_editor_absoluteY="7dp" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+  </FrameLayout>
 </layout>

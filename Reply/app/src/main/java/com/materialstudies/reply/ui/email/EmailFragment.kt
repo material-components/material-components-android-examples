@@ -70,9 +70,9 @@ class EmailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.navigationIcon.setOnClickListener {
-            findNavController().navigateUp()
-        }
+//        binding.navigationIcon.setOnClickListener {
+//            findNavController().navigateUp()
+//        }
 
         val email = EmailStore.get(emailId)
         if (email == null) {
@@ -84,14 +84,14 @@ class EmailFragment : Fragment() {
             this.email = email
 
             // Set up the staggered/masonry grid recycler
-            attachmentRecyclerView.layoutManager = GridLayoutManager(
-                requireContext(),
-                MAX_GRID_SPANS
-            ).apply {
-                spanSizeLookup = attachmentAdapter.variableSpanSizeLookup
-            }
-            attachmentRecyclerView.adapter = attachmentAdapter
-            attachmentAdapter.submitList(email.attachments)
+//            attachmentRecyclerView.layoutManager = GridLayoutManager(
+//                requireContext(),
+//                MAX_GRID_SPANS
+//            ).apply {
+//                spanSizeLookup = attachmentAdapter.variableSpanSizeLookup
+//            }
+//            attachmentRecyclerView.adapter = attachmentAdapter
+//            attachmentAdapter.submitList(email.attachments)
         }
     }
 
