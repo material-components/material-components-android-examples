@@ -86,6 +86,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!--  TODO: Add RecyclerView logic here  -->
     <com.google.android.material.card.MaterialCardView
+        style="?attr/materialCardViewElevatedStyle"
         android:id="@+id/email_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

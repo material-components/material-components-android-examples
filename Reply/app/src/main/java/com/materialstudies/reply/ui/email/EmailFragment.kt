@@ -98,6 +98,7 @@ class EmailFragment : Fragment() {
         }
 
         // TODO: If recipient email is the current user, switch to "me".
+        // TODO: Add this to a util file.
         for (index in binding.email!!.recipients.indices) {
             val account = binding.email!!.recipients[index]
             recipientsString += if (index == 0) {
@@ -115,8 +116,6 @@ class EmailFragment : Fragment() {
             EmailStore.update(binding.email!!.id) { isStarred = !isStarred }
             fillStarImageView(binding.email!!.isStarred)
         }
-
-//        binding.bodyTextView.movementMethod = ScrollingMovementMethod()
     }
 
     private fun fillStarImageView(isStarred: Boolean) {
