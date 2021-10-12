@@ -18,6 +18,7 @@ package com.materialstudies.reply.ui.email
 
 import android.graphics.Color
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,6 +44,7 @@ class EmailFragment : Fragment() {
     private val emailId: Long by lazy(NONE) { args.emailId }
 
     private lateinit var binding: FragmentEmailBinding
+    private var recipientsString = "";
     private val attachmentAdapter = EmailAttachmentGridAdapter(MAX_GRID_SPANS)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,9 +72,11 @@ class EmailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        binding.navigationIcon.setOnClickListener {
-//            findNavController().navigateUp()
-//        }
+        binding.emailRecipientsTextView.text = recipientsString
+
+        binding.navigationIcon.setOnClickListener {
+            findNavController().navigateUp()
+        }
 
         val email = EmailStore.get(emailId)
         if (email == null) {
@@ -82,16 +86,45 @@ class EmailFragment : Fragment() {
 
         binding.run {
             this.email = email
-
             // Set up the staggered/masonry grid recycler
-//            attachmentRecyclerView.layoutManager = GridLayoutManager(
-//                requireContext(),
-//                MAX_GRID_SPANS
-//            ).apply {
-//                spanSizeLookup = attachmentAdapter.variableSpanSizeLookup
-//            }
-//            attachmentRecyclerView.adapter = attachmentAdapter
-//            attachmentAdapter.submitList(email.attachments)
+            attachmentRecyclerView.layoutManager = GridLayoutManager(
+                requireContext(),
+                MAX_GRID_SPANS
+            ).apply {
+                spanSizeLookup = attachmentAdapter.variableSpanSizeLookup
+            }
+            attachmentRecyclerView.adapter = attachmentAdapter
+            attachmentAdapter.submitList(email.attachments)
+        }
+
+        // TODO: If recipient email is the current user, switch to "me".
+        for (index in binding.email!!.recipients.indices) {
+            val account = binding.email!!.recipients[index]
+            recipientsString += if (index == 0) {
+                account.firstName
+            } else if (index == binding.email!!.recipients.size - 1) {
+                ", " + account.firstName
+            } else {
+                " and " + account.firstName
+            }
+        }
+        binding.emailRecipientsTextView.text = recipientsString
+
+        fillStarImageView(binding.email!!.isStarred)
+        binding.emailStarImageView.setOnClickListener {
+            EmailStore.update(binding.email!!.id) { isStarred = !isStarred }
+            fillStarImageView(binding.email!!.isStarred)
+        }
+
+//        binding.bodyTextView.movementMethod = ScrollingMovementMethod()
+    }
+
+    private fun fillStarImageView(isStarred: Boolean) {
+        val starImageView = binding.emailStarImageView
+        if (!isStarred) {
+            starImageView.setImageResource(R.drawable.ic_star_border)
+        } else {
+            starImageView.setImageResource(R.drawable.ic_star_filled)
         }
     }
 
