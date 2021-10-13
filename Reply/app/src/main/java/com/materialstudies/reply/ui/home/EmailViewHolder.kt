@@ -56,7 +56,7 @@ class EmailViewHolder(
         binding.email = email
         binding.root.isActivated = email.isStarred
         starImageView.setOnClickListener { view: View ->
-            email.isStarred = !email.isStarred
+            binding.listener?.onEmailStarChanged(email, !email.isStarred)
             email.notifyChange()
         }
 

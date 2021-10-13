@@ -30,7 +30,7 @@ object AccountStore {
         Account(
             1L,
             0L,
-            "Richard",
+            "Jeff",
             "Hansen",
             "hikingfan@gmail.com",
             "hkngfan@outside.com",
@@ -40,7 +40,7 @@ object AccountStore {
         Account(
             2L,
             0L,
-            "Joe",
+            "Jeff",
             "H",
             "jeffersonloveshiking@gmail.com",
             "jeffersonloveshiking@work.com",
@@ -49,7 +49,7 @@ object AccountStore {
         Account(
             3L,
             0L,
-            "Chris",
+            "Jeff",
             "Hansen",
             "jeffersonc@google.com",
             "jeffersonc@gmail.com",

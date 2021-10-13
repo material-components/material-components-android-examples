@@ -31,7 +31,7 @@ object EmailStore {
         Email(
             0L,
             AccountStore.getContactAccountById(9L),
-            AccountStore.getAllUserAccounts(),
+            listOf(AccountStore.getDefaultUserAccount(), AccountStore.getContactAccountById(1), AccountStore.getContactAccountById(3)),
             "Package shipped!",
             """
                 Cucumber Mask Facial has shipped.

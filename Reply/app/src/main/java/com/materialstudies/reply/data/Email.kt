@@ -33,7 +33,8 @@ data class Email (
     var isImportant: Boolean = false,
     var isStarred: Boolean = false,
     var mailbox: Mailbox = Mailbox.INBOX,
-    var timeSent: String = "") : BaseObservable () {
+    var timeSent: String = ""
+) : BaseObservable() {
     val hasBody: Boolean = body.isNotBlank()
     val hasAttachments: Boolean = attachments.isNotEmpty()
     val recipientsPreview: String = getRecipientPreview()
