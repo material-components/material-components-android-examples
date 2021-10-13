@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
           <ImageView
-              android:id="@+id/imageView"
+              android:id="@+id/menu_icon_settings"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:src="@drawable/ic_triple_vert_dots"
