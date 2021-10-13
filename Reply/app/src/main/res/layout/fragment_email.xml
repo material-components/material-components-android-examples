@@ -30,8 +30,8 @@
       android:layout_marginHorizontal="@dimen/grid_0_5"
       android:layout_marginVertical="@dimen/grid_4">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/email_app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/grid_2"
@@ -39,51 +39,58 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-      <!-- TODO: Update this with dynamic data (text)-->
-      <ImageView
-          android:id="@+id/imageView"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginEnd="@dimen/grid_2"
-          android:src="@drawable/ic_triple_vert_dots"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintTop_toTopOf="parent" />
-      <TextView
-          android:id="@+id/num_messages_text_view"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:gravity="center"
-          android:text="3 more messages"
-          android:textAppearance="?attr/textAppearanceBody2"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="@+id/navigation_icon"
-          app:layout_constraintTop_toBottomOf="@+id/subject_text_view"
-          tools:text="3 more messages" />
-      <!-- TODO: Set up Option Menu functionality -->
-      <TextView
-          android:id="@+id/subject_text_view"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:gravity="center"
-          android:text="@{email.subject}"
-          android:textAppearance="@style/TextAppearance.Reply.EmailSubject"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          tools:text="High school reunion" />
-      <com.google.android.material.button.MaterialButton
-          android:id="@+id/navigation_icon"
-          style="@style/Widget.App.Button.OutlinedButton.IconOnly"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginStart="@dimen/grid_2"
-          app:icon="@drawable/ic_arrow_back"
-          app:iconSize="24dp"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+      <androidx.appcompat.widget.Toolbar
+          android:id="@+id/email_toolbar"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/email_toolbar_constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+          <ImageView
+              android:id="@+id/imageView"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@drawable/ic_triple_vert_dots"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintTop_toTopOf="parent" />
+          <TextView
+              android:id="@+id/num_messages_text_view"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:text="3 more messages"
+              android:textAppearance="?attr/textAppearanceBody2"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="@+id/navigation_icon"
+              app:layout_constraintTop_toBottomOf="@+id/subject_text_view"
+              tools:text="3 more messages" />
+          <!-- TODO: Set up Option Menu functionality -->
+          <TextView
+              android:id="@+id/subject_text_view"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:text="@{email.subject}"
+              android:textAppearance="@style/TextAppearance.Reply.EmailSubject"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              tools:text="High school reunion" />
+          <Button
+              android:id="@+id/navigation_icon"
+              style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              app:icon="@drawable/ic_arrow_back"
+              app:iconSize="24dp"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+      </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
     <!--  TODO: Add RecyclerView logic here  -->
     <com.google.android.material.card.MaterialCardView
         style="?attr/materialCardViewElevatedStyle"
@@ -94,7 +101,7 @@
         android:transitionName="@string/email_card_detail_transition_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+        app:layout_constraintTop_toBottomOf="@+id/email_app_bar_layout">
       <androidx.constraintlayout.widget.ConstraintLayout
           android:id="@+id/email_content_constraint_layout"
           android:layout_width="match_parent"
@@ -104,14 +111,13 @@
           android:paddingHorizontal="@dimen/grid_2"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+          app:layout_constraintTop_toBottomOf="@+id/email_app_bar_layout">
         <ImageView
             android:id="@+id/sender_profile_image_view"
             android:layout_width="@dimen/email_sender_profile_image_size"
             android:layout_height="@dimen/email_sender_profile_image_size"
             android:contentDescription="@string/email_sender_profile_content_desc"
             android:scaleType="centerCrop"
-            app:glideCircularCrop="@{true}"
             app:glideSrc="@{email.sender.avatar}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -121,8 +127,11 @@
             android:id="@+id/email_star_image_view"
             android:layout_width="@dimen/email_star_image_size"
             android:layout_height="@dimen/email_star_image_size"
-            android:contentDescription="@string/email_sender_profile_content_desc"
-            android:src="@drawable/ic_star_border"
+            android:contentDescription="@{email.starred ? @string/email_starred_content_desc : @string/email_unstarred_content_desc}"
+            android:src="@{email.starred ? @drawable/ic_star_filled : @drawable/ic_star_border}"
+            android:padding="@dimen/grid_1"
+            android:foreground="@drawable/ic_circle"
+            android:background="?attr/selectableItemBackgroundBorderless"
             app:glideCircularCrop="@{true}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -154,6 +163,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/grid_1"
             android:textAppearance="?attr/textAppearanceBody2"
+            android:text="@{email.recipientsPreview}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sender_profile_image_view"
             tools:text="To me, Ziad and Lily" />
@@ -176,22 +186,23 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
-        <com.google.android.material.button.MaterialButton
+        <Button
+            android:id="@+id/email_reply_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/grid_1"
             android:layout_marginTop="@dimen/grid_1"
-            android:text="Reply"
+            android:text="@string/email_reply"
             app:layout_constraintEnd_toStartOf="@+id/guidelineLeft"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/attachment_recycler_view" />
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButton"
+        <Button
+            android:id="@+id/email_reply_all_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/grid_1"
             android:layout_marginTop="@dimen/grid_1"
-            android:text="Reply All"
+            android:text="@string/email_reply_all"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
             app:layout_constraintTop_toBottomOf="@+id/attachment_recycler_view" />
@@ -202,8 +213,7 @@
             android:layout_marginTop="@dimen/grid_3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/body_text_view"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:overScrollMode="never" />
+            app:layout_constraintEnd_toEndOf="parent" />
       </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
   </androidx.constraintlayout.widget.ConstraintLayout>

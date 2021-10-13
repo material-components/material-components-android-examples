@@ -54,6 +54,10 @@
     <string name="email_recipient_to">To %1$s</string>
     <string name="email_card_transition_name">email_card_%1$s</string>
     <string name="email_card_detail_transition_name">email_card_detail</string>
+    <string name="email_starred_content_desc">Starred Email</string>
+    <string name="email_unstarred_content_desc">Unstarred Email</string>
+    <string name="email_reply">Reply</string>
+    <string name="email_reply_all">Reply All</string>
 
     <!--ComposeFragment-->
     <string name="compose_close_content_desc">Close editing email</string>

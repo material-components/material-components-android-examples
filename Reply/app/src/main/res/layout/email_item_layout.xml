@@ -61,8 +61,11 @@
                     android:layout_height="@dimen/email_star_image_size"
                     android:layout_marginTop="@dimen/grid_1"
                     android:layout_marginEnd="@dimen/grid_4"
-                    android:contentDescription="@string/email_sender_profile_content_desc"
-                    android:src="@drawable/ic_star_border"
+                    android:padding="@dimen/grid_1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@{email.starred ? @string/email_starred_content_desc : @string/email_unstarred_content_desc}"
+                    android:src="@{email.starred ? @drawable/ic_star_filled : @drawable/ic_star_border}"
+                    android:foreground="@drawable/ic_circle"
                     app:glideCircularCrop="@{true}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

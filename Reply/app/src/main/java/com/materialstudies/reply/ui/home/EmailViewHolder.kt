@@ -57,9 +57,8 @@ class EmailViewHolder(
         binding.root.isActivated = email.isStarred
         starImageView.setOnClickListener { view: View ->
             email.isStarred = !email.isStarred
-            fillStarImageView(email.isStarred)
+            email.notifyChange()
         }
-        fillStarImageView(email.isStarred)
 
         attachmentAdapter.submitList(email.attachments)
 
@@ -96,13 +95,13 @@ class EmailViewHolder(
             thresholdMet && !isStarred -> true
             else -> return
         }
-        fillStarImageView(shouldStar)
         binding.root.isActivated = shouldStar
     }
 
     override fun onRebounded() {
         val email = binding.email ?: return
         binding.listener?.onEmailStarChanged(email, !email.isStarred)
+        email.notifyChange()
     }
 
     // We have to update the shape appearance itself to have the MaterialContainerTransform pick up
@@ -114,15 +113,6 @@ class EmailViewHolder(
             shapeAppearanceModel = shapeAppearanceModel.toBuilder()
                 .setTopLeftCornerSize(interpolation * starredCornerSize)
                 .build()
-        }
-    }
-
-    private fun fillStarImageView(isStarred: Boolean) {
-        val starImageView = binding.emailItemStarImageView
-        if (!isStarred) {
-            starImageView.setImageResource(R.drawable.ic_star_border)
-        } else {
-            starImageView.setImageResource(R.drawable.ic_star_filled)
         }
     }
 }

@@ -97,33 +97,11 @@ class EmailFragment : Fragment() {
             attachmentAdapter.submitList(email.attachments)
         }
 
-        // TODO: If recipient email is the current user, switch to "me".
-        // TODO: Add this to a util file.
-        for (index in binding.email!!.recipients.indices) {
-            val account = binding.email!!.recipients[index]
-            recipientsString += if (index == 0) {
-                account.firstName
-            } else if (index == binding.email!!.recipients.size - 1) {
-                ", " + account.firstName
-            } else {
-                " and " + account.firstName
-            }
-        }
         binding.emailRecipientsTextView.text = recipientsString
 
-        fillStarImageView(binding.email!!.isStarred)
         binding.emailStarImageView.setOnClickListener {
             EmailStore.update(binding.email!!.id) { isStarred = !isStarred }
-            fillStarImageView(binding.email!!.isStarred)
-        }
-    }
-
-    private fun fillStarImageView(isStarred: Boolean) {
-        val starImageView = binding.emailStarImageView
-        if (!isStarred) {
-            starImageView.setImageResource(R.drawable.ic_star_border)
-        } else {
-            starImageView.setImageResource(R.drawable.ic_star_filled)
+            email.notifyChange()
         }
     }
 

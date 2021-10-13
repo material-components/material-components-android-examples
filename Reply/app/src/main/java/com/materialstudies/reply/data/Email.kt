@@ -16,13 +16,14 @@
 
 package com.materialstudies.reply.data
 
+import androidx.databinding.BaseObservable
 import androidx.recyclerview.widget.DiffUtil
 import com.materialstudies.reply.ui.home.Mailbox
 
 /**
  * A simple data class to represent an Email.
  */
-data class Email(
+data class Email (
     val id: Long,
     val sender: Account,
     val recipients: List<Account> = emptyList(),
@@ -32,15 +33,32 @@ data class Email(
     var isImportant: Boolean = false,
     var isStarred: Boolean = false,
     var mailbox: Mailbox = Mailbox.INBOX,
-    var timeSent: String = ""
-) {
+    var timeSent: String = "") : BaseObservable () {
     val hasBody: Boolean = body.isNotBlank()
     val hasAttachments: Boolean = attachments.isNotEmpty()
-    val recipientsPreview: String = recipients
-        .map { it.firstName }
-        .fold("") { name, acc -> "$acc, $name" }
+    val recipientsPreview: String = getRecipientPreview()
     val nonUserAccountRecipients = recipients
         .filterNot { AccountStore.isUserAccount(it.uid) }
+
+    private fun getRecipientPreview(): String {
+        var recipientsString = "";
+        for (index in recipients.indices) {
+            val account = recipients[index]
+            recipientsString += when (index) {
+              0 -> {
+                  account.firstName
+              }
+              recipients.size - 1 -> {
+                  " and " + account.firstName
+              }
+              else -> {
+                  ", " + account.firstName
+              }
+            }
+        }
+        return recipientsString
+    }
+
 }
 
 object EmailDiffCallback : DiffUtil.ItemCallback<Email>() {
