@@ -28,5 +28,5 @@
         android:paddingRight="@dimen/grid_3"
         android:paddingBottom="@dimen/grid_0_5"
         android:text="@{title}"
-        android:textAppearance="?attr/textAppearanceSubtitle2" />
+        android:textAppearance="?attr/textAppearanceTitleSmall" />
 </layout>

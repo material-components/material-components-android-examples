@@ -58,7 +58,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:checked="@{account.currentAccount}"
             android:text="@{account.email}"
-            android:textAppearance="?attr/textAppearanceBody1"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
             android:textColor="@color/color_navigation_drawer_menu_item"
             app:drawableTint="@color/color_navigation_drawer_menu_item"
             app:drawableRight="@{account.checkedIcon}"

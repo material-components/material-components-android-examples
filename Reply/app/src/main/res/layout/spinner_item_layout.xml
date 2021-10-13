@@ -21,4 +21,4 @@
     android:paddingHorizontal="@dimen/grid_2"
     android:maxLines="1"
     android:ellipsize="end"
-    android:textAppearance="?attr/textAppearanceBody1" />
+    android:textAppearance="?attr/textAppearanceBodyLarge" />
