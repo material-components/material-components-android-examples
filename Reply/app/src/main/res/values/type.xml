@@ -81,7 +81,7 @@
         <item name="android:textColor">@color/color_on_surface_emphasis_high</item>
     </style>
 
-    <style name="TextAppearance.Reply.EmailSubject" parent="TextAppearance.Reply.BodyLarge">
+    <style name="TextAppearance.Reply.BodyExtraLarge" parent="TextAppearance.Reply.BodyLarge">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
