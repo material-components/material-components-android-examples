@@ -53,6 +53,7 @@
         android:clipToPadding="false"
         android:layout_marginHorizontal="@dimen/grid_2"
         android:paddingTop="@dimen/grid_1"
+        android:paddingBottom="@dimen/email_card_view_bottom_padding"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
       <com.google.android.material.card.MaterialCardView
           android:id="@+id/email_card_view"
