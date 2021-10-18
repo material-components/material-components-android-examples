@@ -31,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingVertical="@dimen/grid_1"
+        android:paddingHorizontal="@dimen/grid_2"
         android:fitsSystemWindows="true">
       <com.google.android.material.appbar.MaterialToolbar
           android:id="@+id/toolbar"
