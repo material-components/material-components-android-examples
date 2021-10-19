@@ -28,6 +28,9 @@
     <dimen name="navigation_drawer_profile_image_size_padded">32dp</dimen>
     <dimen name="navigation_drawer_menu_item_height">56dp</dimen>
 
+    <!--HomeFragment-->
+    <dimen name="compose_email_fab_size">96dp</dimen>
+
     <!--Email previews-->
     <dimen name="email_sender_profile_image_size">42dp</dimen>
     <dimen name="email_recipient_card_popup_elevation">6dp</dimen>
