@@ -73,6 +73,7 @@
         <item name="textAppearanceButton">@style/TextAppearance.Reply.LabelLarge</item>
         <item name="textAppearanceCaption">@style/TextAppearance.Reply.BodySmall</item>
         <item name="textAppearanceOverline">@style/TextAppearance.Reply.LabelSmall</item>
+        <item name="textAppearanceBodyExtraLarge">@style/TextAppearance.Reply.BodyExtraLarge</item>
 
         <item name="emphasisHighAlpha">0.87</item>
         <item name="emphasisMediumAlpha">0.60</item>
