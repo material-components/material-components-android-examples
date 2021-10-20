@@ -28,7 +28,11 @@
     <attr name="motionInterpolatorIncoming" format="reference"/>
     <attr name="motionInterpolatorOutgoing" format="reference"/>
 
+    <!--Custom typescale attributes-->
+    <attr name="textAppearanceBodyExtraLarge" format="reference" />
+
     <!--Custom view themes/styles-->
     <attr name="bottomNavigationDrawerStyle" format="reference" />
     <attr name="bottomNavigationDrawerNavigationViewTheme" format="reference" />
+
 </resources>

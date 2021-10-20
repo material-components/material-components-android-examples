@@ -61,9 +61,11 @@
                     android:layout_height="@dimen/email_star_image_size"
                     android:layout_marginTop="@dimen/grid_1"
                     android:layout_marginEnd="@dimen/grid_4"
-                    android:contentDescription="@string/email_sender_profile_content_desc"
-                    android:src="@drawable/ic_star_border"
-                    app:glideCircularCrop="@{true}"
+                    android:padding="@dimen/grid_1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@{email.starred ? @string/email_starred_content_desc : @string/email_unstarred_content_desc}"
+                    android:src="@{email.starred ? @drawable/ic_star_filled : @drawable/ic_star_border}"
+                    android:foreground="@drawable/ic_circle"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
                 <TextView
@@ -99,7 +101,7 @@
                     android:text="@{email.subject}"
                     android:layout_marginTop="@dimen/grid_1"
                     android:layout_marginStart="@dimen/grid_2"
-                    android:textAppearance="@style/TextAppearance.Reply.EmailSubject"
+                    android:textAppearance="?attr/textAppearanceBodyExtraLarge"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/time_sent_text_view"
                     app:layout_goneMarginEnd="@dimen/grid_2"

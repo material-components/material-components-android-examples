@@ -16,6 +16,7 @@
 
 package com.materialstudies.reply.data
 
+import androidx.databinding.BaseObservable
 import androidx.recyclerview.widget.DiffUtil
 import com.materialstudies.reply.ui.home.Mailbox
 
@@ -33,12 +34,19 @@ data class Email(
     var isStarred: Boolean = false,
     var mailbox: Mailbox = Mailbox.INBOX,
     var timeSent: String = ""
-) {
+) : BaseObservable() {
     val hasBody: Boolean = body.isNotBlank()
     val hasAttachments: Boolean = attachments.isNotEmpty()
     val recipientsPreview: String = recipients
         .map { it.firstName }
-        .fold("") { name, acc -> "$acc, $name" }
+        .foldIndexed("") { i, acc, name ->
+            val separator = when (i) {
+                0 -> ""
+                recipients.size - 1 -> " & "
+                else -> ", "
+            }
+            "$acc$separator$name"
+        }
     val nonUserAccountRecipients = recipients
         .filterNot { AccountStore.isUserAccount(it.uid) }
 }

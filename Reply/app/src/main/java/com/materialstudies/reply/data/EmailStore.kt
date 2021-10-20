@@ -31,7 +31,11 @@ object EmailStore {
         Email(
             0L,
             AccountStore.getContactAccountById(9L),
-            listOf(AccountStore.getDefaultUserAccount()),
+            listOf(
+                AccountStore.getDefaultUserAccount(),
+                AccountStore.getContactAccountById(1),
+                AccountStore.getContactAccountById(3)
+            ),
             "Package shipped!",
             """
                 Cucumber Mask Facial has shipped.
@@ -41,7 +45,7 @@ object EmailStore {
                 As always, thank you for shopping with us and we hope you love our specially formulated Cucumber Mask!
             """.trimIndent(),
             isStarred = true,
-            timeSent = "10 min ago"
+            timeSent = "10 min ago",
         ),
         Email(
             1L,

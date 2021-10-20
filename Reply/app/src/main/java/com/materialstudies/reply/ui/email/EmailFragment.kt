@@ -70,7 +70,7 @@ class EmailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.navigationIcon.setOnClickListener {
+        binding.toolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
 
@@ -82,7 +82,6 @@ class EmailFragment : Fragment() {
 
         binding.run {
             this.email = email
-
             // Set up the staggered/masonry grid recycler
             attachmentRecyclerView.layoutManager = GridLayoutManager(
                 requireContext(),
@@ -92,6 +91,11 @@ class EmailFragment : Fragment() {
             }
             attachmentRecyclerView.adapter = attachmentAdapter
             attachmentAdapter.submitList(email.attachments)
+        }
+
+        binding.emailStarImageView.setOnClickListener {
+            EmailStore.update(binding.email!!.id) { isStarred = !isStarred }
+            email.notifyChange()
         }
     }
 
