@@ -18,7 +18,6 @@ package com.materialstudies.reply.ui.email
 
 import android.graphics.Color
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,7 +43,6 @@ class EmailFragment : Fragment() {
     private val emailId: Long by lazy(NONE) { args.emailId }
 
     private lateinit var binding: FragmentEmailBinding
-    private var recipientsString = "";
     private val attachmentAdapter = EmailAttachmentGridAdapter(MAX_GRID_SPANS)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,9 +70,7 @@ class EmailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.emailRecipientsTextView.text = recipientsString
-
-        binding.navigationIcon.setOnClickListener {
+        binding.toolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
 
@@ -96,8 +92,6 @@ class EmailFragment : Fragment() {
             attachmentRecyclerView.adapter = attachmentAdapter
             attachmentAdapter.submitList(email.attachments)
         }
-
-        binding.emailRecipientsTextView.text = recipientsString
 
         binding.emailStarImageView.setOnClickListener {
             EmailStore.update(binding.email!!.id) { isStarred = !isStarred }

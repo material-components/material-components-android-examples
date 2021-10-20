@@ -23,7 +23,7 @@ import com.materialstudies.reply.ui.home.Mailbox
 /**
  * A simple data class to represent an Email.
  */
-data class Email (
+data class Email(
     val id: Long,
     val sender: Account,
     val recipients: List<Account> = emptyList(),
@@ -33,32 +33,22 @@ data class Email (
     var isImportant: Boolean = false,
     var isStarred: Boolean = false,
     var mailbox: Mailbox = Mailbox.INBOX,
-    var timeSent: String = "") : BaseObservable () {
+    var timeSent: String = ""
+) : BaseObservable() {
     val hasBody: Boolean = body.isNotBlank()
     val hasAttachments: Boolean = attachments.isNotEmpty()
-    val recipientsPreview: String = getRecipientPreview()
+    val recipientsPreview: String = recipients
+        .map { it.firstName }
+        .foldIndexed("") { i, acc, name ->
+            val separator = when (i) {
+                0 -> ""
+                recipients.size - 1 -> " & "
+                else -> ", "
+            }
+            "$acc$separator$name"
+        }
     val nonUserAccountRecipients = recipients
         .filterNot { AccountStore.isUserAccount(it.uid) }
-
-    private fun getRecipientPreview(): String {
-        var recipientsString = "";
-        for (index in recipients.indices) {
-            val account = recipients[index]
-            recipientsString += when (index) {
-              0 -> {
-                  account.firstName
-              }
-              recipients.size - 1 -> {
-                  " and " + account.firstName
-              }
-              else -> {
-                  ", " + account.firstName
-              }
-            }
-        }
-        return recipientsString
-    }
-
 }
 
 object EmailDiffCallback : DiffUtil.ItemCallback<Email>() {
