@@ -33,6 +33,7 @@
         android:paddingVertical="@dimen/grid_1"
         android:paddingHorizontal="@dimen/grid_2"
         android:fitsSystemWindows="true">
+
       <com.google.android.material.appbar.MaterialToolbar
           android:id="@+id/toolbar"
           android:layout_width="match_parent"
@@ -45,54 +46,56 @@
           app:subtitleCentered="true"
           app:navigationIcon="@drawable/ic_arrow_back_protected"
           app:menu="@menu/email_overflow_menu" />
+
     </com.google.android.material.appbar.AppBarLayout>
+
     <!--  TODO: Temporary ScrollView -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
         android:layout_marginHorizontal="@dimen/grid_2"
         android:paddingTop="@dimen/grid_1"
         android:paddingBottom="@dimen/email_card_view_bottom_padding"
+        android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
       <com.google.android.material.card.MaterialCardView
           android:id="@+id/email_card_view"
           style="?attr/materialCardViewElevatedStyle"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:transitionName="@string/email_card_detail_transition_name">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/email_content_constraint_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/grid_3"
-            android:paddingBottom="@dimen/grid_3"
             android:paddingHorizontal="@dimen/grid_2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email_app_bar_layout">
+            android:paddingVertical="@dimen/grid_2">
+
           <Button
               android:id="@+id/email_reply_button"
               android:layout_width="0dp"
               android:layout_height="wrap_content"
-              android:layout_marginTop="@dimen/grid_1"
-              android:layout_marginEnd="@dimen/grid_1"
+              android:layout_marginHorizontal="@dimen/grid_1"
+              android:layout_marginVertical="@dimen/grid_1"
               android:text="@string/email_reply"
-              app:layout_constraintEnd_toStartOf="@+id/guidelineLeft"
+              app:layout_constraintEnd_toStartOf="@+id/email_reply_all_button"
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintTop_toBottomOf="@+id/attachment_recycler_view" />
-          <!-- TODO: Temporary hardcoded black, remove when updating to M3 Typography  -->
+
           <Button
               android:id="@+id/email_reply_all_button"
               android:layout_width="0dp"
               android:layout_height="wrap_content"
-              android:layout_marginTop="@dimen/grid_1"
-              android:layout_marginStart="@dimen/grid_1"
+              android:layout_marginHorizontal="@dimen/grid_1"
+              android:layout_marginVertical="@dimen/grid_1"
               android:text="@string/email_reply_all"
               app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+              app:layout_constraintStart_toEndOf="@+id/email_reply_button"
               app:layout_constraintTop_toBottomOf="@+id/attachment_recycler_view" />
+
           <ImageView
               android:id="@+id/sender_profile_image_view"
               android:layout_width="@dimen/email_sender_profile_image_size"
@@ -104,6 +107,7 @@
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintTop_toTopOf="parent"
               tools:src="@drawable/avatar_3" />
+
           <ImageView
               android:id="@+id/email_star_image_view"
               android:layout_width="@dimen/email_star_image_size"
@@ -116,67 +120,70 @@
               app:glideCircularCrop="@{true}"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintTop_toTopOf="parent" />
+
           <TextView
               android:id="@+id/email_time_sent_text_view"
               android:layout_width="0dp"
               android:layout_height="wrap_content"
-              android:layout_marginTop="@dimen/grid_0_5"
-              android:layout_marginStart="@dimen/grid_1"
+              android:layout_marginVertical="@dimen/grid_1"
+              android:layout_marginHorizontal="@dimen/grid_1"
               android:text="@{email.timeSent}"
-              android:textAppearance="?attr/textAppearanceBody2"
+              android:textAppearance="?attr/textAppearanceBodyMedium"
               app:layout_constraintStart_toEndOf="@+id/sender_profile_image_view"
               app:layout_constraintTop_toBottomOf="@+id/email_sender_text_view"
               tools:text="2 hr ago" />
-          <!-- TODO: Temporary hardcoded black, remove when updating to M3 Typography  -->
+
           <TextView
               android:id="@+id/email_sender_text_view"
               android:layout_width="0dp"
               android:layout_height="wrap_content"
-              android:layout_marginStart="@dimen/grid_1"
+              android:layout_marginHorizontal="@dimen/grid_1"
               android:text="@{email.sender.fullName}"
-              android:textAppearance="?attr/textAppearanceBody2"
-              android:textColor="@android:color/black"
+              android:textAppearance="?attr/textAppearanceBodyMedium"
               app:layout_constraintStart_toEndOf="@+id/sender_profile_image_view"
               app:layout_constraintTop_toTopOf="parent"
               tools:text="Ali Connors" />
+
           <TextView
               android:id="@+id/email_recipients_text_view"
               android:layout_width="0dp"
               android:layout_height="wrap_content"
-              android:layout_marginTop="@dimen/grid_1"
+              android:layout_marginVertical="@dimen/grid_1"
               android:text="@{email.recipientsPreview}"
-              android:textAppearance="?attr/textAppearanceBody2"
+              android:textAppearance="?attr/textAppearanceBodyMedium"
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintTop_toBottomOf="@+id/sender_profile_image_view"
               tools:text="To me, Ziad and Lily" />
+
           <TextView
               android:id="@+id/body_text_view"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:layout_marginTop="@dimen/grid_4"
+              android:layout_marginVertical="@dimen/grid_2"
               android:scrollbars="vertical"
               android:text="@{email.body}"
-              android:textAppearance="?attr/textAppearanceBody1"
+              android:textAppearance="?attr/textAppearanceBodyLarge"
               android:textColor="@android:color/black"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintTop_toBottomOf="@+id/email_recipients_text_view" />
-          <androidx.constraintlayout.widget.Guideline
-              android:id="@+id/guidelineLeft"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:orientation="vertical"
-              app:layout_constraintGuide_percent="0.5" />
+
           <androidx.recyclerview.widget.RecyclerView
               android:id="@+id/attachment_recycler_view"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:layout_marginTop="@dimen/grid_3"
+              android:layout_marginVertical="@dimen/grid_3"
+              app:layout_constraintBottom_toTopOf="@+id/email_reply_all_button"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintTop_toBottomOf="@id/body_text_view" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
       </com.google.android.material.card.MaterialCardView>
+
     </androidx.core.widget.NestedScrollView>
+
   </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </layout>
