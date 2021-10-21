@@ -61,11 +61,11 @@
         <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Reply.LargeComponent</item>
 
         <!--Typography-->
-        <item name="textAppearanceDisplayLarge">@style/TextAppearance.Reply.DisplayLarge</item>
         <item name="textAppearanceDisplayMedium">@style/TextAppearance.Reply.DisplayMedium</item>
         <item name="textAppearanceDisplaySmall">@style/TextAppearance.Reply.DisplaySmall</item>
-        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.Reply.HeadlineMedium</item>
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.Reply.HeadlineLarge</item>
         <item name="textAppearanceHeadlineSmall">@style/TextAppearance.Reply.HeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.Reply.TitleLarge</item>
         <item name="textAppearanceTitleMedium">@style/TextAppearance.Reply.TitleMedium</item>
         <item name="textAppearanceTitleSmall">@style/TextAppearance.Reply.TitleSmall</item>
         <item name="textAppearanceBodyLarge">@style/TextAppearance.Reply.BodyLarge</item>

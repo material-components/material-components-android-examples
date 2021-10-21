@@ -28,7 +28,7 @@
         android:layout_marginVertical="@dimen/grid_2"
         android:layout_marginHorizontal="@dimen/grid_4"
         android:text="@{navDivider.title}"
-        android:textAppearance="?attr/textAppearanceLabelMedium"
+        android:textAppearance="?attr/textAppearanceLabelSmall"
         android:textColor="@color/color_on_primary_surface_emphasis_medium"
         android:drawablePadding="@dimen/grid_4"
         app:drawableTopCompat="@drawable/nav_divider_top" />

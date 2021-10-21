@@ -73,7 +73,7 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/compose_subject_hint"
                     android:text="@{email.subject}"
-                    android:textAppearance="?attr/textAppearanceTitleLarge" />
+                    android:textAppearance="?attr/textAppearanceHeadlineSmall" />
 
                 <ImageButton
                     android:id="@+id/send_icon"
