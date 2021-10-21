@@ -73,7 +73,7 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/compose_subject_hint"
                     android:text="@{email.subject}"
-                    android:textAppearance="?attr/textAppearanceHeadline5" />
+                    android:textAppearance="?attr/textAppearanceHeadlineSmall" />
 
                 <ImageButton
                     android:id="@+id/send_icon"
@@ -198,7 +198,7 @@
                     android:hint="@string/compose_body_hint"
                     android:text="@{email.body}"
                     android:gravity="top"
-                    android:textAppearance="?attr/textAppearanceBody1"
+                    android:textAppearance="?attr/textAppearanceBodyLarge"
                     app:lineHeight="24sp" />
 
                 <!-- An invisible scrim that captures click events when a chip has been expanded.-->
@@ -253,7 +253,7 @@
                                 app:layout_constraintStart_toEndOf="@id/account_profile_image_view"
                                 app:layout_constraintTop_toTopOf="parent"
                                 android:text="@{focusedRecipient.email}"
-                                android:textAppearance="?attr/textAppearanceBody1"
+                                android:textAppearance="?attr/textAppearanceBodyLarge"
                                 android:textColor="@color/color_navigation_drawer_menu_item"
                                 android:drawablePadding="@dimen/grid_3"
                                 android:lines="1"
@@ -307,7 +307,7 @@
                                 app:layout_constraintStart_toEndOf="@id/alt_account_profile_image_view"
                                 app:layout_constraintTop_toTopOf="parent"
                                 android:text="@{focusedRecipient.altEmail}"
-                                android:textAppearance="?attr/textAppearanceBody1"
+                                android:textAppearance="?attr/textAppearanceBodyLarge"
                                 android:textColor="@color/color_on_surface_emphasis_high"
                                 android:lines="1"
                                 android:ellipsize="end"

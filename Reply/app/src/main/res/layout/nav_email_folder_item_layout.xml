@@ -37,7 +37,7 @@
         android:lines="1"
         android:text="@{navEmailFolder.emailFolder}"
         android:textColor="@color/color_on_primary_surface_emphasis_medium"
-        android:textAppearance="?attr/textAppearanceSubtitle1"
+        android:textAppearance="?attr/textAppearanceTitleMedium"
         app:drawableStartCompat="@drawable/ic_twotone_folder"
         app:drawableTint="@color/color_on_primary_surface_emphasis_medium"
         android:drawablePadding="@dimen/grid_4"

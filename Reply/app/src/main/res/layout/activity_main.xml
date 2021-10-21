@@ -78,7 +78,7 @@
 
                 <TextView
                     android:id="@+id/bottom_app_bar_title"
-                    android:textAppearance="?attr/textAppearanceBody1"
+                    android:textAppearance="?attr/textAppearanceBodyLarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"

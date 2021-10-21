@@ -128,7 +128,7 @@
               android:layout_marginVertical="@dimen/grid_1"
               android:layout_marginHorizontal="@dimen/grid_1"
               android:text="@{email.timeSent}"
-              android:textAppearance="?attr/textAppearanceBody2"
+              android:textAppearance="?attr/textAppearanceBodyMedium"
               app:layout_constraintStart_toEndOf="@+id/sender_profile_image_view"
               app:layout_constraintTop_toBottomOf="@+id/email_sender_text_view"
               tools:text="2 hr ago" />
@@ -139,7 +139,7 @@
               android:layout_height="wrap_content"
               android:layout_marginHorizontal="@dimen/grid_1"
               android:text="@{email.sender.fullName}"
-              android:textAppearance="?attr/textAppearanceBody2"
+              android:textAppearance="?attr/textAppearanceBodyMedium"
               app:layout_constraintStart_toEndOf="@+id/sender_profile_image_view"
               app:layout_constraintTop_toTopOf="parent"
               tools:text="Ali Connors" />
@@ -150,7 +150,7 @@
               android:layout_height="wrap_content"
               android:layout_marginVertical="@dimen/grid_1"
               android:text="@{email.recipientsPreview}"
-              android:textAppearance="?attr/textAppearanceBody2"
+              android:textAppearance="?attr/textAppearanceBodyMedium"
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintTop_toBottomOf="@+id/sender_profile_image_view"
               tools:text="To me, Ziad and Lily" />
@@ -162,7 +162,7 @@
               android:layout_marginVertical="@dimen/grid_2"
               android:scrollbars="vertical"
               android:text="@{email.body}"
-              android:textAppearance="?attr/textAppearanceBody1"
+              android:textAppearance="?attr/textAppearanceBodyLarge"
               android:textColor="@android:color/black"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent"
