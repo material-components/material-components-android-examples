@@ -68,12 +68,12 @@
         <item name="textAppearanceTitleLarge">@style/TextAppearance.Reply.TitleLarge</item>
         <item name="textAppearanceTitleMedium">@style/TextAppearance.Reply.TitleMedium</item>
         <item name="textAppearanceTitleSmall">@style/TextAppearance.Reply.TitleSmall</item>
+        <item name="textAppearanceBodyExtraLarge">@style/TextAppearance.Reply.BodyExtraLarge</item>
         <item name="textAppearanceBodyLarge">@style/TextAppearance.Reply.BodyLarge</item>
         <item name="textAppearanceBodyMedium">@style/TextAppearance.Reply.BodyMedium</item>
         <item name="textAppearanceLabelLarge">@style/TextAppearance.Reply.LabelLarge</item>
         <item name="textAppearanceBodySmall">@style/TextAppearance.Reply.BodySmall</item>
         <item name="textAppearanceLabelSmall">@style/TextAppearance.Reply.LabelSmall</item>
-        <item name="textAppearanceBodyExtraLarge">@style/TextAppearance.Reply.BodyExtraLarge</item>
 
         <item name="emphasisHighAlpha">0.87</item>
         <item name="emphasisMediumAlpha">0.60</item>
