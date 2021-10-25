@@ -97,7 +97,7 @@ class BottomNavDrawerFragment :
             fillColor = ColorStateList.valueOf(
                 backgroundContext.themeColor(R.attr.colorPrimaryContainer)
             )
-            elevation = resources.getDimension(R.dimen.plane_08)
+            elevation = resources.getDimension(R.dimen.elevation_level4)
             initializeElevationOverlay(requireContext())
         }
     }
@@ -113,7 +113,7 @@ class BottomNavDrawerFragment :
             fillColor = ColorStateList.valueOf(
                 foregroundContext.themeColor(R.attr.colorPrimarySurface)
             )
-            elevation = resources.getDimension(R.dimen.plane_16)
+            elevation = resources.getDimension(R.dimen.elevation_level5)
             shadowCompatibilityMode = MaterialShapeDrawable.SHADOW_COMPAT_MODE_NEVER
             initializeElevationOverlay(requireContext())
             shapeAppearanceModel = shapeAppearanceModel.toBuilder()

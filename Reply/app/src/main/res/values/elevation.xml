@@ -13,11 +13,10 @@
   the License.
   -->
 <resources>
-
-    <dimen name="plane_00">0dp</dimen>
-    <dimen name="plane_01">1dp</dimen>
-    <dimen name="plane_02">2dp</dimen>
-    <dimen name="plane_06">6dp</dimen>
-    <dimen name="plane_08">8dp</dimen>
-    <dimen name="plane_16">16dp</dimen>
+    <dimen name="elevation_level0">0dp</dimen>
+    <dimen name="elevation_level1">1dp</dimen>
+    <dimen name="elevation_level2">3dp</dimen>
+    <dimen name="elevation_level3">6dp</dimen>
+    <dimen name="elevation_level4">8dp</dimen>
+    <dimen name="elevation_level5">12dp</dimen>
 </resources>

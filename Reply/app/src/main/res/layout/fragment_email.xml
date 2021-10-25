@@ -30,6 +30,7 @@
         android:id="@+id/email_app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         android:paddingVertical="@dimen/grid_1"
         android:paddingHorizontal="@dimen/grid_2"
         android:fitsSystemWindows="true">
@@ -61,7 +62,8 @@
           style="?attr/materialCardViewElevatedStyle"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:transitionName="@string/email_card_detail_transition_name">
+          android:transitionName="@string/email_card_detail_transition_name"
+          app:cardElevation="@dimen/elevation_level0">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/email_content_constraint_layout"
             android:layout_width="match_parent"
@@ -74,6 +76,7 @@
             app:layout_constraintTop_toBottomOf="@+id/email_app_bar_layout">
           <Button
               android:id="@+id/email_reply_button"
+              style="@style/Widget.Material3.Button.TonalButton"
               android:layout_width="0dp"
               android:layout_height="wrap_content"
               android:layout_marginTop="@dimen/grid_1"
@@ -82,9 +85,9 @@
               app:layout_constraintEnd_toStartOf="@+id/guidelineLeft"
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintTop_toBottomOf="@+id/attachment_recycler_view" />
-          <!-- TODO: Temporary hardcoded black, remove when updating to M3 Typography  -->
           <Button
               android:id="@+id/email_reply_all_button"
+              style="@style/Widget.Material3.Button.TonalButton"
               android:layout_width="0dp"
               android:layout_height="wrap_content"
               android:layout_marginTop="@dimen/grid_1"

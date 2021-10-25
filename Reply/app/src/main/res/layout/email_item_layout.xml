@@ -31,24 +31,23 @@
         android:id="@+id/email_frame"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_marginEnd="@dimen/grid_2"
-        android:layout_marginStart="@dimen/grid_2"
         android:layout_marginVertical="@dimen/grid_0_25"
-        android:layout_marginHorizontal="@dimen/grid_0_5">
+        android:layout_marginHorizontal="@dimen/grid_2">
 
         <com.google.android.material.card.MaterialCardView
-            style="?attr/materialCardViewElevatedStyle"
             android:id="@+id/card_view"
+            style="?attr/materialCardViewElevatedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
             android:onClick="@{(view) -> listener.onEmailClicked(view, email)}"
             android:onLongClick="@{(view) -> listener.onEmailLongPressed(email)}"
-            app:cardPreventCornerOverlap="false"
             android:outlineAmbientShadowColor="@android:color/transparent"
             android:outlineSpotShadowColor="@android:color/transparent"
-            android:transitionName="@{@string/email_card_transition_name(email.id)}">
+            android:transitionName="@{@string/email_card_transition_name(email.id)}"
+            app:cardPreventCornerOverlap="false"
+            app:cardElevation="@dimen/elevation_level2">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

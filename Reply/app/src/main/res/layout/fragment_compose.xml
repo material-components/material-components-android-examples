@@ -112,7 +112,7 @@
                     android:layout_marginTop="@dimen/grid_0_5"
                     android:layout_marginEnd="@dimen/grid_1"
                     android:foreground="?attr/selectableItemBackground"
-                    app:popupElevationOverlay="@{@dimen/plane_16}"/>
+                    app:popupElevationOverlay="@{@dimen/elevation_level5}"/>
 
                 <ImageView
                     android:id="@+id/sender_divider"

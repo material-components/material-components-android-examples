@@ -29,6 +29,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.color.DynamicColors
+import com.google.android.material.elevation.SurfaceColors
 import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.MaterialSharedAxis
@@ -69,6 +70,8 @@ class MainActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         DynamicColors.applyIfAvailable(this)
         super.onCreate(savedInstanceState)
+        val surfaceColor5 = SurfaceColors.SURFACE_5.getColor(this)
+        window.decorView.setBackgroundColor(surfaceColor5)
         setUpBottomNavigationAndFab()
     }
 
