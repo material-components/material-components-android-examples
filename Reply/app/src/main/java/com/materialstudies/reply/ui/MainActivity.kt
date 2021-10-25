@@ -114,20 +114,9 @@ class MainActivity : AppCompatActivity(),
         // reply is created. In a real app, this should be done in a ViewModel but is done
         // here to keep things simple. Here we're also setting the configuration of the
         // BottomAppBar and FAB based on the current destination.
-        when (destination.id) {
-            R.id.homeFragment -> {
-                currentEmailId = -1
-            }
-            R.id.emailFragment -> {
-                currentEmailId =
-                    if (arguments == null) -1 else EmailFragmentArgs.fromBundle(arguments).emailId
-            }
-            R.id.composeFragment -> {
-                currentEmailId = -1
-            }
-            R.id.searchFragment -> {
-                currentEmailId = -1
-            }
+        currentEmailId = when (destination.id) {
+            R.id.emailFragment -> if (arguments == null) -1 else EmailFragmentArgs.fromBundle(arguments).emailId
+            else -> -1
         }
     }
 
