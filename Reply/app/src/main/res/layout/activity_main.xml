@@ -17,9 +17,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout"
         android:layout_width="match_parent"
-        android:id="@+id/coordinator_layout"
         android:layout_height="match_parent"
         app:layoutFullscreen="@{true}"
         tools:context="com.materialstudies.reply.ui.MainActivity">
@@ -30,13 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/navigation_graph"/>
-
-        <fragment
-            android:id="@+id/bottom_nav_drawer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:name="com.materialstudies.reply.ui.nav.BottomNavDrawerFragment"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:navGraph="@navigation/navigation_graph" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
@@ -44,20 +39,23 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             app:labelVisibilityMode="unlabeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/home_bottom_nav_menu" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
+            style="?attr/floatingActionButtonLargeTertiaryStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/grid_2"
             android:contentDescription="@string/fab_compose_email_content_description"
-            app:fabCustomSize="@dimen/compose_email_fab_size"
-            app:layout_anchorGravity="end"
+            android:layout_margin="@dimen/grid_2"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+            app:layout_constraintEnd_toEndOf="@+id/nav_host_fragment"
             app:layout_insetEdge="bottom"
-            app:layout_anchor="@id/bottom_navigation"
-            app:srcCompat="@drawable/asl_edit_reply" />
+            app:srcCompat="@drawable/ic_edit" />
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

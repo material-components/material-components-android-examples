@@ -55,7 +55,7 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
         override fun handleOnBackPressed() {
             NavigationModel.setNavigationMenuItemChecked(NavigationModel.INBOX_ID)
             (requireActivity() as MainActivity)
-                .navigateToHome(R.string.navigation_inbox, Mailbox.INBOX);
+                .navigateToHome(Mailbox.INBOX)
         }
     }
 
