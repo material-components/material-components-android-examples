@@ -115,7 +115,9 @@ class MainActivity : AppCompatActivity(),
         // here to keep things simple. Here we're also setting the configuration of the
         // BottomAppBar and FAB based on the current destination.
         currentEmailId = when (destination.id) {
-            R.id.emailFragment -> if (arguments == null) -1 else EmailFragmentArgs.fromBundle(arguments).emailId
+            R.id.emailFragment -> {
+                if (arguments == null) -1 else EmailFragmentArgs.fromBundle(arguments).emailId
+            }
             else -> -1
         }
     }
