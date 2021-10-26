@@ -17,9 +17,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout"
         android:layout_width="match_parent"
-        android:id="@+id/coordinator_layout"
         android:layout_height="match_parent"
         app:layoutFullscreen="@{true}"
         tools:context="com.materialstudies.reply.ui.MainActivity">
@@ -30,74 +30,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/navigation_graph"/>
+            app:navGraph="@navigation/navigation_graph" />
 
-        <fragment
-            android:id="@+id/bottom_nav_drawer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:name="com.materialstudies.reply.ui.nav.BottomNavDrawerFragment"/>
-
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottom_app_bar"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:fabAlignmentMode="center"
-            app:fabCradleRoundedCornerRadius="@dimen/bottom_app_bar_fab_cradle_corner_radius"
-            app:fabCradleMargin="@dimen/bottom_app_bar_fab_cradle_margin"
-            app:hideOnScroll="true">
-
-            <LinearLayout
-                android:id="@+id/bottom_app_bar_content_container"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/min_touch_target_size"
-                android:layout_marginVertical="@dimen/grid_0_5"
-                android:paddingHorizontal="@dimen/grid_0_5"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:foreground="@drawable/bottom_app_bar_title_foreground">
-
-                <ImageView
-                    android:id="@+id/bottom_app_bar_chevron"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/bottom_app_bar_chevron_content_desc"
-                    android:layout_gravity="center_vertical"
-                    app:tint="?attr/colorOnPrimarySurface"
-                    app:srcCompat="@drawable/ic_arrow_drop_up" />
-
-                <ImageView
-                    android:id="@+id/bottom_app_bar_logo"
-                    android:layout_width="@dimen/bottom_app_bar_logo_size"
-                    android:layout_height="@dimen/bottom_app_bar_logo_size"
-                    android:layout_marginLeft="@dimen/grid_1"
-                    android:contentDescription="@string/bottom_app_bar_logo_content_desc"
-                    android:layout_gravity="center_vertical"
-                    app:srcCompat="@drawable/ic_reply_logo" />
-
-                <TextView
-                    android:id="@+id/bottom_app_bar_title"
-                    android:textAppearance="?attr/textAppearanceBodyLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginHorizontal="@dimen/grid_1"
-                    android:text="@string/navigation_inbox"
-                    android:textColor="?attr/colorControlNormal"/>
-
-            </LinearLayout>
-
-        </com.google.android.material.bottomappbar.BottomAppBar>
+            app:labelVisibilityMode="unlabeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav_menu" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
+            style="?attr/floatingActionButtonLargeTertiaryStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_anchor="@id/bottom_app_bar"
             android:contentDescription="@string/fab_compose_email_content_description"
-            app:srcCompat="@drawable/asl_edit_reply" />
+            android:layout_margin="@dimen/grid_2"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+            app:layout_constraintEnd_toEndOf="@+id/nav_host_fragment"
+            app:srcCompat="@drawable/ic_edit" />
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -33,6 +33,12 @@
     <string name="menu_item_search">Search</string>
     <string name="menu_item_settings">Settings</string>
 
+    <!--Bottom Navigation menus-->
+    <string name="menu_item_inbox">Inbox</string>
+    <string name="menu_item_draft">Draft</string>
+    <string name="menu_item_chat">Chat</string>
+    <string name="menu_item_video">Video</string>
+
     <string name="menu_dark_theme_light">Light</string>
     <string name="menu_dark_theme_dark">Dark</string>
     <string name="menu_dark_theme_battery_saver">Set by Battery Saver</string>
