@@ -76,7 +76,7 @@
                     android:layout_marginEnd="@dimen/grid_2"
                     android:maxLines="1"
                     android:text="@{email.sender.fullName}"
-                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
                     app:layout_constraintStart_toEndOf="@+id/sender_profile_image_view"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Google Express" />
@@ -88,7 +88,7 @@
                     android:layout_marginTop="@dimen/grid_1"
                     android:layout_marginStart="@dimen/grid_2"
                     android:text="@{email.timeSent}"
-                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
                     app:layout_constraintStart_toEndOf="@+id/sender_profile_image_view"
                     app:layout_constraintTop_toBottomOf="@+id/sender_text_view"
                     tools:text="10 min ago" />
@@ -106,7 +106,7 @@
                     app:layout_goneMarginEnd="@dimen/grid_2"
                     tools:text="Package Shipped!" />
                 <TextView
-                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
                     android:id="@+id/body_preview_text_view"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

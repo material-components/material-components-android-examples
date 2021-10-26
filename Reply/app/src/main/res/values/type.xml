@@ -15,13 +15,8 @@
 <resources>
 
     <!--Typography-->
-    <style name="TextAppearance.Reply.DisplayLarge" parent="TextAppearance.Material3.DisplayLarge">
-        <item name="fontFamily">@font/work_sans_semibold</item>
-        <item name="android:textColor">@color/color_on_surface_emphasis_high</item>
-    </style>
-
     <style name="TextAppearance.Reply.DisplayMedium" parent="TextAppearance.Material3.DisplayMedium">
-        <item name="fontFamily">@font/work_sans_bold</item>
+        <item name="fontFamily">@font/work_sans_semibold</item>
         <item name="android:textColor">@color/color_on_surface_emphasis_high</item>
     </style>
 
@@ -30,12 +25,17 @@
         <item name="android:textColor">@color/color_on_surface_emphasis_high</item>
     </style>
 
-    <style name="TextAppearance.Reply.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+    <style name="TextAppearance.Reply.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
         <item name="fontFamily">@font/work_sans_bold</item>
         <item name="android:textColor">@color/color_on_surface_emphasis_high</item>
     </style>
 
     <style name="TextAppearance.Reply.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="fontFamily">@font/work_sans_bold</item>
+        <item name="android:textColor">@color/color_on_surface_emphasis_high</item>
+    </style>
+
+    <style name="TextAppearance.Reply.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
         <item name="fontFamily">@font/work_sans_medium</item>
         <item name="android:textColor">@color/color_on_surface_emphasis_high</item>
     </style>

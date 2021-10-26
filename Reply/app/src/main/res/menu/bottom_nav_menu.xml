@@ -38,4 +38,5 @@
       android:icon="@drawable/ic_video_cam"
       android:enabled="true"
       android:title="@string/menu_item_video"/>
+
 </menu>

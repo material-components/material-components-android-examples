@@ -54,8 +54,7 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
     private val nonInboxOnBackCallback = object : OnBackPressedCallback(false) {
         override fun handleOnBackPressed() {
             NavigationModel.setNavigationMenuItemChecked(NavigationModel.INBOX_ID)
-            (requireActivity() as MainActivity)
-                .navigateToHome(R.string.navigation_inbox, Mailbox.INBOX);
+            (requireActivity() as MainActivity).navigateToHome(Mailbox.INBOX)
         }
     }
 
