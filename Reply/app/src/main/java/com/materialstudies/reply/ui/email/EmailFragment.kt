@@ -25,6 +25,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.elevation.SurfaceColors
 import com.google.android.material.transition.MaterialContainerTransform
 import com.materialstudies.reply.R
@@ -92,11 +93,8 @@ class EmailFragment : Fragment() {
             attachmentRecyclerView.adapter = attachmentAdapter
             attachmentAdapter.submitList(email.attachments)
         }
-
-        binding.emailStarImageView.setOnClickListener {
-            EmailStore.update(binding.email!!.id) { isStarred = !isStarred }
-            email.notifyChange()
-        }
+        val surfaceColor1 = SurfaceColors.SURFACE_1.getColor(requireContext())
+        binding.emailStarButton.setBackgroundColor(surfaceColor1)
     }
 
     private fun showError() {

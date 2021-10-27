@@ -35,4 +35,12 @@
         <item name="chipStartPadding">0dp</item>
         <item name="android:checkable">false</item>
     </style>
+
+    <style name="Widget.App.Button.IconOnly" parent="Widget.Material3.Button">
+        <item name="iconPadding">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+    </style>
 </resources>

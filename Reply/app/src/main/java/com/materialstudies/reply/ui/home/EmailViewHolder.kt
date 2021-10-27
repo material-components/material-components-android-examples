@@ -18,12 +18,12 @@ package com.materialstudies.reply.ui.home
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.elevation.SurfaceColors
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.databinding.EmailItemLayoutBinding
 import com.materialstudies.reply.ui.common.EmailAttachmentAdapter
 import kotlin.math.abs
-import android.widget.ImageView
 
 class EmailViewHolder(
     private val binding: EmailItemLayoutBinding,
@@ -52,13 +52,12 @@ class EmailViewHolder(
     }
 
     fun bind(email: Email) {
-        val starImageView = binding.emailItemStarImageView
         binding.email = email
         binding.root.isActivated = email.isStarred
-        starImageView.setOnClickListener { view: View ->
-            binding.listener?.onEmailStarChanged(email, !email.isStarred)
-            email.notifyChange()
-        }
+
+        val starButton = binding.emailStarButton
+        val surfaceColor0 = SurfaceColors.SURFACE_0.getColor(binding.root.context)
+        starButton.setBackgroundColor(surfaceColor0)
 
         attachmentAdapter.submitList(email.attachments)
 

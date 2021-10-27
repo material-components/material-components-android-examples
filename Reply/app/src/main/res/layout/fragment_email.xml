@@ -73,6 +73,7 @@
             android:id="@+id/email_content_constraint_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clipToPadding="false"
             android:paddingHorizontal="@dimen/grid_2"
             android:paddingVertical="@dimen/grid_2">
 
@@ -112,18 +113,19 @@
               app:layout_constraintTop_toTopOf="parent"
               tools:src="@drawable/avatar_3" />
 
-          <ImageView
-              android:id="@+id/email_star_image_view"
+          <Button
+              android:id="@+id/email_star_button"
+              style="@style/Widget.App.Button.IconOnly"
               android:layout_width="@dimen/email_star_image_size"
               android:layout_height="@dimen/email_star_image_size"
-              android:padding="@dimen/grid_1"
-              android:background="?attr/selectableItemBackgroundBorderless"
-              android:contentDescription="@{email.starred ? @string/email_starred_content_desc : @string/email_unstarred_content_desc}"
-              android:foreground="@drawable/ic_circle"
-              android:src="@{email.starred ? @drawable/ic_star_filled : @drawable/ic_star_border}"
-              app:glideCircularCrop="@{true}"
+              android:checkable="true"
+              app:icon="@drawable/ic_toggle_star"
+              app:iconGravity="textStart"
+              app:iconTint="@null"
+              app:iconSize="@dimen/email_star_image_icon_size"
               app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintTop_toTopOf="parent" />
+              app:layout_constraintTop_toTopOf="parent"
+              app:starButton="@{email}"/>
 
           <TextView
               android:id="@+id/email_time_sent_text_view"

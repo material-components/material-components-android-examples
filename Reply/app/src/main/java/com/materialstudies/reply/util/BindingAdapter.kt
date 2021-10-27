@@ -23,10 +23,12 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.WindowInsets
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
 import androidx.core.view.updateLayoutParams
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -35,9 +37,12 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.Chip
 import com.google.android.material.elevation.ElevationOverlayProvider
 import com.materialstudies.reply.R
+import com.materialstudies.reply.data.Email
+import com.materialstudies.reply.data.EmailStore
 
 @BindingAdapter(
     "popupElevationOverlay"
@@ -152,6 +157,16 @@ private fun createGlideRequest(
     if (centerCrop) req.centerCrop()
     if (circularCrop) req.circleCrop()
     return req
+}
+
+@BindingAdapter("starButton")
+fun View.setStarButtonClickListener(email: Email) {
+    (this as MaterialButton).isChecked = email.isStarred
+    (this as MaterialButton).setOnClickListener {
+        EmailStore.update(email!!.id) { isStarred = !isStarred }
+        email.notifyChange()
+        (this as MaterialButton).isChecked = email.isStarred
+    }
 }
 
 @BindingAdapter("goneIf")

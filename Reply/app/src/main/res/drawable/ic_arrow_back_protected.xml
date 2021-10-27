@@ -21,8 +21,7 @@
       <item>
         <shape android:shape="oval">
           <size android:height="44dp" android:width="44dp"/>
-          <!-- TODO: Update background colour to be colorSurface after we figure out color scheme -->
-          <solid android:color="?attr/colorPrimaryContainer"/>
+          <solid android:color="?attr/colorSurface"/>
         </shape>
       </item>
       <!-- Icon foreground -->

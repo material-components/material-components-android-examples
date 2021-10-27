@@ -54,19 +54,20 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/grid_2"
                 android:paddingBottom="@dimen/grid_2">
-                <ImageView
-                    android:id="@+id/email_item_star_image_view"
+                <Button
+                    android:id="@+id/email_star_button"
+                    style="@style/Widget.App.Button.IconOnly"
                     android:layout_width="@dimen/email_star_image_size"
                     android:layout_height="@dimen/email_star_image_size"
-                    android:layout_marginTop="@dimen/grid_1"
-                    android:layout_marginEnd="@dimen/grid_4"
-                    android:padding="@dimen/grid_1"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="@{email.starred ? @string/email_starred_content_desc : @string/email_unstarred_content_desc}"
-                    android:src="@{email.starred ? @drawable/ic_star_filled : @drawable/ic_star_border}"
-                    android:foreground="@drawable/ic_circle"
+                    android:layout_marginHorizontal="@dimen/grid_2"
+                    android:checkable="true"
+                    app:icon="@drawable/ic_toggle_star"
+                    app:iconGravity="textStart"
+                    app:iconTint="@null"
+                    app:iconSize="@dimen/email_star_image_icon_size"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:starButton="@{email}" />
                 <TextView
                     android:id="@+id/sender_text_view"
                     android:layout_width="0dp"
