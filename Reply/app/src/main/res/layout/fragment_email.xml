@@ -115,7 +115,7 @@
 
           <Button
               android:id="@+id/email_star_button"
-              style="@style/Widget.App.Button.IconOnly"
+              style="@style/Widget.Material3.Button.IconButton"
               android:layout_width="@dimen/email_star_image_size"
               android:layout_height="@dimen/email_star_image_size"
               android:checkable="true"

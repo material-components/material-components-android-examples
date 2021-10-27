@@ -18,7 +18,6 @@ package com.materialstudies.reply.ui.home
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.elevation.SurfaceColors
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.databinding.EmailItemLayoutBinding
@@ -54,10 +53,6 @@ class EmailViewHolder(
     fun bind(email: Email) {
         binding.email = email
         binding.root.isActivated = email.isStarred
-
-        val starButton = binding.emailStarButton
-        val surfaceColor0 = SurfaceColors.SURFACE_0.getColor(binding.root.context)
-        starButton.setBackgroundColor(surfaceColor0)
 
         attachmentAdapter.submitList(email.attachments)
 

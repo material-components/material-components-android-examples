@@ -56,11 +56,13 @@
                 android:paddingBottom="@dimen/grid_2">
                 <Button
                     android:id="@+id/email_star_button"
-                    style="@style/Widget.App.Button.IconOnly"
+                    style="@style/Widget.Material3.Button.IconButton"
                     android:layout_width="@dimen/email_star_image_size"
                     android:layout_height="@dimen/email_star_image_size"
                     android:layout_marginHorizontal="@dimen/grid_2"
                     android:checkable="true"
+                    android:theme="@style/ThemeOverlay.Reply.ElevationOverlaysDisabled"
+                    app:backgroundTint="?attr/colorSurface"
                     app:icon="@drawable/ic_toggle_star"
                     app:iconGravity="textStart"
                     app:iconTint="@null"
