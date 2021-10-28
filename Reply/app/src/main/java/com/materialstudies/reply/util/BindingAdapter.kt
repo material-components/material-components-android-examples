@@ -23,12 +23,10 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.WindowInsets
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.annotation.DrawableRes
-import androidx.core.content.ContextCompat
 import androidx.core.view.updateLayoutParams
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -161,11 +159,12 @@ private fun createGlideRequest(
 
 @BindingAdapter("starButton")
 fun View.setStarButtonClickListener(email: Email) {
-    (this as MaterialButton).isChecked = email.isStarred
-    (this as MaterialButton).setOnClickListener {
+    val starButton = this as MaterialButton
+    starButton.isChecked = email.isStarred
+    starButton.setOnClickListener {
         EmailStore.update(email!!.id) { isStarred = !isStarred }
         email.notifyChange()
-        (this as MaterialButton).isChecked = email.isStarred
+        starButton.isChecked = email.isStarred
     }
 }
 

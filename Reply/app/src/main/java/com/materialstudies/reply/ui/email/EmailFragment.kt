@@ -93,6 +93,8 @@ class EmailFragment : Fragment() {
             attachmentRecyclerView.adapter = attachmentAdapter
             attachmentAdapter.submitList(email.attachments)
         }
+
+        // Set up the color on the starButton
         val surfaceColor1 = SurfaceColors.SURFACE_1.getColor(requireContext())
         binding.emailStarButton.setBackgroundColor(surfaceColor1)
     }

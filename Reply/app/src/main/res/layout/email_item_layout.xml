@@ -54,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/grid_2"
                 android:paddingBottom="@dimen/grid_2">
+
                 <Button
                     android:id="@+id/email_star_button"
                     style="@style/Widget.Material3.Button.IconButton"
@@ -70,52 +71,54 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:starButton="@{email}" />
+
                 <TextView
                     android:id="@+id/sender_text_view"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/grid_1"
-                    android:layout_marginStart="@dimen/grid_2"
-                    android:layout_marginEnd="@dimen/grid_2"
+                    android:layout_marginVertical="@dimen/grid_1"
+                    android:layout_marginHorizontal="@dimen/grid_2"
                     android:maxLines="1"
                     android:text="@{email.sender.fullName}"
                     android:textAppearance="?attr/textAppearanceBodyMedium"
                     app:layout_constraintStart_toEndOf="@+id/sender_profile_image_view"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Google Express" />
+
                 <TextView
                     android:id="@+id/time_sent_text_view"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
-                    android:layout_marginTop="@dimen/grid_1"
-                    android:layout_marginStart="@dimen/grid_2"
+                    android:layout_marginVertical="@dimen/grid_1"
+                    android:layout_marginHorizontal="@dimen/grid_2"
                     android:text="@{email.timeSent}"
                     android:textAppearance="?attr/textAppearanceBodyMedium"
                     app:layout_constraintStart_toEndOf="@+id/sender_profile_image_view"
                     app:layout_constraintTop_toBottomOf="@+id/sender_text_view"
                     tools:text="10 min ago" />
+
                 <TextView
                     android:id="@+id/subject_text_view"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:text="@{email.subject}"
-                    android:layout_marginTop="@dimen/grid_1"
-                    android:layout_marginStart="@dimen/grid_2"
+                    android:layout_marginVertical="@dimen/grid_1"
+                    android:layout_marginHorizontal="@dimen/grid_2"
                     android:textAppearance="?attr/textAppearanceBodyExtraLarge"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/time_sent_text_view"
                     app:layout_goneMarginEnd="@dimen/grid_2"
                     tools:text="Package Shipped!" />
+
                 <TextView
                     android:textAppearance="?attr/textAppearanceBodyMedium"
                     android:id="@+id/body_preview_text_view"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/grid_1"
-                    android:layout_marginStart="@dimen/grid_2"
-                    android:layout_marginEnd="@dimen/grid_2"
+                    android:layout_marginVertical="@dimen/grid_1"
+                    android:layout_marginHorizontal="@dimen/grid_2"
                     android:maxLines="2"
                     android:text="@{email.body}"
                     tools:text="Cucumber mask facial has shipped. It'll be on your front door by the end of the week!"
@@ -128,24 +131,23 @@
                     android:id="@+id/attachment_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="96dp"
-                    android:layout_marginTop="@dimen/grid_2"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/body_preview_text_view"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
+                    android:layout_marginVertical="@dimen/grid_2"
+                    android:paddingHorizontal="12dp"
                     android:clipToPadding="false"
                     android:overScrollMode="never"
                     app:goneIf="@{!email.hasAttachments}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/body_preview_text_view"
                     android:orientation="horizontal" />
+
                 <ImageView
                     android:id="@+id/sender_profile_image_view"
                     android:layout_width="@dimen/email_sender_profile_image_size"
                     android:layout_height="@dimen/email_sender_profile_image_size"
-                    android:layout_marginTop="@dimen/grid_1"
-                    android:layout_marginStart="@dimen/grid_2"
-                    android:layout_marginEnd="@dimen/grid_2"
+                    android:layout_marginVertical="@dimen/grid_1"
+                    android:layout_marginHorizontal="@dimen/grid_2"
                     android:contentDescription="@string/email_sender_profile_content_desc"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
