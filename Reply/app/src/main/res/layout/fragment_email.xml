@@ -31,22 +31,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
+        android:fitsSystemWindows="true"
         android:paddingVertical="@dimen/grid_1"
-        android:paddingHorizontal="@dimen/grid_2"
-        android:fitsSystemWindows="true">
+        android:paddingHorizontal="@dimen/grid_2">
 
       <com.google.android.material.appbar.MaterialToolbar
           android:id="@+id/toolbar"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          app:title="@{email.subject}"
-          app:titleTextAppearance="?attr/textAppearanceBodyExtraLarge"
-          app:titleCentered="true"
+          app:menu="@menu/email_overflow_menu"
+          app:navigationIcon="@drawable/ic_arrow_back_protected"
           app:subtitle="3 more messages"
           app:subtitleTextAppearance="?attr/textAppearanceLabelMedium"
           app:subtitleCentered="true"
-          app:navigationIcon="@drawable/ic_arrow_back_protected"
-          app:menu="@menu/email_overflow_menu" />
+          app:title="@{email.subject}"
+          app:titleTextAppearance="?attr/textAppearanceBodyExtraLarge"
+          app:titleCentered="true" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -55,10 +55,10 @@
         android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
         android:layout_marginHorizontal="@dimen/grid_2"
         android:paddingTop="@dimen/grid_1"
         android:paddingBottom="@dimen/email_card_view_bottom_padding"
-        android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
       <com.google.android.material.card.MaterialCardView
@@ -67,7 +67,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:transitionName="@string/email_card_detail_transition_name"
-          app:cardElevation="@dimen/elevation_level0">
+          app:cardElevation="@dimen/m3_sys_elevation_level0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/email_content_constraint_layout"
@@ -79,7 +79,7 @@
 
           <Button
               android:id="@+id/email_reply_button"
-              style="@style/Widget.Material3.Button.TonalButton"
+              style="@style/Widget.Reply.Tonal.Button"
               android:layout_width="0dp"
               android:layout_height="wrap_content"
               android:layout_marginHorizontal="@dimen/grid_1"
@@ -91,7 +91,7 @@
 
           <Button
               android:id="@+id/email_reply_all_button"
-              style="@style/Widget.Material3.Button.TonalButton"
+              style="@style/Widget.Reply.Tonal.Button"
               android:layout_width="0dp"
               android:layout_height="wrap_content"
               android:layout_marginHorizontal="@dimen/grid_1"
@@ -113,19 +113,20 @@
               app:layout_constraintTop_toTopOf="parent"
               tools:src="@drawable/avatar_3" />
 
-          <Button
+          <com.google.android.material.button.MaterialButton
               android:id="@+id/email_star_button"
               style="@style/Widget.Material3.Button.IconButton"
               android:layout_width="@dimen/email_star_image_size"
               android:layout_height="@dimen/email_star_image_size"
+              android:checked="@{email.isStarred}"
               android:checkable="true"
+              android:onClick="@{(view) -> email.toggleStar()}"
               app:icon="@drawable/ic_toggle_star"
               app:iconGravity="textStart"
-              app:iconTint="@null"
+              app:iconTint="@color/star_statelist"
               app:iconSize="@dimen/email_star_image_icon_size"
               app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintTop_toTopOf="parent"
-              app:starButton="@{email}"/>
+              app:layout_constraintTop_toTopOf="parent" />
 
           <TextView
               android:id="@+id/email_time_sent_text_view"

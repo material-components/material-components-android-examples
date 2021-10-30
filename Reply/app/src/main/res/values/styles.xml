@@ -22,7 +22,7 @@
         <!--Set the background color of NavigationView-->
         <item name="android:background">@android:color/transparent</item>
         <item name="elevation">0dp</item>
-        <item name="itemTextAppearance">?attr/textAppearanceBodyMedium</item>
+        <item name="itemTextAppearance">?attr/textAppearanceBodyMedium</item>9
         <item name="itemTextColor">@color/color_on_surface_emphasis_medium</item>
         <item name="itemIconTint">@color/color_on_surface_emphasis_medium</item>
     </style>
@@ -39,4 +39,11 @@
     <style name="ThemeOverlay.Reply.ElevationOverlaysDisabled" parent="">
         <item name="elevationOverlayEnabled">false</item>
     </style>
+
+    <style name="Widget.Reply.Tonal.Button" parent="Widget.Material3.Button.UnelevatedButton">
+        <item name="android:backgroundTint">?attr/colorOnSurfaceInverse</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+        <item name="elevation">@dimen/m3_sys_elevation_level0</item>
+    </style>
+
 </resources>

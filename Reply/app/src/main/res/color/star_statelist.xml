@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Copyright (c) 2019 Google Inc.
+  Copyright (c) 2021 Google Inc.
 
   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
   in compliance with the License. You may obtain a copy of the License at
@@ -12,11 +12,12 @@
   or implied. See the License for the specific language governing permissions and limitations under
   the License.
   -->
-<resources>
-    <dimen name="elevation_level0">0dp</dimen>
-    <dimen name="elevation_level1">1dp</dimen>
-    <dimen name="elevation_level2">3dp</dimen>
-    <dimen name="elevation_level3">6dp</dimen>
-    <dimen name="elevation_level4">8dp</dimen>
-    <dimen name="elevation_level5">12dp</dimen>
-</resources>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:state_checked="true"
+        android:color="#F2D053" />
+
+    <item android:color="?attr/colorOutline" />
+
+</selector>

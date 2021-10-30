@@ -35,12 +35,9 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.Chip
 import com.google.android.material.elevation.ElevationOverlayProvider
 import com.materialstudies.reply.R
-import com.materialstudies.reply.data.Email
-import com.materialstudies.reply.data.EmailStore
 
 @BindingAdapter(
     "popupElevationOverlay"
@@ -155,17 +152,6 @@ private fun createGlideRequest(
     if (centerCrop) req.centerCrop()
     if (circularCrop) req.circleCrop()
     return req
-}
-
-@BindingAdapter("starButton")
-fun View.setStarButtonClickListener(email: Email) {
-    val starButton = this as MaterialButton
-    starButton.isChecked = email.isStarred
-    starButton.setOnClickListener {
-        EmailStore.update(email!!.id) { isStarred = !isStarred }
-        email.notifyChange()
-        starButton.isChecked = email.isStarred
-    }
 }
 
 @BindingAdapter("goneIf")

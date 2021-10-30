@@ -60,8 +60,8 @@ class MainActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DynamicColors.applyIfAvailable(this)
-        super.onCreate(savedInstanceState)
         applyBackgroundColor()
+        super.onCreate(savedInstanceState)
         setUpBottomNavigationAndFab()
     }
 

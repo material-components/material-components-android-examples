@@ -49,6 +49,12 @@ data class Email(
         }
     val nonUserAccountRecipients = recipients
         .filterNot { AccountStore.isUserAccount(it.uid) }
+
+    fun toggleStar() {
+        EmailStore.update(id) { isStarred = !isStarred }
+        notifyChange()
+    }
+
 }
 
 object EmailDiffCallback : DiffUtil.ItemCallback<Email>() {
