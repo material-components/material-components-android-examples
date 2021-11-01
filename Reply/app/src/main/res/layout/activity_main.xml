@@ -22,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutFullscreen="@{true}"
+        backgroundSurfaceElevation="@{@dimen/m3_sys_elevation_level5}"
         tools:context="com.materialstudies.reply.ui.MainActivity">
 
         <fragment

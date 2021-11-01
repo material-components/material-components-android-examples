@@ -170,7 +170,8 @@
               android:scrollbars="vertical"
               android:text="@{email.body}"
               android:textAppearance="?attr/textAppearanceBodyLarge"
-              android:textColor="@android:color/black"
+              android:theme="@style/ThemeOverlay.Reply.ElevationOverlaysDisabled"
+              backgroundSurfaceElevation="@{@dimen/m3_sys_elevation_level1}"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintTop_toBottomOf="@+id/email_recipients_text_view" />

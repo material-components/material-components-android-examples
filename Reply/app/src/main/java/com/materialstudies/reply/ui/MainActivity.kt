@@ -60,7 +60,6 @@ class MainActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DynamicColors.applyIfAvailable(this)
-        applyBackgroundColor()
         super.onCreate(savedInstanceState)
         setUpBottomNavigationAndFab()
     }
@@ -189,10 +188,5 @@ class MainActivity : AppCompatActivity(),
         }
         val directions = SearchFragmentDirections.actionGlobalSearchFragment()
         findNavController(R.id.nav_host_fragment).navigate(directions)
-    }
-
-    private fun applyBackgroundColor() {
-        val surfaceColor5 = SurfaceColors.SURFACE_5.getColor(this)
-        window.decorView.setBackgroundColor(surfaceColor5)
     }
 }

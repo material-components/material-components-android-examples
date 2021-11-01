@@ -25,13 +25,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.android.material.button.MaterialButton
 import com.google.android.material.elevation.SurfaceColors
 import com.google.android.material.transition.MaterialContainerTransform
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.FragmentEmailBinding
-import com.materialstudies.reply.util.themeColor
 import kotlin.LazyThreadSafetyMode.NONE
 
 private const val MAX_GRID_SPANS = 3
@@ -93,10 +91,6 @@ class EmailFragment : Fragment() {
             attachmentRecyclerView.adapter = attachmentAdapter
             attachmentAdapter.submitList(email.attachments)
         }
-
-        // Set up the color on the starButton
-        val surfaceColor1 = SurfaceColors.SURFACE_1.getColor(requireContext())
-        binding.emailStarButton.setBackgroundColor(surfaceColor1)
     }
 
     private fun showError() {
