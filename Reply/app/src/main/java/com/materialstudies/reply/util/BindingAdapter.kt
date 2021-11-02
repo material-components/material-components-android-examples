@@ -43,10 +43,10 @@ import com.materialstudies.reply.R
 @BindingAdapter(
     "popupSurfaceColorElevation"
 )
-fun Spinner.popupSurfaceColorElevation(popupElevationOverlay: Float) {
+fun Spinner.bindPopupSurfaceColorElevation(elevation: Float) {
     setPopupBackgroundDrawable(ColorDrawable(
         ElevationOverlayProvider(context)
-            .compositeOverlayWithThemeSurfaceColorIfNeeded(popupElevationOverlay)
+            .compositeOverlayWithThemeSurfaceColorIfNeeded(elevation)
     ))
 }
 
