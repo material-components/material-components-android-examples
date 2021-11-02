@@ -77,9 +77,9 @@ fun TextView.bindDrawables(
 }
 
 @BindingAdapter(
-    "backgroundSurfaceElevation"
+    "backgroundElevationOverlay"
 )
-fun View.backgroundSurfaceElevation(elevation: Float) {
+fun View.bindBackgroundElevationOverlay(elevation: Float) {
     val colorSurface = SurfaceColors.getColorForElevation(context, elevation)
     this.setBackgroundColor(colorSurface)
 }

@@ -68,7 +68,7 @@
                     app:backgroundTint="?attr/colorSurface"
                     app:icon="@drawable/ic_toggle_star"
                     app:iconGravity="textStart"
-                    app:iconTint="@color/star_statelist"
+                    app:iconTint="@color/color_email_star"
                     app:iconSize="@dimen/email_star_image_icon_size"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

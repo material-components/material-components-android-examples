@@ -122,10 +122,10 @@
               android:checkable="true"
               android:onClick="@{(view) -> email.toggleStar()}"
               android:theme="@style/ThemeOverlay.Reply.ElevationOverlaysDisabled"
-              backgroundSurfaceElevation="@{@dimen/m3_sys_elevation_level1}"
+              app:backgroundElevationOverlay="@{@dimen/m3_sys_elevation_level1}"
               app:icon="@drawable/ic_toggle_star"
               app:iconGravity="textStart"
-              app:iconTint="@color/star_statelist"
+              app:iconTint="@color/color_email_star"
               app:iconSize="@dimen/email_star_image_icon_size"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintTop_toTopOf="parent" />
