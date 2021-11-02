@@ -35,16 +35,15 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.Chip
 import com.google.android.material.elevation.ElevationOverlayProvider
 import com.google.android.material.elevation.SurfaceColors
 import com.materialstudies.reply.R
 
 @BindingAdapter(
-    "popupElevationOverlay"
+    "popupSurfaceColorElevation"
 )
-fun Spinner.bindPopupElevationOverlay(popupElevationOverlay: Float) {
+fun Spinner.popupSurfaceColorElevation(popupElevationOverlay: Float) {
     setPopupBackgroundDrawable(ColorDrawable(
         ElevationOverlayProvider(context)
             .compositeOverlayWithThemeSurfaceColorIfNeeded(popupElevationOverlay)
@@ -77,9 +76,9 @@ fun TextView.bindDrawables(
 }
 
 @BindingAdapter(
-    "backgroundElevationOverlay"
+    "backgroundSurfaceColorElevation"
 )
-fun View.bindBackgroundElevationOverlay(elevation: Float) {
+fun View.bindBackgroundSurfaceColorElevation(elevation: Float) {
     val colorSurface = SurfaceColors.getColorForElevation(context, elevation)
     this.setBackgroundColor(colorSurface)
 }
