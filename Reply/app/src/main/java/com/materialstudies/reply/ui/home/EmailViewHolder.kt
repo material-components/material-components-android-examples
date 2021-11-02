@@ -23,7 +23,6 @@ import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.databinding.EmailItemLayoutBinding
 import com.materialstudies.reply.ui.common.EmailAttachmentAdapter
 import kotlin.math.abs
-import android.widget.ImageView
 
 class EmailViewHolder(
     private val binding: EmailItemLayoutBinding,
@@ -52,13 +51,8 @@ class EmailViewHolder(
     }
 
     fun bind(email: Email) {
-        val starImageView = binding.emailItemStarImageView
         binding.email = email
         binding.root.isActivated = email.isStarred
-        starImageView.setOnClickListener { view: View ->
-            binding.listener?.onEmailStarChanged(email, !email.isStarred)
-            email.notifyChange()
-        }
 
         attachmentAdapter.submitList(email.attachments)
 

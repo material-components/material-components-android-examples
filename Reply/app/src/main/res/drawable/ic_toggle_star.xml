@@ -12,16 +12,7 @@
   or implied. See the License for the specific language governing permissions and limitations under
   the License.
   -->
-<vector
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:height="24dp"
-    android:width="24dp"
-    android:tint="?attr/colorControlNormal"
-    android:viewportHeight="24"
-    android:viewportWidth="24">
-
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M12,17.27L18.18,21l-1.64,-7.03L22,9.24l-7.19,-0.61L12,2 9.19,8.63 2,9.24l5.46,4.73L5.82,21z"/>
-
-</vector>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:drawable="@drawable/ic_star_filled" android:state_checked="true" />
+  <item android:drawable="@drawable/ic_star_border" />
+</selector>

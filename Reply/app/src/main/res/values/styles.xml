@@ -35,4 +35,14 @@
         <item name="chipStartPadding">0dp</item>
         <item name="android:checkable">false</item>
     </style>
+
+    <style name="ThemeOverlay.Reply.ElevationOverlaysDisabled" parent="">
+        <item name="elevationOverlayEnabled">false</item>
+    </style>
+
+    <style name="Widget.Reply.Tonal.Button" parent="Widget.Material3.Button.UnelevatedButton">
+        <item name="android:backgroundTint">?attr/colorOnSurfaceInverse</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+    </style>
+
 </resources>

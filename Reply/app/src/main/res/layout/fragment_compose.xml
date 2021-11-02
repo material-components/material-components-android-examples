@@ -29,11 +29,11 @@
         android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?android:colorBackground"
+        android:clipToPadding="false"
         android:fillViewport="true"
         android:paddingHorizontal="@dimen/grid_0_5"
         android:paddingTop="@dimen/grid_1"
-        android:clipToPadding="false"
-        android:background="?android:colorBackground"
         app:paddingTopSystemWindowInsets="@{true}">
 
         <com.google.android.material.card.MaterialCardView
@@ -51,12 +51,12 @@
                     android:id="@+id/close_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="?attr/actionBarItemBackground"
+                    android:contentDescription="@string/compose_close_content_desc"
+                    android:layout_marginStart="@dimen/grid_1"
+                    android:padding="@dimen/min_icon_target_padding"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:padding="@dimen/min_icon_target_padding"
-                    android:layout_marginStart="@dimen/grid_1"
-                    android:contentDescription="@string/compose_close_content_desc"
-                    android:background="?attr/actionBarItemBackground"
                     app:srcCompat="@drawable/ic_close"
                     app:tint="@color/color_on_surface_emphasis_disabled" />
 
@@ -64,29 +64,29 @@
                     android:id="@+id/subject_edit_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:minHeight="@dimen/min_touch_target_size"
-                    android:layout_marginHorizontal="@dimen/grid_2"
-                    android:paddingVertical="@dimen/grid_1"
-                    app:layout_constraintEnd_toStartOf="@+id/send_icon"
-                    app:layout_constraintStart_toEndOf="@id/close_icon"
-                    app:layout_constraintTop_toTopOf="parent"
                     android:background="@android:color/transparent"
                     android:hint="@string/compose_subject_hint"
+                    android:layout_marginHorizontal="@dimen/grid_2"
+                    android:minHeight="@dimen/min_touch_target_size"
+                    android:paddingVertical="@dimen/grid_1"
                     android:text="@{email.subject}"
-                    android:textAppearance="?attr/textAppearanceHeadlineSmall" />
+                    android:textAppearance="?attr/textAppearanceHeadlineSmall"
+                    app:layout_constraintEnd_toStartOf="@+id/send_icon"
+                    app:layout_constraintStart_toEndOf="@id/close_icon"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
                     android:id="@+id/send_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/min_icon_target_padding"
-                    android:layout_marginEnd="@dimen/grid_1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:contentDescription="@string/compose_send_content_desc"
                     android:background="?attr/actionBarItemBackground"
                     android:clickable="true"
+                    android:contentDescription="@string/compose_send_content_desc"
                     android:focusable="true"
+                    android:layout_marginEnd="@dimen/grid_1"
+                    android:padding="@dimen/min_icon_target_padding"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:tint="?attr/colorPrimary"
                     app:srcCompat="@drawable/ic_twotone_send" />
 
@@ -94,55 +94,55 @@
                     android:id="@+id/subject_divider"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/subject_edit_text"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@drawable/divider"
                     android:layout_marginTop="@dimen/grid_1"
                     android:layout_marginHorizontal="@dimen/grid_2"
-                    android:background="@drawable/divider"
-                    app:backgroundTint="@color/color_on_surface_divider" />
+                    app:backgroundTint="@color/color_on_surface_divider"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/subject_edit_text"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
                 <Spinner
                     android:id="@+id/sender_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:layout_marginTop="@dimen/grid_0_5"
+                    android:layout_marginEnd="@dimen/grid_1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/subject_divider"
-                    android:layout_marginTop="@dimen/grid_0_5"
-                    android:layout_marginEnd="@dimen/grid_1"
-                    android:foreground="?attr/selectableItemBackground"
-                    app:popupElevationOverlay="@{@dimen/plane_16}"/>
+                    app:popupSurfaceColorElevation="@{@dimen/m3_sys_elevation_level5}" />
 
                 <ImageView
                     android:id="@+id/sender_divider"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/sender_spinner"
+                    android:background="@drawable/divider"
                     android:layout_marginHorizontal="@dimen/grid_2"
                     android:layout_marginTop="@dimen/grid_0_5"
-                    android:background="@drawable/divider"
-                    app:backgroundTint="@color/color_on_surface_divider" />
+                    app:backgroundTint="@color/color_on_surface_divider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sender_spinner"/>
 
                 <HorizontalScrollView
                     android:id="@+id/recipient_scroll_view"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toStartOf="@id/recipient_add_icon"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/sender_divider"
+                    android:clipToPadding="false"
+                    android:contentDescription="@string/compose_recipient_group_content_desc"
+                    android:fadingEdgeLength="@dimen/grid_3"
                     android:layout_marginTop="@dimen/grid_1"
                     android:layout_marginEnd="@dimen/grid_2"
                     android:minHeight="48dp"
-                    android:paddingVertical="@dimen/grid_0_25"
-                    android:clipToPadding="false"
-                    android:scrollbars="none"
-                    android:requiresFadingEdge="horizontal"
-                    android:fadingEdgeLength="@dimen/grid_3"
                     android:overScrollMode="never"
-                    android:contentDescription="@string/compose_recipient_group_content_desc">
+                    android:paddingVertical="@dimen/grid_0_25"
+                    android:requiresFadingEdge="horizontal"
+                    android:scrollbars="none"
+                    app:layout_constraintEnd_toStartOf="@id/recipient_add_icon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sender_divider">
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/recipient_chip_group"
@@ -158,47 +158,47 @@
                     android:id="@+id/recipient_add_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="?attr/actionBarItemBackground"
+                    android:contentDescription="@string/compose_add_recipient_icon_content_desc"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_marginEnd="@dimen/grid_1"
+                    android:padding="@dimen/min_icon_target_padding"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/recipient_scroll_view"
                     app:layout_constraintBottom_toBottomOf="@id/recipient_scroll_view"
-                    android:layout_marginEnd="@dimen/grid_1"
-                    android:padding="@dimen/min_icon_target_padding"
-                    android:contentDescription="@string/compose_add_recipient_icon_content_desc"
-                    android:background="?attr/actionBarItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:tint="@color/color_on_surface_emphasis_disabled"
-                    app:srcCompat="@drawable/ic_twotone_add_circle_outline"/>
+                    app:srcCompat="@drawable/ic_twotone_add_circle_outline"
+                    app:tint="@color/color_on_surface_emphasis_disabled" />
 
                 <ImageView
                     android:id="@+id/recipient_divider"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recipient_scroll_view"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@drawable/divider"
                     android:layout_marginTop="@dimen/grid_1"
                     android:layout_marginHorizontal="@dimen/grid_2"
-                    android:background="@drawable/divider"
-                    app:backgroundTint="@color/color_on_surface_divider"/>
+                    app:backgroundTint="@color/color_on_surface_divider"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recipient_scroll_view"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
                 <EditText
                     android:id="@+id/body_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:minHeight="250dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/recipient_divider"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:gravity="top"
+                    android:hint="@string/compose_body_hint"
                     android:layout_marginTop="@dimen/grid_2"
                     android:layout_marginHorizontal="@dimen/grid_2"
                     android:paddingBottom="@dimen/grid_4"
-                    paddingBottomSystemWindowInsets="@{true}"
-                    android:background="@android:color/transparent"
-                    android:hint="@string/compose_body_hint"
                     android:text="@{email.body}"
-                    android:gravity="top"
                     android:textAppearance="?attr/textAppearanceBodyLarge"
+                    paddingBottomSystemWindowInsets="@{true}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/recipient_divider"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:lineHeight="24sp" />
 
                 <!-- An invisible scrim that captures click events when a chip has been expanded.-->
@@ -211,13 +211,13 @@
                     android:id="@+id/recipient_card_view"
                     android:layout_width="360dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/grid_2"
+                    android:layout_marginStart="@dimen/grid_2"
+                    android:layout_marginEnd="@dimen/grid_2"
                     android:visibility="invisible"
                     app:cardElevation="@dimen/email_recipient_card_popup_elevation"
                     app:cardCornerRadius="4dp"
                     app:layout_constraintStart_toStartOf="@id/close_icon"
-                    android:layout_marginTop="@dimen/grid_2"
-                    android:layout_marginStart="@dimen/grid_2"
-                    android:layout_marginEnd="@dimen/grid_2"
                     app:layout_constraintTop_toTopOf="@id/close_icon">
 
                     <LinearLayout
@@ -228,37 +228,37 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="?attr/colorOnSecondary"
                             android:minHeight="?attr/listPreferredItemHeight"
-                            android:paddingHorizontal="@dimen/grid_2"
-                            android:background="?attr/colorOnSecondary">
+                            android:paddingHorizontal="@dimen/grid_2">
 
                             <ImageView
                                 android:id="@+id/account_profile_image_view"
                                 android:layout_width="@dimen/email_sender_profile_image_size"
                                 android:layout_height="@dimen/email_sender_profile_image_size"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
                                 android:contentDescription="@{focusedRecipient.email}"
                                 app:glideSrc="@{focusedRecipient.avatar}"
-                                app:glideCircularCrop="@{true}" />
+                                app:glideCircularCrop="@{true}"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"/>
 
                             <TextView
                                 android:id="@+id/account_address_text_view"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/grid_3"
+                                android:ellipsize="end"
                                 android:layout_marginHorizontal="@dimen/grid_2"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toStartOf="@id/remove_button"
-                                app:layout_constraintStart_toEndOf="@id/account_profile_image_view"
-                                app:layout_constraintTop_toTopOf="parent"
+                                android:lines="1"
                                 android:text="@{focusedRecipient.email}"
                                 android:textAppearance="?attr/textAppearanceBodyLarge"
                                 android:textColor="@color/color_navigation_drawer_menu_item"
-                                android:drawablePadding="@dimen/grid_3"
-                                android:lines="1"
-                                android:ellipsize="end"
-                                tools:text="hikingfan@gmail.com" />
+                                tools:text="hikingfan@gmail.com"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@id/remove_button"
+                                app:layout_constraintStart_toEndOf="@id/account_profile_image_view"
+                                app:layout_constraintTop_toTopOf="parent"/>
 
                             <!-- This button's functionality is disabled since removing a -->
                             <!-- recipient is not supported in this sample app.-->
@@ -266,17 +266,17 @@
                                 android:id="@+id/remove_button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:padding="@dimen/grid_0_5"
-                                android:contentDescription="@string/compose_close_content_desc"
                                 android:background="@drawable/ic_circle"
                                 android:backgroundTint="@color/color_navigation_drawer_menu_item"
+                                android:clickable="false"
+                                android:contentDescription="@string/compose_close_content_desc"
+                                android:focusable="false"
+                                android:padding="@dimen/grid_0_5"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:srcCompat="@drawable/ic_close_small"
-                                app:tint="?attr/colorOnSecondary"
-                                android:clickable="false"
-                                android:focusable="false"/>
+                                app:tint="?attr/colorOnSecondary" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -290,32 +290,33 @@
                                 android:id="@+id/alt_account_profile_image_view"
                                 android:layout_width="@dimen/email_sender_profile_image_size"
                                 android:layout_height="@dimen/email_sender_profile_image_size"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
                                 android:contentDescription="@{focusedRecipient.email}"
                                 app:glideSrc="@{focusedRecipient.avatar}"
-                                app:glideCircularCrop="@{true}" />
+                                app:glideCircularCrop="@{true}"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"/>
 
                             <TextView
                                 android:id="@+id/alt_account_address_text_view"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:ellipsize="end"
                                 android:layout_marginHorizontal="@dimen/grid_2"
+                                android:lines="1"
+                                android:text="@{focusedRecipient.altEmail}"
+                                android:textAppearance="?attr/textAppearanceBodyLarge"
+                                android:textColor="@color/color_on_surface_emphasis_high"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toEndOf="@id/alt_account_profile_image_view"
                                 app:layout_constraintTop_toTopOf="parent"
-                                android:text="@{focusedRecipient.altEmail}"
-                                android:textAppearance="?attr/textAppearanceBodyLarge"
-                                android:textColor="@color/color_on_surface_emphasis_high"
-                                android:lines="1"
-                                android:ellipsize="end"
                                 tools:text="hikingfan@gmail.com" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </LinearLayout>
+
                 </com.google.android.material.card.MaterialCardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
