@@ -35,6 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_search_bar_circle"
+                android:foreground="@drawable/email_search_ripple"
                 app:menu="@menu/search_bar_menu"
                 app:navigationIcon="@drawable/ic_search"
                 app:title="Search replies"
@@ -48,6 +49,7 @@
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:paddingTop="@dimen/grid_0_25"
+            android:paddingBottom="@dimen/grid_2"
             android:transitionGroup="true"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />

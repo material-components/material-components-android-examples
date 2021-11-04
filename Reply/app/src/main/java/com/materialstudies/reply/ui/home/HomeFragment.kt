@@ -16,7 +16,9 @@
 
 package com.materialstudies.reply.ui.home
 
+import android.content.Context
 import android.os.Bundle
+import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +31,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ItemTouchHelper
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialFadeThrough
@@ -102,13 +105,9 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
             emailAdapter.submitList(it)
         }
 
-        (activity as MainActivity)
-            .findViewById<BottomNavigationView>(R.id.bottom_navigation)
-            .addOnLayoutChangeListener { _, _, top, _, bottom, _, _, _, _ ->
-                binding.recyclerView.updatePadding(
-                    bottom = (bottom - top) + resources.getDimensionPixelSize(R.dimen.grid_2)
-                )
-            }
+        binding.homeToolbar.setOnClickListener {
+            (activity as MainActivity).navigateToSearch()
+        }
     }
 
     override fun onEmailClicked(cardView: View, email: Email) {

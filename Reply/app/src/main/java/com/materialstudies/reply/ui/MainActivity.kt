@@ -65,48 +65,6 @@ class MainActivity : AppCompatActivity(),
         setUpBottomNavigationAndFab()
     }
 
-    private fun setUpBottomNavigationAndFab() {
-        // Wrap binding.run to ensure ContentViewBindingDelegate is calling this Activity's
-        // setContentView before accessing views
-        binding.run {
-            findNavController(R.id.nav_host_fragment).addOnDestinationChangedListener(
-                this@MainActivity
-            )
-        }
-
-        // Set a custom animation for showing and hiding the FAB
-        binding.fab.apply {
-            setShowMotionSpecResource(R.animator.fab_show)
-            setHideMotionSpecResource(R.animator.fab_hide)
-            setOnClickListener {
-                navigateToCompose()
-            }
-        }
-
-        binding.bottomNavigation.setOnItemSelectedListener { item ->
-            when(item.itemId) {
-                R.id.menu_inbox -> {
-                    // TODO: Update navigate to home.
-                    true
-                }
-                R.id.menu_articles -> {
-                    // TODO: Update navigate to placeholder fragment
-                    true
-                }
-                R.id.menu_chat -> {
-                    // TODO: Update navigate to placeholder fragment
-                    true
-                }
-                R.id.menu_video -> {
-                    // TODO: Update navigate to placeholder fragment
-                    true
-                } else -> {
-                    true
-                }
-            }
-        }
-    }
-
     override fun onDestinationChanged(
         controller: NavController,
         destination: NavDestination,
@@ -149,12 +107,6 @@ class MainActivity : AppCompatActivity(),
         return true
     }
 
-    private fun showDarkThemeMenu() {
-        MenuBottomSheetDialogFragment
-            .newInstance(R.menu.dark_theme_bottom_sheet_menu)
-            .show(supportFragmentManager, null)
-    }
-
     fun navigateToHome(mailbox: Mailbox) {
         currentNavigationFragment?.apply {
             exitTransition = MaterialFadeThrough().apply {
@@ -163,6 +115,25 @@ class MainActivity : AppCompatActivity(),
         }
         val directions = HomeFragmentDirections.actionGlobalHomeFragment(mailbox)
         findNavController(R.id.nav_host_fragment).navigate(directions)
+    }
+
+    fun navigateToSearch() {
+        currentNavigationFragment?.apply {
+            exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).apply {
+                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+            }
+            reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false).apply {
+                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+            }
+        }
+        val directions = SearchFragmentDirections.actionGlobalSearchFragment()
+        findNavController(R.id.nav_host_fragment).navigate(directions)
+    }
+
+    private fun showDarkThemeMenu() {
+        MenuBottomSheetDialogFragment
+            .newInstance(R.menu.dark_theme_bottom_sheet_menu)
+            .show(supportFragmentManager, null)
     }
 
     private fun navigateToCompose() {
@@ -178,21 +149,53 @@ class MainActivity : AppCompatActivity(),
         findNavController(R.id.nav_host_fragment).navigate(directions)
     }
 
-    private fun navigateToSearch() {
-        currentNavigationFragment?.apply {
-            exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).apply {
-                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
-            }
-            reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false).apply {
-                duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
-            }
-        }
-        val directions = SearchFragmentDirections.actionGlobalSearchFragment()
-        findNavController(R.id.nav_host_fragment).navigate(directions)
-    }
-
     private fun applyBackgroundColor() {
         val surfaceColor5 = SurfaceColors.SURFACE_5.getColor(this)
         window.decorView.setBackgroundColor(surfaceColor5)
+    }
+
+    private fun setUpBottomNavigationAndFab() {
+        // Wrap binding.run to ensure ContentViewBindingDelegate is calling this Activity's
+        // setContentView before accessing views
+        binding.run {
+            findNavController(R.id.nav_host_fragment).addOnDestinationChangedListener(
+                this@MainActivity
+            )
+        }
+
+        // Set a custom animation for showing and hiding the FAB
+        binding.fab.apply {
+            setShowMotionSpecResource(R.animator.fab_show)
+            setHideMotionSpecResource(R.animator.fab_hide)
+            setOnClickListener {
+                navigateToCompose()
+            }
+        }
+        setUpBottomNavClickListeners()
+    }
+
+    private fun setUpBottomNavClickListeners() {
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when(item.itemId) {
+                R.id.menu_inbox -> {
+                    // TODO: Update navigate to home.
+                    true
+                }
+                R.id.menu_articles -> {
+                    // TODO: Update navigate to placeholder fragment
+                    true
+                }
+                R.id.menu_chat -> {
+                    // TODO: Update navigate to placeholder fragment
+                    true
+                }
+                R.id.menu_video -> {
+                    // TODO: Update navigate to placeholder fragment
+                    true
+                } else -> {
+                true
+            }
+            }
+        }
     }
 }
