@@ -17,6 +17,6 @@
 
   <item
       android:id="@android:id/mask"
-      android:drawable="@drawable/ic_search_bar_circle" />
+      android:drawable="@drawable/ic_search_bar_background" />
 
 </ripple>

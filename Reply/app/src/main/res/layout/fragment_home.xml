@@ -18,7 +18,8 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/home_coordinator_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:transitionGroup="true">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/home_app_bar_layout"
@@ -31,15 +32,18 @@
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/home_toolbar"
-                style="@style/Widget.Reply.Search.Toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_search_bar_circle"
+                android:layout_height="@dimen/search_bar_min_height"
+                android:background="@drawable/ic_search_bar_background"
+                android:backgroundTint="?attr/colorSurface"
                 android:foreground="@drawable/email_search_ripple"
+                android:padding="0dp"
                 app:menu="@menu/search_bar_menu"
                 app:navigationIcon="@drawable/ic_search"
+                app:navigationIconTint="?attr/colorOutline"
                 app:title="Search replies"
-                app:titleTextAppearance="?attr/textAppearanceTitleSmall" />
+                app:titleTextAppearance="?attr/textAppearanceTitleSmall"
+                app:titleTextColor="?attr/colorOutline" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -50,7 +54,6 @@
             android:clipToPadding="false"
             android:paddingTop="@dimen/grid_0_25"
             android:paddingBottom="@dimen/grid_2"
-            android:transitionGroup="true"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 

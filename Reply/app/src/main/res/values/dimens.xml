@@ -40,6 +40,7 @@
 
     <!--Search Bar-->
     <dimen name="search_bar_min_height">56dp</dimen>
+    <dimen name="search_bar_radius">28dp</dimen>
 
     <dimen name="chip_icon_diameter">32dp</dimen>
 </resources>
