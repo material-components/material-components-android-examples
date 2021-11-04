@@ -45,4 +45,8 @@
         <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
     </style>
 
+    <style name="Widget.Reply.Search.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:minHeight">@dimen/search_bar_min_height</item>
+    </style>
+
 </resources>

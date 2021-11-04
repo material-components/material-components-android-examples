@@ -22,12 +22,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.doOnPreDraw
+import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ItemTouchHelper
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialFadeThrough
 import com.materialstudies.reply.R
@@ -99,6 +101,14 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
         EmailStore.getEmails(args.mailbox).observe(viewLifecycleOwner) {
             emailAdapter.submitList(it)
         }
+
+        (activity as MainActivity)
+            .findViewById<BottomNavigationView>(R.id.bottom_navigation)
+            .addOnLayoutChangeListener { _, _, top, _, bottom, _, _, _, _ ->
+                binding.recyclerView.updatePadding(
+                    bottom = (bottom - top) + resources.getDimensionPixelSize(R.dimen.grid_2)
+                )
+            }
     }
 
     override fun onEmailClicked(cardView: View, email: Email) {
