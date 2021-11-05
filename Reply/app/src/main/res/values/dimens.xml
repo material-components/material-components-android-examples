@@ -38,5 +38,9 @@
     <dimen name="email_star_image_icon_size">24dp</dimen>
     <dimen name="email_card_view_bottom_padding">120dp</dimen>
 
+    <!--Search Bar-->
+    <dimen name="search_bar_min_height">56dp</dimen>
+    <dimen name="search_bar_radius">28dp</dimen>
+
     <dimen name="chip_icon_diameter">32dp</dimen>
 </resources>

@@ -16,18 +16,23 @@
 
 package com.materialstudies.reply.ui.home
 
+import android.content.Context
 import android.os.Bundle
+import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.doOnPreDraw
+import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ItemTouchHelper
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialFadeThrough
 import com.materialstudies.reply.R
@@ -98,6 +103,10 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
 
         EmailStore.getEmails(args.mailbox).observe(viewLifecycleOwner) {
             emailAdapter.submitList(it)
+        }
+
+        binding.homeToolbar.setOnClickListener {
+            (activity as MainActivity).navigateToSearch()
         }
     }
 
