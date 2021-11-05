@@ -171,12 +171,9 @@ class MainActivity : AppCompatActivity(),
                 navigateToCompose()
             }
         }
-        setUpBottomNavClickListeners()
-    }
 
-    private fun setUpBottomNavClickListeners() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
-            when(item.itemId) {
+            when (item.itemId) {
                 R.id.menu_inbox -> {
                     // TODO: Update navigate to home.
                     true
@@ -192,9 +189,10 @@ class MainActivity : AppCompatActivity(),
                 R.id.menu_video -> {
                     // TODO: Update navigate to placeholder fragment
                     true
-                } else -> {
-                true
-            }
+                }
+                else -> {
+                    true
+                }
             }
         }
     }
