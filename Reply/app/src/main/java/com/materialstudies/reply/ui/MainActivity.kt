@@ -16,10 +16,13 @@
 
 package com.materialstudies.reply.ui
 
+import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -39,6 +42,7 @@ import com.materialstudies.reply.ui.home.Mailbox
 import com.materialstudies.reply.ui.nav.NavigationAdapter
 import com.materialstudies.reply.ui.nav.NavigationModelItem
 import com.materialstudies.reply.ui.search.SearchFragmentDirections
+import com.materialstudies.reply.util.AdaptiveUtil
 import com.materialstudies.reply.util.contentView
 
 class MainActivity : AppCompatActivity(),
@@ -58,11 +62,30 @@ class MainActivity : AppCompatActivity(),
                 ?.fragments
                 ?.first()
 
+    // Adaptive
+    private lateinit var configuration: Configuration
+
     override fun onCreate(savedInstanceState: Bundle?) {
         DynamicColors.applyIfAvailable(this)
         applyBackgroundColor()
         super.onCreate(savedInstanceState)
         setUpBottomNavigationAndFab()
+
+        val surfaceColor5 = SurfaceColors.SURFACE_5.getColor(this)
+        binding.modalNavDrawer.setBackgroundColor(surfaceColor5)
+
+        configuration = resources.configuration
+        val screenWidth = configuration.screenWidthDp
+        AdaptiveUtil.updateNavigationViews(
+            screenWidth,
+            binding.fab,
+            findViewById(R.id.nav_fab),
+            binding.drawerLayout,
+            binding.bottomNavigation,
+            binding.navRail,
+            binding.navDrawer,
+            binding.modalNavDrawer
+        )
     }
 
     override fun onDestinationChanged(

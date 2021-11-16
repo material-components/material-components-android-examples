@@ -17,45 +17,94 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraint_layout"
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutFullscreen="@{true}"
-        tools:context="com.materialstudies.reply.ui.MainActivity">
+        android:layout_height="match_parent">
 
-        <fragment
-            android:id="@+id/nav_host_fragment"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            app:defaultNavHost="true"
-            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navGraph="@navigation/navigation_graph" />
+            android:layout_height="match_parent"
+            app:layoutFullscreen="@{true}"
+            tools:context="com.materialstudies.reply.ui.MainActivity">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:elevation="@dimen/m3_sys_elevation_level0"
-            app:labelVisibilityMode="unlabeled"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            <FrameLayout
+                android:id="@+id/nav_container"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toStartOf="@+id/nav_host_fragment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+                <!-- Large screens -->
+                <com.google.android.material.navigation.NavigationView
+                    android:id="@+id/nav_drawer"
+                    android:background="@android:color/transparent"
+                    android:layout_width="232dp"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    app:elevation="@dimen/m3_sys_elevation_level0"
+                    app:headerLayout="@layout/nav_drawer_header"
+                    app:menu="@menu/bottom_nav_menu"/>
+
+                <!-- Medium screens. -->
+                <com.google.android.material.navigationrail.NavigationRailView
+                    android:id="@+id/nav_rail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    app:elevation="@dimen/m3_sys_elevation_level5"
+                    app:headerLayout="@layout/nav_rail_header"
+                    app:labelVisibilityMode="unlabeled"
+                    app:menu="@menu/bottom_nav_menu"
+                    app:menuGravity="top" />
+            </FrameLayout>
+
+            <fragment
+                android:id="@+id/nav_host_fragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:defaultNavHost="true"
+                app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/nav_container"
+                app:layout_constraintTop_toTopOf="parent"
+                app:navGraph="@navigation/navigation_graph" />
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:elevation="@dimen/m3_sys_elevation_level0"
+                app:labelVisibilityMode="unlabeled"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:menu="@menu/bottom_nav_menu" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                style="?attr/floatingActionButtonLargeTertiaryStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/fab_compose_email_content_description"
+                android:layout_margin="@dimen/grid_2"
+                app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+                app:layout_constraintEnd_toEndOf="@+id/nav_host_fragment"
+                app:srcCompat="@drawable/ic_edit" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/modal_nav_drawer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_drawer_header"
             app:menu="@menu/bottom_nav_menu" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            style="?attr/floatingActionButtonLargeTertiaryStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/fab_compose_email_content_description"
-            android:layout_margin="@dimen/grid_2"
-            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-            app:layout_constraintEnd_toEndOf="@+id/nav_host_fragment"
-            app:srcCompat="@drawable/ic_edit" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 </layout>
