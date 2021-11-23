@@ -23,7 +23,6 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -55,9 +54,6 @@ import com.materialstudies.reply.util.contentView
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import android.util.DisplayMetrics
-
-
-
 
 class MainActivity : AppCompatActivity(),
                      Toolbar.OnMenuItemClickListener,
@@ -94,13 +90,21 @@ class MainActivity : AppCompatActivity(),
             AdaptiveUtil.screenSizeState.collect {
                 when (it) {
                     AdaptiveUtil.ScreenSize.SMALL -> {
-                        adaptToSmallScreen(binding.fab, binding.bottomNavigation, binding.navDrawer, binding.navRail)
+                        // Bottom Navigation
+                        adaptToBottomNavScreen(binding.fab, binding.bottomNavigation, binding.navDrawer, binding.navRail)
                     }
                     AdaptiveUtil.ScreenSize.MEDIUM -> {
-                        adaptToMediumScreen(binding.fab, findViewById(R.id.nav_fab), binding.bottomNavigation, binding.navRail, binding.navDrawer)
+                        // One Pane Layout with Navigation Rail
+                        adaptToNavRailScreen(binding.fab, binding.bottomNavigation, binding.navRail, binding.navDrawer)
                     }
                     AdaptiveUtil.ScreenSize.LARGE -> {
-                        adaptToLargeScreen(binding.fab, findViewById(R.id.nav_fab), binding.bottomNavigation, binding.navRail, binding.navDrawer)
+                        // TODO: Update to Two Panes
+                        // Two Pane Layout with Navigation Rail
+                        adaptToNavRailScreen(binding.fab, binding.bottomNavigation, binding.navRail, binding.navDrawer)
+                    } AdaptiveUtil.ScreenSize.XLARGE -> {
+                        // TODO: Update to Two Panes
+                        // Two Pane Layout with Navigation Drawer
+                        adaptToNavDrawerScreen(binding.fab, binding.bottomNavigation, binding.navRail, binding.navDrawer)
                     }
                 }
             }
@@ -109,7 +113,8 @@ class MainActivity : AppCompatActivity(),
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        val screenWidth = newConfig.screenWidthDp
+        val displayMetrics: DisplayMetrics = applicationContext.resources.displayMetrics
+        val screenWidth = (displayMetrics.widthPixels / displayMetrics.density).toInt()
         AdaptiveUtil.updateScreenSize(screenWidth)
     }
 
@@ -245,22 +250,20 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-    private fun adaptToSmallScreen(
+    private fun adaptToBottomNavScreen(
         fab: FloatingActionButton,
         bottomNavigation: BottomNavigationView,
         navigationDrawer: NavigationView,
         navigationRail: NavigationRailView,
     ) {
-        navigationRail.headerView.apply {  }
-        fab.visibility = View.GONE
         navigationDrawer.visibility = View.GONE
         navigationRail.visibility = View.GONE
+        fab.visibility = View.VISIBLE
         bottomNavigation.visibility = View.VISIBLE
     }
 
-    private fun adaptToMediumScreen(
+    private fun adaptToNavRailScreen(
         fab: FloatingActionButton,
-        navigationFab: ExtendedFloatingActionButton,
         bottomNavigation: BottomNavigationView,
         navigationRail: NavigationRailView,
         navigationDrawer: NavigationView
@@ -269,12 +272,10 @@ class MainActivity : AppCompatActivity(),
         bottomNavigation.visibility = View.GONE
         navigationDrawer.visibility = View.GONE
         navigationRail.visibility = View.VISIBLE
-        navigationFab.shrink()
     }
 
-    private fun adaptToLargeScreen(
+    private fun adaptToNavDrawerScreen(
         fab: FloatingActionButton,
-        navigationFab: ExtendedFloatingActionButton,
         bottomNavigation: BottomNavigationView,
         navigationRail: NavigationRailView,
         navigationDrawer: NavigationView,
@@ -283,7 +284,6 @@ class MainActivity : AppCompatActivity(),
         bottomNavigation.visibility = View.GONE
         navigationRail.visibility = View.GONE
         navigationDrawer.visibility = View.VISIBLE
-        navigationFab.extend()
     }
 
     private fun setUpNavigationDrawer(

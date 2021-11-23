@@ -25,28 +25,34 @@ object AdaptiveUtil {
     // TODO: WindowMetrics
     // TODO: View changes inside fragment/activity classes
     enum class ScreenSize {
-        SMALL, MEDIUM, LARGE
+        SMALL, MEDIUM, LARGE, XLARGE
     }
 
-    // Based off of: https://developer.android.com/guide/topics/large-screens/support-different-screen-sizes
-    private const val SMALL_SCREEN_SIZE = 600
+    // These sizes are based off of the Figma mocks
+    private const val SMALL_SCREEN_SIZE = 700
     private const val MEDIUM_SCREEN_SIZE = 840
+    private const val LARGE_SCREEN_SIZE = 1024
 
     private val _screenSizeState = MutableStateFlow(ScreenSize.SMALL)
     val screenSizeState: StateFlow<ScreenSize> = _screenSizeState
 
     fun updateScreenSize(screenWidth: Int) {
         _screenSizeState.value = when {
+            // Bottom Navigation
             screenWidth < SMALL_SCREEN_SIZE -> {
                 ScreenSize.SMALL
             }
-            // Medium Screen
+            // One Pane Layout with Navigation Rail
             screenWidth in SMALL_SCREEN_SIZE until MEDIUM_SCREEN_SIZE -> {
                 ScreenSize.MEDIUM
             }
-            // Large and Extra Large Screens
-            else -> {
+            // Two Pane Layout with Navigation Rail
+            screenWidth in MEDIUM_SCREEN_SIZE until LARGE_SCREEN_SIZE -> {
                 ScreenSize.LARGE
+            }
+            // Two Pane Layout with Navigation Drawer
+            else -> {
+                ScreenSize.XLARGE
             }
         }
     }
