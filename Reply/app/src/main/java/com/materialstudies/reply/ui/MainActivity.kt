@@ -20,15 +20,23 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.elevation.SurfaceColors
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.navigationrail.NavigationRailView
 import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.MaterialSharedAxis
@@ -44,6 +52,12 @@ import com.materialstudies.reply.ui.nav.NavigationModelItem
 import com.materialstudies.reply.ui.search.SearchFragmentDirections
 import com.materialstudies.reply.util.AdaptiveUtil
 import com.materialstudies.reply.util.contentView
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import android.util.DisplayMetrics
+
+
+
 
 class MainActivity : AppCompatActivity(),
                      Toolbar.OnMenuItemClickListener,
@@ -62,9 +76,6 @@ class MainActivity : AppCompatActivity(),
                 ?.fragments
                 ?.first()
 
-    // Adaptive
-    private lateinit var configuration: Configuration
-
     override fun onCreate(savedInstanceState: Bundle?) {
         DynamicColors.applyIfAvailable(this)
         applyBackgroundColor()
@@ -73,19 +84,33 @@ class MainActivity : AppCompatActivity(),
 
         val surfaceColor5 = SurfaceColors.SURFACE_5.getColor(this)
         binding.modalNavDrawer.setBackgroundColor(surfaceColor5)
+        setUpNavigationDrawer(binding.drawerLayout, binding.navRail, binding.modalNavDrawer)
 
-        configuration = resources.configuration
-        val screenWidth = configuration.screenWidthDp
-        AdaptiveUtil.updateNavigationViews(
-            screenWidth,
-            binding.fab,
-            findViewById(R.id.nav_fab),
-            binding.drawerLayout,
-            binding.bottomNavigation,
-            binding.navRail,
-            binding.navDrawer,
-            binding.modalNavDrawer
-        )
+        val displayMetrics: DisplayMetrics = applicationContext.resources.displayMetrics
+        val screenWidth = (displayMetrics.widthPixels / displayMetrics.density).toInt()
+        AdaptiveUtil.updateScreenSize(screenWidth)
+
+        lifecycleScope.launch {
+            AdaptiveUtil.screenSizeState.collect {
+                when (it) {
+                    AdaptiveUtil.ScreenSize.SMALL -> {
+                        adaptToSmallScreen(binding.fab, binding.bottomNavigation, binding.navDrawer, binding.navRail)
+                    }
+                    AdaptiveUtil.ScreenSize.MEDIUM -> {
+                        adaptToMediumScreen(binding.fab, findViewById(R.id.nav_fab), binding.bottomNavigation, binding.navRail, binding.navDrawer)
+                    }
+                    AdaptiveUtil.ScreenSize.LARGE -> {
+                        adaptToLargeScreen(binding.fab, findViewById(R.id.nav_fab), binding.bottomNavigation, binding.navRail, binding.navDrawer)
+                    }
+                }
+            }
+        }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        val screenWidth = newConfig.screenWidthDp
+        AdaptiveUtil.updateScreenSize(screenWidth)
     }
 
     override fun onDestinationChanged(
@@ -219,4 +244,86 @@ class MainActivity : AppCompatActivity(),
             }
         }
     }
+
+    private fun adaptToSmallScreen(
+        fab: FloatingActionButton,
+        bottomNavigation: BottomNavigationView,
+        navigationDrawer: NavigationView,
+        navigationRail: NavigationRailView,
+    ) {
+        navigationRail.headerView.apply {  }
+        fab.visibility = View.GONE
+        navigationDrawer.visibility = View.GONE
+        navigationRail.visibility = View.GONE
+        bottomNavigation.visibility = View.VISIBLE
+    }
+
+    private fun adaptToMediumScreen(
+        fab: FloatingActionButton,
+        navigationFab: ExtendedFloatingActionButton,
+        bottomNavigation: BottomNavigationView,
+        navigationRail: NavigationRailView,
+        navigationDrawer: NavigationView
+    ) {
+        fab.visibility = View.GONE
+        bottomNavigation.visibility = View.GONE
+        navigationDrawer.visibility = View.GONE
+        navigationRail.visibility = View.VISIBLE
+        navigationFab.shrink()
+    }
+
+    private fun adaptToLargeScreen(
+        fab: FloatingActionButton,
+        navigationFab: ExtendedFloatingActionButton,
+        bottomNavigation: BottomNavigationView,
+        navigationRail: NavigationRailView,
+        navigationDrawer: NavigationView,
+    ) {
+        fab.visibility = View.GONE
+        bottomNavigation.visibility = View.GONE
+        navigationRail.visibility = View.GONE
+        navigationDrawer.visibility = View.VISIBLE
+        navigationFab.extend()
+    }
+
+    private fun setUpNavigationDrawer(
+        drawerLayout: DrawerLayout,
+        navigationRail: NavigationRailView,
+        modalDrawer: NavigationView
+    ) {
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+        setNavRailButtonClickListener(drawerLayout, navigationRail.headerView!!.findViewById(R.id.navigation_button), modalDrawer)
+        setModalDrawerButtonOnClickListener(drawerLayout, modalDrawer.getHeaderView(0).findViewById(R.id.navigation_button), modalDrawer)
+        modalDrawer.setNavigationItemSelectedListener { item ->
+            modalDrawer.setCheckedItem(item)
+            drawerLayout.closeDrawer(modalDrawer)
+            true
+        }
+    }
+
+    /**
+     * Sets the Navigation Rail navigation button
+     */
+    private fun setNavRailButtonClickListener(
+        drawerLayout: DrawerLayout,
+        navButton: View,
+        navDrawer: NavigationView
+    ) {
+        navButton.setOnClickListener {
+            drawerLayout.openDrawer(navDrawer)
+            Log.d("Clicker", "This was clicked.")
+        }
+    }
+
+    /**
+     * Sets up the Modal Navigation Drawer navigation button
+     */
+    private fun setModalDrawerButtonOnClickListener(
+        drawerLayout: DrawerLayout,
+        button: View,
+        modalDrawer: NavigationView
+    ) {
+        button.setOnClickListener { drawerLayout.closeDrawer(modalDrawer) }
+    }
+
 }
