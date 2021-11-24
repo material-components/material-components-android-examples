@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   Copyright (c) 2021 Google Inc.
 
   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -12,50 +11,50 @@
   or implied. See the License for the specific language governing permissions and limitations under
   the License.
   -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/linear_layout"
+    android:id="@+id/constraint_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:clipToPadding="false"
-    android:clipChildren="false"
-    android:layout_marginTop="@dimen/grid_4"
-    android:orientation="vertical"
-    android:padding="8dp">
+    android:layout_marginVertical="@dimen/grid_4">
 
-  <androidx.constraintlayout.widget.ConstraintLayout
-      android:id="@+id/constraint_layout"
-      android:layout_width="match_parent"
+  <ImageView
+      android:id="@+id/imageView"
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginHorizontal="@dimen/grid_1">
+      android:layout_marginHorizontal="@dimen/grid_1"
+      android:layout_marginVertical="@dimen/grid_1"
+      android:src="@drawable/reply_logo_large"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/reply_logo_large"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageButton
-        android:id="@+id/navigation_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:layout_gravity="center"
-        android:src="@drawable/navigation_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
-
-  </androidx.constraintlayout.widget.ConstraintLayout>
+  <ImageButton
+      android:id="@+id/navigation_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:background="@android:color/transparent"
+      android:layout_marginHorizontal="@dimen/grid_1"
+      android:layout_marginVertical="@dimen/grid_1"
+      android:src="@drawable/navigation_button"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
 
   <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
       android:id="@+id/nav_fab"
       style="?attr/extendedFloatingActionButtonTertiaryStyle"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
+      android:layout_height="wrap_content"
       android:layout_gravity="center"
+      android:layout_marginHorizontal="@dimen/grid_1"
       android:layout_marginVertical="@dimen/grid_2"
-      android:text="@string/fab_text"
-      app:icon="@drawable/ic_edit" />
+      android:text="@string/fab_compose_label"
+      app:icon="@drawable/ic_edit"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

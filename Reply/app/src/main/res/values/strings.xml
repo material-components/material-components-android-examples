@@ -22,6 +22,7 @@
     <string name="bottom_nav_drawer_profile_image_content_desc">profile avatar image</string>
     <string name="fab_compose_email_content_description">Compose new email</string>
     <string name="fab_reply_email_content_description">Reply to email</string>
+    <string name="fab_compose_label">Compose</string>
 
     <!--BottomSheet menus-->
     <string name="menu_item_forward">Forward</string>
@@ -77,6 +78,4 @@
     <string name="search_suggestion_hint">Search email</string>
     <string name="search_suggestion_title_yesterday">YESTERDAY</string>
     <string name="search_suggestion_title_this_week">THIS WEEK</string>
-
-    <string name="fab_text">Compose</string>
 </resources>

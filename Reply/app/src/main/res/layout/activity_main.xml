@@ -37,7 +37,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
-                <!-- Large screens -->
+
                 <com.google.android.material.navigation.NavigationView
                     android:id="@+id/nav_drawer"
                     android:background="@android:color/transparent"
@@ -46,9 +46,8 @@
                     android:visibility="gone"
                     app:elevation="@dimen/m3_sys_elevation_level0"
                     app:headerLayout="@layout/nav_drawer_header"
-                    app:menu="@menu/bottom_nav_menu"/>
+                    app:menu="@menu/navigation_menu" />
 
-                <!-- Medium screens. -->
                 <com.google.android.material.navigationrail.NavigationRailView
                     android:id="@+id/nav_rail"
                     android:layout_width="wrap_content"
@@ -57,8 +56,9 @@
                     app:elevation="@dimen/m3_sys_elevation_level5"
                     app:headerLayout="@layout/nav_rail_header"
                     app:labelVisibilityMode="unlabeled"
-                    app:menu="@menu/bottom_nav_menu"
+                    app:menu="@menu/navigation_menu"
                     app:menuGravity="top" />
+
             </FrameLayout>
 
             <fragment
@@ -82,7 +82,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:menu="@menu/bottom_nav_menu" />
+                app:menu="@menu/navigation_menu" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab"
@@ -103,7 +103,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             app:headerLayout="@layout/nav_drawer_header"
-            app:menu="@menu/bottom_nav_menu" />
+            app:menu="@menu/navigation_menu" />
 
     </androidx.drawerlayout.widget.DrawerLayout>
 
