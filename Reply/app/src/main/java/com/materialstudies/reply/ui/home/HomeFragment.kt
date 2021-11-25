@@ -16,23 +16,19 @@
 
 package com.materialstudies.reply.ui.home
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.doOnPreDraw
-import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ItemTouchHelper
-import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialFadeThrough
 import com.materialstudies.reply.R
@@ -42,6 +38,12 @@ import com.materialstudies.reply.databinding.FragmentHomeBinding
 import com.materialstudies.reply.ui.MainActivity
 import com.materialstudies.reply.ui.MenuBottomSheetDialogFragment
 import com.materialstudies.reply.ui.nav.NavigationModel
+import com.materialstudies.reply.util.AdaptiveUtils
+import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.MEDIUM
+import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.SMALL
+import com.materialstudies.reply.util.EmailUtils
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 /**
  * A [Fragment] that displays a list of emails.
@@ -51,6 +53,7 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
     private val args: HomeFragmentArgs by navArgs()
 
     private lateinit var binding: FragmentHomeBinding
+    private lateinit var screenSize: AdaptiveUtils.ScreenSize
 
     private val emailAdapter = EmailAdapter(this)
 
@@ -76,6 +79,16 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        lifecycleScope.launch {
+            AdaptiveUtils.screenSizeState.collect { size ->
+                screenSize = size
+                if (screenSize != SMALL) {
+                    findNavController().navigateUp()
+                }
+            }
+        }
+
         return binding.root
     }
 
@@ -108,6 +121,8 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
         binding.homeToolbar.setOnClickListener {
             (activity as MainActivity).navigateToSearch()
         }
+
+        (requireActivity() as MainActivity).updatePaneWidth(R.dimen.minimum_sliding_pane_size)
     }
 
     override fun onEmailClicked(cardView: View, email: Email) {
@@ -119,10 +134,10 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
         reenterTransition = MaterialElevationScale(true).apply {
             duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
         }
-        val emailCardDetailTransitionName = getString(R.string.email_card_detail_transition_name)
-        val extras = FragmentNavigatorExtras(cardView to emailCardDetailTransitionName)
-        val directions = HomeFragmentDirections.actionHomeFragmentToEmailFragment(email.id)
-        findNavController().navigate(directions, extras)
+        EmailUtils.updateEmailId(email.id)
+        if (screenSize == SMALL || screenSize == MEDIUM) {
+            goToEmailFragment(cardView, email)
+        }
     }
 
     override fun onEmailLongPressed(email: Email): Boolean {
@@ -138,5 +153,12 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
 
     override fun onEmailArchived(email: Email) {
         EmailStore.delete(email.id)
+    }
+
+    private fun goToEmailFragment(cardView: View, email: Email) {
+        val emailCardDetailTransitionName = getString(R.string.email_card_detail_transition_name)
+        val extras = FragmentNavigatorExtras(cardView to emailCardDetailTransitionName)
+        val directions = HomeFragmentDirections.actionHomeFragmentToEmailFragment(email.id)
+        findNavController().navigate(directions, extras)
     }
 }

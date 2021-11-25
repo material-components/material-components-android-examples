@@ -22,14 +22,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.transition.MaterialContainerTransform
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.FragmentEmailBinding
-import kotlin.LazyThreadSafetyMode.NONE
+import com.materialstudies.reply.util.AdaptiveUtils
+import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.LARGE
+import com.materialstudies.reply.util.EmailUtils
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.XLARGE
 
 private const val MAX_GRID_SPANS = 3
 
@@ -38,10 +43,8 @@ private const val MAX_GRID_SPANS = 3
  */
 class EmailFragment : Fragment() {
 
-    private val args: EmailFragmentArgs by navArgs()
-    private val emailId: Long by lazy(NONE) { args.emailId }
-
     private lateinit var binding: FragmentEmailBinding
+    private var emailId: Long = 0
     private val attachmentAdapter = EmailAttachmentGridAdapter(MAX_GRID_SPANS)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,6 +65,22 @@ class EmailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentEmailBinding.inflate(inflater, container, false)
+
+        lifecycleScope.launch {
+            EmailUtils.selectedEmailState.collect { id ->
+                emailId = id
+                binding.email = EmailStore.get(id)
+            }
+        }
+
+        lifecycleScope.launch {
+            AdaptiveUtils.screenSizeState.collect { size ->
+                if (size == LARGE || size == XLARGE) {
+                    binding.toolbar.navigationIcon = null
+                }
+            }
+        }
+
         return binding.root
     }
 

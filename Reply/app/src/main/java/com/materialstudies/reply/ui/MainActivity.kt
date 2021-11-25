@@ -18,10 +18,13 @@ package com.materialstudies.reply.ui
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import android.widget.FrameLayout
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.get
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
@@ -30,6 +33,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
+import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.elevation.SurfaceColors
 import com.google.android.material.navigation.NavigationView
@@ -66,6 +70,7 @@ class MainActivity : AppCompatActivity(),
     // Keep track of the current Email being viewed, if any, in order to pass the correct email id
     // to ComposeFragment when this Activity's FAB is clicked.
     private var currentEmailId = -1L
+    private lateinit var screenSize: AdaptiveUtils.ScreenSize
 
     private val currentNavigationFragment: Fragment?
         get() = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
@@ -87,6 +92,7 @@ class MainActivity : AppCompatActivity(),
 
         lifecycleScope.launch {
             AdaptiveUtils.screenSizeState.collect {
+                screenSize = it
                 when (it) {
                     SMALL -> adaptToSmallScreen()
                     MEDIUM -> adaptToMediumAndLargeScreen()
@@ -97,6 +103,8 @@ class MainActivity : AppCompatActivity(),
                 }
             }
         }
+        Log.d("PANESTUFF-isSlideable", binding.slidingPaneLayout.isSlideable().toString())
+        binding.slidingPaneLayout.lockMode = SlidingPaneLayout.LOCK_MODE_LOCKED_CLOSED
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -144,6 +152,10 @@ class MainActivity : AppCompatActivity(),
             }
         }
         return true
+    }
+
+    fun updatePaneWidth() {
+        binding.slidingPaneLayout.closePane()
     }
 
     fun navigateToHome(mailbox: Mailbox) {

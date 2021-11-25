@@ -22,6 +22,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.transition.MaterialSharedAxis
 import com.materialstudies.reply.R
@@ -30,6 +31,12 @@ import com.materialstudies.reply.data.SearchSuggestionStore
 import com.materialstudies.reply.databinding.FragmentSearchBinding
 import com.materialstudies.reply.databinding.SearchSuggestionItemBinding
 import com.materialstudies.reply.databinding.SearchSuggestionTitleBinding
+import com.materialstudies.reply.ui.MainActivity
+import com.materialstudies.reply.util.AdaptiveUtils
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.LARGE
+import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.XLARGE
 
 /**
  * A [Fragment] that displays search.
@@ -37,6 +44,7 @@ import com.materialstudies.reply.databinding.SearchSuggestionTitleBinding
 class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchBinding
+    private lateinit var screenSize: AdaptiveUtils.ScreenSize
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +69,16 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.searchToolbar.setNavigationOnClickListener { findNavController().navigateUp() }
         setUpSuggestions(binding.searchSuggestionContainer)
+
+        lifecycleScope.launch {
+            AdaptiveUtils.screenSizeState.collect {
+                if (it == LARGE || it == XLARGE) {
+                    (requireActivity() as MainActivity).updatePaneWidth()
+                } else {
+                    (requireActivity() as MainActivity).updatePaneWidth()
+                }
+            }
+        }
     }
 
     private fun setUpSuggestions(suggestionContainer: ViewGroup) {
