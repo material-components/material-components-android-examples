@@ -121,8 +121,6 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
         binding.homeToolbar.setOnClickListener {
             (activity as MainActivity).navigateToSearch()
         }
-
-        (requireActivity() as MainActivity).updatePaneWidth(R.dimen.minimum_sliding_pane_size)
     }
 
     override fun onEmailClicked(cardView: View, email: Email) {

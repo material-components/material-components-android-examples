@@ -20,11 +20,9 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import android.widget.FrameLayout
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.get
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
@@ -152,10 +150,6 @@ class MainActivity : AppCompatActivity(),
             }
         }
         return true
-    }
-
-    fun updatePaneWidth() {
-        binding.slidingPaneLayout.closePane()
     }
 
     fun navigateToHome(mailbox: Mailbox) {
