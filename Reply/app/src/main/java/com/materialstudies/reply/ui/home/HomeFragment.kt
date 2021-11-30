@@ -83,12 +83,12 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
         lifecycleScope.launch {
             AdaptiveUtils.screenSizeState.collect { size ->
                 screenSize = size
+                // When you click an email and change the Screen Size
                 if (screenSize != SMALL) {
                     findNavController().navigateUp()
                 }
             }
         }
-
         return binding.root
     }
 
@@ -133,6 +133,8 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
             duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
         }
         EmailUtils.updateEmailId(email.id)
+
+        // If we are in Small or Medium then we navigate to the email.
         if (screenSize == SMALL || screenSize == MEDIUM) {
             goToEmailFragment(cardView, email)
         }

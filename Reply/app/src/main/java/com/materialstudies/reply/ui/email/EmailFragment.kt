@@ -75,6 +75,7 @@ class EmailFragment : Fragment() {
 
         lifecycleScope.launch {
             AdaptiveUtils.screenSizeState.collect { size ->
+                // Remove Navigation Icon in Large/XLarge screens
                 if (size == LARGE || size == XLARGE) {
                     binding.toolbar.navigationIcon = null
                 }

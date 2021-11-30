@@ -18,7 +18,6 @@ package com.materialstudies.reply.ui
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
@@ -94,14 +93,11 @@ class MainActivity : AppCompatActivity(),
                 when (it) {
                     SMALL -> adaptToSmallScreen()
                     MEDIUM -> adaptToMediumAndLargeScreen()
-                    // TODO: Update to Two Panes
                     LARGE -> adaptToMediumAndLargeScreen()
-                    // TODO: Update to Two Panes
                     XLARGE -> adaptToXLargeScreen()
                 }
             }
         }
-        Log.d("PANESTUFF-isSlideable", binding.slidingPaneLayout.isSlideable().toString())
         binding.slidingPaneLayout.lockMode = SlidingPaneLayout.LOCK_MODE_LOCKED_CLOSED
     }
 
