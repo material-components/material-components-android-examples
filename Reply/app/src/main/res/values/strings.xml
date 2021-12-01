@@ -22,6 +22,7 @@
     <string name="bottom_nav_drawer_profile_image_content_desc">profile avatar image</string>
     <string name="fab_compose_email_content_description">Compose new email</string>
     <string name="fab_reply_email_content_description">Reply to email</string>
+    <string name="fab_compose_label">Compose</string>
 
     <!--BottomSheet menus-->
     <string name="menu_item_forward">Forward</string>

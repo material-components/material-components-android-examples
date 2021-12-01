@@ -16,16 +16,24 @@
 
 package com.materialstudies.reply.ui
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.elevation.SurfaceColors
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.navigationrail.NavigationRailView
 import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.MaterialSharedAxis
@@ -39,7 +47,14 @@ import com.materialstudies.reply.ui.home.Mailbox
 import com.materialstudies.reply.ui.nav.NavigationAdapter
 import com.materialstudies.reply.ui.nav.NavigationModelItem
 import com.materialstudies.reply.ui.search.SearchFragmentDirections
+import com.materialstudies.reply.util.AdaptiveUtils
 import com.materialstudies.reply.util.contentView
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.SMALL
+import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.MEDIUM
+import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.LARGE
+import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.XLARGE
 
 class MainActivity : AppCompatActivity(),
                      Toolbar.OnMenuItemClickListener,
@@ -63,6 +78,30 @@ class MainActivity : AppCompatActivity(),
         applyBackgroundColor()
         super.onCreate(savedInstanceState)
         setUpBottomNavigationAndFab()
+
+        val surfaceColor5 = SurfaceColors.SURFACE_5.getColor(this)
+        binding.modalNavDrawer.setBackgroundColor(surfaceColor5)
+        setUpNavigationDrawer(binding.drawerLayout, binding.navRail, binding.modalNavDrawer)
+
+        AdaptiveUtils.updateScreenSize(this)
+
+        lifecycleScope.launch {
+            AdaptiveUtils.screenSizeState.collect {
+                when (it) {
+                    SMALL -> adaptToSmallScreen()
+                    MEDIUM -> adaptToMediumAndLargeScreen()
+                    // TODO: Update to Two Panes
+                    LARGE -> adaptToMediumAndLargeScreen()
+                    // TODO: Update to Two Panes
+                    XLARGE -> adaptToXLargeScreen()
+                }
+            }
+        }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        AdaptiveUtils.updateScreenSize(this)
     }
 
     override fun onDestinationChanged(
@@ -194,6 +233,54 @@ class MainActivity : AppCompatActivity(),
                     true
                 }
             }
+        }
+    }
+
+    private fun adaptToSmallScreen() {
+        binding.run {
+            navDrawer.isGone = true
+            navRail.isGone = true
+            fab.isVisible = true
+            bottomNavigation.isVisible = true
+        }
+    }
+
+    private fun adaptToMediumAndLargeScreen() {
+        binding.run {
+            navDrawer.isGone = true
+            fab.isGone = true
+            bottomNavigation.isGone = true
+            navRail.isVisible = true
+        }
+    }
+
+    private fun adaptToXLargeScreen() {
+        binding.run {
+            fab.isGone = true
+            bottomNavigation.isGone = true
+            navRail.isGone = true
+            navDrawer.isVisible = true
+        }
+    }
+
+    private fun setUpNavigationDrawer(
+        drawerLayout: DrawerLayout,
+        navigationRail: NavigationRailView,
+        modalDrawer: NavigationView
+    ) {
+        // Set Click Listener for the Navigation Rail
+        val navRailMenuButton = navigationRail.headerView!!.findViewById<ImageButton>(R.id.navigation_button)
+        navRailMenuButton.setOnClickListener { drawerLayout.openDrawer(modalDrawer) }
+
+        // Set Click Listener for the Modal Navigation Drawer
+        val modalDrawerNavigationButton = modalDrawer.getHeaderView(0).findViewById<ImageButton>(R.id.navigation_button)
+        modalDrawerNavigationButton.setOnClickListener { drawerLayout.closeDrawer(modalDrawer) }
+
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+        modalDrawer.setNavigationItemSelectedListener { item ->
+            modalDrawer.setCheckedItem(item)
+            drawerLayout.closeDrawer(modalDrawer)
+            true
         }
     }
 }
