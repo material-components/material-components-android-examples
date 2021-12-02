@@ -33,7 +33,7 @@
                 android:id="@+id/nav_container"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                app:layout_constraintEnd_toStartOf="@+id/nav_host_fragment"
+                app:layout_constraintEnd_toStartOf="@+id/sliding_pane_layout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
@@ -61,17 +61,32 @@
 
             </FrameLayout>
 
-            <fragment
-                android:id="@+id/nav_host_fragment"
-                android:name="androidx.navigation.fragment.NavHostFragment"
+            <androidx.slidingpanelayout.widget.SlidingPaneLayout
+                android:id="@+id/sliding_pane_layout"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:defaultNavHost="true"
                 app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/nav_container"
-                app:layout_constraintTop_toTopOf="parent"
-                app:navGraph="@navigation/navigation_graph" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <fragment
+                    android:id="@+id/nav_host_fragment"
+                    android:name="androidx.navigation.fragment.NavHostFragment"
+                    android:layout_width="@dimen/minimum_sliding_pane_size"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:defaultNavHost="true"
+                    app:navGraph="@navigation/navigation_graph" />
+
+                <fragment
+                    android:id="@+id/secondary_fragment"
+                    android:name="com.materialstudies.reply.ui.email.EmailFragment"
+                    android:layout_width="@dimen/minimum_sliding_pane_size"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+            </androidx.slidingpanelayout.widget.SlidingPaneLayout>
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_navigation"
@@ -92,7 +107,7 @@
                 android:contentDescription="@string/fab_compose_email_content_description"
                 android:layout_margin="@dimen/grid_2"
                 app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-                app:layout_constraintEnd_toEndOf="@+id/nav_host_fragment"
+                app:layout_constraintEnd_toEndOf="@+id/sliding_pane_layout"
                 app:srcCompat="@drawable/ic_edit" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

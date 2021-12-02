@@ -21,11 +21,23 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.materialstudies.reply.R
 import com.materialstudies.reply.ui.home.Mailbox
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 /**
  * A static data store of [Email]s.
  */
 object EmailStore {
+
+    private const val DEFAULT_EMAIL_ID = 0L
+
+    private val _selectedEmailId = MutableStateFlow(DEFAULT_EMAIL_ID)
+    val selectedEmailId: StateFlow<Long> = _selectedEmailId.asStateFlow()
+
+    fun setSelectedEmailId(emailId: Long) {
+        _selectedEmailId.value = emailId
+    }
 
     private val allEmails = mutableListOf(
         Email(

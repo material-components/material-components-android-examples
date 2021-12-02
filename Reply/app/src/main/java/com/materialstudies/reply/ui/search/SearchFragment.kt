@@ -37,7 +37,6 @@ import com.materialstudies.reply.databinding.SearchSuggestionTitleBinding
 class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

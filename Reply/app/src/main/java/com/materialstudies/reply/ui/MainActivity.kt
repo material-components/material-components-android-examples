@@ -90,9 +90,7 @@ class MainActivity : AppCompatActivity(),
                 when (it) {
                     SMALL -> adaptToSmallScreen()
                     MEDIUM -> adaptToMediumAndLargeScreen()
-                    // TODO: Update to Two Panes
                     LARGE -> adaptToMediumAndLargeScreen()
-                    // TODO: Update to Two Panes
                     XLARGE -> adaptToXLargeScreen()
                 }
             }
@@ -144,6 +142,14 @@ class MainActivity : AppCompatActivity(),
             }
         }
         return true
+    }
+
+    fun closeEmailDetailsPane() {
+        binding.slidingPaneLayout.closePane()
+    }
+
+    fun openEmailDetailsPane() {
+        binding.slidingPaneLayout.openPane()
     }
 
     fun navigateToHome(mailbox: Mailbox) {
