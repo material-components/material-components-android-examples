@@ -30,7 +30,6 @@ import com.materialstudies.reply.data.SearchSuggestionStore
 import com.materialstudies.reply.databinding.FragmentSearchBinding
 import com.materialstudies.reply.databinding.SearchSuggestionItemBinding
 import com.materialstudies.reply.databinding.SearchSuggestionTitleBinding
-import com.materialstudies.reply.util.AdaptiveUtils
 
 /**
  * A [Fragment] that displays search.
@@ -38,8 +37,6 @@ import com.materialstudies.reply.util.AdaptiveUtils
 class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchBinding
-    private lateinit var screenSize: AdaptiveUtils.ScreenSize
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

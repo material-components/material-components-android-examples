@@ -23,10 +23,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
-import androidx.navigation.fragment.FragmentNavigatorExtras
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.google.android.material.transition.MaterialElevationScale
@@ -39,11 +36,6 @@ import com.materialstudies.reply.ui.MainActivity
 import com.materialstudies.reply.ui.MenuBottomSheetDialogFragment
 import com.materialstudies.reply.ui.nav.NavigationModel
 import com.materialstudies.reply.util.AdaptiveUtils
-import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.MEDIUM
-import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.SMALL
-import com.materialstudies.reply.util.EmailUtils
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 /**
  * A [Fragment] that displays a list of emails.
@@ -53,7 +45,6 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
     private val args: HomeFragmentArgs by navArgs()
 
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var screenSize: AdaptiveUtils.ScreenSize
 
     private val emailAdapter = EmailAdapter(this)
 
@@ -79,16 +70,6 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-
-        lifecycleScope.launch {
-            AdaptiveUtils.screenSizeState.collect { size ->
-                screenSize = size
-                // When you click an email and change the Screen Size
-                if (screenSize != SMALL) {
-                    findNavController().navigateUp()
-                }
-            }
-        }
         return binding.root
     }
 
@@ -132,12 +113,8 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
         reenterTransition = MaterialElevationScale(true).apply {
             duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
         }
-        EmailUtils.updateEmailId(email.id)
-
-        // If we are in Small or Medium then we navigate to the email.
-        if (screenSize == SMALL || screenSize == MEDIUM) {
-            goToEmailFragment(cardView, email)
-        }
+        EmailStore.setSelectedEmailId(email.id)
+        (activity as MainActivity).openEmailDetailsPane()
     }
 
     override fun onEmailLongPressed(email: Email): Boolean {
@@ -153,12 +130,5 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
 
     override fun onEmailArchived(email: Email) {
         EmailStore.delete(email.id)
-    }
-
-    private fun goToEmailFragment(cardView: View, email: Email) {
-        val emailCardDetailTransitionName = getString(R.string.email_card_detail_transition_name)
-        val extras = FragmentNavigatorExtras(cardView to emailCardDetailTransitionName)
-        val directions = HomeFragmentDirections.actionHomeFragmentToEmailFragment(email.id)
-        findNavController().navigate(directions, extras)
     }
 }

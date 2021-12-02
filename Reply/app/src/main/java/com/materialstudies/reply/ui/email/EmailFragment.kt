@@ -21,17 +21,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.transition.MaterialContainerTransform
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.FragmentEmailBinding
+import com.materialstudies.reply.ui.MainActivity
 import com.materialstudies.reply.util.AdaptiveUtils
 import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.LARGE
-import com.materialstudies.reply.util.EmailUtils
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.XLARGE
@@ -44,7 +44,6 @@ private const val MAX_GRID_SPANS = 3
 class EmailFragment : Fragment() {
 
     private lateinit var binding: FragmentEmailBinding
-    private var emailId: Long = 0
     private val attachmentAdapter = EmailAttachmentGridAdapter(MAX_GRID_SPANS)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,18 +66,19 @@ class EmailFragment : Fragment() {
         binding = FragmentEmailBinding.inflate(inflater, container, false)
 
         lifecycleScope.launch {
-            EmailUtils.selectedEmailState.collect { id ->
-                emailId = id
+            EmailStore.selectedEmailId.collect { id ->
                 binding.email = EmailStore.get(id)
             }
         }
 
         lifecycleScope.launch {
             AdaptiveUtils.screenSizeState.collect { size ->
-                // Remove Navigation Icon in Large/XLarge screens
-                if (size == LARGE || size == XLARGE) {
-                    binding.toolbar.navigationIcon = null
+                val navIcon = if (size == LARGE || size == XLARGE) {
+                    null
+                } else {
+                    ContextCompat.getDrawable(requireContext(), R.drawable.ic_arrow_back_protected)
                 }
+                binding.toolbar.navigationIcon = navIcon
             }
         }
 
@@ -89,10 +89,10 @@ class EmailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.toolbar.setNavigationOnClickListener {
-            findNavController().navigateUp()
+            (activity as MainActivity).closeEmailDetailsPane()
         }
 
-        val email = EmailStore.get(emailId)
+        val email = EmailStore.get(EmailStore.selectedEmailId.value)
         if (email == null) {
             showError()
             return

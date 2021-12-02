@@ -30,7 +30,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
-import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.elevation.SurfaceColors
 import com.google.android.material.navigation.NavigationView
@@ -67,7 +66,6 @@ class MainActivity : AppCompatActivity(),
     // Keep track of the current Email being viewed, if any, in order to pass the correct email id
     // to ComposeFragment when this Activity's FAB is clicked.
     private var currentEmailId = -1L
-    private lateinit var screenSize: AdaptiveUtils.ScreenSize
 
     private val currentNavigationFragment: Fragment?
         get() = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
@@ -89,7 +87,6 @@ class MainActivity : AppCompatActivity(),
 
         lifecycleScope.launch {
             AdaptiveUtils.screenSizeState.collect {
-                screenSize = it
                 when (it) {
                     SMALL -> adaptToSmallScreen()
                     MEDIUM -> adaptToMediumAndLargeScreen()
@@ -98,7 +95,6 @@ class MainActivity : AppCompatActivity(),
                 }
             }
         }
-        binding.slidingPaneLayout.lockMode = SlidingPaneLayout.LOCK_MODE_LOCKED_CLOSED
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -146,6 +142,14 @@ class MainActivity : AppCompatActivity(),
             }
         }
         return true
+    }
+
+    fun closeEmailDetailsPane() {
+        binding.slidingPaneLayout.closePane()
+    }
+
+    fun openEmailDetailsPane() {
+        binding.slidingPaneLayout.openPane()
     }
 
     fun navigateToHome(mailbox: Mailbox) {
