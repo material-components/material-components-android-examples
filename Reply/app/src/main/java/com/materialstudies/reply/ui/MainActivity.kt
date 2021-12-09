@@ -246,6 +246,7 @@ class MainActivity : AppCompatActivity(),
         binding.run {
             navDrawer.isGone = true
             navRail.isGone = true
+            modalNavDrawer.isGone = true
             fab.isVisible = true
             bottomNavigation.isVisible = true
         }
@@ -257,6 +258,7 @@ class MainActivity : AppCompatActivity(),
             fab.isGone = true
             bottomNavigation.isGone = true
             navRail.isVisible = true
+            modalNavDrawer.isVisible = true
         }
     }
 
@@ -265,6 +267,7 @@ class MainActivity : AppCompatActivity(),
             fab.isGone = true
             bottomNavigation.isGone = true
             navRail.isGone = true
+            modalNavDrawer.isGone = true
             navDrawer.isVisible = true
         }
     }

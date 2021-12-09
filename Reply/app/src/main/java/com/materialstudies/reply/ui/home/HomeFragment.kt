@@ -35,7 +35,6 @@ import com.materialstudies.reply.databinding.FragmentHomeBinding
 import com.materialstudies.reply.ui.MainActivity
 import com.materialstudies.reply.ui.MenuBottomSheetDialogFragment
 import com.materialstudies.reply.ui.nav.NavigationModel
-import com.materialstudies.reply.util.AdaptiveUtils
 
 /**
  * A [Fragment] that displays a list of emails.

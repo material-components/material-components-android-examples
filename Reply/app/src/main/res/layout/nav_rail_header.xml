@@ -33,7 +33,7 @@
       android:src="@drawable/navigation_button" />
 
   <com.google.android.material.floatingactionbutton.FloatingActionButton
-      android:id="@+id/nav_fab"
+      android:id="@+id/nav_rail_fab"
       style="?attr/extendedFloatingActionButtonTertiaryStyle"
       android:layout_width="@dimen/navigation_drawer_menu_item_height"
       android:layout_height="@dimen/navigation_drawer_menu_item_height"
