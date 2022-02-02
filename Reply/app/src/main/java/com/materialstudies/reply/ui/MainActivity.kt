@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity(),
 
         val surfaceColor5 = SurfaceColors.SURFACE_5.getColor(this)
         binding.modalNavDrawer.setBackgroundColor(surfaceColor5)
-        setUpNavigationDrawer(binding.drawerLayout, binding.navRail, binding.modalNavDrawer)
+        setUpNavigationDrawer()
 
         AdaptiveUtils.updateScreenSize(this)
 
@@ -272,24 +272,27 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-    private fun setUpNavigationDrawer(
-        drawerLayout: DrawerLayout,
-        navigationRail: NavigationRailView,
-        modalDrawer: NavigationView
-    ) {
-        // Set Click Listener for the Navigation Rail
-        val navRailMenuButton = navigationRail.headerView!!.findViewById<ImageButton>(R.id.navigation_button)
-        navRailMenuButton.setOnClickListener { drawerLayout.openDrawer(modalDrawer) }
+    private fun setUpNavigationDrawer() {
+        binding.run {
+            navRail.headerView
+                ?.findViewById<ImageButton>(R.id.navigation_button)
+                ?.setOnClickListener {
+                    drawerLayout.openDrawer(modalNavDrawer)
+                }
 
-        // Set Click Listener for the Modal Navigation Drawer
-        val modalDrawerNavigationButton = modalDrawer.getHeaderView(0).findViewById<ImageButton>(R.id.navigation_button)
-        modalDrawerNavigationButton.setOnClickListener { drawerLayout.closeDrawer(modalDrawer) }
+            modalNavDrawer.getHeaderView(0)
+                    .findViewById<ImageButton>(R.id.navigation_button)
+                    .setOnClickListener {
+                        drawerLayout.closeDrawer(modalNavDrawer)
+                    }
 
-        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-        modalDrawer.setNavigationItemSelectedListener { item ->
-            modalDrawer.setCheckedItem(item)
-            drawerLayout.closeDrawer(modalDrawer)
-            true
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+            modalNavDrawer.setNavigationItemSelectedListener { item ->
+                modalNavDrawer.setCheckedItem(item)
+                drawerLayout.closeDrawer(modalNavDrawer)
+                true
+            }
+
         }
     }
 }
