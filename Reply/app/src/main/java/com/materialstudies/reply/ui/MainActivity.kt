@@ -43,7 +43,10 @@ import com.materialstudies.reply.ui.nav.NavigationAdapter
 import com.materialstudies.reply.ui.nav.NavigationModelItem
 import com.materialstudies.reply.ui.search.SearchFragmentDirections
 import com.materialstudies.reply.util.AdaptiveUtils
-import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.*
+import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.SMALL
+import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.MEDIUM
+import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.LARGE
+import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.XLARGE
 import com.materialstudies.reply.util.contentView
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
