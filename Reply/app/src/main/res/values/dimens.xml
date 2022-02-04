@@ -25,6 +25,7 @@
     <dimen name="bottom_app_bar_logo_size">32dp</dimen>
 
     <!--NavigationDrawer-->
+    <dimen name="navigation_drawer_standard_width">232dp</dimen>
     <dimen name="navigation_drawer_profile_image_size">48dp</dimen>
     <dimen name="navigation_drawer_profile_image_size_padded">32dp</dimen>
     <dimen name="navigation_drawer_menu_item_height">56dp</dimen>

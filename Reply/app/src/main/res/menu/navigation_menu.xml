@@ -19,24 +19,26 @@
       android:id="@+id/menu_inbox"
       android:icon="@drawable/ic_inbox"
       android:enabled="true"
+      android:checkable="true"
+      android:checked="true"
       android:title="@string/menu_item_inbox"/>
 
   <item
       android:id="@+id/menu_articles"
       android:icon="@drawable/ic_article"
-      android:enabled="true"
+      android:checkable="true"
       android:title="@string/menu_item_draft"/>
 
   <item
       android:id="@+id/menu_chat"
       android:icon="@drawable/ic_chat"
-      android:enabled="true"
+      android:checkable="true"
       android:title="@string/menu_item_chat"/>
 
   <item
       android:id="@+id/menu_video"
       android:icon="@drawable/ic_video_cam"
-      android:enabled="true"
+      android:checkable="true"
       android:title="@string/menu_item_video"/>
 
 </menu>

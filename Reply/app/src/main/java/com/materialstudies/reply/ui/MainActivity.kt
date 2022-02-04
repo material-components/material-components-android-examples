@@ -18,10 +18,8 @@ package com.materialstudies.reply.ui
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.view.MenuItem
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
@@ -32,13 +30,10 @@ import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.elevation.SurfaceColors
-import com.google.android.material.navigation.NavigationView
-import com.google.android.material.navigationrail.NavigationRailView
 import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.MaterialSharedAxis
 import com.materialstudies.reply.R
-import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.ActivityMainBinding
 import com.materialstudies.reply.ui.compose.ComposeFragmentDirections
 import com.materialstudies.reply.ui.email.EmailFragmentArgs
@@ -48,16 +43,12 @@ import com.materialstudies.reply.ui.nav.NavigationAdapter
 import com.materialstudies.reply.ui.nav.NavigationModelItem
 import com.materialstudies.reply.ui.search.SearchFragmentDirections
 import com.materialstudies.reply.util.AdaptiveUtils
+import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.*
 import com.materialstudies.reply.util.contentView
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.SMALL
-import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.MEDIUM
-import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.LARGE
-import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.XLARGE
 
 class MainActivity : AppCompatActivity(),
-                     Toolbar.OnMenuItemClickListener,
                      NavController.OnDestinationChangedListener,
                      NavigationAdapter.NavigationAdapterListener {
 
@@ -67,6 +58,8 @@ class MainActivity : AppCompatActivity(),
     // to ComposeFragment when this Activity's FAB is clicked.
     private var currentEmailId = -1L
 
+    private var suspendNavigationItemChangedUpdates = false
+
     private val currentNavigationFragment: Fragment?
         get() = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
                 ?.childFragmentManager
@@ -75,16 +68,14 @@ class MainActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DynamicColors.applyIfAvailable(this)
-        applyBackgroundColor()
-        super.onCreate(savedInstanceState)
-        setUpBottomNavigationAndFab()
-
+        // Update the windows background color to be an elevated surface
         val surfaceColor5 = SurfaceColors.SURFACE_5.getColor(this)
-        binding.modalNavDrawer.setBackgroundColor(surfaceColor5)
-        setUpNavigationDrawer()
+        window.decorView.setBackgroundColor(surfaceColor5)
+        super.onCreate(savedInstanceState)
+
+        setUpNavigationComponentry()
 
         AdaptiveUtils.updateScreenSize(this)
-
         lifecycleScope.launch {
             AdaptiveUtils.screenSizeState.collect {
                 when (it) {
@@ -127,23 +118,6 @@ class MainActivity : AppCompatActivity(),
         // Do nothing
     }
 
-    override fun onMenuItemClick(item: MenuItem?): Boolean {
-        when (item?.itemId) {
-            R.id.menu_settings -> {
-                showDarkThemeMenu()
-            }
-            R.id.menu_search -> navigateToSearch()
-            R.id.menu_email_star -> {
-                EmailStore.update(currentEmailId) { isStarred = !isStarred }
-            }
-            R.id.menu_email_delete -> {
-                EmailStore.delete(currentEmailId)
-                findNavController(R.id.nav_host_fragment).popBackStack()
-            }
-        }
-        return true
-    }
-
     fun closeEmailDetailsPane() {
         binding.slidingPaneLayout.closePane()
     }
@@ -175,12 +149,6 @@ class MainActivity : AppCompatActivity(),
         findNavController(R.id.nav_host_fragment).navigate(directions)
     }
 
-    private fun showDarkThemeMenu() {
-        MenuBottomSheetDialogFragment
-            .newInstance(R.menu.dark_theme_bottom_sheet_menu)
-            .show(supportFragmentManager, null)
-    }
-
     private fun navigateToCompose() {
         currentNavigationFragment?.apply {
             exitTransition = MaterialElevationScale(false).apply {
@@ -194,105 +162,96 @@ class MainActivity : AppCompatActivity(),
         findNavController(R.id.nav_host_fragment).navigate(directions)
     }
 
-    private fun applyBackgroundColor() {
-        val surfaceColor5 = SurfaceColors.SURFACE_5.getColor(this)
-        window.decorView.setBackgroundColor(surfaceColor5)
-    }
-
-    private fun setUpBottomNavigationAndFab() {
-        // Wrap binding.run to ensure ContentViewBindingDelegate is calling this Activity's
-        // setContentView before accessing views
-        binding.run {
-            findNavController(R.id.nav_host_fragment).addOnDestinationChangedListener(
-                this@MainActivity
-            )
-        }
-
-        // Set a custom animation for showing and hiding the FAB
-        binding.fab.apply {
-            setShowMotionSpecResource(R.animator.fab_show)
-            setHideMotionSpecResource(R.animator.fab_hide)
-            setOnClickListener {
-                navigateToCompose()
-            }
-        }
-
-        binding.bottomNavigation.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.menu_inbox -> {
-                    // TODO: Update navigate to home.
-                    true
-                }
-                R.id.menu_articles -> {
-                    // TODO: Update navigate to placeholder fragment
-                    true
-                }
-                R.id.menu_chat -> {
-                    // TODO: Update navigate to placeholder fragment
-                    true
-                }
-                R.id.menu_video -> {
-                    // TODO: Update navigate to placeholder fragment
-                    true
-                }
-                else -> {
-                    true
-                }
-            }
-        }
-    }
-
     private fun adaptToSmallScreen() {
         binding.run {
-            navDrawer.isGone = true
-            navRail.isGone = true
-            modalNavDrawer.isGone = true
-            fab.isVisible = true
             bottomNavigation.isVisible = true
+            bottomNavigationFab.isVisible = true
+            modalNavigationView.isGone = true
+            navigationRail.isGone = true
+            standardNavigationView.isGone = true
         }
     }
 
     private fun adaptToMediumAndLargeScreen() {
         binding.run {
-            navDrawer.isGone = true
-            fab.isGone = true
             bottomNavigation.isGone = true
-            navRail.isVisible = true
-            modalNavDrawer.isVisible = true
+            bottomNavigationFab.isGone = true
+            modalNavigationView.isVisible = true
+            navigationRail.isVisible = true
+            standardNavigationView.isGone = true
         }
     }
 
     private fun adaptToXLargeScreen() {
         binding.run {
-            fab.isGone = true
             bottomNavigation.isGone = true
-            navRail.isGone = true
-            modalNavDrawer.isGone = true
-            navDrawer.isVisible = true
+            bottomNavigationFab.isGone = true
+            modalNavigationView.isGone = true
+            navigationRail.isGone = true
+            standardNavigationView.isVisible = true
         }
     }
 
-    private fun setUpNavigationDrawer() {
+    private fun setUpNavigationComponentry() {
         binding.run {
-            navRail.headerView
+            findNavController(R.id.nav_host_fragment).addOnDestinationChangedListener(
+                    this@MainActivity
+            )
+
+            // Set a custom animation for showing and hiding the FAB
+            bottomNavigationFab.apply {
+                setShowMotionSpecResource(R.animator.fab_show)
+                setHideMotionSpecResource(R.animator.fab_hide)
+                setOnClickListener {
+                    navigateToCompose()
+                }
+            }
+
+            // Open the modal navigation drawer on click of the nav rail menu button
+            navigationRail.headerView
                 ?.findViewById<ImageButton>(R.id.navigation_button)
                 ?.setOnClickListener {
-                    drawerLayout.openDrawer(modalNavDrawer)
+                    drawerLayout.openDrawer(modalNavigationView)
                 }
 
-            modalNavDrawer.getHeaderView(0)
+            // Close the modal navigation drawer on click of its navigation button
+            modalNavigationView.getHeaderView(0)
                     .findViewById<ImageButton>(R.id.navigation_button)
                     .setOnClickListener {
-                        drawerLayout.closeDrawer(modalNavDrawer)
+                        drawerLayout.closeDrawer(modalNavigationView)
                     }
 
             drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-            modalNavDrawer.setNavigationItemSelectedListener { item ->
-                modalNavDrawer.setCheckedItem(item)
-                drawerLayout.closeDrawer(modalNavDrawer)
+
+            // Configure all destination selected listeners
+            bottomNavigation.setOnItemSelectedListener { item ->
+                onNavigationMenuItemChanged(item.itemId)
                 true
             }
-
+            navigationRail.setOnItemSelectedListener {
+                onNavigationMenuItemChanged(it.itemId)
+                true
+            }
+            modalNavigationView.setNavigationItemSelectedListener {
+                onNavigationMenuItemChanged(it.itemId)
+                drawerLayout.closeDrawer(modalNavigationView)
+                true
+            }
+            standardNavigationView.setNavigationItemSelectedListener {
+                onNavigationMenuItemChanged(it.itemId)
+                true
+            }
         }
+    }
+
+    private fun onNavigationMenuItemChanged(itemId: Int) {
+        if (suspendNavigationItemChangedUpdates) return
+
+        suspendNavigationItemChangedUpdates = true
+        binding.bottomNavigation.selectedItemId = itemId
+        binding.navigationRail.selectedItemId = itemId
+        binding.modalNavigationView.setCheckedItem(itemId)
+        binding.standardNavigationView.setCheckedItem(itemId)
+        suspendNavigationItemChangedUpdates = false
     }
 }

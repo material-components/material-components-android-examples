@@ -95,7 +95,7 @@ class ComposeFragment : Fragment() {
             enterTransition = MaterialContainerTransform().apply {
                 // Manually add the Views to be shared since this is not a standard Fragment to
                 // Fragment shared element transition.
-                startView = requireActivity().findViewById(R.id.fab)
+                startView = requireActivity().findViewById(R.id.bottom_navigation_fab)
                 endView = emailCardView
                 duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
                 scrimColor = Color.TRANSPARENT
