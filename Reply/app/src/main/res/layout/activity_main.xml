@@ -30,7 +30,7 @@
             tools:context="com.materialstudies.reply.ui.MainActivity">
 
             <FrameLayout
-                android:id="@+id/nav_container"
+                android:id="@+id/side_navigation_container"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 app:layout_constraintEnd_toStartOf="@+id/sliding_pane_layout"
@@ -39,9 +39,9 @@
                 app:layout_constraintBottom_toBottomOf="parent">
 
                 <com.google.android.material.navigation.NavigationView
-                    android:id="@+id/nav_drawer"
+                    android:id="@+id/standard_navigation_view"
                     android:background="@android:color/transparent"
-                    android:layout_width="232dp"
+                    android:layout_width="@dimen/navigation_drawer_standard_width"
                     android:layout_height="match_parent"
                     android:visibility="gone"
                     app:elevation="@dimen/m3_sys_elevation_level0"
@@ -49,7 +49,7 @@
                     app:menu="@menu/navigation_menu" />
 
                 <com.google.android.material.navigationrail.NavigationRailView
-                    android:id="@+id/nav_rail"
+                    android:id="@+id/navigation_rail"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:visibility="gone"
@@ -67,7 +67,7 @@
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/nav_container"
+                app:layout_constraintStart_toEndOf="@+id/side_navigation_container"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <fragment
@@ -100,7 +100,7 @@
                 app:menu="@menu/navigation_menu" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab"
+                android:id="@+id/bottom_navigation_fab"
                 style="?attr/floatingActionButtonLargeTertiaryStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -113,12 +113,14 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.navigation.NavigationView
-            android:id="@+id/modal_nav_drawer"
+            android:id="@+id/modal_navigation_view"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:scrollbars="none"
             app:headerLayout="@layout/nav_drawer_header"
-            app:menu="@menu/navigation_menu" />
+            app:menu="@menu/navigation_menu"
+            app:backgroundSurfaceColorElevation="@{@dimen/m3_sys_elevation_level5}"/>
 
     </androidx.drawerlayout.widget.DrawerLayout>
 
