@@ -31,6 +31,7 @@ import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.FragmentEmailBinding
 import com.materialstudies.reply.ui.MainActivity
 import com.materialstudies.reply.util.AdaptiveUtils
+import com.materialstudies.reply.util.AdaptiveUtils.ContentState
 import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.LARGE
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -72,8 +73,8 @@ class EmailFragment : Fragment() {
         }
 
         lifecycleScope.launch {
-            AdaptiveUtils.screenSizeState.collect { size ->
-                val navIcon = if (size == LARGE || size == XLARGE) {
+            AdaptiveUtils.contentState.collect { state ->
+                val navIcon = if (state == ContentState.DUAL_PANE) {
                     null
                 } else {
                     ContextCompat.getDrawable(requireContext(), R.drawable.ic_arrow_back_protected)

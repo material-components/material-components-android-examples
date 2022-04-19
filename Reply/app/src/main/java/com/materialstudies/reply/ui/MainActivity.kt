@@ -18,6 +18,7 @@ package com.materialstudies.reply.ui
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
@@ -28,6 +29,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
+import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.elevation.SurfaceColors
 import com.google.android.material.transition.MaterialElevationScale
@@ -35,6 +37,7 @@ import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.MaterialSharedAxis
 import com.materialstudies.reply.R
 import com.materialstudies.reply.databinding.ActivityMainBinding
+import com.materialstudies.reply.ui.common.ReplySlidingPaneLayout
 import com.materialstudies.reply.ui.compose.ComposeFragmentDirections
 import com.materialstudies.reply.ui.email.EmailFragmentArgs
 import com.materialstudies.reply.ui.home.HomeFragmentDirections
@@ -78,6 +81,12 @@ class MainActivity : AppCompatActivity(),
 
         setUpNavigationComponentry()
 
+        binding.slidingPaneLayout.setSlidingPaneStateListener(
+                object : ReplySlidingPaneLayout.SlidingPaneStateListener {
+                    override fun onCanSlideChanged(canSlide: Boolean) {
+                        AdaptiveUtils.updateContentState(canSlide)
+                    }
+                })
         AdaptiveUtils.updateScreenSize(this)
         lifecycleScope.launch {
             AdaptiveUtils.screenSizeState.collect {
