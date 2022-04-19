@@ -101,6 +101,8 @@ class MainActivity : AppCompatActivity(),
             AdaptiveUtils.contentState.collect {
                 closeEmailPaneOnBackPressed.isEnabled = it == ContentState.SINGLE_PANE
             }
+        }
+        lifecycleScope.launch {
             AdaptiveUtils.screenSizeState.collect {
                 when (it) {
                     SMALL -> adaptToSmallScreen()

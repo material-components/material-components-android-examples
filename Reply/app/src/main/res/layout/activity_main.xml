@@ -45,7 +45,7 @@
                     android:layout_height="match_parent"
                     android:visibility="gone"
                     app:elevation="@dimen/m3_sys_elevation_level0"
-                    app:headerLayout="@layout/nav_drawer_header"
+                    app:headerLayout="@layout/navigation_drawer_standard_header"
                     app:menu="@menu/navigation_menu" />
 
                 <com.google.android.material.navigationrail.NavigationRailView
@@ -118,7 +118,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:scrollbars="none"
-            app:headerLayout="@layout/nav_drawer_header"
+            app:headerLayout="@layout/navigation_drawer_modal_header"
             app:menu="@menu/navigation_menu"
             app:backgroundSurfaceColorElevation="@{@dimen/m3_sys_elevation_level5}"/>
 
