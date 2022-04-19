@@ -61,7 +61,7 @@
 
             </FrameLayout>
 
-            <androidx.slidingpanelayout.widget.SlidingPaneLayout
+            <com.materialstudies.reply.ui.common.ReplySlidingPaneLayout
                 android:id="@+id/sliding_pane_layout"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -86,7 +86,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"/>
 
-            </androidx.slidingpanelayout.widget.SlidingPaneLayout>
+            </com.materialstudies.reply.ui.common.ReplySlidingPaneLayout>
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_navigation"

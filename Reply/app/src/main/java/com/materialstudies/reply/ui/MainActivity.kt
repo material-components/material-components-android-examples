@@ -18,7 +18,9 @@ package com.materialstudies.reply.ui
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageButton
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -28,6 +30,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
+import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.elevation.SurfaceColors
 import com.google.android.material.transition.MaterialElevationScale
@@ -35,6 +38,7 @@ import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.MaterialSharedAxis
 import com.materialstudies.reply.R
 import com.materialstudies.reply.databinding.ActivityMainBinding
+import com.materialstudies.reply.ui.common.ReplySlidingPaneLayout
 import com.materialstudies.reply.ui.compose.ComposeFragmentDirections
 import com.materialstudies.reply.ui.email.EmailFragmentArgs
 import com.materialstudies.reply.ui.home.HomeFragmentDirections
@@ -43,6 +47,7 @@ import com.materialstudies.reply.ui.nav.NavigationAdapter
 import com.materialstudies.reply.ui.nav.NavigationModelItem
 import com.materialstudies.reply.ui.search.SearchFragmentDirections
 import com.materialstudies.reply.util.AdaptiveUtils
+import com.materialstudies.reply.util.AdaptiveUtils.ContentState
 import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.SMALL
 import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.MEDIUM
 import com.materialstudies.reply.util.AdaptiveUtils.ScreenSize.LARGE
@@ -69,6 +74,12 @@ class MainActivity : AppCompatActivity(),
                 ?.fragments
                 ?.first()
 
+    private val closeEmailPaneOnBackPressed = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            closeEmailDetailsPane()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         DynamicColors.applyIfAvailable(this)
         // Update the windows background color to be an elevated surface
@@ -78,8 +89,18 @@ class MainActivity : AppCompatActivity(),
 
         setUpNavigationComponentry()
 
+        onBackPressedDispatcher.addCallback(closeEmailPaneOnBackPressed)
+        binding.slidingPaneLayout.setSlidingPaneStateListener(
+                object : ReplySlidingPaneLayout.SlidingPaneStateListener {
+                    override fun onCanSlideChanged(canSlide: Boolean) {
+                        AdaptiveUtils.updateContentState(canSlide)
+                    }
+                })
         AdaptiveUtils.updateScreenSize(this)
         lifecycleScope.launch {
+            AdaptiveUtils.contentState.collect {
+                closeEmailPaneOnBackPressed.isEnabled = it == ContentState.SINGLE_PANE
+            }
             AdaptiveUtils.screenSizeState.collect {
                 when (it) {
                     SMALL -> adaptToSmallScreen()
