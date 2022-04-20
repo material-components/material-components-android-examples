@@ -19,9 +19,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginHorizontal="@dimen/grid_2"
+    android:layout_marginBottom="@dimen/grid_3"
     android:paddingVertical="@dimen/grid_2"
-    android:paddingHorizontal="@dimen/grid_2"
-    android:layout_marginBottom="@dimen/grid_3">
+    android:paddingHorizontal="@dimen/grid_2">
 
     <TextView
         android:id="@+id/logo_text_view"
@@ -42,6 +42,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

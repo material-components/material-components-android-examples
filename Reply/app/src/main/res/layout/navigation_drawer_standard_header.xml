@@ -18,18 +18,18 @@
     android:id="@+id/constraint_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:fitsSystemWindows="true"
-    android:layout_marginBottom="@dimen/grid_4">
+    android:layout_marginBottom="@dimen/grid_4"
+    android:fitsSystemWindows="true">
 
     <TextView
         android:id="@+id/logo_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textAppearance="?attr/textAppearanceLogoMedium"
+        android:layout_marginHorizontal="@dimen/grid_2"
         android:paddingVertical="@dimen/grid_2"
         android:paddingHorizontal="@dimen/grid_2"
-        android:layout_marginHorizontal="@dimen/grid_2"
+        android:text="@string/app_name"
+        android:textAppearance="?attr/textAppearanceLogoMedium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,9 +42,9 @@
         android:layout_marginHorizontal="@dimen/grid_2"
         android:contentDescription="@string/fab_compose_email_content_description"
         android:text="@string/fab_compose_label"
-        app:icon="@drawable/ic_edit"
         android:textAppearance="?attr/textAppearanceTitleSmall"
         android:textSize="16sp"
+        app:icon="@drawable/ic_edit"
         app:iconGravity="textStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
