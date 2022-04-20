@@ -118,9 +118,9 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:scrollbars="none"
+            app:drawerLayoutCornerSize="@dimen/reply_large_component_corner_radius"
             app:headerLayout="@layout/navigation_drawer_modal_header"
             app:menu="@menu/navigation_drawer_menu"
-            app:drawerLayoutCornerSize="@dimen/reply_large_component_corner_radius"
             app:paddingTopSystemWindowInsets="@{true}" />
 
     </androidx.drawerlayout.widget.DrawerLayout>
