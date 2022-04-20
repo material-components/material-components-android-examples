@@ -32,7 +32,7 @@
     </style>
 
     <dimen name="reply_small_component_corner_radius">24dp</dimen>
-    <dimen name="reply_medium_component_corner_radius">0dp</dimen>
-    <dimen name="reply_large_component_corner_radius">12dp</dimen>
+    <dimen name="reply_medium_component_corner_radius">12dp</dimen>
+    <dimen name="reply_large_component_corner_radius">16dp</dimen>
 
 </resources>

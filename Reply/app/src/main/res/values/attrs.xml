@@ -29,6 +29,7 @@
     <attr name="motionInterpolatorOutgoing" format="reference"/>
 
     <!--Custom typescale attributes-->
+    <attr name="textAppearanceLogoMedium" format="reference"/>
     <attr name="textAppearanceBodyExtraLarge" format="reference" />
 
     <!--Custom view themes/styles-->

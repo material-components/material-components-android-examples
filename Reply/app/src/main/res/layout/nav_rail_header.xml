@@ -30,7 +30,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_gravity="center"
-      android:src="@drawable/navigation_button" />
+      android:src="@drawable/ic_menu" />
 
   <com.google.android.material.floatingactionbutton.FloatingActionButton
       android:id="@+id/nav_rail_fab"
