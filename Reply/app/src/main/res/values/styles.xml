@@ -19,12 +19,12 @@
     <style name="Widget.Reply.NavigationView" parent="Widget.Material3.NavigationView">
         <!--Remove any scrim insets applied by NavigationView for system bars-->
         <item name="insetForeground">@android:color/transparent</item>
-        <!--Set the background color of NavigationView-->
-        <item name="android:background">@android:color/transparent</item>
-        <item name="elevation">0dp</item>
-        <item name="itemTextAppearance">?attr/textAppearanceBodyMedium</item>
-        <item name="itemTextColor">@color/color_on_surface_emphasis_medium</item>
-        <item name="itemIconTint">@color/color_on_surface_emphasis_medium</item>
+        <item name="itemVerticalPadding">12dp</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.Reply.NavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.Reply.NavigationView" parent="">
+        <item name="android:listDivider">?attr/colorSurface</item>
     </style>
 
     <style name="Widget.Reply.Chip.Entry" parent="Widget.Material3.Chip.Input">
@@ -43,6 +43,11 @@
     <style name="Widget.Reply.Tonal.Button" parent="Widget.Material3.Button.UnelevatedButton">
         <item name="android:backgroundTint">?attr/colorOnSurfaceInverse</item>
         <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+    </style>
+
+    <style name="Widget.Reply.ExtendedFloatingActionButton.Icon.Tertiary.Unelevated" parent="Widget.Material3.ExtendedFloatingActionButton.Icon.Tertiary">
+        <item name="android:stateListAnimator">@animator/mtrl_btn_unelevated_state_list_anim</item>
+        <item name="elevation">0dp</item>
     </style>
 
 </resources>

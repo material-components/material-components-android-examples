@@ -34,7 +34,7 @@
     <string name="menu_item_search">Search</string>
     <string name="menu_item_settings">Settings</string>
 
-    <!--Bottom Navigation menus-->
+    <!--Navigation/Menus-->
     <string name="menu_item_inbox">Inbox</string>
     <string name="menu_item_draft">Draft</string>
     <string name="menu_item_chat">Chat</string>
@@ -44,6 +44,14 @@
     <string name="menu_dark_theme_dark">Dark</string>
     <string name="menu_dark_theme_battery_saver">Set by Battery Saver</string>
     <string name="menu_dark_theme_system_default">System default</string>
+
+    <string name="menu_folder_group_title">Folders</string>
+    <string name="menu_folder_freelance_title">Freelance</string>
+    <string name="menu_folder_mortgage_title">Mortgage</string>
+    <string name="menu_folder_pine_school_title">Pine School</string>
+    <string name="menu_folder_receipts_title">Receipts</string>
+    <string name="menu_folder_taxes_title">Taxes</string>
+    <string name="menu_folder_vacation_title">Vacation</string>
 
     <!--BottomNavigationDrawer-->
     <string name="navigation_inbox">Inbox</string>
