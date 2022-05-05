@@ -72,7 +72,6 @@ class EmailViewHolder(
         }
         binding.root.isActivated = shouldStar
     }
-
     override fun onRebounded() {
         val email = binding.email ?: return
         binding.listener?.onEmailStarChanged(email, !email.isStarred)
