@@ -63,7 +63,7 @@ class EmailFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentEmailBinding.inflate(inflater, container, false)
 
         lifecycleScope.launch {

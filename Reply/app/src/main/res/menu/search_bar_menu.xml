@@ -17,7 +17,7 @@
 
   <item
       android:id="@+id/menu_current_avatar"
-      android:icon="@drawable/ic_current_avatar"
+      android:icon="@drawable/avatar_current_user"
       android:layout_gravity="center"
       android:title="@string/menu_item_settings"
       app:showAsAction="always"/>
