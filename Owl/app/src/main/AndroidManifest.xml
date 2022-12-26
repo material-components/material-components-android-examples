@@ -14,8 +14,7 @@
   -->
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.materialstudies.owl">
+    xmlns:tools="http://schemas.android.com/tools">
 
   <!--Load images from Unsplash-->
   <uses-permission android:name="android.permission.INTERNET"/>
@@ -31,7 +30,8 @@
 
     <activity
         android:name=".ui.MainActivity"
-        android:theme="@style/Owl.Blue">
+        android:theme="@style/Owl.Blue"
+        android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
         <category android:name="android.intent.category.LAUNCHER"/>

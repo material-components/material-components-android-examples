@@ -93,9 +93,9 @@ class TopicThumbnailDrawable(
         callback?.invalidateDrawable(this)
     }
 
-    override fun onStateChange(state: IntArray?): Boolean {
+    override fun onStateChange(state: IntArray): Boolean {
         val initialProgress = progress
-        val newProgress = if (state?.contains(android.R.attr.state_activated) == true) {
+        val newProgress = if (state.contains(android.R.attr.state_activated)) {
             1f
         } else {
             0f
@@ -115,8 +115,7 @@ class TopicThumbnailDrawable(
 
     override fun isStateful() = true
 
-    override fun onBoundsChange(bounds: Rect?) {
-        if (bounds == null) return
+    override fun onBoundsChange(bounds: Rect) {
         update()
         val dLeft = (bounds.right - selectedDrawable.intrinsicWidth) / 2
         val dTop = (bounds.bottom - selectedDrawable.intrinsicHeight) / 2

@@ -23,6 +23,8 @@ import android.graphics.Bitmap.Config.ARGB_8888
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.view.View.GONE
 import android.view.View.MeasureSpec
@@ -179,38 +181,40 @@ fun View.findAncestorById(@IdRes ancestorId: Int): View {
  */
 fun BottomNavigationView.show() {
     if (visibility == VISIBLE) return
+    Handler(Looper.myLooper()!!).postDelayed({
 
-    val parent = parent as ViewGroup
-    // View needs to be laid out to create a snapshot & know position to animate. If view isn't
-    // laid out yet, need to do this manually.
-    if (!isLaidOut) {
-        measure(
-            MeasureSpec.makeMeasureSpec(parent.width, MeasureSpec.EXACTLY),
-            MeasureSpec.makeMeasureSpec(parent.height, MeasureSpec.AT_MOST)
-        )
-        layout(parent.left, parent.height - measuredHeight, parent.right, parent.height)
-    }
+        val parent = parent as ViewGroup
+        // View needs to be laid out to create a snapshot & know position to animate. If view isn't
+        // laid out yet, need to do this manually.
+        if (!isLaidOut) {
+            measure(
+                MeasureSpec.makeMeasureSpec(parent.width, MeasureSpec.EXACTLY),
+                MeasureSpec.makeMeasureSpec(parent.height, MeasureSpec.AT_MOST)
+            )
+            layout(parent.left, parent.height - measuredHeight, parent.right, parent.height)
+        }
 
-    val drawable = BitmapDrawable(context.resources, drawToBitmap())
-    drawable.setBounds(left, parent.height, right, parent.height + height)
-    parent.overlay.add(drawable)
-    ValueAnimator.ofInt(parent.height, top).apply {
-        startDelay = 100L
-        duration = 300L
-        interpolator = AnimationUtils.loadInterpolator(
-            context,
-            android.R.interpolator.linear_out_slow_in
-        )
-        addUpdateListener {
-            val newTop = it.animatedValue as Int
-            drawable.setBounds(left, newTop, right, newTop + height)
+        val drawable = BitmapDrawable(context.resources, drawToBitmap())
+        drawable.setBounds(left, parent.height, right, parent.height + height)
+        parent.overlay.add(drawable)
+        ValueAnimator.ofInt(parent.height, top).apply {
+            startDelay = 100L
+            duration = 300L
+            interpolator = AnimationUtils.loadInterpolator(
+                context,
+                android.R.interpolator.linear_out_slow_in
+            )
+            addUpdateListener {
+                val newTop = it.animatedValue as Int
+                drawable.setBounds(left, newTop, right, newTop + height)
+            }
+            doOnEnd {
+                parent.overlay.remove(drawable)
+                visibility = VISIBLE
+            }
+            start()
         }
-        doOnEnd {
-            parent.overlay.remove(drawable)
-            visibility = VISIBLE
-        }
-        start()
-    }
+    },100)
 }
 
 /**

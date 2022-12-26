@@ -14,6 +14,7 @@
 
 package com.materialstudies.owl.ui.mycourses
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,9 +37,20 @@ class MyCoursesAdapter : ListAdapter<Course, MyCourseViewHolder>(CourseDiff) {
             val extras = FragmentNavigatorExtras(
                 view to "shared_element"
             )
-            val action = MyCoursesFragmentDirections.actionMycoursesToLearn(courseId)
-            view.findNavController().navigate(action, extras)
+
+            val bundle = Bundle()
+            bundle.putLong("course_id", courseId)
+
+            view.findNavController().navigate(
+                R.id.action_mycourses_to_learn,
+                bundle, // Bundle of args
+                null, // NavOptions
+                extras
+            )
         }
+
+
+
     }
 
     private val shapeTransform =

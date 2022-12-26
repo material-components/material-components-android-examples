@@ -18,11 +18,11 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 33
     defaultConfig {
         applicationId 'com.materialstudies.owl'
         minSdkVersion 23
-        targetSdkVersion 30
+        targetSdkVersion 33
         versionCode 1
         versionName '1.0'
         vectorDrawables.useSupportLibrary = true
@@ -47,14 +47,15 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    namespace 'com.materialstudies.owl'
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.fragment:fragment-ktx:1.2.5'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.core:core-ktx:1.5.0-alpha04'
-    implementation 'com.google.android.material:material:1.4.0-alpha02'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.fragment:fragment-ktx:1.5.5'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'com.google.android.material:material:1.8.0-beta01'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     implementation "androidx.navigation:navigation-runtime-ktx:$nav_version"
@@ -62,6 +63,6 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation 'androidx.dynamicanimation:dynamicanimation:1.0.0'
 
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
 }
