@@ -59,14 +59,16 @@ class LessonsSheetFragment : Fragment() {
         val course = this.course
         if (course != null) {
             binding.lessonsSheet.postDelayed(300L) {
-                val action =
-                    LessonsSheetFragmentDirections.actionLessonsSheetToLesson(course.id, step)
-                // FIXME should be able to `navigate(action)` but not working
+
                 val navController = findNavController()
                 val onLesson = navController.currentDestination?.id != R.id.lesson
+                val bundle = Bundle()
+                bundle.putLong("course_id", course.id)
+                bundle.putInt("step_number", step)
+
                 navController.navigate(
-                    R.id.lesson,
-                    action.arguments,
+                    R.id.action_featured_to_learn,
+                    bundle, // Bundle of args
                     navOptions {
                         launchSingleTop = true
                         anim {

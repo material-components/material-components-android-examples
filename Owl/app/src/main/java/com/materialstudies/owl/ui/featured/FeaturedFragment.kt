@@ -24,6 +24,7 @@ import androidx.core.view.doOnNextLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
+import com.materialstudies.owl.R
 import com.materialstudies.owl.databinding.FragmentFeaturedBinding
 import com.materialstudies.owl.model.CourseId
 import com.materialstudies.owl.model.courses
@@ -46,14 +47,16 @@ class FeaturedFragment : Fragment() {
                     val extras = FragmentNavigatorExtras(
                         view to "shared_element"
                     )
-                    val action = FeaturedFragmentDirections.actionFeaturedToLearn(courseId)
-                    /* awaiting aosp/987385 in fragment 1.2.0-alpha02
-                    exitTransition = Recede().apply {
-                        addTarget(root)
-                        excludeTarget(view, true)
-                    duration = 300L
-                    }*/
-                    view.findNavController().navigate(action, extras)
+
+                    val bundle = Bundle()
+                    bundle.putLong("course_id", courseId)
+
+                    view.findNavController().navigate(
+                        R.id.action_featured_to_learn,
+                        bundle, // Bundle of args
+                        null, // NavOptions
+                        extras
+                    )
                 }
             }
             featuredGrid.apply {
