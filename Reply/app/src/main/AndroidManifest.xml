@@ -11,7 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Reply.DayNight"
         tools:ignore="AllowBackup">
-        <activity android:name=".ui.MainActivity">
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
