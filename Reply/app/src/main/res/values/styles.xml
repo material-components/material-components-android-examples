@@ -27,13 +27,4 @@
         <item name="itemIconTint">@color/color_on_surface_emphasis_medium</item>
     </style>
 
-    <style name="Widget.Reply.Chip.Entry" parent="Widget.MaterialComponents.Chip.Entry">
-        <item name="closeIconSize">0dp</item>
-        <item name="closeIconEnabled">false</item>
-        <item name="chipIcon">@drawable/avatar_none</item>
-        <item name="chipIconSize">@dimen/chip_icon_diameter</item>
-        <item name="chipStartPadding">0dp</item>
-        <item name="android:checkable">false</item>
-    </style>
-
 </resources>

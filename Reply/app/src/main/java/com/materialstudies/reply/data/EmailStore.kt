@@ -18,7 +18,7 @@ package com.materialstudies.reply.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.map
 import com.materialstudies.reply.R
 import com.materialstudies.reply.ui.home.Mailbox
 
@@ -177,32 +177,32 @@ object EmailStore {
     private val _emails: MutableLiveData<List<Email>> = MutableLiveData()
 
     private val inbox: LiveData<List<Email>>
-        get() = Transformations.map(_emails) { emails ->
+        get() = _emails.map { emails ->
             emails.filter { it.mailbox == Mailbox.INBOX }
         }
 
     private val starred: LiveData<List<Email>>
-        get() = Transformations.map(_emails) { emails ->
+        get() = _emails.map { emails ->
             emails.filter { it.isStarred }
         }
 
     private val sent: LiveData<List<Email>>
-        get() = Transformations.map(_emails) { emails ->
+        get() = _emails.map { emails ->
             emails.filter { it.mailbox == Mailbox.SENT }
         }
 
     private val trash: LiveData<List<Email>>
-        get() = Transformations.map(_emails) { emails ->
+        get() = _emails.map { emails ->
             emails.filter { it.mailbox == Mailbox.TRASH }
         }
 
     private val spam: LiveData<List<Email>>
-        get() = Transformations.map(_emails) { emails ->
+        get() = _emails.map { emails ->
             emails.filter { it.mailbox == Mailbox.SPAM }
         }
 
     private val drafts: LiveData<List<Email>>
-        get() = Transformations.map(_emails) { emails ->
+        get() = _emails.map { emails ->
             emails.filter { it.mailbox == Mailbox.DRAFTS }
         }
 

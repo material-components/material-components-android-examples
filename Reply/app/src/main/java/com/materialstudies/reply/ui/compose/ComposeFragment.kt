@@ -34,8 +34,8 @@ import com.materialstudies.reply.data.Account
 import com.materialstudies.reply.data.AccountStore
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.data.EmailStore
-import com.materialstudies.reply.databinding.ComposeRecipientChipBinding
 import com.materialstudies.reply.databinding.FragmentComposeBinding
+import com.materialstudies.reply.ui.common.addComposeRecipientChipComposeView
 import com.materialstudies.reply.util.themeColor
 import kotlin.LazyThreadSafetyMode.NONE
 
@@ -117,22 +117,13 @@ class ComposeFragment : Fragment() {
      * address selection dialog.
      */
     private fun addRecipientChip(acnt: Account) {
-        binding.recipientChipGroup.run {
-            val chipBinding = ComposeRecipientChipBinding.inflate(
-                LayoutInflater.from(context),
-                this,
-                false
-            ).apply {
-                account = acnt
-                root.setOnClickListener {
-                    // Bind the views in the expanded card view to this account's details when
-                    // clicked and expand.
-                    binding.focusedRecipient = acnt
-                    expandChip(it)
-                }
+        binding.recipientChipGroup.addComposeRecipientChipComposeView(
+            account = acnt,
+            onClick = { chip ->
+                binding.focusedRecipient = acnt
+                expandChip(chip)
             }
-            addView(chipBinding.root)
-        }
+        )
     }
 
     /**

@@ -28,8 +28,8 @@ import com.materialstudies.reply.R
 import com.materialstudies.reply.data.SearchSuggestion
 import com.materialstudies.reply.data.SearchSuggestionStore
 import com.materialstudies.reply.databinding.FragmentSearchBinding
-import com.materialstudies.reply.databinding.SearchSuggestionItemBinding
-import com.materialstudies.reply.databinding.SearchSuggestionTitleBinding
+import com.materialstudies.reply.ui.common.addSearchSuggestionHeaderComposeView
+import com.materialstudies.reply.ui.common.addSearchSuggestionItemComposeView
 
 /**
  * A [Fragment] that displays search.
@@ -71,18 +71,12 @@ class SearchFragment : Fragment() {
     }
 
     private fun addSuggestionTitleView(parent: ViewGroup, @StringRes titleResId: Int) {
-        val inflater = LayoutInflater.from(parent.context)
-        val titleBinding = SearchSuggestionTitleBinding.inflate(inflater, parent, false)
-        titleBinding.title = titleResId
-        parent.addView(titleBinding.root)
+        parent.addSearchSuggestionHeaderComposeView(titleResId = titleResId)
     }
 
     private fun addSuggestionItemViews(parent: ViewGroup, suggestions: List<SearchSuggestion>) {
         suggestions.forEach {
-            val inflater = LayoutInflater.from(parent.context)
-            val suggestionBinding = SearchSuggestionItemBinding.inflate(inflater, parent, false)
-            suggestionBinding.suggestion = it
-            parent.addView(suggestionBinding.root)
+            parent.addSearchSuggestionItemComposeView(searchSuggestion = it)
         }
     }
 }
