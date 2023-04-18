@@ -16,8 +16,6 @@
 
 package com.materialstudies.reply.ui.common
 
-import android.view.View
-import android.view.ViewGroup
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -28,8 +26,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import com.google.accompanist.themeadapter.material.MdcTheme
@@ -65,25 +61,6 @@ fun ComposeRecipientChip(
             fontFamily = workSansFontFamily
         )
     }
-}
-
-fun ViewGroup.addComposeRecipientChipComposeView(
-    onClick: (View) -> Unit,
-    account: Account,
-    modifier: Modifier = Modifier
-) {
-    this.addView(ComposeView(context).apply {
-        setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
-        setContent {
-            MdcTheme {
-                ComposeRecipientChip(
-                    account = account,
-                    onClick = { onClick(this)},
-                    modifier = modifier
-                )
-            }
-        }
-    })
 }
 
 @ThemePreviews

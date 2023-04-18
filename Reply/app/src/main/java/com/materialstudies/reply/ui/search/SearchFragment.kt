@@ -21,15 +21,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.StringRes
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.accompanist.themeadapter.material.MdcTheme
 import com.google.android.material.transition.MaterialSharedAxis
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.SearchSuggestion
 import com.materialstudies.reply.data.SearchSuggestionStore
 import com.materialstudies.reply.databinding.FragmentSearchBinding
-import com.materialstudies.reply.ui.common.addSearchSuggestionHeaderComposeView
-import com.materialstudies.reply.ui.common.addSearchSuggestionItemComposeView
+import com.materialstudies.reply.ui.common.SearchSuggestionHeader
+import com.materialstudies.reply.ui.common.SearchSuggestionItem
 
 /**
  * A [Fragment] that displays search.
@@ -71,12 +74,28 @@ class SearchFragment : Fragment() {
     }
 
     private fun addSuggestionTitleView(parent: ViewGroup, @StringRes titleResId: Int) {
-        parent.addSearchSuggestionHeaderComposeView(titleResId = titleResId)
+        parent.addView(ComposeView(requireContext()).apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+            setContent {
+                MdcTheme {
+                    SearchSuggestionHeader(titleResId = titleResId)
+                }
+            }
+        })
     }
 
     private fun addSuggestionItemViews(parent: ViewGroup, suggestions: List<SearchSuggestion>) {
         suggestions.forEach {
-            parent.addSearchSuggestionItemComposeView(searchSuggestion = it)
+            parent.addView(ComposeView(requireContext()).apply {
+                setViewCompositionStrategy(
+                    ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
+                )
+                setContent {
+                    MdcTheme {
+                        SearchSuggestionItem(searchSuggestion = it)
+                    }
+                }
+            })
         }
     }
 }

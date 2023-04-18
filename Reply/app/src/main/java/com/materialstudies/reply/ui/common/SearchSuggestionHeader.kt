@@ -16,15 +16,12 @@
 
 package com.materialstudies.reply.ui.common
 
-import android.view.ViewGroup
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.google.accompanist.themeadapter.material.MdcTheme
@@ -48,23 +45,6 @@ fun SearchSuggestionHeader(
         style = MaterialTheme.typography.subtitle2,
         fontFamily = workSansFontFamily
     )
-}
-
-fun ViewGroup.addSearchSuggestionHeaderComposeView(
-    @StringRes titleResId: Int,
-    modifier: Modifier = Modifier,
-) {
-    this.addView(ComposeView(context).apply {
-        setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
-        setContent {
-            MdcTheme {
-                SearchSuggestionHeader(
-                    titleResId = titleResId,
-                    modifier = modifier
-                )
-            }
-        }
-    })
 }
 
 @ThemePreviews

@@ -16,7 +16,6 @@
 
 package com.materialstudies.reply.ui.common
 
-import android.view.ViewGroup
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.focusable
@@ -30,8 +29,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import com.google.accompanist.themeadapter.material.MdcTheme
@@ -80,23 +77,6 @@ fun SearchSuggestionItem(
             )
         }
     }
-}
-
-fun ViewGroup.addSearchSuggestionItemComposeView(
-    searchSuggestion: SearchSuggestion,
-    modifier: Modifier = Modifier
-) {
-    this.addView(ComposeView(context).apply {
-        setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
-        setContent {
-            MdcTheme {
-                SearchSuggestionItem(
-                    searchSuggestion = searchSuggestion,
-                    modifier = modifier
-                )
-            }
-        }
-    })
 }
 
 @ThemePreviews

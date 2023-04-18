@@ -14,8 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -37,30 +35,23 @@ fun AccountItem(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
             .padding(start = dimensionResource(id = R.dimen.grid_2))
-            .clickable { onClick() }
+            .clickable(onClick = onClick)
     ) {
         Image(
-            painter = painterResource(id = account.avatar),
-            contentScale = ContentScale.Crop,
+            painter = painterResource(id = account.avatar), contentScale = ContentScale.Crop,
             modifier = Modifier
                 .padding(dimensionResource(id = R.dimen.grid_1))
                 .size(dimensionResource(id = R.dimen.navigation_drawer_profile_image_size))
-                .clip(CircleShape),
-            contentDescription = account.email
+                .clip(CircleShape), contentDescription = account.email
         )
         Text(
             modifier = Modifier
                 .weight(1F)
-                .padding(horizontal = dimensionResource(id = R.dimen.grid_2)),
-            maxLines = 1,
-            text = account.email,
-            style = MaterialTheme.typography.body1.copy(
-                color =
-                if (account.checkedIcon != 0) MaterialTheme.colors.secondary
+                .padding(horizontal = dimensionResource(id = R.dimen.grid_2)), maxLines = 1,
+            text = account.email, style = MaterialTheme.typography.body1.copy(
+                color = if (account.checkedIcon != 0) MaterialTheme.colors.secondary
                 else colorResource(id = R.color.color_on_primary_surface_emphasis_medium)
-            ),
-            fontFamily = workSansFontFamily,
-            overflow = TextOverflow.Ellipsis
+            ), fontFamily = workSansFontFamily, overflow = TextOverflow.Ellipsis
         )
         if (account.checkedIcon != 0) {
             Image(
@@ -68,23 +59,6 @@ fun AccountItem(
                 modifier = modifier.padding(dimensionResource(id = R.dimen.grid_3)),
                 colorFilter = ColorFilter.tint(MaterialTheme.colors.secondary),
                 contentDescription = null
-            )
-        }
-    }
-}
-
-fun ComposeView.addAccountItem(
-    account: Account,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) = this.apply {
-    setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
-    setContent {
-        MdcTheme {
-            AccountItem(
-                account = account,
-                onClick = onClick,
-                modifier = modifier
             )
         }
     }

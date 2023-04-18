@@ -18,8 +18,9 @@ package com.materialstudies.reply.ui.nav
 
 import androidx.compose.ui.platform.ComposeView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.accompanist.themeadapter.material.MdcTheme
 import com.materialstudies.reply.data.Account
-import com.materialstudies.reply.ui.common.addAccountItem
+import com.materialstudies.reply.ui.common.AccountItem
 
 /**
  * ViewHolder for [AccountAdapter]. Holds a single account which can be selected.
@@ -30,9 +31,15 @@ class AccountViewHolder(
 ) : RecyclerView.ViewHolder(composeView) {
 
     fun bind(accnt: Account) {
-        composeView.addAccountItem(
-            account = accnt,
-            onClick = { listener.onAccountClicked(accnt) }
-        )
+        composeView.apply {
+            setContent {
+                MdcTheme {
+                    AccountItem(
+                        account = accnt,
+                        onClick = { listener.onAccountClicked(accnt) }
+                    )
+                }
+            }
+        }
     }
 }
