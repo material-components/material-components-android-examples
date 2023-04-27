@@ -21,15 +21,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.StringRes
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.accompanist.themeadapter.material.MdcTheme
 import com.google.android.material.transition.MaterialSharedAxis
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.SearchSuggestion
 import com.materialstudies.reply.data.SearchSuggestionStore
 import com.materialstudies.reply.databinding.FragmentSearchBinding
-import com.materialstudies.reply.databinding.SearchSuggestionItemBinding
-import com.materialstudies.reply.databinding.SearchSuggestionTitleBinding
+import com.materialstudies.reply.ui.common.SearchSuggestionHeader
+import com.materialstudies.reply.ui.common.SearchSuggestionItem
 
 /**
  * A [Fragment] that displays search.
@@ -71,18 +74,28 @@ class SearchFragment : Fragment() {
     }
 
     private fun addSuggestionTitleView(parent: ViewGroup, @StringRes titleResId: Int) {
-        val inflater = LayoutInflater.from(parent.context)
-        val titleBinding = SearchSuggestionTitleBinding.inflate(inflater, parent, false)
-        titleBinding.title = titleResId
-        parent.addView(titleBinding.root)
+        parent.addView(ComposeView(requireContext()).apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+            setContent {
+                MdcTheme {
+                    SearchSuggestionHeader(titleResId = titleResId)
+                }
+            }
+        })
     }
 
     private fun addSuggestionItemViews(parent: ViewGroup, suggestions: List<SearchSuggestion>) {
         suggestions.forEach {
-            val inflater = LayoutInflater.from(parent.context)
-            val suggestionBinding = SearchSuggestionItemBinding.inflate(inflater, parent, false)
-            suggestionBinding.suggestion = it
-            parent.addView(suggestionBinding.root)
+            parent.addView(ComposeView(requireContext()).apply {
+                setViewCompositionStrategy(
+                    ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
+                )
+                setContent {
+                    MdcTheme {
+                        SearchSuggestionItem(searchSuggestion = it)
+                    }
+                }
+            })
         }
     }
 }

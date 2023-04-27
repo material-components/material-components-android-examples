@@ -16,12 +16,11 @@
 
 package com.materialstudies.reply.ui.nav
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.compose.ui.platform.ComposeView
 import androidx.recyclerview.widget.ListAdapter
 import com.materialstudies.reply.data.Account
 import com.materialstudies.reply.data.AccountDiffCallback
-import com.materialstudies.reply.databinding.AccountItemLayoutBinding
 
 /**
  * An adapter which holds a list of selectable accounts owned by the current user.
@@ -35,14 +34,7 @@ class AccountAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountViewHolder {
-        return AccountViewHolder(
-            AccountItemLayoutBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            ),
-            listener
-        )
+        return AccountViewHolder(ComposeView(context = parent.context), listener = listener)
     }
 
     override fun onBindViewHolder(holder: AccountViewHolder, position: Int) {

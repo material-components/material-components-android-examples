@@ -31,13 +31,7 @@ import androidx.core.view.updateLayoutParams
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
-import com.google.android.material.chip.Chip
 import com.google.android.material.elevation.ElevationOverlayProvider
-import com.materialstudies.reply.R
 
 @BindingAdapter(
     "popupElevationOverlay"
@@ -71,53 +65,6 @@ fun TextView.bindDrawables(
         context.getDrawableOrNull(drawableTop),
         context.getDrawableOrNull(drawableEnd ?: drawableRight),
         context.getDrawableOrNull(drawableBottom)
-    )
-}
-
-/**
- * Set a Chip's leading icon using Glide.
- *
- * Optionally set the image to be center cropped and/or cropped to a circle.
- */
-@BindingAdapter(
-    "glideChipIcon",
-    "glideChipIconCenterCrop",
-    "glideChipIconCircularCrop",
-    requireAll = false
-)
-fun Chip.bindGlideChipSrc(
-    @DrawableRes drawableRes: Int?,
-    centerCrop: Boolean = false,
-    circularCrop: Boolean = false
-) {
-    if (drawableRes == null) return
-
-    createGlideRequest(
-        context,
-        drawableRes,
-        centerCrop,
-        circularCrop
-    ).listener(object : RequestListener<Drawable> {
-        override fun onLoadFailed(
-            e: GlideException?,
-            model: Any?,
-            target: Target<Drawable>?,
-            isFirstResource: Boolean
-        ): Boolean = true
-
-        override fun onResourceReady(
-            resource: Drawable?,
-            model: Any?,
-            target: Target<Drawable>?,
-            dataSource: DataSource?,
-            isFirstResource: Boolean
-        ): Boolean {
-            chipIcon = resource
-            return true
-        }
-    }).submit(
-        resources.getDimensionPixelSize(R.dimen.chip_icon_diameter),
-        resources.getDimensionPixelSize(R.dimen.chip_icon_diameter)
     )
 }
 
