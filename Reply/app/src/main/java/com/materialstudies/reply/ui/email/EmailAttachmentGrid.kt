@@ -36,6 +36,7 @@ import com.materialstudies.reply.data.EmailAttachment
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun EmailAttachmentGrid(
+    // TODO Use a stable type, instead of List
     emailAttachments: List<EmailAttachment>,
     modifier: Modifier = Modifier
 ) {
@@ -47,7 +48,7 @@ fun EmailAttachmentGrid(
             .height(400.dp)
             .fillMaxWidth()
     ) {
-        items(items = emailAttachments) {
+        items(items = emailAttachments, key = { it.resId }) {
             Image(
                 painter = painterResource(id = it.resId),
                 contentScale = ContentScale.FillWidth,

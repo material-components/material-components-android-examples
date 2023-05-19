@@ -35,6 +35,7 @@ import com.materialstudies.reply.data.EmailAttachment
 
 @Composable
 fun EmailAttachmentRow(
+    // TODO Use a stable type, instead of List
     emailAttachments: List<EmailAttachment>,
     modifier: Modifier = Modifier
 ) {
@@ -46,7 +47,7 @@ fun EmailAttachmentRow(
                 .fillMaxWidth(),
             contentPadding = PaddingValues(horizontal = 12.dp)
         ) {
-            items(items = emailAttachments) {
+            items(items = emailAttachments, key = { it.resId }) {
                 Image(
                     painter = painterResource(id = it.resId),
                     contentScale = ContentScale.FillWidth,
