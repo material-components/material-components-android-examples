@@ -19,7 +19,6 @@ package com.materialstudies.reply.ui.home
 import android.view.View
 import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.dimensionResource
 import androidx.recyclerview.widget.RecyclerView
 import com.google.accompanist.themeadapter.material.MdcTheme
@@ -43,21 +42,6 @@ class EmailViewHolder(
     init {
         binding.run {
             this.listener = listener
-            composeView.apply {
-                setViewCompositionStrategy(
-                    ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
-                )
-                setContent {
-                    MdcTheme {
-                        EmailAttachmentRow(
-                            emailAttachments = email!!.attachments,
-                            modifier = Modifier.padding(
-                                top = dimensionResource(id = R.dimen.grid_2)
-                            )
-                        )
-                    }
-                }
-            }
             root.background = EmailSwipeActionDrawable(root.context)
         }
     }
@@ -65,6 +49,21 @@ class EmailViewHolder(
     fun bind(email: Email) {
         binding.email = email
         binding.root.isActivated = email.isStarred
+
+        binding.composeView.apply {
+            setContent {
+                MdcTheme {
+                    if (email.attachments.isNotEmpty()) {
+                        EmailAttachmentRow(
+                            emailAttachments = email.attachments,
+                            modifier = Modifier.padding(
+                                top = dimensionResource(id = R.dimen.grid_2)
+                            )
+                        )
+                    }
+                }
+            }
+        }
 
         // Set the subject's TextAppearance
         val textAppearance = binding.subjectTextView.context.themeStyle(

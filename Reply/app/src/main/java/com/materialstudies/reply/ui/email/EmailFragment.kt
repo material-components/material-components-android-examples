@@ -90,12 +90,14 @@ class EmailFragment : Fragment() {
                 )
                 setContent {
                     MdcTheme {
-                        EmailAttachmentGrid(
-                            emailAttachments = email.attachments,
-                            modifier = Modifier.padding(
-                                top = dimensionResource(id = R.dimen.grid_3)
+                        if (email.attachments.isNotEmpty()) {
+                            EmailAttachmentGrid(
+                                emailAttachments = email.attachments,
+                                modifier = Modifier.padding(
+                                    top = dimensionResource(id = R.dimen.grid_3)
+                                )
                             )
-                        )
+                        }
                     }
                 }
             }

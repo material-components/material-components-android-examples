@@ -39,22 +39,20 @@ fun EmailAttachmentRow(
     emailAttachments: List<EmailAttachment>,
     modifier: Modifier = Modifier
 ) {
-    if (emailAttachments.isNotEmpty()) {
-        LazyRow(
-            horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.grid_0_25)),
-            modifier = modifier
-                .height(96.dp)
-                .fillMaxWidth(),
-            contentPadding = PaddingValues(horizontal = 12.dp)
-        ) {
-            items(items = emailAttachments, key = { it.resId }) {
-                Image(
-                    painter = painterResource(id = it.resId),
-                    contentScale = ContentScale.FillWidth,
-                    modifier = Modifier.width(150.dp),
-                    contentDescription = it.contentDesc
-                )
-            }
+    LazyRow(
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.grid_0_25)),
+        modifier = modifier
+            .height(96.dp)
+            .fillMaxWidth(),
+        contentPadding = PaddingValues(horizontal = 12.dp)
+    ) {
+        items(items = emailAttachments, key = { it.resId }) {
+            Image(
+                painter = painterResource(id = it.resId),
+                contentScale = ContentScale.FillWidth,
+                modifier = Modifier.width(150.dp),
+                contentDescription = it.contentDesc
+            )
         }
     }
 }
