@@ -100,21 +100,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/subject_text_view"/>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/attachment_recycler_view"
+                <androidx.compose.ui.platform.ComposeView
+                    android:id="@+id/compose_view"
                     android:layout_width="match_parent"
-                    android:layout_height="96dp"
-                    android:layout_marginTop="@dimen/grid_2"
+                    android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/body_preview_text_view"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    android:clipToPadding="false"
-                    android:overScrollMode="never"
-                    app:goneIf="@{!email.hasAttachments}"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    android:orientation="horizontal" />
+                    app:layout_constraintTop_toBottomOf="@id/body_preview_text_view"/>
 
                 <ImageView
                     android:id="@+id/sender_profile_image_view"

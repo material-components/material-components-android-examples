@@ -21,18 +21,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.layout.padding
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ViewCompositionStrategy
+import androidx.compose.ui.res.dimensionResource
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.GridLayoutManager
+import com.google.accompanist.themeadapter.material.MdcTheme
 import com.google.android.material.transition.MaterialContainerTransform
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.FragmentEmailBinding
 import com.materialstudies.reply.util.themeColor
 import kotlin.LazyThreadSafetyMode.NONE
-
-private const val MAX_GRID_SPANS = 3
 
 /**
  * A [Fragment] which displays a single, full email.
@@ -43,7 +45,6 @@ class EmailFragment : Fragment() {
     private val emailId: Long by lazy(NONE) { args.emailId }
 
     private lateinit var binding: FragmentEmailBinding
-    private val attachmentAdapter = EmailAttachmentGridAdapter(MAX_GRID_SPANS)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,15 +84,23 @@ class EmailFragment : Fragment() {
         binding.run {
             this.email = email
 
-            // Set up the staggered/masonry grid recycler
-            attachmentRecyclerView.layoutManager = GridLayoutManager(
-                requireContext(),
-                MAX_GRID_SPANS
-            ).apply {
-                spanSizeLookup = attachmentAdapter.variableSpanSizeLookup
+            composeView.apply {
+                setViewCompositionStrategy(
+                    ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
+                )
+                setContent {
+                    MdcTheme {
+                        if (email.attachments.isNotEmpty()) {
+                            EmailAttachmentGrid(
+                                emailAttachments = email.attachments,
+                                modifier = Modifier.padding(
+                                    top = dimensionResource(id = R.dimen.grid_3)
+                                )
+                            )
+                        }
+                    }
+                }
             }
-            attachmentRecyclerView.adapter = attachmentAdapter
-            attachmentAdapter.submitList(email.attachments)
         }
     }
 

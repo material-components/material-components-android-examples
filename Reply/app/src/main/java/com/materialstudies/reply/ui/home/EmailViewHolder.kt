@@ -17,11 +17,14 @@
 package com.materialstudies.reply.ui.home
 
 import android.view.View
+import androidx.compose.foundation.layout.padding
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.recyclerview.widget.RecyclerView
+import com.google.accompanist.themeadapter.material.MdcTheme
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.databinding.EmailItemLayoutBinding
-import com.materialstudies.reply.ui.common.EmailAttachmentAdapter
 import com.materialstudies.reply.util.setTextAppearanceCompat
 import com.materialstudies.reply.util.themeStyle
 import kotlin.math.abs
@@ -29,12 +32,7 @@ import kotlin.math.abs
 class EmailViewHolder(
     private val binding: EmailItemLayoutBinding,
     listener: EmailAdapter.EmailAdapterListener
-): RecyclerView.ViewHolder(binding.root), ReboundingSwipeActionCallback.ReboundableViewHolder {
-
-    private val attachmentAdapter = object : EmailAttachmentAdapter() {
-        override fun getLayoutIdForPosition(position: Int): Int
-            = R.layout.email_attachment_preview_item_layout
-    }
+) : RecyclerView.ViewHolder(binding.root), ReboundingSwipeActionCallback.ReboundableViewHolder {
 
     private val starredCornerSize =
         itemView.resources.getDimension(R.dimen.reply_small_component_corner_radius)
@@ -44,7 +42,6 @@ class EmailViewHolder(
     init {
         binding.run {
             this.listener = listener
-            attachmentRecyclerView.adapter = attachmentAdapter
             root.background = EmailSwipeActionDrawable(root.context)
         }
     }
@@ -52,6 +49,21 @@ class EmailViewHolder(
     fun bind(email: Email) {
         binding.email = email
         binding.root.isActivated = email.isStarred
+
+        binding.composeView.apply {
+            setContent {
+                MdcTheme {
+                    if (email.attachments.isNotEmpty()) {
+                        EmailAttachmentRow(
+                            emailAttachments = email.attachments,
+                            modifier = Modifier.padding(
+                                top = dimensionResource(id = R.dimen.grid_2)
+                            )
+                        )
+                    }
+                }
+            }
+        }
 
         // Set the subject's TextAppearance
         val textAppearance = binding.subjectTextView.context.themeStyle(
@@ -65,8 +77,6 @@ class EmailViewHolder(
             binding.subjectTextView.context,
             textAppearance
         )
-
-        attachmentAdapter.submitList(email.attachments)
 
         // Setting interpolation here controls whether or not we draw the top left corner as
         // rounded or squared. Since all other corners are set to 0dp rounded, they are
