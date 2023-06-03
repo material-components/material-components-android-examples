@@ -20,26 +20,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.StringRes
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.findNavController
 import com.google.accompanist.themeadapter.material.MdcTheme
 import com.google.android.material.transition.MaterialSharedAxis
 import com.materialstudies.reply.R
-import com.materialstudies.reply.data.SearchSuggestion
-import com.materialstudies.reply.data.SearchSuggestionStore
-import com.materialstudies.reply.databinding.FragmentSearchBinding
-import com.materialstudies.reply.ui.common.SearchSuggestionHeader
-import com.materialstudies.reply.ui.common.SearchSuggestionItem
 
 /**
  * A [Fragment] that displays search.
  */
 class SearchFragment : Fragment() {
-
-    private lateinit var binding: FragmentSearchBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,45 +49,13 @@ class SearchFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSearchBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.searchToolbar.setNavigationOnClickListener { findNavController().navigateUp() }
-        setUpSuggestions(binding.searchSuggestionContainer)
-    }
-
-    private fun setUpSuggestions(suggestionContainer: ViewGroup) {
-        addSuggestionTitleView(suggestionContainer, R.string.search_suggestion_title_yesterday)
-        addSuggestionItemViews(suggestionContainer, SearchSuggestionStore.YESTERDAY_SUGGESTIONS)
-        addSuggestionTitleView(suggestionContainer, R.string.search_suggestion_title_this_week)
-        addSuggestionItemViews(suggestionContainer, SearchSuggestionStore.THIS_WEEK_SUGGESTIONS)
-    }
-
-    private fun addSuggestionTitleView(parent: ViewGroup, @StringRes titleResId: Int) {
-        parent.addView(ComposeView(requireContext()).apply {
+        return ComposeView(requireContext()).apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 MdcTheme {
-                    SearchSuggestionHeader(titleResId = titleResId)
+                    SearchScreen(onBackClicked = { findNavController().navigateUp() })
                 }
             }
-        })
-    }
-
-    private fun addSuggestionItemViews(parent: ViewGroup, suggestions: List<SearchSuggestion>) {
-        suggestions.forEach {
-            parent.addView(ComposeView(requireContext()).apply {
-                setViewCompositionStrategy(
-                    ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
-                )
-                setContent {
-                    MdcTheme {
-                        SearchSuggestionItem(searchSuggestion = it)
-                    }
-                }
-            })
         }
     }
 }

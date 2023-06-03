@@ -17,6 +17,7 @@
 package com.materialstudies.reply.ui.common
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -36,12 +37,14 @@ fun SearchSuggestionHeader(
 ) {
     Text(
         text = stringResource(id = titleResId),
-        modifier = modifier.padding(
-            start = dimensionResource(id = R.dimen.grid_3),
-            end = dimensionResource(id = R.dimen.grid_3),
-            top = dimensionResource(id = R.dimen.grid_2),
-            bottom = dimensionResource(id = R.dimen.grid_0_5)
-        ),
+        modifier = modifier
+            .padding(
+                start = dimensionResource(id = R.dimen.grid_3),
+                end = dimensionResource(id = R.dimen.grid_3),
+                top = dimensionResource(id = R.dimen.grid_2),
+                bottom = dimensionResource(id = R.dimen.grid_0_5)
+            )
+            .fillMaxWidth(),
         style = MaterialTheme.typography.subtitle2,
         fontFamily = workSansFontFamily
     )

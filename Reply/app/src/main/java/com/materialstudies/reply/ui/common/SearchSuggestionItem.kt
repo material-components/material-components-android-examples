@@ -22,6 +22,7 @@ import androidx.compose.foundation.focusable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.MaterialTheme
@@ -52,6 +53,7 @@ fun SearchSuggestionItem(
                 horizontal = dimensionResource(id = R.dimen.grid_3),
                 vertical = dimensionResource(id = R.dimen.grid_2),
             )
+            .fillMaxWidth()
             .horizontalScroll(state = rememberScrollState())) {
         Image(
             painter = painterResource(id = searchSuggestion.iconResId),
