@@ -30,8 +30,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.google.accompanist.themeadapter.material.MdcTheme
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.EmailAttachment
+import com.materialstudies.reply.data.EmailStore
+import com.materialstudies.reply.util.DevicePreviews
 
 @Composable
 fun EmailAttachmentRow(
@@ -54,5 +57,15 @@ fun EmailAttachmentRow(
                 contentDescription = it.contentDesc
             )
         }
+    }
+}
+
+@DevicePreviews
+@Composable
+fun EmailAttachmentRowPreview() {
+    MdcTheme {
+        EmailAttachmentRow(
+            emailAttachments = EmailStore.get(2L)!!.attachments
+        )
     }
 }

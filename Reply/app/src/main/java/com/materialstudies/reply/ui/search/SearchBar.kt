@@ -40,12 +40,15 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
+import com.google.accompanist.themeadapter.material.MdcTheme
 import com.materialstudies.reply.R
+import com.materialstudies.reply.util.DevicePreviews
+import com.materialstudies.reply.util.ThemePreviews
 
 @Composable
 fun SearchBar(
-    onBackClicked: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onBackClicked: () -> Unit = {}
 ) {
     var inputText by remember { mutableStateOf("") }
     val borderColor = MaterialTheme.colors.onSurface
@@ -85,5 +88,14 @@ fun SearchBar(
             painter = painterResource(id = R.drawable.ic_mic),
             contentDescription = null
         )
+    }
+}
+
+@ThemePreviews
+@DevicePreviews
+@Composable
+fun SearchBarPreview() {
+    MdcTheme {
+        SearchBar()
     }
 }
