@@ -175,6 +175,9 @@ object EmailStore {
     )
 
     private val _emails: MutableLiveData<List<Email>> = MutableLiveData()
+    private val _openedEmailId: MutableLiveData<Long> = MutableLiveData()
+
+    val openedEmailId: LiveData<Long> = _openedEmailId
 
     private val inbox: LiveData<List<Email>>
         get() = _emails.map { emails ->
@@ -208,6 +211,7 @@ object EmailStore {
 
     init {
         _emails.value = allEmails
+        _openedEmailId.value = allEmails.first().id
     }
 
     fun getEmails(mailbox: Mailbox): LiveData<List<Email>> {
@@ -220,6 +224,8 @@ object EmailStore {
             Mailbox.DRAFTS -> drafts
         }
     }
+
+    fun getAllEmails(): List<Email> = allEmails
 
     /**
      * Get an [Email] with the given [id].
@@ -268,6 +274,10 @@ object EmailStore {
             it.with()
             _emails.value = allEmails
         }
+    }
+
+    fun updateOpenedEmailId(id: Long) {
+        _openedEmailId.value = id
     }
 
     /**
