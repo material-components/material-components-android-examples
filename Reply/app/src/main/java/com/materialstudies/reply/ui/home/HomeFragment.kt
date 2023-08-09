@@ -79,7 +79,7 @@ class HomeFragment : Fragment() {
                     val windowSize = calculateWindowSizeClass(this@HomeFragment.requireActivity())
                     val displayFeatures =
                         calculateDisplayFeatures(this@HomeFragment.requireActivity())
-                    val contentType = getContentType(windowSize)
+                    val contentType = windowSize.getContentType()
 
                     val emails =
                         EmailStore.getEmails(args.mailbox).observeAsState().value ?: emptyList()

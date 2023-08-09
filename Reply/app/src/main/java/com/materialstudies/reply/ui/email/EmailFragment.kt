@@ -74,7 +74,7 @@ class EmailFragment : Fragment() {
             setContent {
                 MdcTheme {
                     val windowSize = calculateWindowSizeClass(this@EmailFragment.requireActivity())
-                    val contentType = getContentType(windowSize)
+                    val contentType = windowSize.getContentType()
 
                     LaunchedEffect(key1 = contentType) {
                         if (contentType == ReplyContentType.TWO_PANE) {

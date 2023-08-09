@@ -4,7 +4,9 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -24,8 +26,10 @@ fun HomeEmailList(
     modifier: Modifier = Modifier,
     onEmailClick: (Long) -> Unit = {},
     onEmailLongClick: () -> Unit = {},
+    scrollState: LazyListState = rememberLazyListState()
 ) {
     LazyColumn(
+        state = scrollState,
         modifier = modifier
             .systemBarsPadding()
             .padding(bottom = dimensionResource(id = R.dimen.bottom_app_bar_height))

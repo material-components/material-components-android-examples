@@ -16,6 +16,8 @@
 
 package com.materialstudies.reply.ui.home
 
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -41,8 +43,10 @@ fun HomeScreen(
     onOpenEmail: (Long) -> Unit = {},
     onEmailLongClick: () -> Unit = {},
 ) {
+    val scrollState = rememberLazyListState()
     if (email == null || contentType == ReplyContentType.SINGLE_PANE)
         HomeEmailList(
+            scrollState = scrollState,
             modifier = modifier,
             emails = emails,
             onEmailClick = { emailId -> onNavigateToEmail(emailId) },
@@ -53,6 +57,7 @@ fun HomeScreen(
             modifier = modifier,
             first = {
                 HomeEmailList(
+                    scrollState = scrollState,
                     emails = emails,
                     onEmailClick = { emailId -> onOpenEmail(emailId) },
                     onEmailLongClick = { onEmailLongClick() }

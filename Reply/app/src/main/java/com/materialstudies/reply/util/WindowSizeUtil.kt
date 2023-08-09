@@ -7,8 +7,8 @@ enum class ReplyContentType {
     SINGLE_PANE, TWO_PANE
 }
 
-fun getContentType(windowSize: WindowSizeClass) =
-    when (windowSize.widthSizeClass) {
+fun WindowSizeClass.getContentType() =
+    when (this.widthSizeClass) {
         WindowWidthSizeClass.Expanded -> ReplyContentType.TWO_PANE
         else -> ReplyContentType.SINGLE_PANE
     }
