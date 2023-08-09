@@ -21,33 +21,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.observe
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.ItemTouchHelper
+import com.google.accompanist.adaptive.calculateDisplayFeatures
+import com.google.accompanist.themeadapter.material.MdcTheme
 import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialFadeThrough
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.data.EmailStore
-import com.materialstudies.reply.databinding.FragmentHomeBinding
 import com.materialstudies.reply.ui.MainActivity
 import com.materialstudies.reply.ui.MenuBottomSheetDialogFragment
 import com.materialstudies.reply.ui.nav.NavigationModel
+import com.materialstudies.reply.util.getContentType
 
 /**
  * A [Fragment] that displays a list of emails.
  */
-class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
+class HomeFragment : Fragment() {
 
     private val args: HomeFragmentArgs by navArgs()
-
-    private lateinit var binding: FragmentHomeBinding
-
-    private val emailAdapter = EmailAdapter(this)
 
     // An on back pressed callback that handles replacing any non-Inbox HomeFragment with inbox
     // on back pressed.
@@ -66,13 +66,38 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
         }
     }
 
+    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root
+        return ComposeView(requireContext()).apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+            setContent {
+                MdcTheme {
+                    val windowSize = calculateWindowSizeClass(this@HomeFragment.requireActivity())
+                    val displayFeatures =
+                        calculateDisplayFeatures(this@HomeFragment.requireActivity())
+                    val contentType = windowSize.getContentType()
+
+                    val emails =
+                        EmailStore.getEmails(args.mailbox).observeAsState().value ?: emptyList()
+                    val openedEmailId = EmailStore.openedEmailId.observeAsState().value ?: 0
+                    val email = EmailStore.get(openedEmailId)
+
+                    HomeScreen(
+                        email = email,
+                        emails = emails,
+                        onNavigateToEmail = { emailId -> onEmailClick(emailId) },
+                        onOpenEmail = { emailId -> EmailStore.updateOpenedEmailId(emailId) },
+                        onEmailLongClick = { onEmailLongClick() },
+                        contentType = contentType,
+                        displayFeatures = displayFeatures
+                    )
+                }
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -89,20 +114,9 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
             viewLifecycleOwner,
             nonInboxOnBackCallback
         )
-
-        binding.recyclerView.apply {
-            val itemTouchHelper = ItemTouchHelper(ReboundingSwipeActionCallback())
-            itemTouchHelper.attachToRecyclerView(this)
-            adapter = emailAdapter
-        }
-        binding.recyclerView.adapter = emailAdapter
-
-        EmailStore.getEmails(args.mailbox).observe(viewLifecycleOwner) {
-            emailAdapter.submitList(it)
-        }
     }
 
-    override fun onEmailClicked(cardView: View, email: Email) {
+    private fun onEmailClick(emailId: Long) {
         // Set exit and reenter transitions here as opposed to in onCreate because these transitions
         // will be set and overwritten on HomeFragment for other navigation actions.
         exitTransition = MaterialElevationScale(false).apply {
@@ -111,24 +125,21 @@ class HomeFragment : Fragment(), EmailAdapter.EmailAdapterListener {
         reenterTransition = MaterialElevationScale(true).apply {
             duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
         }
-        val emailCardDetailTransitionName = getString(R.string.email_card_detail_transition_name)
-        val extras = FragmentNavigatorExtras(cardView to emailCardDetailTransitionName)
-        val directions = HomeFragmentDirections.actionHomeFragmentToEmailFragment(email.id)
-        findNavController().navigate(directions, extras)
+        val directions = HomeFragmentDirections.actionHomeFragmentToEmailFragment(emailId)
+        findNavController().navigate(directions)
     }
 
-    override fun onEmailLongPressed(email: Email): Boolean {
+    private fun onEmailLongClick(): Boolean {
         MenuBottomSheetDialogFragment
-                .newInstance(R.menu.email_bottom_sheet_menu)
-                .show(parentFragmentManager, null)
+            .newInstance(R.menu.email_bottom_sheet_menu)
+            .show(parentFragmentManager, null)
         return true
     }
 
-    override fun onEmailStarChanged(email: Email, newValue: Boolean) {
+    /** TODO: Implement the Starring function
+     * @see com.materialstudies.reply.ui.home.ReboundingSwipeActionCallback
+     */
+    private fun onEmailStarChanged(email: Email, newValue: Boolean) {
         EmailStore.update(email.id) { isStarred = newValue }
-    }
-
-    override fun onEmailArchived(email: Email) {
-        EmailStore.delete(email.id)
     }
 }

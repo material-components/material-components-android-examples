@@ -21,6 +21,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
@@ -49,6 +50,7 @@ fun EmailAttachmentGrid(
         columns = StaggeredGridCells.Adaptive(minSize = 150.dp),
         modifier = modifier
             .height(400.dp)
+            .padding(top = dimensionResource(id = R.dimen.grid_1))
             .fillMaxWidth()
     ) {
         items(items = emailAttachments, key = { it.resId }) {

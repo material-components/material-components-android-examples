@@ -18,9 +18,9 @@ package com.materialstudies.reply.ui.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -46,8 +46,8 @@ fun EmailAttachmentRow(
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.grid_0_25)),
         modifier = modifier
             .height(96.dp)
-            .fillMaxWidth(),
-        contentPadding = PaddingValues(horizontal = 12.dp)
+            .fillMaxWidth()
+            .padding(top = dimensionResource(id = R.dimen.grid_1)),
     ) {
         items(items = emailAttachments, key = { it.resId }) {
             Image(

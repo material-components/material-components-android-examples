@@ -21,10 +21,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.foundation.layout.padding
-import androidx.compose.ui.Modifier
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
-import androidx.compose.ui.res.dimensionResource
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -32,7 +33,9 @@ import com.google.accompanist.themeadapter.material.MdcTheme
 import com.google.android.material.transition.MaterialContainerTransform
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.EmailStore
-import com.materialstudies.reply.databinding.FragmentEmailBinding
+import com.materialstudies.reply.data.EmailStore.updateOpenedEmailId
+import com.materialstudies.reply.util.ReplyContentType
+import com.materialstudies.reply.util.getContentType
 import com.materialstudies.reply.util.themeColor
 import kotlin.LazyThreadSafetyMode.NONE
 
@@ -43,8 +46,6 @@ class EmailFragment : Fragment() {
 
     private val args: EmailFragmentArgs by navArgs()
     private val emailId: Long by lazy(NONE) { args.emailId }
-
-    private lateinit var binding: FragmentEmailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,52 +60,36 @@ class EmailFragment : Fragment() {
         }
     }
 
+    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentEmailBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.navigationIcon.setOnClickListener {
-            findNavController().navigateUp()
-        }
 
         val email = EmailStore.get(emailId)
-        if (email == null) {
-            showError()
-            return
-        }
 
-        binding.run {
-            this.email = email
+        return ComposeView(requireContext()).apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+            setContent {
+                MdcTheme {
+                    val windowSize = calculateWindowSizeClass(this@EmailFragment.requireActivity())
+                    val contentType = windowSize.getContentType()
 
-            composeView.apply {
-                setViewCompositionStrategy(
-                    ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
-                )
-                setContent {
-                    MdcTheme {
-                        if (email.attachments.isNotEmpty()) {
-                            EmailAttachmentGrid(
-                                emailAttachments = email.attachments,
-                                modifier = Modifier.padding(
-                                    top = dimensionResource(id = R.dimen.grid_3)
-                                )
-                            )
+                    LaunchedEffect(key1 = contentType) {
+                        if (contentType == ReplyContentType.TWO_PANE) {
+                            updateOpenedEmailId(emailId)
+                            findNavController().navigateUp()
                         }
                     }
+
+                    if (email != null)
+                        EmailScreen(
+                            email = email,
+                            onBackClick = { findNavController().navigateUp() }
+                        )
                 }
             }
         }
-    }
-
-    private fun showError() {
-        // Do nothing
     }
 }
