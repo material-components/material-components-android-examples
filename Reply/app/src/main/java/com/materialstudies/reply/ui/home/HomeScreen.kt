@@ -24,10 +24,10 @@ import androidx.compose.ui.unit.dp
 import androidx.window.layout.DisplayFeature
 import com.google.accompanist.adaptive.HorizontalTwoPaneStrategy
 import com.google.accompanist.adaptive.TwoPane
-import com.google.accompanist.themeadapter.material.MdcTheme
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.ui.email.EmailScreen
+import com.materialstudies.reply.ui.theme.ReplyTheme
 import com.materialstudies.reply.util.DevicePreviews
 import com.materialstudies.reply.util.ReplyContentType
 import com.materialstudies.reply.util.ThemePreviews
@@ -75,7 +75,7 @@ fun HomeScreen(
 @DevicePreviews
 @Composable
 fun HomeScreenSinglePanePreview() {
-    MdcTheme {
+    ReplyTheme {
         HomeScreen(
             email = EmailStore.get(0L),
             emails = EmailStore.getAllEmails(),
@@ -88,7 +88,7 @@ fun HomeScreenSinglePanePreview() {
 @DevicePreviews
 @Composable
 fun HomeScreenTwoPanePreview() {
-    MdcTheme {
+    ReplyTheme {
         HomeScreen(
             email = EmailStore.get(0L),
             emails = EmailStore.getAllEmails(),

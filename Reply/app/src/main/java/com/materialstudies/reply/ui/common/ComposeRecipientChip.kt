@@ -28,10 +28,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
-import com.google.accompanist.themeadapter.material.MdcTheme
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Account
 import com.materialstudies.reply.data.AccountStore
+import com.materialstudies.reply.ui.theme.ReplyTheme
 import com.materialstudies.reply.ui.theme.workSansFontFamily
 import com.materialstudies.reply.util.ThemePreviews
 
@@ -66,7 +66,7 @@ fun ComposeRecipientChip(
 @ThemePreviews
 @Composable
 fun ComposeRecipientChipPreview() {
-    MdcTheme {
+    ReplyTheme {
         ComposeRecipientChip(
             account = AccountStore.getAllUserAccounts().first(),
             onClick = {}

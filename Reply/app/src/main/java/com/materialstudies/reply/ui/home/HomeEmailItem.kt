@@ -21,12 +21,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
-import com.google.accompanist.themeadapter.material.MdcTheme
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.data.EmailStore
-import com.materialstudies.reply.ui.theme.workSansBoldFontFamily
-import com.materialstudies.reply.ui.theme.workSansFontFamily
+import com.materialstudies.reply.ui.theme.ReplyTheme
 import com.materialstudies.reply.util.DevicePreviews
 import com.materialstudies.reply.util.ThemePreviews
 
@@ -71,7 +69,6 @@ fun HomeEmailItem(
                     Text(
                         text = email.senderPreview,
                         style = MaterialTheme.typography.body2,
-                        fontFamily = workSansFontFamily,
                         maxLines = 1
                     )
                     Text(
@@ -79,7 +76,7 @@ fun HomeEmailItem(
                             top = dimensionResource(id = R.dimen.grid_1),
 
                             ), text = email.subject,
-                        fontFamily = workSansBoldFontFamily,
+//                        fontFamily = workSansBoldFontFamily,
                         style = if (email.isImportant) MaterialTheme.typography.h4
                         else MaterialTheme.typography.h5,
                         maxLines = 1
@@ -98,7 +95,6 @@ fun HomeEmailItem(
                 Text(
                     text = email.body, maxLines = 2,
                     modifier = Modifier.padding(top = dimensionResource(id = R.dimen.grid_1)),
-                    fontFamily = workSansFontFamily,
                     style = MaterialTheme.typography.body1,
                 )
             if (email.attachments.isNotEmpty())
@@ -111,7 +107,7 @@ fun HomeEmailItem(
 @DevicePreviews
 @Composable
 fun HomeEmailItemPreview() {
-    MdcTheme {
+    ReplyTheme {
         HomeEmailItem(email = EmailStore.get(4L)!!)
     }
 }

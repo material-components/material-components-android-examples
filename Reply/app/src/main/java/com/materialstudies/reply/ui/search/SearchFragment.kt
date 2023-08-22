@@ -24,9 +24,9 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.google.accompanist.themeadapter.material.MdcTheme
 import com.google.android.material.transition.MaterialSharedAxis
 import com.materialstudies.reply.R
+import com.materialstudies.reply.ui.theme.ReplyTheme
 
 /**
  * A [Fragment] that displays search.
@@ -52,7 +52,7 @@ class SearchFragment : Fragment() {
         return ComposeView(requireContext()).apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
-                MdcTheme {
+                ReplyTheme {
                     SearchScreen(onBackClicked = { findNavController().navigateUp() })
                 }
             }

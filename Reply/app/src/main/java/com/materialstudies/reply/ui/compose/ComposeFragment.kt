@@ -30,7 +30,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.transition.Slide
 import androidx.transition.TransitionManager
-import com.google.accompanist.themeadapter.material.MdcTheme
 import com.google.android.material.transition.MaterialContainerTransform
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Account
@@ -39,6 +38,7 @@ import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.databinding.FragmentComposeBinding
 import com.materialstudies.reply.ui.common.ComposeRecipientChip
+import com.materialstudies.reply.ui.theme.ReplyTheme
 import com.materialstudies.reply.util.themeColor
 import kotlin.LazyThreadSafetyMode.NONE
 
@@ -123,7 +123,7 @@ class ComposeFragment : Fragment() {
         binding.recipientChipGroup.addView(ComposeView(requireContext()).apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
-                MdcTheme {
+                ReplyTheme {
                     ComposeRecipientChip(
                         account = acnt,
                         onClick = {

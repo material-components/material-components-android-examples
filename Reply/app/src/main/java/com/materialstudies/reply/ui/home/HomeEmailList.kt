@@ -13,10 +13,10 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.themeadapter.material.MdcTheme
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.data.EmailStore
+import com.materialstudies.reply.ui.theme.ReplyTheme
 import com.materialstudies.reply.util.DevicePreviews
 import com.materialstudies.reply.util.ThemePreviews
 
@@ -50,7 +50,7 @@ fun HomeEmailList(
 @DevicePreviews
 @Composable
 fun HomeEmailListPreview() {
-    MdcTheme {
+    ReplyTheme {
         HomeEmailList(emails = EmailStore.getAllEmails())
     }
 }

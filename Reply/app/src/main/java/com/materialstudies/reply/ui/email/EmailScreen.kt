@@ -41,12 +41,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import com.google.accompanist.themeadapter.material.MdcTheme
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Email
 import com.materialstudies.reply.data.EmailStore
-import com.materialstudies.reply.ui.theme.workSansBoldFontFamily
-import com.materialstudies.reply.ui.theme.workSansFontFamily
+import com.materialstudies.reply.ui.theme.ReplyTheme
 import com.materialstudies.reply.util.DevicePreviews
 import com.materialstudies.reply.util.ThemePreviews
 
@@ -83,8 +81,7 @@ fun EmailScreen(
                 Text(
                     modifier = Modifier.weight(1F),
                     text = email.subject,
-                    style = MaterialTheme.typography.h3,
-                    fontFamily = workSansBoldFontFamily
+                    style = MaterialTheme.typography.h3
                 )
                 if (shouldShowBackIcon)
                     Image(
@@ -105,8 +102,7 @@ fun EmailScreen(
                 ) {
                     Text(
                         text = email.senderPreview,
-                        style = MaterialTheme.typography.body2,
-                        fontFamily = workSansFontFamily
+                        style = MaterialTheme.typography.body2
                     )
                     Text(
                         modifier = Modifier.padding(
@@ -119,8 +115,7 @@ fun EmailScreen(
                             color = MaterialTheme.colors.onSurface.copy(
                                 alpha = ContentAlpha.medium
                             )
-                        ),
-                        fontFamily = workSansFontFamily
+                        )
                     )
                 }
                 Image(
@@ -136,8 +131,7 @@ fun EmailScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = dimensionResource(id = R.dimen.grid_3)),
-                text = email.body,
-                fontFamily = workSansFontFamily
+                text = email.body
             )
             if (email.attachments.isNotEmpty())
                 EmailAttachmentGrid(
@@ -151,7 +145,7 @@ fun EmailScreen(
 @DevicePreviews
 @Composable
 fun EmailScreenPreview() {
-    MdcTheme {
+    ReplyTheme {
         EmailScreen(email = EmailStore.get(4L)!!)
     }
 }

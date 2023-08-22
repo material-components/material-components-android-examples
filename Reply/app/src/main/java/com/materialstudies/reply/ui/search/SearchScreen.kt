@@ -25,11 +25,11 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.google.accompanist.themeadapter.material.MdcTheme
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.SearchSuggestionStore
 import com.materialstudies.reply.ui.common.SearchSuggestionHeader
 import com.materialstudies.reply.ui.common.SearchSuggestionItem
+import com.materialstudies.reply.ui.theme.ReplyTheme
 import com.materialstudies.reply.util.DevicePreviews
 import com.materialstudies.reply.util.ThemePreviews
 
@@ -72,7 +72,7 @@ fun SearchScreen(
 @DevicePreviews
 @Composable
 fun SearchScreenPreview() {
-    MdcTheme {
+    ReplyTheme {
         SearchScreen()
     }
 }
