@@ -34,11 +34,10 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
-import com.google.accompanist.themeadapter.material.MdcTheme
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.Account
 import com.materialstudies.reply.data.AccountStore
-import com.materialstudies.reply.ui.theme.workSansFontFamily
+import com.materialstudies.reply.ui.theme.ReplyTheme
 import com.materialstudies.reply.util.ThemePreviews
 
 @Composable
@@ -67,7 +66,7 @@ fun AccountItem(
             text = account.email, style = MaterialTheme.typography.body1.copy(
                 color = if (account.checkedIcon != 0) MaterialTheme.colors.secondary
                 else colorResource(id = R.color.color_on_primary_surface_emphasis_medium)
-            ), fontFamily = workSansFontFamily, overflow = TextOverflow.Ellipsis
+            ), overflow = TextOverflow.Ellipsis
         )
         if (account.checkedIcon != 0) {
             Image(
@@ -83,7 +82,7 @@ fun AccountItem(
 @ThemePreviews
 @Composable
 fun AccountItemPreview() {
-    MdcTheme {
+    ReplyTheme {
         AccountItem(
             account = AccountStore.getAllUserAccounts().first(),
             onClick = {},

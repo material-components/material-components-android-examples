@@ -32,11 +32,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
-import com.google.accompanist.themeadapter.material.MdcTheme
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.SearchSuggestion
 import com.materialstudies.reply.data.SearchSuggestionStore
-import com.materialstudies.reply.ui.theme.workSansFontFamily
+import com.materialstudies.reply.ui.theme.ReplyTheme
 import com.materialstudies.reply.util.ThemePreviews
 
 @Composable
@@ -66,7 +65,6 @@ fun SearchSuggestionItem(
                     start = dimensionResource(id = R.dimen.grid_2),
                 ),
                 style = MaterialTheme.typography.body1,
-                fontFamily = workSansFontFamily
             )
             Text(
                 text = searchSuggestion.subtitle,
@@ -75,7 +73,6 @@ fun SearchSuggestionItem(
                     top = dimensionResource(id = R.dimen.grid_0_5),
                 ),
                 style = MaterialTheme.typography.caption,
-                fontFamily = workSansFontFamily
             )
         }
     }
@@ -84,7 +81,7 @@ fun SearchSuggestionItem(
 @ThemePreviews
 @Composable
 fun SearchSuggestionItemPreview() {
-    MdcTheme {
+    ReplyTheme {
         SearchSuggestionItem(searchSuggestion = SearchSuggestionStore.YESTERDAY_SUGGESTIONS.first())
     }
 }

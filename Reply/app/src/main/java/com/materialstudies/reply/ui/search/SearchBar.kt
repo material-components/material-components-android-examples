@@ -40,8 +40,8 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
-import com.google.accompanist.themeadapter.material.MdcTheme
 import com.materialstudies.reply.R
+import com.materialstudies.reply.ui.theme.ReplyTheme
 import com.materialstudies.reply.util.DevicePreviews
 import com.materialstudies.reply.util.ThemePreviews
 
@@ -95,7 +95,7 @@ fun SearchBar(
 @DevicePreviews
 @Composable
 fun SearchBarPreview() {
-    MdcTheme {
+    ReplyTheme {
         SearchBar()
     }
 }

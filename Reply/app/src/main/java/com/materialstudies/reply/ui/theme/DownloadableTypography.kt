@@ -14,21 +14,13 @@
  * limitations under the License.
  */
 
-@file:OptIn(ExperimentalTextApi::class)
-
 package com.materialstudies.reply.ui.theme
 
-import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.googlefonts.Font
 import androidx.compose.ui.text.googlefonts.GoogleFont
 import com.materialstudies.reply.R
-
-/**
- * Mdc theme adapter currently doesn't migrate downloadable fonts by default, so we need to
- * do this manually and override fontFamily where needed.
- */
 
 val fontProvider = GoogleFont.Provider(
     providerAuthority = "com.google.android.gms.fonts",
@@ -50,5 +42,21 @@ val workSansBoldFontFamily = FontFamily(
         googleFont = workSansFontName,
         fontProvider = fontProvider,
         weight = FontWeight.Bold
+    )
+)
+
+val workSansSemiBoldFontFamily = FontFamily(
+    Font(
+        googleFont = workSansFontName,
+        fontProvider = fontProvider,
+        weight = FontWeight.SemiBold
+    )
+)
+
+val workSansMediumFontFamily = FontFamily(
+    Font(
+        googleFont = workSansFontName,
+        fontProvider = fontProvider,
+        weight = FontWeight.Medium
     )
 )

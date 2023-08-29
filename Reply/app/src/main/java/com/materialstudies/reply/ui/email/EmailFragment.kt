@@ -29,11 +29,11 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.google.accompanist.themeadapter.material.MdcTheme
 import com.google.android.material.transition.MaterialContainerTransform
 import com.materialstudies.reply.R
 import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.data.EmailStore.updateOpenedEmailId
+import com.materialstudies.reply.ui.theme.ReplyTheme
 import com.materialstudies.reply.util.ReplyContentType
 import com.materialstudies.reply.util.getContentType
 import com.materialstudies.reply.util.themeColor
@@ -72,7 +72,7 @@ class EmailFragment : Fragment() {
         return ComposeView(requireContext()).apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
-                MdcTheme {
+                ReplyTheme {
                     val windowSize = calculateWindowSizeClass(this@EmailFragment.requireActivity())
                     val contentType = windowSize.getContentType()
 

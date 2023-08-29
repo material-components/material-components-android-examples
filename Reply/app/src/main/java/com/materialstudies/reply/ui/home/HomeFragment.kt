@@ -31,7 +31,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.accompanist.adaptive.calculateDisplayFeatures
-import com.google.accompanist.themeadapter.material.MdcTheme
 import com.google.android.material.transition.MaterialElevationScale
 import com.google.android.material.transition.MaterialFadeThrough
 import com.materialstudies.reply.R
@@ -40,6 +39,7 @@ import com.materialstudies.reply.data.EmailStore
 import com.materialstudies.reply.ui.MainActivity
 import com.materialstudies.reply.ui.MenuBottomSheetDialogFragment
 import com.materialstudies.reply.ui.nav.NavigationModel
+import com.materialstudies.reply.ui.theme.ReplyTheme
 import com.materialstudies.reply.util.getContentType
 
 /**
@@ -75,7 +75,7 @@ class HomeFragment : Fragment() {
         return ComposeView(requireContext()).apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
-                MdcTheme {
+                ReplyTheme {
                     val windowSize = calculateWindowSizeClass(this@HomeFragment.requireActivity())
                     val displayFeatures =
                         calculateDisplayFeatures(this@HomeFragment.requireActivity())

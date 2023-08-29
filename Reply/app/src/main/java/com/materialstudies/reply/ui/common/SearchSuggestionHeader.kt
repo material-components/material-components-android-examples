@@ -25,9 +25,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import com.google.accompanist.themeadapter.material.MdcTheme
 import com.materialstudies.reply.R
-import com.materialstudies.reply.ui.theme.workSansFontFamily
+import com.materialstudies.reply.ui.theme.ReplyTheme
 import com.materialstudies.reply.util.ThemePreviews
 
 @Composable
@@ -45,15 +44,14 @@ fun SearchSuggestionHeader(
                 bottom = dimensionResource(id = R.dimen.grid_0_5)
             )
             .fillMaxWidth(),
-        style = MaterialTheme.typography.subtitle2,
-        fontFamily = workSansFontFamily
+        style = MaterialTheme.typography.body1
     )
 }
 
 @ThemePreviews
 @Composable
 fun SearchSuggestionHeaderPreview() {
-    MdcTheme {
+    ReplyTheme {
         SearchSuggestionHeader(titleResId = R.string.search_suggestion_title_yesterday)
     }
 }
