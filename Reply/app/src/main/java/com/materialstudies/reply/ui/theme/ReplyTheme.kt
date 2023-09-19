@@ -66,55 +66,43 @@ fun ReplyTheme(
     val typography = Typography(
         h2 = Typography().h2.copy(
             fontFamily = workSansSemiBoldFontFamily,
-            color = colorResource(id = R.color.color_on_surface_emphasis_high)
         ),
         h3 = Typography().h3.copy(
             fontFamily = workSansBoldFontFamily,
-            color = colorResource(id = R.color.color_on_surface_emphasis_high)
         ),
         h4 = Typography().h4.copy(
             fontFamily = workSansBoldFontFamily,
-            color = colorResource(id = R.color.color_on_surface_emphasis_high)
         ),
         h5 = Typography().h5.copy(
             fontFamily = workSansBoldFontFamily,
-            color = colorResource(id = R.color.color_on_surface_emphasis_high)
         ),
         h6 = Typography().h6.copy(
             fontFamily = workSansMediumFontFamily,
-            color = colorResource(id = R.color.color_on_surface_emphasis_high)
         ),
         body1 = Typography().body1.copy(
             fontFamily = workSansFontFamily,
             fontSize = 16.sp,
-            color = colorResource(id = R.color.color_on_surface_emphasis_high),
             lineHeight = 24.sp
         ),
         body2 = Typography().body2.copy(
             fontFamily = workSansFontFamily,
             fontSize = 14.sp,
-            color = colorResource(id = R.color.color_on_surface_emphasis_high)
         ),
         subtitle1 = Typography().subtitle1.copy(
             fontFamily = workSansFontFamily,
-            color = colorResource(id = R.color.color_on_surface_emphasis_high)
         ),
         subtitle2 = Typography().subtitle2.copy(
             fontFamily = workSansFontFamily,
-            color = colorResource(id = R.color.color_on_surface_emphasis_high)
         ),
         button = Typography().button.copy(
             fontFamily = workSansMediumFontFamily,
-            color = colorResource(id = R.color.color_on_surface_emphasis_high)
         ),
         caption = Typography().caption.copy(
             fontFamily = workSansFontFamily,
-            color = colorResource(id = R.color.color_on_surface_emphasis_high)
         ),
         overline = Typography().overline.copy(
             fontFamily = workSansSemiBoldFontFamily,
             fontSize = 12.sp,
-            color = colorResource(id = R.color.color_on_surface_emphasis_high)
         )
     )
 
